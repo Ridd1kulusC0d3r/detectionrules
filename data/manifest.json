@@ -1,0 +1,336 @@
+{
+ "total": 84566,
+ "generated": "2026-10-24",
+ "chunked": true,
+ "sources": [
+  {
+   "slug": "sagan-rules-quadrant",
+   "name": "Sagan rules (Quadrant)",
+   "n": 19430,
+   "chunks": 5,
+   "bytes": 14516782
+  },
+  {
+   "slug": "yara-rules-community",
+   "name": "Yara-Rules community",
+   "n": 12621,
+   "chunks": 4,
+   "bytes": 9519591
+  },
+  {
+   "slug": "evtx-wazuh-rules-saifbelaarbi",
+   "name": "EVTX-Wazuh-Rules (saifbelaarbi)",
+   "n": 9787,
+   "chunks": 3,
+   "bytes": 7523838
+  },
+  {
+   "slug": "neo23x0-signature-base",
+   "name": "Neo23x0 signature-base",
+   "n": 5755,
+   "chunks": 3,
+   "bytes": 8897480
+  },
+  {
+   "slug": "wazuh-ruleset-oficial",
+   "name": "Wazuh ruleset (oficial)",
+   "n": 4481,
+   "chunks": 1,
+   "bytes": 2305399
+  },
+  {
+   "slug": "sigmahq",
+   "name": "SigmaHQ",
+   "n": 3804,
+   "chunks": 3,
+   "bytes": 7903062
+  },
+  {
+   "slug": "elastic-protections-artifacts-yara",
+   "name": "Elastic protections-artifacts (YARA)",
+   "n": 3064,
+   "chunks": 2,
+   "bytes": 4294676
+  },
+  {
+   "slug": "elastic-detection-rules",
+   "name": "Elastic detection-rules",
+   "n": 2436,
+   "chunks": 8,
+   "bytes": 21641888
+  },
+  {
+   "slug": "microsoft-sentinel-analytic-rules",
+   "name": "Microsoft Sentinel (Analytic Rules)",
+   "n": 2429,
+   "chunks": 3,
+   "bytes": 8780462
+  },
+  {
+   "slug": "opensearch-security-analytics",
+   "name": "OpenSearch Security Analytics",
+   "n": 2326,
+   "chunks": 2,
+   "bytes": 3543326
+  },
+  {
+   "slug": "socfortress-wazuh-rules",
+   "name": "SOCFortress Wazuh-Rules",
+   "n": 2211,
+   "chunks": 1,
+   "bytes": 1357677
+  },
+  {
+   "slug": "splunk-security-content",
+   "name": "Splunk security_content",
+   "n": 2184,
+   "chunks": 5,
+   "bytes": 13515329
+  },
+  {
+   "slug": "microsoft-sentinel-hunting-queries",
+   "name": "Microsoft Sentinel (Hunting Queries)",
+   "n": 2180,
+   "chunks": 3,
+   "bytes": 6551399
+  },
+  {
+   "slug": "cortex-xsoar-demisto-content",
+   "name": "Cortex XSOAR (demisto/content)",
+   "n": 1675,
+   "chunks": 12,
+   "bytes": 33508511
+  },
+  {
+   "slug": "elastic-protections-artifacts-behavior",
+   "name": "Elastic protections-artifacts (behavior)",
+   "n": 1339,
+   "chunks": 2,
+   "bytes": 5257527
+  },
+  {
+   "slug": "reversinglabs-yara",
+   "name": "ReversingLabs YARA",
+   "n": 1240,
+   "chunks": 2,
+   "bytes": 3739031
+  },
+  {
+   "slug": "panther-panther-analysis",
+   "name": "Panther panther-analysis",
+   "n": 1151,
+   "chunks": 3,
+   "bytes": 7835635
+  },
+  {
+   "slug": "google-secops-chronicle",
+   "name": "Google SecOps / Chronicle",
+   "n": 948,
+   "chunks": 1,
+   "bytes": 2370872
+  },
+  {
+   "slug": "chronicle-rules-rowham",
+   "name": "Chronicle rules (rowham)",
+   "n": 759,
+   "chunks": 1,
+   "bytes": 1701290
+  },
+  {
+   "slug": "suricata-hunting-rules-travisbgreen",
+   "name": "Suricata hunting-rules (travisbgreen)",
+   "n": 719,
+   "chunks": 1,
+   "bytes": 453310
+  },
+  {
+   "slug": "evtx-wazuh-rules-sigma-export",
+   "name": "EVTX-Wazuh-Rules (Sigma export)",
+   "n": 630,
+   "chunks": 1,
+   "bytes": 672658
+  },
+  {
+   "slug": "awesome-playbooks-ms-azure",
+   "name": "awesome-playbooks · ms_azure",
+   "n": 509,
+   "chunks": 4,
+   "bytes": 9343166
+  },
+  {
+   "slug": "bert-janp-hunting-queries",
+   "name": "Bert-JanP Hunting Queries",
+   "n": 443,
+   "chunks": 1,
+   "bytes": 1482726
+  },
+  {
+   "slug": "splunk-analytic-stories",
+   "name": "Splunk analytic stories",
+   "n": 367,
+   "chunks": 1,
+   "bytes": 1099105
+  },
+  {
+   "slug": "gcp-security-analytics",
+   "name": "GCP security-analytics",
+   "n": 277,
+   "chunks": 1,
+   "bytes": 426685
+  },
+  {
+   "slug": "hayabusa-native",
+   "name": "Hayabusa (native)",
+   "n": 196,
+   "chunks": 1,
+   "bytes": 499823
+  },
+  {
+   "slug": "awesome-playbooks-fortinet",
+   "name": "awesome-playbooks · fortinet",
+   "n": 193,
+   "chunks": 1,
+   "bytes": 2764385
+  },
+  {
+   "slug": "splunk-soar-phantom-playbooks",
+   "name": "Splunk SOAR / Phantom playbooks",
+   "n": 182,
+   "chunks": 2,
+   "bytes": 3139447
+  },
+  {
+   "slug": "awesome-playbooks-splunk",
+   "name": "awesome-playbooks · splunk",
+   "n": 155,
+   "chunks": 3,
+   "bytes": 6703470
+  },
+  {
+   "slug": "awesome-playbooks-resolve",
+   "name": "awesome-playbooks · resolve",
+   "n": 149,
+   "chunks": 1,
+   "bytes": 1730667
+  },
+  {
+   "slug": "elastic-hunting-queries",
+   "name": "Elastic hunting queries",
+   "n": 143,
+   "chunks": 1,
+   "bytes": 545550
+  },
+  {
+   "slug": "awesome-playbooks-xsoar",
+   "name": "awesome-playbooks · xsoar",
+   "n": 131,
+   "chunks": 1,
+   "bytes": 2449405
+  },
+  {
+   "slug": "falco-rules",
+   "name": "Falco rules",
+   "n": 96,
+   "chunks": 1,
+   "bytes": 230978
+  },
+  {
+   "slug": "awesome-playbooks-tines",
+   "name": "awesome-playbooks · tines",
+   "n": 87,
+   "chunks": 1,
+   "bytes": 2152844
+  },
+  {
+   "slug": "splunk-security-content-playbooks",
+   "name": "Splunk security_content playbooks",
+   "n": 86,
+   "chunks": 1,
+   "bytes": 133750
+  },
+  {
+   "slug": "awesome-playbooks-logichub",
+   "name": "awesome-playbooks · logichub",
+   "n": 70,
+   "chunks": 1,
+   "bytes": 2473436
+  },
+  {
+   "slug": "wazuh-detection-engineering-jeremy-burgos",
+   "name": "wazuh-detection-engineering (Jeremy-Burgos)",
+   "n": 61,
+   "chunks": 1,
+   "bytes": 31719
+  },
+  {
+   "slug": "awesome-playbooks-demisto",
+   "name": "awesome-playbooks · demisto",
+   "n": 59,
+   "chunks": 1,
+   "bytes": 779840
+  },
+  {
+   "slug": "awesome-playbooks-threat-connect",
+   "name": "awesome-playbooks · threat_connect",
+   "n": 53,
+   "chunks": 1,
+   "bytes": 76930
+  },
+  {
+   "slug": "awesome-playbooks-cisa",
+   "name": "awesome-playbooks · cisa",
+   "n": 51,
+   "chunks": 1,
+   "bytes": 63160
+  },
+  {
+   "slug": "qradar-aql-comunidade",
+   "name": "QRadar AQL (comunidade)",
+   "n": 30,
+   "chunks": 1,
+   "bytes": 40336
+  },
+  {
+   "slug": "shuffle-workflows",
+   "name": "Shuffle workflows",
+   "n": 23,
+   "chunks": 1,
+   "bytes": 1320858
+  },
+  {
+   "slug": "awesome-playbooks-shuffle",
+   "name": "awesome-playbooks · shuffle",
+   "n": 18,
+   "chunks": 1,
+   "bytes": 1076441
+  },
+  {
+   "slug": "suricata-nmap-opnsense-rules",
+   "name": "Suricata nmap/OPNsense rules",
+   "n": 10,
+   "chunks": 1,
+   "bytes": 6389
+  },
+  {
+   "slug": "awesome-playbooks-chronicle",
+   "name": "awesome-playbooks · chronicle",
+   "n": 4,
+   "chunks": 1,
+   "bytes": 253493
+  },
+  {
+   "slug": "awesome-playbooks-catalyst",
+   "name": "awesome-playbooks · catalyst",
+   "n": 3,
+   "chunks": 1,
+   "bytes": 4598
+  },
+  {
+   "slug": "awesome-playbooks-oasis-open",
+   "name": "awesome-playbooks · oasis_open",
+   "n": 1,
+   "chunks": 1,
+   "bytes": 5608
+  }
+ ]
+}

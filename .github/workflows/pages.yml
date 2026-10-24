@@ -1,0 +1,62 @@
+name: Publicar no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 6 * * 1"   # segunda-feira, 03:17 em Brasília: reconstrói o catálogo com as regras mais recentes
+  workflow_dispatch:
+    inputs:
+      rebuild:
+        description: "Recoletar todas as fontes e reconstruir o catálogo"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Reconstruir catálogo a partir das fontes
+        if: github.event_name == 'schedule' || inputs.rebuild == true || hashFiles('data/manifest.json') == ''
+        run: |
+          ./scripts/fetch_sources.sh
+          python3 build_catalog.py
+          python3 make_data.py
+
+      - name: Montar site (somente arquivos do app)
+        run: |
+          mkdir -p _site
+          cp -r index.html app data docs .nojekyll COMECE-AQUI.md README.md _site/
+          du -sh _site
+          echo "maior arquivo:"; find _site -type f -printf "%s %p\n" | sort -rn | head -1
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

