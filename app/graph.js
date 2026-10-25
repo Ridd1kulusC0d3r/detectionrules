@@ -35,7 +35,7 @@ async function renderGraph(){
   v.innerHTML=`
   <div class="eyebrow">Grafo de conhecimento · ATT&CK v${esc(G.A.version)}</div>
   <h1 class="sec">Quem ataca, como ataca e <span class="g">o que detecta</span></h1>
-  <p class="sub">Cada técnica do ATT&CK ligada às regras do catálogo, aos grupos que a usam, aos testes do Atomic Red Team que a reproduzem, a logs reais de ataque (EVTX) e às ferramentas para investigá-la. Clique numa técnica para ver seus relacionamentos.</p>
+  <p class="sub">Dos alertas aos grupos de ameaça: cada técnica do ATT&CK ligada às regras do catálogo, aos grupos que a usam, aos testes do Atomic Red Team que a reproduzem, a logs reais de ataque (EVTX) e às ferramentas para investigá-la. Clique numa técnica para ver seus relacionamentos.</p>
   <div class="grid g4" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
     <div class="stat"><div class="v">${s.techniques_with_rules}<span style="font-size:18px;color:var(--ink-3)">/${s.techniques}</span></div><div class="l">técnicas com regra</div></div>
     <div class="stat"><div class="v">${s.groups}</div><div class="l">grupos APT</div></div>
@@ -45,6 +45,8 @@ async function renderGraph(){
     <div class="stat"><div class="v">${(G.RES.items||[]).length}</div><div class="l">ferramentas e materiais</div></div>
   </div>
   <div class="toolbar" style="margin-top:18px">
+    <button class="btn ${G.mode==='attrib'?'p':''}" data-gm="attrib">Atribuição por TTP${(V.state.case?.items?.length)?' · '+V.state.case.items.length:''}</button>
+    <button class="btn ${G.mode==='flows'?'p':''}" data-gm="flows">Fluxos (Sankey)</button>
     <button class="btn ${G.mode==='matrix'?'p':''}" data-gm="matrix">Matriz de cobertura</button>
     <button class="btn ${G.mode==='gaps'?'p':''}" data-gm="gaps">Lacunas prioritárias</button>
     <button class="btn ${G.mode==='groups'?'p':''}" data-gm="groups">Grupos APT</button>
@@ -60,7 +62,7 @@ async function renderGraph(){
   <div id="gbody" style="margin-top:18px"></div>`;
   $$('[data-gm]',v).forEach(b=>b.onclick=()=>{ G.mode=b.dataset.gm; renderGraph(); });
   $('#gq').oninput=e=>graphSearch(e.target.value);
-  ({matrix:renderMatrix,gaps:renderGaps,groups:renderGroups,resources:renderResources})[G.mode]();
+  ({matrix:renderMatrix,gaps:renderGaps,groups:renderGroups,resources:renderResources,flows:()=>renderFlows(),attrib:()=>renderAttrib()})[G.mode]();
 }
 
 /* ---------------- busca unificada ---------------- */
@@ -143,7 +145,7 @@ window.openTech=async function(tid){
    <div class="mpane" id="tp-test">${techTestPane(tid,x)}</div>
    <div class="mpane" id="tp-adv">${techAdvPane(groups,sw,mit,x)}</div>
    <div class="mpane" id="tp-tools">${resourcesList(res.slice(0,30), 'Ferramentas e materiais da planilha relacionados às táticas e formatos desta técnica.')}</div>
-   <div class="toolbar"><button class="btn p" onclick="closeModal();A.q='';A.tech='${tid}';A.page=0;go('arsenal')">Ver as ${n} regras no Arsenal</button><button class="btn" onclick="closeModal();forgeFromTech('${tid}')">Criar regra para esta técnica</button><a class="btn" href="https://attack.mitre.org/techniques/${tid.replace('.','/')}/" target="_blank" rel="noopener">ATT&CK ↗</a></div>
+   <div class="toolbar"><button class="btn a" onclick="caseAddTech('${tid}')">+ caso</button><button class="btn p" onclick="closeModal();A.q='';A.tech='${tid}';A.page=0;go('arsenal')">Ver as ${n} regras no Arsenal</button><button class="btn" onclick="closeModal();forgeFromTech('${tid}')">Criar regra para esta técnica</button><a class="btn" href="https://attack.mitre.org/techniques/${tid.replace('.','/')}/" target="_blank" rel="noopener">ATT&CK ↗</a></div>
   </div>`);
   $$('[data-tp]','#mbox').forEach(b=>b.onclick=()=>{ $$('[data-tp]','#mbox').forEach(z=>z.classList.remove('on')); b.classList.add('on'); $$('#mbox .mpane').forEach(p=>p.classList.remove('on')); $('#tp-'+b.dataset.tp).classList.add('on'); });
 };

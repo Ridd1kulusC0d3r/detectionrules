@@ -5,7 +5,8 @@
 3. No **Arsenal**, busque `lsass` e abra a primeira regra. Percorra as 7 abas na ordem.
 4. Na aba **Experimente**, clique em *Rodar simulação* e veja qual campo decidiu cada resultado.
 5. No **Grafo**, abra *Lacunas prioritárias*, escolha uma técnica sem regra e clique em *criar regra*.
-6. Na **Forja**, escolha um comportamento e os dados que você tem, gere e compare as 6 traduções.
+6. No **Grafo → Atribuição por TTP**, clique em *carregar exemplo*, veja o grupo mais compatível e abra o dossiê dele.
+7. Na **Forja**, escolha um comportamento e os dados que você tem, gere e compare as 6 traduções.
 
 Regra de ouro: não leia 84 mil. Leia 20 com atenção.
 

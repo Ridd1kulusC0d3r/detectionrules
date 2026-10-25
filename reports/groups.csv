@@ -1,0 +1,179 @@
+id,grupo,aliases,tecnicas,cobertura_pct,sem_regra,software,campanhas,relatorios,fontes,dossie
+G0094,Kimsuky,"Black Banshee, Velvet Chollima, Emerald Sleet, THALLIUM",130,88,15,19,0,4,33,reports/groups/G0094-kimsuky.md
+G0082,APT38,"NICKEL GLADSTONE, BeagleBoyz, Bluenoroff, Stardust Chollima",115,89,13,6,0,2,15,reports/groups/G0082-apt38.md
+G0007,APT28,"IRON TWILIGHT, SNAKEMACKEREL, Swallowtail, Group 74",93,92,7,29,1,25,58,reports/groups/G0007-apt28.md
+G0032,Lazarus Group,"Labyrinth Chollima, HIDDEN COBRA, Guardians of Peace, ZINC",93,97,3,26,1,8,51,reports/groups/G0032-lazarus-group.md
+G0129,Mustang Panda,"TA416, RedDelta, BRONZE PRESIDENT, STATELY TAURUS",85,93,6,23,1,9,38,reports/groups/G0129-mustang-panda.md
+G0096,APT41,"Wicked Panda, Brass Typhoon, BARIUM",82,98,2,32,2,7,17,reports/groups/G0096-apt41.md
+G1017,Volt Typhoon,"BRONZE SILHOUETTE, Vanguard Panda, DEV-0391, UNC3236",81,86,11,17,2,1,8,reports/groups/G1017-volt-typhoon.md
+G0034,Sandworm Team,"ELECTRUM, Telebots, IRON VIKING, BlackEnergy (Group)",79,90,8,27,3,5,44,reports/groups/G0034-sandworm-team.md
+G0050,APT32,"SeaLotus, OceanLotus, APT-C-00, Canvas Cyclone",78,96,3,15,0,17,17,reports/groups/G0050-apt32.md
+G0059,Magic Hound,"TA453, COBALT ILLUSION, Charming Kitten, ITG18",78,96,3,13,0,12,25,reports/groups/G0059-magic-hound.md
+G0049,OilRig,"COBALT GYPSY, IRN2, APT34, Helix Kitten",76,100,0,30,2,9,31,reports/groups/G0049-oilrig.md
+G0047,Gamaredon Group,"IRON TILDEN, Primitive Bear, ACTINIUM, Armageddon",70,96,3,6,0,5,18,reports/groups/G0047-gamaredon-group.md
+G0069,MuddyWater,"Earth Vetala, MERCURY, Static Kitten, Seedworm",68,99,1,21,0,15,30,reports/groups/G0069-muddywater.md
+G0010,Turla,"IRON HUNTER, Group 88, Waterbug, WhiteBear",68,96,3,30,0,24,30,reports/groups/G0010-turla.md
+G0046,FIN7,"GOLD NIAGARA, ITG14, Carbon Spider, ELBRUS",67,93,5,19,0,3,30,reports/groups/G0046-fin7.md
+G0016,APT29,"IRON RITUAL, IRON HEMLOCK, NobleBaron, Dark Halo",66,97,2,49,2,9,52,reports/groups/G0016-apt29.md
+G1059,NIMBUS MANTICORE,"UNC1549, TA455, COBALT SMOKEY",65,82,12,13,0,1,7,reports/groups/G1059-nimbus-manticore.md
+G1015,Scattered Spider,"Roasted 0ktapus, Octo Tempest, Storm-0875, UNC3944",64,95,3,10,1,0,11,reports/groups/G1015-scattered-spider.md
+G0102,Wizard Spider,"UNC1878, TEMP.MixMaster, Grim Spider, FIN12",64,97,2,22,0,0,21,reports/groups/G0102-wizard-spider.md
+G1055,VOID MANTICORE,"COBALT MYSTIQUE, Handala Hack, Homeland Justice, Karma",63,94,4,0,1,0,9,reports/groups/G1055-void-manticore.md
+G0114,Chimera,,59,97,2,6,0,2,2,reports/groups/G0114-chimera.md
+G1045,Salt Typhoon,,58,84,9,1,0,0,8,reports/groups/G1045-salt-typhoon.md
+G1051,Medusa Group,,57,96,2,5,0,0,6,reports/groups/G1051-medusa-group.md
+G0027,Threat Group-3390,"Earth Smilodon, TG-3390, Emissary Panda, BRONZE UNION",57,98,1,24,0,14,14,reports/groups/G0027-threat-group-3390.md
+G0035,Dragonfly,"TEMP.Isotope, DYMALLOY, Berserk Bear, TG-4192",56,91,5,10,0,9,17,reports/groups/G0035-dragonfly.md
+G0139,TeamTNT,,56,95,3,4,0,3,13,reports/groups/G0139-teamtnt.md
+G1052,Contagious Interview,"DeceptiveDevelopment, Gwisin Gang, Tenacious Pungsan, DEV#POPPER",54,87,7,4,0,0,17,reports/groups/G1052-contagious-interview.md
+G0087,APT39,"ITG07, Chafer, Remix Kitten",53,100,0,11,0,3,12,reports/groups/G0087-apt39.md
+G1016,FIN13,Elephant Beetle,53,98,1,4,0,2,2,reports/groups/G1016-fin13.md
+G0065,Leviathan,"MUDCARP, Kryptonite Panda, Gadolinium, BRONZE MOHAWK",50,92,4,17,1,5,10,reports/groups/G0065-leviathan.md
+G1048,UNC3886,,49,90,5,8,1,0,4,reports/groups/G1048-unc3886.md
+G1043,BlackByte,Hecamede,48,98,1,8,0,0,6,reports/groups/G1043-blackbyte.md
+G1003,Ember Bear,"UNC2589, Bleeding Bear, DEV-0586, Cadet Blizzard",47,96,2,11,0,0,5,reports/groups/G1003-ember-bear.md
+G0045,menuPass,"Cicada, POTASSIUM, Stone Panda, APT10",46,100,0,25,0,11,14,reports/groups/G0045-menupass.md
+G0004,Ke3chang,"APT15, Mirage, Vixen Panda, GREF",46,98,1,11,1,7,8,reports/groups/G0004-ke3chang.md
+G1057,ShinyHunters,"UNC6240, Bling Libra",46,89,5,1,0,0,8,reports/groups/G1057-shinyhunters.md
+G0022,APT3,"Gothic Panda, Pirpi, UPS Team, Buckeye",44,100,0,6,0,5,11,reports/groups/G0022-apt3.md
+G0125,HAFNIUM,"Operation Exchange Marauder, Silk Typhoon",44,93,3,6,0,2,8,reports/groups/G0125-hafnium.md
+G1006,Earth Lusca,"TAG-22, Charcoal Typhoon, CHROMIUM, ControlX",44,95,2,9,0,2,4,reports/groups/G1006-earth-lusca.md
+G1054,MirrorFace,Earth Kasha,43,100,0,16,1,0,8,reports/groups/G1054-mirrorface.md
+G1004,LAPSUS$,"DEV-0537, Strawberry Tempest",43,88,5,1,0,0,5,reports/groups/G1004-lapsus.md
+G1053,Storm-0501,,42,95,2,8,0,0,4,reports/groups/G1053-storm-0501.md
+G0040,Patchwork,"Hangover Group, Dropping Elephant, Chinastrats, MONSOON",41,93,3,8,0,16,9,reports/groups/G0040-patchwork.md
+G1039,RedCurl,,41,100,0,0,0,0,4,reports/groups/G1039-redcurl.md
+G0117,Fox Kitten,"UNC757, Parisite, Pioneer Kitten, RUBIDIUM",41,98,1,5,0,1,8,reports/groups/G0117-fox-kitten.md
+G0037,FIN6,"Magecart Group 6, ITG08, Skeleton Spider, TAAL",40,100,0,12,0,2,13,reports/groups/G0037-fin6.md
+G0081,Tropic Trooper,"Pirate Panda, KeyBoy",40,98,1,6,0,4,10,reports/groups/G0081-tropic-trooper.md
+G0060,BRONZE BUTLER,"REDBALDKNIGHT, Tick",40,100,0,14,0,6,5,reports/groups/G0060-bronze-butler.md
+G0099,APT-C-36,"Blind Eagle, TAG-144, AguilaCiega, APT-Q-98",38,87,5,9,0,2,6,reports/groups/G0099-apt-c-36.md
+G1056,TeamPCP,"PCPCat, ShellForce, DeadCatx3, SHADOW-WATER-058",37,86,5,3,0,0,17,reports/groups/G1056-teampcp.md
+G0106,Rocke,,36,100,0,0,0,1,3,reports/groups/G0106-rocke.md
+G1001,HEXANE,"Lyceum, Siamesekitten, Spirlin",36,94,2,12,0,2,8,reports/groups/G1001-hexane.md
+G0061,FIN8,Syssphinx,36,100,0,11,0,2,7,reports/groups/G0061-fin8.md
+G0143,Aquatic Panda,,35,100,0,6,0,0,2,reports/groups/G0143-aquatic-panda.md
+G0092,TA505,"Hive0065, Spandex Tempest, CHIMBORAZO",34,100,0,16,0,8,17,reports/groups/G0092-ta505.md
+G0080,Cobalt Group,"GOLD KINGSWOOD, Cobalt Gang, Cobalt Spider",34,100,0,6,0,2,14,reports/groups/G0080-cobalt-group.md
+G0119,Indrik Spider,"Evil Corp, Manatee Tempest, DEV-0243, UNC2165",33,94,2,8,0,0,9,reports/groups/G0119-indrik-spider.md
+G1044,APT42,,33,88,4,2,0,0,4,reports/groups/G1044-apt42.md
+G0093,GALLIUM,Granite Typhoon,31,97,1,16,0,1,4,reports/groups/G0093-gallium.md
+G1046,Storm-1811,,31,90,3,7,0,0,4,reports/groups/G1046-storm-1811.md
+G0064,APT33,"HOLMIUM, Elfin, Peach Sandstorm",31,100,0,16,0,1,7,reports/groups/G0064-apt33.md
+G0121,Sidewinder,"T-APT-04, Rattlesnake",30,93,2,1,0,7,5,reports/groups/G0121-sidewinder.md
+G1036,Moonstone Sleet,Storm-1789,30,90,3,1,0,0,2,reports/groups/G1036-moonstone-sleet.md
+G0128,ZIRCONIUM,"APT31, Violet Typhoon",29,90,3,0,0,2,7,reports/groups/G0128-zirconium.md
+G0067,APT37,"InkySquid, ScarCruft, Reaper, Group123",29,100,0,13,0,7,9,reports/groups/G0067-apt37.md
+G1023,APT5,"Mulberry Typhoon, MANGANESE, BRONZE FLEETWOOD, Keyhole Panda",29,97,1,13,1,0,9,reports/groups/G1023-apt5.md
+G1018,TA2541,,28,100,0,9,0,0,5,reports/groups/G1018-ta2541.md
+G0126,Higaisa,,28,96,1,3,0,3,3,reports/groups/G0126-higaisa.md
+G1014,LuminousMoth,,28,93,2,2,0,0,2,reports/groups/G1014-luminousmoth.md
+G0091,Silence,Whisper Spider,28,100,0,3,0,2,5,reports/groups/G0091-silence.md
+G1041,Sea Turtle,"Teal Kurma, Marbled Dust, Cosmic Wolf, SILICON",27,89,3,1,0,2,5,reports/groups/G1041-sea-turtle.md
+G1035,Winter Vivern,"TA473, UAC-0114",27,93,2,0,0,0,5,reports/groups/G1035-winter-vivern.md
+G1040,Play,,26,100,0,9,0,1,2,reports/groups/G1040-play.md
+G0090,WIRTE,Ashen Lepus,26,100,0,8,0,1,4,reports/groups/G0090-wirte.md
+G1022,ToddyCat,,25,96,1,9,0,1,2,reports/groups/G1022-toddycat.md
+G1032,INC Ransom,GOLD IONIC,25,100,0,8,0,0,7,reports/groups/G1032-inc-ransom.md
+G0012,Darkhotel,"DUBNIUM, Zigzag Hail",24,96,1,0,0,4,8,reports/groups/G0012-darkhotel.md
+G0006,APT1,"Comment Crew, Comment Group, Comment Panda",23,96,1,17,0,3,5,reports/groups/G0006-apt1.md
+G0108,Blue Mockingbird,,22,100,0,2,0,2,1,reports/groups/G0108-blue-mockingbird.md
+G1030,Agrius,"Pink Sandstorm, AMERICIUM, Agonizing Serpens, BlackShadow",22,100,0,9,0,2,5,reports/groups/G1030-agrius.md
+G1047,Velvet Ant,,22,100,0,2,0,1,2,reports/groups/G1047-velvet-ant.md
+G0100,Inception,"Inception Framework, Cloud Atlas",22,100,0,3,0,6,4,reports/groups/G0100-inception.md
+G0030,Lotus Blossom,"DRAGONFISH, Spring Dragon, RADIUM, Raspberry Typhoon",21,100,0,9,0,10,8,reports/groups/G0030-lotus-blossom.md
+G0073,APT19,"Codoso, C0d0so0, Codoso Team, Sunshop Group",21,100,0,2,0,0,6,reports/groups/G0073-apt19.md
+G1033,Star Blizzard,"SEABORGIUM, Callisto Group, TA446, COLDRIVER",20,85,3,1,0,1,4,reports/groups/G1033-star-blizzard.md
+G0140,LazyScripter,,20,100,0,7,0,1,1,reports/groups/G0140-lazyscripter.md
+G1012,CURIUM,"Crimson Sandstorm, TA456, Tortoise Shell, Yellow Liderc",19,74,5,1,0,1,5,reports/groups/G1012-curium.md
+G0142,Confucius,Confucius APT,19,95,1,1,0,9,4,reports/groups/G0142-confucius.md
+G1021,Cinnamon Tempest,"DEV-0401, Emperor Dragonfly, BRONZE STARLIGHT",19,100,0,8,0,0,7,reports/groups/G1021-cinnamon-tempest.md
+G0112,Windshift,Bahamut,19,100,0,1,0,6,4,reports/groups/G0112-windshift.md
+G1031,Saint Bear,"Storm-0587, TA471, UAC-0056, Lorec53",18,100,0,2,0,0,2,reports/groups/G1031-saint-bear.md
+G0077,Leafminer,Raspite,17,100,0,4,0,0,2,reports/groups/G0077-leafminer.md
+G1024,Akira,"GOLD SAHARA, PUNK SPIDER, Howling Scorpius",17,100,0,8,0,0,8,reports/groups/G1024-akira.md
+G1034,Daggerfly,"Evasive Panda, BRONZE HIGHLAND",17,88,2,6,0,1,4,reports/groups/G1034-daggerfly.md
+G1058,The Gentlemen,"Storm-2697, GOLD SHERWOOD",17,88,2,3,0,0,8,reports/groups/G1058-the-gentlemen.md
+G1008,SideCopy,,16,94,1,2,0,1,1,reports/groups/G1008-sidecopy.md
+G0078,Gorgon Group,,16,100,0,4,0,1,1,reports/groups/G0078-gorgon-group.md
+G1002,BITTER,T-APT-17,16,100,0,1,0,5,4,reports/groups/G1002-bitter.md
+G0038,Stealth Falcon,,16,100,0,0,0,0,1,reports/groups/G0038-stealth-falcon.md
+G0001,Axiom,Group 72,16,81,3,8,0,2,6,reports/groups/G0001-axiom.md
+G0021,Molerats,"Operation Molerats, Gaza Cybergang",16,100,0,6,0,6,6,reports/groups/G0021-molerats.md
+G1011,EXOTIC LILY,,15,73,4,2,0,0,2,reports/groups/G1011-exotic-lily.md
+G0135,BackdoorDiplomacy,,15,100,0,5,0,0,1,reports/groups/G0135-backdoordiplomacy.md
+G0131,Tonto Team,"Earth Akhlut, BRONZE HUNTLEY, CactusPete, Karma Panda",15,100,0,6,0,0,10,reports/groups/G0131-tonto-team.md
+G0019,Naikon,,14,100,0,15,0,5,5,reports/groups/G0019-naikon.md
+G0098,BlackTech,Palmerworm,14,100,0,6,0,5,9,reports/groups/G0098-blacktech.md
+G0127,TA551,"GOLD CABIN, Shathak",14,100,0,5,0,0,6,reports/groups/G0127-ta551.md
+G0134,Transparent Tribe,"COPPER FIELDSTONE, APT36, Mythic Leopard, ProjectM",14,93,1,5,1,6,8,reports/groups/G0134-transparent-tribe.md
+G0122,Silent Librarian,"TA407, COBALT DICKENS",13,69,4,0,0,1,6,reports/groups/G0122-silent-librarian.md
+G1020,Mustard Tempest,"DEV-0206, TA569, GOLD PRELUDE, UNC1543",12,67,4,2,0,0,6,reports/groups/G1020-mustard-tempest.md
+G0018,admin@338,,12,100,0,7,0,0,1,reports/groups/G0018-admin-338.md
+G0026,APT18,"TG-0416, Dynamite Panda, Threat Group-0416",12,100,0,5,0,0,6,reports/groups/G0026-apt18.md
+G0138,Andariel,"Silent Chollima, PLUTONIUM, Onyx Sleet",12,100,0,2,0,2,9,reports/groups/G0138-andariel.md
+G1009,Moses Staff,"DEV-0500, Marigold Sandstorm",12,100,0,4,0,0,3,reports/groups/G1009-moses-staff.md
+G0070,Dark Caracal,,12,100,0,3,0,1,2,reports/groups/G0070-dark-caracal.md
+G1026,Malteiro,,12,100,0,1,0,0,2,reports/groups/G1026-malteiro.md
+G0085,FIN4,,12,100,0,0,0,1,3,reports/groups/G0085-fin4.md
+G0120,Evilnum,,11,100,0,3,0,5,2,reports/groups/G0120-evilnum.md
+G0095,Machete,"APT-C-43, El Machete",11,100,0,1,0,4,4,reports/groups/G0095-machete.md
+G0053,FIN5,,11,100,0,6,0,0,3,reports/groups/G0053-fin5.md
+G0056,PROMETHIUM,StrongPity,11,82,2,2,1,5,4,reports/groups/G0056-promethium.md
+G0068,PLATINUM,,11,100,0,3,0,2,3,reports/groups/G0068-platinum.md
+G0051,FIN10,,11,100,0,1,0,0,2,reports/groups/G0051-fin10.md
+G0105,DarkVishnya,,10,100,0,2,0,0,1,reports/groups/G0105-darkvishnya.md
+G0009,Deep Panda,"Shell Crew, WebMasters, KungFu Kittens, PinkPanther",10,100,0,7,0,7,7,reports/groups/G0009-deep-panda.md
+G0066,Elderwood,"Elderwood Gang, Beijing Group, Sneaky Panda",9,100,0,9,0,1,4,reports/groups/G0066-elderwood.md
+G0008,Carbanak,Anunak,9,100,0,4,0,6,8,reports/groups/G0008-carbanak.md
+G1007,Aoqin Dragon,,9,100,0,2,0,0,1,reports/groups/G1007-aoqin-dragon.md
+G0107,Whitefly,,9,100,0,1,0,1,1,reports/groups/G0107-whitefly.md
+G1013,Metador,,9,100,0,2,0,0,2,reports/groups/G1013-metador.md
+G0115,GOLD SOUTHFIELD,Pinchy Spider,9,100,0,2,0,0,6,reports/groups/G0115-gold-southfield.md
+G0054,Sowbug,,9,100,0,2,0,1,1,reports/groups/G0054-sowbug.md
+G0075,Rancor,,9,100,0,4,0,3,2,reports/groups/G0075-rancor.md
+G1019,MoustachedBouncer,,8,100,0,3,0,0,1,reports/groups/G1019-moustachedbouncer.md
+G0033,Poseidon Group,,8,100,0,0,0,1,1,reports/groups/G0033-poseidon-group.md
+G0052,CopyKittens,,8,100,0,4,0,1,5,reports/groups/G0052-copykittens.md
+G0124,Windigo,,7,100,0,1,0,0,4,reports/groups/G0124-windigo.md
+G1005,POLONIUM,Plaid Rain,7,100,0,2,0,0,2,reports/groups/G1005-polonium.md
+G0089,The White Company,,7,100,0,2,0,0,1,reports/groups/G0089-the-white-company.md
+G0079,DarkHydrus,,7,100,0,3,0,2,4,reports/groups/G0079-darkhydrus.md
+G0048,RTM,,7,100,0,1,0,0,3,reports/groups/G0048-rtm.md
+G0136,IndigoZebra,,7,100,0,3,0,1,3,reports/groups/G0136-indigozebra.md
+G0133,Nomadic Octopus,DustSquad,7,100,0,1,0,0,4,reports/groups/G0133-nomadic-octopus.md
+G1037,TA577,,6,100,0,3,0,0,1,reports/groups/G1037-ta577.md
+G0084,Gallmaker,,6,100,0,0,0,1,1,reports/groups/G0084-gallmaker.md
+G0137,Ferocious Kitten,,6,100,0,2,0,1,1,reports/groups/G0137-ferocious-kitten.md
+G0103,Mofang,,6,100,0,2,0,1,1,reports/groups/G0103-mofang.md
+G0044,Winnti Group,Blackfly,6,100,0,3,0,4,6,reports/groups/G0044-winnti-group.md
+G0130,Ajax Security Team,"Operation Woolen-Goldfish, AjaxTM, Rocket Kitten, Flying Kitten",6,100,0,2,0,7,5,reports/groups/G0130-ajax-security-team.md
+G1042,RedEcho,,5,100,0,1,0,1,2,reports/groups/G1042-redecho.md
+G0039,Suckfly,,5,100,0,1,0,2,2,reports/groups/G0039-suckfly.md
+G0062,TA459,,5,100,0,4,0,0,1,reports/groups/G0062-ta459.md
+G0003,Cleaver,"Threat Group 2889, TG-2889",5,100,0,4,0,2,2,reports/groups/G0003-cleaver.md
+G0123,Volatile Cedar,Lebanese Cedar,5,100,0,2,0,2,2,reports/groups/G0123-volatile-cedar.md
+G0005,APT12,"IXESHE, DynCalc, Numbered Panda, DNSCALC",5,100,0,3,0,2,4,reports/groups/G0005-apt12.md
+G0024,Putter Panda,"APT2, MSUpdater",4,100,0,4,0,2,2,reports/groups/G0024-putter-panda.md
+G0043,Group5,,4,100,0,2,0,2,1,reports/groups/G0043-group5.md
+G0083,SilverTerrier,,4,100,0,5,0,0,2,reports/groups/G0083-silverterrier.md
+G0020,Equation,,4,25,3,0,0,7,2,reports/groups/G0020-equation.md
+G1038,TA578,,4,75,1,3,0,0,2,reports/groups/G1038-ta578.md
+G0028,Threat Group-1314,TG-1314,4,100,0,2,0,0,1,reports/groups/G0028-threat-group-1314.md
+G0076,Thrip,,4,100,0,3,0,2,1,reports/groups/G0076-thrip.md
+G0041,Strider,ProjectSauron,3,67,1,1,0,6,3,reports/groups/G0041-strider.md
+G1050,Water Galura,GOLD FEATHER,3,100,0,2,0,0,3,reports/groups/G1050-water-galura.md
+G0025,APT17,Deputy Dog,2,100,0,1,0,0,1,reports/groups/G0025-apt17.md
+G0036,GCMAN,,2,100,0,0,0,0,1,reports/groups/G0036-gcman.md
+G1049,AppleJeus,"Gleaming Pisces, Citrine Sleet, UNC1720, UNC4736",2,100,0,0,1,2,5,reports/groups/G1049-applejeus.md
+G0071,Orangeworm,,2,100,0,8,0,1,3,reports/groups/G0071-orangeworm.md
+G0013,APT30,,2,100,0,5,0,1,2,reports/groups/G0013-apt30.md
+G0011,PittyTiger,,2,100,0,5,0,0,2,reports/groups/G0011-pittytiger.md
+G0002,Moafee,,1,100,0,1,0,0,1,reports/groups/G0002-moafee.md
+G0029,Scarlet Mimic,,1,100,0,4,0,1,1,reports/groups/G0029-scarlet-mimic.md
+G0023,APT16,,1,0,1,1,0,0,1,reports/groups/G0023-apt16.md
+G0063,BlackOasis,,1,100,0,0,0,1,3,reports/groups/G0063-blackoasis.md
+G0055,NEODYMIUM,,0,0,0,1,0,1,3,reports/groups/G0055-neodymium.md
+G1028,APT-C-23,"Mantis, Arid Viper, Desert Falcon, TAG-63",0,0,0,1,0,7,5,reports/groups/G1028-apt-c-23.md
+G0088,TEMP.Veles,XENOTIME,0,0,0,2,2,0,5,reports/groups/G0088-temp-veles.md
+G0017,DragonOK,,0,0,0,2,0,1,2,reports/groups/G0017-dragonok.md

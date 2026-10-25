@@ -69,7 +69,12 @@ function renderMast(){
     V.man=man; V.show=show; $('#lb').style.width='40%';
     V.idx=await fetch('data/index.json').then(r=>r.json()); $('#lb').style.width='90%';
     buildIndex(); renderMast();
-    const h=location.hash.replace('#',''); go(['home','academy','arsenal','graph','forge','playbooks','progress'].includes(h)?h:'home');
+    const h=location.hash.replace('#','');
+    const dl=h.match(/^(group|tech|rule)=(.+)$/);
+    if(dl){ const [,k,v]=dl; const val=decodeURIComponent(v);
+      if(k==='rule'){ go('arsenal'); setTimeout(()=>openRuleByUid(val),300); }
+      else { go('graph'); setTimeout(()=>(k==='group'?openGroup(val):openTech(val.toUpperCase())),600); }
+    } else go(['home','academy','arsenal','graph','forge','playbooks','progress'].includes(h)?h:'home');
   }catch(e){
     $('#v-home').innerHTML=`<div class="note warn"><span class="ni">▸</span><div><b>Não consegui carregar os dados.</b> Este app precisa ser aberto por um servidor local (os navegadores bloqueiam fetch de arquivos locais). Use o lançador <code>ABRIR.bat</code> / <code>ABRIR.command</code> / <code>abrir.sh</code> na pasta, ou rode <code>python3 -m http.server 8787</code> e abra <code>http://localhost:8787</code>.<br><br>Erro: <code>${esc(e.message)}</code></div></div>`;
   }

@@ -39,11 +39,12 @@ jobs:
           python3 build_catalog.py
           python3 make_data.py
           python3 build_graph.py .
+          python3 build_intel.py .
 
       - name: Montar site (somente arquivos do app)
         run: |
           mkdir -p _site
-          cp -r index.html app data docs .nojekyll COMECE-AQUI.md README.md _site/
+          cp -r index.html app data docs reports .nojekyll COMECE-AQUI.md README.md _site/
           du -sh _site
           echo "maior arquivo:"; find _site -type f -printf "%s %p\n" | sort -rn | head -1
 

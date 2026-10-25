@@ -150,6 +150,10 @@ for o in objs:
                 logs.append({"dc": dc_name.get(lr.get("x_mitre_data_component_ref"), ""), "src": lr.get("name", ""), "ch": lr.get("channel", "")})
             ans.append({"pl": a.get("x_mitre_platforms", []), "d": clip(a.get("description"), 260), "logs": logs[:6]})
         tech[tid]["det"].append({"id": sid, "n": st.get("name", ""), "an": ans[:6]})
+for o in objs:
+    if o["type"] == "relationship" and live(o) and o["relationship_type"] == "uses" and o["source_ref"] in gix and o["target_ref"] in six:
+        groups[gix[o["source_ref"]]].setdefault("sw", []).append(six[o["target_ref"]])
+for g in groups: g["sw"] = sorted(set(g.get("sw", [])))
 for t in tech.values():
     for k in ("g", "s", "c", "m"): t[k] = sorted(set(t[k]))
 for g in groups: g["t"] = sorted(set(g["t"]))
@@ -157,6 +161,10 @@ for s in software: s["t"] = sorted(set(s["t"]))
 for c in campaigns: c["t"] = sorted(set(c["t"]))
 
 # ------------------------------------------------------------------ regras do catálogo
+# qualidade para recomendar regras: formato portável e maduro primeiro
+RANK_FMT = {"sigma": 5, "elastic": 4, "splunk": 4, "sentinel": 4, "yaral": 3, "wazuh": 3, "falco": 3, "panther": 3,
+            "kql-md": 2, "suricata": 2, "aql": 2, "gcp": 2, "yara": 1, "playbook": 0}
+RANK_STATUS = {"stable": 2, "production": 2, "test": 1, "experimental": 0, "deprecated": -4, "development": 0}
 R = json.load(open(CAT, encoding="utf-8"))
 unmapped = collections.Counter()
 fmt_tac_edges = collections.Counter()
@@ -171,9 +179,17 @@ for r in R:
         x = tech[t]
         x["rc"][r["format"]] = x["rc"].get(r["format"], 0) + 1
         x["rt"] += 1
-        if len(x["ex"]) < 12:
-            x["ex"].append({"u": slug(r["source"]) + "::" + r["id"], "t": r["title"][:110], "f": r["format"], "s": r["source"], "v": r.get("severity") or "", "k": r.get("ctype", "detection")})
+        sc = RANK_FMT.get(r["format"], 1) + RANK_STATUS.get((r.get("status") or "").lower(), 0) \
+             + (1 if (r.get("severity") or "") in ("high", "critical") else 0) + (1 if r.get("ctype", "detection") == "detection" else 0)
+        cand = x.setdefault("_cand", [])
+        cand.append((sc, len(cand), {"u": slug(r["source"]) + "::" + r["id"], "t": r["title"][:110], "f": r["format"], "s": r["source"], "v": r.get("severity") or "", "k": r.get("ctype", "detection"), "q": sc}))
+        if len(cand) > 60: cand.sort(key=lambda z: (-z[0], z[1])); del cand[30:]
         for ta in x["ta"]: fmt_tac_edges[(r["format"], ta)] += 1
+
+for x in tech.values():
+    cand = x.pop("_cand", [])
+    cand.sort(key=lambda z: (-z[0], z[1]))
+    x["ex"] = [c[2] for c in cand[:12]]
 
 # ------------------------------------------------------------------ Atomic Red Team (só metadados, sem comandos)
 atomic_total = 0
@@ -332,7 +348,7 @@ for t, x in tech.items():
         if p in tech_out:
             tech_out[p].setdefault("rsub", 0); tech_out[p]["rsub"] += x["rt"]
 
-attack = {"version": version, "generated": datetime.date.today().isoformat(), "tactics": tac_list, "techniques": tech_out,
+attack = {"version": version, "generated": datetime.date.today().isoformat(), "tactics": tac_list, "techniques": tech_out, "rev": revoked,
           "groups": groups, "software": software, "campaigns": campaigns, "mitigations": mitig,
           "stats": {"techniques": len(tech), "groups": len(groups), "software": len(software), "campaigns": len(campaigns),
                     "mitigations": len(mitig), "atomic_tests": atomic_total, "evtx_explicit": ev_explicit, "evtx_inferred": ev_inferred,

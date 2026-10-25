@@ -373,6 +373,21 @@ svg.ego{display:block;width:100%;min-width:760px;height:auto}
 .node:hover text,.node:focus-visible text{fill:var(--signal)}.node:focus{outline:none}
 .node.dim{opacity:.35}
 
+/* ---------- sankey ---------- */
+svg.sankey{display:block;width:100%;min-width:820px;height:auto}
+.sk-link{fill:var(--signal);opacity:.22;transition:opacity .15s}
+.sk-link.gapl{fill:var(--ink-3)}
+svg.sankey.focus .sk-link{opacity:.05}
+svg.sankey .sk-link.hot{opacity:.62}
+.sk-node rect{fill:var(--ink)}
+.sk-node.grp rect{fill:var(--signal)}
+.sk-node.gapn rect{fill:var(--ink-3)}
+.sk-node text{font:11px var(--mono);fill:var(--ink);paint-order:stroke;stroke:var(--paper-2);stroke-width:4px;stroke-linejoin:round}
+.sk-node .sk-v{fill:var(--ink-3)}
+.sk-node[role=button]{cursor:pointer}
+.sk-node:hover text,.sk-node.hot text,.sk-node:focus-visible text{fill:var(--signal)}
+.sk-node:focus{outline:none}
+
 footer{border-top:1px solid var(--ink);padding:22px 0 40px;font:12px var(--mono);color:var(--ink-3);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 @media(max-width:900px){
@@ -472,7 +487,9 @@ document.getElementById('theme').addEventListener('click',()=>{
 <script src="app/sigma_engine.js"></script>
 <script src="app/academy.js"></script>
 <script src="app/arsenal.js"></script>
+<script src="app/sankey.js"></script>
 <script src="app/graph.js"></script>
+<script src="app/intel.js"></script>
 <script src="app/forge.js"></script>
 <script src="app/playbooks.js"></script>
 <script src="app/progress.js"></script>

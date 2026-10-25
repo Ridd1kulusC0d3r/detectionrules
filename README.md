@@ -16,6 +16,9 @@
 - **Adapte:** editor com validador por formato e download do **pacote de detecção** (regra + guia + casos de teste).
 - **Forja:** você diz o comportamento e os dados que tem; o motor monta a regra e traduz para Sigma, KQL, SPL, EQL, TOML Elastic e Wazuh, explicando cada decisão.
 - **Grafo de conhecimento (ATT&CK v20.0):** matriz de cobertura das 706 técnicas, lacunas prioritárias (técnicas usadas por muitos grupos e com poucas regras), 178 grupos APT com o percentual de técnicas que o catálogo público consegue ver, e um grafo de relacionamentos por técnica: grupos, subtécnicas, regras por formato, testes Atomic Red Team, logs EVTX reais, mitigações e softwares.
+- **Atribuição por TTP:** monte um caso com os alertas que dispararam (pelo botão *+ caso* na ficha da regra, colando nomes do SIEM ou códigos de técnica) e veja os grupos mais compatíveis, ponderados pela raridade de cada técnica, num Sankey alertas → técnicas → grupos. Inclui as próximas caças para confirmar ou descartar a hipótese e exporta o relatório do caso em Markdown.
+- **Dossiês de inteligência:** um por grupo (178), com perfil, TTP e procedimentos por tática, assinatura comportamental, arsenal, campanhas, cobertura de detecção, regras recomendadas, plano de emulação, hipóteses de hunting, OSINT e bibliografia. No site e em [`reports/`](reports/README.md), prontos para compartilhar (TLP:CLEAR).
+- **Fluxos (Sankey):** oferta de detecção (formato → tática) e demanda adversária (grupo → tática → com ou sem regra pública).
 - **Ficha da regra enriquecida:** contexto ATT&CK na aba *Entenda*, fontes de log recomendadas pelo MITRE na aba *Prepare os dados* e testes Atomic + logs EVTX para provar a detecção na aba *Experimente*.
 - **Ferramentas e materiais:** 282 itens da planilha *Malware IR – Tools & Resources*, organizados por fase do trabalho e ligados aos formatos de regra que cada fase produz.
 - **Academia:** 8 lições pela técnica de Feynman e o dicionário de campos de cada formato.
@@ -39,6 +42,7 @@ Duplo clique em `ABRIR.bat` (Windows), `ABRIR.command` (macOS) ou `./abrir.sh` (
 python3 build_catalog.py     # normaliza tudo em catalog.json
 python3 make_data.py         # gera data/: índice + blocos de ~3 MB
 python3 build_graph.py .     # gera data/graph/: grafo ATT&CK, recursos e exportações
+python3 build_intel.py .     # gera data/graph/groups.json e os dossiês em reports/
 ```
 Somente biblioteca padrão do Python.
 
@@ -50,6 +54,9 @@ Somente biblioteca padrão do Python.
 | `data/graph/graph.graphml` | Gephi, yEd, Neo4j |
 | `data/graph/graph.json` | nós e arestas para qualquer ferramenta |
 | `data/graph/navigator-layer.json` | camada de cobertura para o [ATT&CK Navigator](https://mitre-attack.github.io/attack-navigator/) |
+| `reports/groups/*.md` | um dossiê de inteligência por grupo |
+| `reports/groups.csv` | resumo de todos os grupos |
+| `data/graph/groups.json` | perfil completo dos grupos (procedimentos, arsenal, campanhas, bibliografia) |
 | `data/graph/attack.json` | técnicas, grupos, softwares, campanhas, mitigações e estratégias de detecção com cobertura de regras |
 
 IDs antigos citados pelas regras são convertidos pelas revogações oficiais do ATT&CK (ex.: T1562 → T1685 na nova tática *Defense Impairment*, T1086 → T1059.001). Citações de técnicas ICS (`T0xxx`) ficam fora da matriz Enterprise. Ligações marcadas como *inferidas* (EVTX por palavra-chave, relatório por nome do grupo) devem ser conferidas antes de uso formal.

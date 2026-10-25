@@ -153,7 +153,7 @@ async function openRule(r){
   $('#mbox').innerHTML=`
   <div class="mhead"><div style="flex:1"><h2>${esc(r.title)}</h2>
     <div class="pill-row"><span class="sev ${sevClass(r.sev)}">${SEV_PT[r.sev]||'sem severidade'}</span><span class="tag v">${esc(r.src)}</span><span class="tag">${esc(r.lang)}</span>${r.status?`<span class="tag">${esc(r.status)}</span>`:''}<span class="tag">${esc(r.lic)}</span>${r.tac.map(t=>`<span class="tag v">${TACTIC_PT[t]||t}</span>`).join('')}${r.tech.map(t=>`<a class="tag a" href="https://attack.mitre.org/techniques/${t.replace('.','/')}/" target="_blank" rel="noopener">${t} ↗</a>`).join('')}</div></div>
-    <button class="btn sm ${fav?'a':''}" id="favtog">★ ${fav?'favorita':'favoritar'}</button><button class="x" onclick="closeModal()">✕</button></div>
+    ${r.tech.length?`<button class="btn sm a" id="addcase" title="Adicionar este alerta ao caso de atribuição por TTP">+ caso</button>`:''}<button class="btn sm ${fav?'a':''}" id="favtog">★ ${fav?'favorita':'favoritar'}</button><button class="x" onclick="closeModal()">✕</button></div>
   <div class="mbody">
     <p style="font-size:14px;color:var(--ink-dim);margin-bottom:12px">${esc(d.desc||r.desc)||'<i>sem descrição no arquivo</i>'}</p>
     <div id="curation" style="margin-bottom:10px">${curationBar(r,key)}</div>
@@ -175,13 +175,15 @@ async function openRule(r){
       <textarea class="editor" id="ed">${esc(V.state['edit_'+key]||d.raw)}</textarea>
       <div class="toolbar"><button class="btn p" id="eddl">⬇ baixar minha versão</button><button class="btn" id="edsave">💾 salvar rascunho</button><button class="btn" id="edreset">↺ restaurar original</button><button class="btn v" id="edlint">✓ validar estrutura</button>${r.fmt==='sigma'?'<button class="btn" id="edsim">▶ simular com evento</button>':''}<button class="btn" id="edforge">⚒ abrir na Forja</button><button class="btn a" id="edpkg">📦 baixar pacote de detecção</button></div>
       <div id="lint"></div></div>
-    <div class="mpane" id="p-investigate">${investigatePane(r,d)}</div>
+    <div class="mpane" id="p-investigate"><div id="ctx-groups"></div>${investigatePane(r,d)}</div>
     <div class="mpane" id="p-origin">${originPane(r,d)}</div>
   </div>`;
   $$('.mtab','#mbox').forEach(t=>t.onclick=()=>{$$('.mtab','#mbox').forEach(x=>x.classList.remove('on'));t.classList.add('on');$$('.mpane','#mbox').forEach(p=>p.classList.remove('on'));$('#p-'+t.dataset.p).classList.add('on'); if(t.dataset.p==='understand'&&!V.state['explained_'+key]){V.state['explained_'+key]=1;save();}});
   $('#cp').onclick=()=>copy(d.raw); $('#dl').onclick=()=>download(fname, d.raw);
   if($('#edsim')) $('#edsim').onclick=()=>{$$('.mtab','#mbox').forEach(x=>x.classList.remove('on'));$('.mtab[data-p="experiment"]').classList.add('on');$$('.mpane','#mbox').forEach(p=>p.classList.remove('on'));$('#p-experiment').classList.add('on');$('#ed')&&runSim(r,$('#ed').value,key);};
   $('#edpkg').onclick=()=>downloadPackage(r,d,key);
+  if($('#addcase')) $('#addcase').onclick=()=>caseAddRule(r);
+  if(r.tech.length && window.groupsForRuleHTML){ groupsForRuleHTML(r).then(h=>{ const z=$('#ctx-groups'); if(z) z.innerHTML=h; }); }
   if(r.tech.length && window.attackContextHTML){ (async()=>{ const [c,l,v]=await Promise.all([attackContextHTML(r),attackLogsHTML(r),attackValidationHTML(r)]); const a=$('#ctx-attack'),b=$('#ctx-logs'),z=$('#ctx-valid'); if(a) a.innerHTML=c; if(b) b.innerHTML=l; if(z) z.innerHTML=v; })(); }
   if(r.fmt==='sigma'){ setTimeout(()=>{ const sr=$('#simrun'); if(sr) sr.onclick=()=>runSim(r, (V.state['edit_'+key]||d.raw), key); const se=$('#simedit'); if(se) se.onclick=()=>{ const t=prompt('Cole um evento JSON para testar contra a regra:','{"ParentImage":"C:\\\\...\\\\WINWORD.EXE","Image":"C:\\\\Windows\\\\System32\\\\cmd.exe","CommandLine":"cmd /c x"}'); if(!t) return; try{ const ev=JSON.parse(t); const rule=Sigma.parseSigma(V.state['edit_'+key]||d.raw); const res=Sigma.evaluate(rule,ev); $('#simout').innerHTML=`<div class="lint ${res.matched?'bad':'ok'}">${res.matched?'A regra DISPARARIA para este evento.':'A regra NÃO dispararia.'}</div>`+term('evento',JSON.stringify(ev,null,2),'kql-md')+`<div style="font-size:12.5px;color:var(--ink-dim);margin-top:8px">${Object.entries(res.blocks).map(([n,b])=>`<code style="color:${b.hit?'var(--signal)':'var(--ink-3)'}">${esc(n)} ${b.hit?'✓':'✗'}</code>: ${b.fields.map(f=>`<span style="color:${f.hit?'var(--ink)':'var(--ink-3)'}">${esc(f.field)} ${f.hit?'✓':'✗'}</span>`).join(', ')}`).join('<br>')}</div>`; }catch(e){ toast('✗','JSON inválido'); } }; },0); }
   $('#favtog').onclick=()=>{ if(V.state.fav[key]) delete V.state.fav[key]; else V.state.fav[key]=1; save(); openRule(r); };
