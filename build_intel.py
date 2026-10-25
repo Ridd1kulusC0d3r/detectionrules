@@ -10,7 +10,8 @@ Gera:
 
 Uso: python3 build_intel.py [DIR_FONTES]
 """
-import json, os, re, sys, math, csv, datetime, collections
+import json, os, re, sys, math, csv, datetime, collections, html as H
+from intel_html import md_to_html, page
 from urllib.parse import quote_plus
 
 SRC = sys.argv[1] if len(sys.argv) > 1 else "."
@@ -95,7 +96,7 @@ json.dump(profiles, open("data/graph/groups.json", "w", encoding="utf-8"), ensur
 # ---------------------------------------------------------------- dossiês Markdown
 os.makedirs("reports/groups", exist_ok=True)
 for f in os.listdir("reports/groups"):
-    if f.endswith(".md"): os.remove(os.path.join("reports/groups", f))
+    if f.endswith((".md", ".html")): os.remove(os.path.join("reports/groups", f))
 FMT = {"sigma": "Sigma", "elastic": "Elastic", "splunk": "Splunk", "sentinel": "Sentinel KQL", "yaral": "YARA-L", "wazuh": "Wazuh", "falco": "Falco",
        "yara": "YARA", "panther": "Panther", "kql-md": "KQL hunting", "suricata": "Suricata/Snort", "aql": "QRadar AQL", "gcp": "GCP", "playbook": "Playbook"}
 md_cell = lambda s: (s or "").replace("|", "\\|").replace("\n", " ")
@@ -207,6 +208,22 @@ for gid, p in sorted(profiles.items(), key=lambda kv: -len(kv[1]["tech"])):
           "- Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.",
           "", "---", f"Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules]({REPO})."]
     open(os.path.join("reports/groups", fname(p)), "w", encoding="utf-8").write("\n".join(L) + "\n")
+    # ---- versão HTML do dossiê
+    body, toc = md_to_html("\n".join(L))
+    tc = collections.OrderedDict((s_, [0, 0]) for s_ in TAC_ORDER)
+    for t in tech:
+        for s_ in t["ta"]:
+            if s_ in tc: tc[s_][0 if t["rt"] else 1] += 1
+    mx = max([a + b for a, b in tc.values()] + [1])
+    bars = "".join(f'<div class="br"><span>{H.escape(TAC[s_]["n"])}</span><span class="t"><i style="width:{a/mx*100:.1f}%"></i><i style="width:{b/mx*100:.1f}%"></i></span><b>{a}/{a+b}</b></div>' for s_, (a, b) in tc.items() if a + b)
+    strip = (f'<div class="strip"><div><b>{n}</b><span>técnicas</span></div><div><b>{pct}%</b><span>com regra pública</span></div><div><b>{len(gaps)}</b><span>sem regra</span></div>'
+             f'<div><b>{len(p["sw"])}</b><span>softwares</span></div><div><b>{len(p["camp"])}</b><span>campanhas</span></div><div><b>{len(p["refs"]) + len(p["rep"])}</b><span>fontes</span></div></div>')
+    extra = (strip + '<h3>Cobertura de detecção pública por tática</h3><div class="bars">' + bars + '</div><p style="font-size:13px;color:var(--ink-3)">Barra escura = técnicas com regra pública · clara = sem regra.</p>'
+             + '<nav class="toc" aria-label="Sumário">' + "".join(f'<a href="#{k}">{H.escape(t)}</a>' for k, t in toc) + '</nav>')
+    body = body.replace("<h2", extra + "<h2", 1)
+    tools = f'<a class="btn" href="{fname(p)}" download>Markdown</a><a class="btn" href="{SITE}#group={gid}">Abrir no site</a>'
+    open(os.path.join("reports/groups", fname(p)[:-3] + ".html"), "w", encoding="utf-8").write(
+        page(f"{p['n']} ({gid}) · Dossiê de inteligência", body, desc=f"Dossiê de inteligência de fontes abertas sobre {p['n']}: TTP, arsenal, cobertura de detecção, emulação, hunting e OSINT.", nav_back="../index.html", site=SITE, extra_tools=tools))
     index.append({"id": gid, "n": p["n"], "al": ", ".join(p["al"][:4]), "t": n, "pct": pct, "gaps": len(gaps), "sw": len(p["sw"]), "camp": len(p["camp"]), "rep": len(p["rep"]), "refs": len(p["refs"]), "f": fname(p)})
 
 R = ["# Dossiês de inteligência — grupos de ameaça", "",
@@ -215,8 +232,28 @@ R = ["# Dossiês de inteligência — grupos de ameaça", "",
      "| Grupo | Também conhecido como | Técnicas | Cobertura pública | Sem regra | Software | Campanhas | Relatórios | Fontes |", "|---|---|---:|---:|---:|---:|---:|---:|---:|"]
 for i in index:
     R.append(f"| [{i['n']}](groups/{i['f']}) `{i['id']}` | {md_cell(i['al'])} | {i['t']} | {i['pct']}% | {i['gaps']} | {i['sw']} | {i['camp']} | {i['rep']} | {i['refs']} |")
+R.insert(4, f"**Versão HTML:** [índice navegável](index.html) — no site: {SITE}reports/index.html")
+R.insert(5, "")
 open("reports/README.md", "w", encoding="utf-8").write("\n".join(R) + "\n")
+# ---- índice HTML pesquisável
+tot_t = sum(i["t"] for i in index); avg = round(sum(i["pct"] for i in index) / max(1, len(index)))
+rows = "".join(
+    f'<tr data-q="{H.escape((i["n"] + " " + i["id"] + " " + " ".join(profiles[i["id"]]["al"])).lower())}">'
+    f'<td><a href="groups/{i["f"][:-3]}.html"><strong>{H.escape(i["n"])}</strong></a> <code>{i["id"]}</code><span class="al">{H.escape(i["al"])}</span></td>'
+    f'<td class="num">{i["t"]}</td><td class="num"><span class="pbar"><i style="width:{i["pct"]}%"></i></span>{i["pct"]}%</td><td class="num">{i["gaps"]}</td>'
+    f'<td class="num">{i["sw"]}</td><td class="num">{i["camp"]}</td><td class="num">{i["rep"]}</td><td class="num">{i["refs"]}</td></tr>' for i in index)
+ibody = f"""<p style="font:600 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--signal);margin:0">Detection Rules · inteligência de fontes abertas</p>
+<h1>Dossiês de inteligência sobre grupos de ameaça</h1>
+<p class="meta"><span class="tlp">TLP:CLEAR</span>{len(index)} dossiês gerados em {TODAY} a partir do MITRE ATT&amp;CK v{A['version']} e do catálogo Detection Rules. Cada um traz perfil TTP com procedimentos, assinatura comportamental, arsenal, campanhas, cobertura de detecção pública, plano de emulação, hipóteses de hunting, OSINT e bibliografia.</p>
+<div class="strip"><div><b>{len(index)}</b><span>grupos</span></div><div><b>{tot_t:,}</b><span>vínculos grupo-técnica</span></div><div><b>{avg}%</b><span>cobertura média</span></div><div><b>{sum(i['refs'] for i in index):,}</b><span>referências</span></div><div><b>{sum(i['rep'] for i in index)}</b><span>relatórios ligados</span></div></div>
+<input class="q" id="q" type="search" placeholder="Filtrar por grupo ou nome alternativo: APT28, Fancy Bear, Lazarus, Turla…" aria-label="Filtrar grupos">
+<p id="cnt" style="font:12px var(--mono);color:var(--ink-3)"></p>
+<div class="tw"><table><thead><tr><th>Grupo</th><th class="num">Técnicas</th><th class="num">Cobertura</th><th class="num">Sem regra</th><th class="num">Software</th><th class="num">Campanhas</th><th class="num">Relatórios</th><th class="num">Fontes</th></tr></thead><tbody id="tb">{rows}</tbody></table></div>
+<p style="font-size:13px;color:var(--ink-3)">Sobreposição de TTP não é atribuição. O ATT&amp;CK registra apenas o que foi relatado publicamente. Planilha-resumo: <a href="groups.csv">groups.csv</a>.</p>
+<script>const q=document.getElementById('q'),rs=[...document.querySelectorAll('#tb tr')],c=document.getElementById('cnt');function f(){{const v=q.value.trim().toLowerCase();let n=0;rs.forEach(r=>{{const ok=!v||r.dataset.q.includes(v);r.style.display=ok?'':'none';if(ok)n++;}});c.textContent=n+' de '+rs.length+' grupos';}}q.addEventListener('input',f);f();</script>"""
+open("reports/index.html", "w", encoding="utf-8").write(page("Dossiês de inteligência · Detection Rules", ibody, desc="Dossiês de inteligência de fontes abertas sobre grupos de ameaça.", site=SITE))
 with open("reports/groups.csv", "w", newline="", encoding="utf-8") as f:
     w = csv.writer(f); w.writerow(["id", "grupo", "aliases", "tecnicas", "cobertura_pct", "sem_regra", "software", "campanhas", "relatorios", "fontes", "dossie"])
     for i in index: w.writerow([i["id"], i["n"], i["al"], i["t"], i["pct"], i["gaps"], i["sw"], i["camp"], i["rep"], i["refs"], "reports/groups/" + i["f"]])
+print(f"HTML: {len([f for f in os.listdir('reports/groups') if f.endswith('.html')])} dossiês + reports/index.html")
 print(f"{len(profiles)} perfis · {len(index)} dossiês · groups.json {os.path.getsize('data/graph/groups.json')/1e6:.2f} MB · procedimentos {sum(len(t['pr']) for p in profiles.values() for t in p['tech'])} · referências {sum(len(p['refs']) for p in profiles.values())}")
