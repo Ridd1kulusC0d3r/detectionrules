@@ -38,6 +38,7 @@ jobs:
           ./scripts/fetch_sources.sh
           python3 build_catalog.py
           python3 make_data.py
+          python3 build_graph.py .
 
       - name: Montar site (somente arquivos do app)
         run: |

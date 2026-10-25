@@ -1,5 +1,5 @@
 {
- "total": 84566,
+ "total": 84570,
  "generated": "2026-10-24",
  "chunked": true,
  "sources": [
@@ -310,6 +310,13 @@
    "n": 10,
    "chunks": 1,
    "bytes": 6389
+  },
+  {
+   "slug": "spiderlabs-malware-analysis-yara",
+   "name": "SpiderLabs malware-analysis (YARA)",
+   "n": 4,
+   "chunks": 1,
+   "bytes": 4540
   },
   {
    "slug": "awesome-playbooks-chronicle",

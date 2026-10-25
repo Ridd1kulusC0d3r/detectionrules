@@ -165,11 +165,11 @@ async function openRule(r){
       <button class="mtab" data-p="edit">⑤ Adapte</button>
       <button class="mtab" data-p="investigate">⑥ Investigue</button>
       <button class="mtab" data-p="origin">⑦ Origem & versões</button></div>
-    <div class="mpane on" id="p-understand">${understandPane(r,d)}</div>
+    <div class="mpane on" id="p-understand">${understandPane(r,d)}<div id="ctx-attack"></div></div>
     <div class="mpane" id="p-logic">${term(fname, d.raw, r.fmt, `<button class="btn sm" id="cp">copiar</button><button class="btn sm p" id="dl">⬇ baixar .${FMT_EXT[r.fmt]||'txt'}</button>`)}
       ${fieldsPane(r,d)}</div>
-    <div class="mpane" id="p-data">${dataPane(r,d)}</div>
-    <div class="mpane" id="p-experiment">${experimentPane(r,d,key)}</div>
+    <div class="mpane" id="p-data">${dataPane(r,d)}<div id="ctx-logs"></div></div>
+    <div class="mpane" id="p-experiment">${experimentPane(r,d,key)}<div id="ctx-valid"></div></div>
     <div class="mpane" id="p-edit">
       <div class="note tip"><span class="ni">▸</span><div><b>Adapte ao seu ambiente e baixe.</b> Ajuste caminhos, nomes de conta, limiares e filtros. O validador checa a estrutura do formato. Sua versão fica salva neste navegador e marca a regra como "adaptada por você".</div></div>
       <textarea class="editor" id="ed">${esc(V.state['edit_'+key]||d.raw)}</textarea>
@@ -182,6 +182,7 @@ async function openRule(r){
   $('#cp').onclick=()=>copy(d.raw); $('#dl').onclick=()=>download(fname, d.raw);
   if($('#edsim')) $('#edsim').onclick=()=>{$$('.mtab','#mbox').forEach(x=>x.classList.remove('on'));$('.mtab[data-p="experiment"]').classList.add('on');$$('.mpane','#mbox').forEach(p=>p.classList.remove('on'));$('#p-experiment').classList.add('on');$('#ed')&&runSim(r,$('#ed').value,key);};
   $('#edpkg').onclick=()=>downloadPackage(r,d,key);
+  if(r.tech.length && window.attackContextHTML){ (async()=>{ const [c,l,v]=await Promise.all([attackContextHTML(r),attackLogsHTML(r),attackValidationHTML(r)]); const a=$('#ctx-attack'),b=$('#ctx-logs'),z=$('#ctx-valid'); if(a) a.innerHTML=c; if(b) b.innerHTML=l; if(z) z.innerHTML=v; })(); }
   if(r.fmt==='sigma'){ setTimeout(()=>{ const sr=$('#simrun'); if(sr) sr.onclick=()=>runSim(r, (V.state['edit_'+key]||d.raw), key); const se=$('#simedit'); if(se) se.onclick=()=>{ const t=prompt('Cole um evento JSON para testar contra a regra:','{"ParentImage":"C:\\\\...\\\\WINWORD.EXE","Image":"C:\\\\Windows\\\\System32\\\\cmd.exe","CommandLine":"cmd /c x"}'); if(!t) return; try{ const ev=JSON.parse(t); const rule=Sigma.parseSigma(V.state['edit_'+key]||d.raw); const res=Sigma.evaluate(rule,ev); $('#simout').innerHTML=`<div class="lint ${res.matched?'bad':'ok'}">${res.matched?'A regra DISPARARIA para este evento.':'A regra NÃO dispararia.'}</div>`+term('evento',JSON.stringify(ev,null,2),'kql-md')+`<div style="font-size:12.5px;color:var(--ink-dim);margin-top:8px">${Object.entries(res.blocks).map(([n,b])=>`<code style="color:${b.hit?'var(--signal)':'var(--ink-3)'}">${esc(n)} ${b.hit?'✓':'✗'}</code>: ${b.fields.map(f=>`<span style="color:${f.hit?'var(--ink)':'var(--ink-3)'}">${esc(f.field)} ${f.hit?'✓':'✗'}</span>`).join(', ')}`).join('<br>')}</div>`; }catch(e){ toast('✗','JSON inválido'); } }; },0); }
   $('#favtog').onclick=()=>{ if(V.state.fav[key]) delete V.state.fav[key]; else V.state.fav[key]=1; save(); openRule(r); };
   $('#eddl').onclick=()=>download(fname.replace(/(\.[^.]+)$/, '_custom$1'), $('#ed').value);

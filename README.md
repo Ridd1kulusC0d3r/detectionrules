@@ -2,19 +2,22 @@
 
 **Toda regra pública de detecção, explicada até o último campo.**
 
-84.566 regras reais de 47 fontes públicas (Sigma, Elastic, Splunk, Sentinel, Chronicle, OpenSearch, Wazuh, Suricata/Snort/Sagan, YARA, Falco, Panther, QRadar AQL e playbooks SOAR), normalizadas num só esquema. Cada regra responde quatro perguntas: **o que detecta, de quais dados depende, por que disparou e como provar que funciona.**
+84.570 regras reais de 48 fontes públicas (Sigma, Elastic, Splunk, Sentinel, Chronicle, OpenSearch, Wazuh, Suricata/Snort/Sagan, YARA, Falco, Panther, QRadar AQL e playbooks SOAR), normalizadas num só esquema. Cada regra responde quatro perguntas: **o que detecta, de quais dados depende, por que disparou e como provar que funciona.**
 
 **Site:** https://ridd1kulusc0d3r.github.io/detectionrules/
 
 | Detecção | Assinaturas | Hunting | Playbooks SOAR |
 |---:|---:|---:|---:|
-| 34.838 | 42.839 | 3.440 | 3.449 |
+| 34.838 | 42.843 | 3.440 | 3.449 |
 
 ## O que o site faz
 - **Arsenal:** busca e filtros por tipo, fonte, formato, severidade, tática e técnica ATT&CK. Cada regra abre numa ficha com 7 abas: *Entenda · Veja a lógica · Prepare os dados · Experimente · Adapte · Investigue · Origem & versões*.
 - **Experimente:** regras Sigma rodam numa simulação no navegador com eventos que devem e que não devem disparar, mostrando campo a campo por quê.
 - **Adapte:** editor com validador por formato e download do **pacote de detecção** (regra + guia + casos de teste).
 - **Forja:** você diz o comportamento e os dados que tem; o motor monta a regra e traduz para Sigma, KQL, SPL, EQL, TOML Elastic e Wazuh, explicando cada decisão.
+- **Grafo de conhecimento (ATT&CK v20.0):** matriz de cobertura das 706 técnicas, lacunas prioritárias (técnicas usadas por muitos grupos e com poucas regras), 178 grupos APT com o percentual de técnicas que o catálogo público consegue ver, e um grafo de relacionamentos por técnica: grupos, subtécnicas, regras por formato, testes Atomic Red Team, logs EVTX reais, mitigações e softwares.
+- **Ficha da regra enriquecida:** contexto ATT&CK na aba *Entenda*, fontes de log recomendadas pelo MITRE na aba *Prepare os dados* e testes Atomic + logs EVTX para provar a detecção na aba *Experimente*.
+- **Ferramentas e materiais:** 282 itens da planilha *Malware IR – Tools & Resources*, organizados por fase do trabalho e ligados aos formatos de regra que cada fase produz.
 - **Academia:** 8 lições pela técnica de Feynman e o dicionário de campos de cada formato.
 - **Playbooks:** resposta separada de detecção, com 5 modelos de triagem e os playbooks reais do catálogo.
 - **Progressão:** XP, ranks e conquistas, salvos no navegador.
@@ -35,8 +38,21 @@ Duplo clique em `ABRIR.bat` (Windows), `ABRIR.command` (macOS) ou `./abrir.sh` (
 ./scripts/fetch_sources.sh   # clona as fontes (~1,5 GB, fora do versionamento)
 python3 build_catalog.py     # normaliza tudo em catalog.json
 python3 make_data.py         # gera data/: índice + blocos de ~3 MB
+python3 build_graph.py .     # gera data/graph/: grafo ATT&CK, recursos e exportações
 ```
 Somente biblioteca padrão do Python.
+
+## Grafo e exportações
+`build_graph.py` cruza o catálogo com o MITRE ATT&CK v20.0 (STIX oficial), 1.847 testes do Atomic Red Team (só metadados), 483 amostras EVTX (279 organizadas por técnica no EVTX-to-MITRE-Attack, 204 ligadas por palavra-chave no EVTX-ATTACK-SAMPLES), 1528 relatórios APT da coleção CyberMonitor (471 ligados a grupos pelo nome) e a planilha de ferramentas.
+
+| Arquivo | Uso |
+|---|---|
+| `data/graph/graph.graphml` | Gephi, yEd, Neo4j |
+| `data/graph/graph.json` | nós e arestas para qualquer ferramenta |
+| `data/graph/navigator-layer.json` | camada de cobertura para o [ATT&CK Navigator](https://mitre-attack.github.io/attack-navigator/) |
+| `data/graph/attack.json` | técnicas, grupos, softwares, campanhas, mitigações e estratégias de detecção com cobertura de regras |
+
+IDs antigos citados pelas regras são convertidos pelas revogações oficiais do ATT&CK (ex.: T1562 → T1685 na nova tática *Defense Impairment*, T1086 → T1059.001). Citações de técnicas ICS (`T0xxx`) ficam fora da matriz Enterprise. Ligações marcadas como *inferidas* (EVTX por palavra-chave, relatório por nome do grupo) devem ser conferidas antes de uso formal.
 
 ## Desempenho
 - Índice de 21 MB servido comprimido (~3,3 MB na rede).
@@ -90,6 +106,7 @@ Somente biblioteca padrão do Python.
 | Shuffle workflows | 23 |
 | awesome-playbooks · shuffle | 18 |
 | Suricata nmap/OPNsense rules | 10 |
+| SpiderLabs malware-analysis (YARA) | 4 |
 | awesome-playbooks · chronicle | 4 |
 | awesome-playbooks · catalyst | 3 |
 | awesome-playbooks · oasis_open | 1 |
@@ -100,3 +117,6 @@ O código deste repositório é seu para reutilizar. **Cada regra mantém a lice
 **Credenciais mascaradas:** alguns playbooks de terceiros (awesome-playbooks, XSOAR, Shuffle) traziam o que parecem credenciais reais: chaves de API, senhas SMTP, webhooks do Slack e chaves AWS. Na geração dos dados, 226 desses valores viram `REDIGIDO-PELO-DETECTIONRULES` e a ficha da regra avisa. Padrões de detecção (como a string `BEGIN PRIVATE KEY` numa regra YARA) e chaves de exemplo da documentação AWS (`…EXAMPLE`) ficam intactos.
 
 Emerging Threats Open e Snort Community oficiais ficam fora do GitHub e não puderam ser coletados; o catálogo inclui mirrors de Suricata/Snort e as regras Sagan.
+
+## Materiais de referência usados no enriquecimento
+MITRE ATT&CK (attack-stix-data) · Atomic Red Team (Red Canary) · EVTX-to-MITRE-Attack (mdecrevoisier) · EVTX-ATTACK-SAMPLES (sbousseaden) · APT & CyberCriminal Campaign Collections (CyberMonitor) · planilha *Malware IR – Tools & Resources* (Cyb3rUltron @ShilpeshTrivedi e Harsh Shah @harshsshah), cópia em `sources/`.

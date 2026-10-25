@@ -569,6 +569,7 @@ def main():
     for p in glob.glob("splunk_security_content/playbooks/*.yml"): add(parse_splunk_playbook(p))
     for p in glob.glob("panther-labs_panther-analysis/queries/**/*.yml",recursive=True): add(parse_panther(p))
     for p in glob.glob("gcp_secanalytics/**/*.yaml",recursive=True): add(parse_gcp(p))
+    for p in glob.glob("spiderlabs_ma/**/*.yar*",recursive=True): add(parse_yara(p,"SpiderLabs malware-analysis (YARA)","BSD-3"))
     for p in glob.glob("demisto_content/Packs/*/Playbooks/*.yml"): add(parse_xsoar(p))
     for p in glob.glob("phantomcyber_playbooks/*.json"): add(parse_phantom(p))
     for p in glob.glob("Shuffle_workflows/**/*.json",recursive=True): add(parse_shuffle(p))

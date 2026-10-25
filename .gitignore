@@ -29,3 +29,9 @@
 catalog.json
 _site/
 __pycache__/
+/spiderlabs_ma/
+/evtx_mitre/
+/evtx_samples/
+/apt_collections/
+/attack_stix/
+/atomic/

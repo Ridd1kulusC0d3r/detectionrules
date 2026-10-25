@@ -1,7 +1,7 @@
 /* boot.js — carga de dados, navegação e página Base */
 function go(view){
   V.view=view; $$('.tab').forEach(t=>t.classList.toggle('on',t.dataset.v===view)); $$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+view));
-  ({home:renderHome,academy:renderAcademy,arsenal:renderArsenal,forge:renderForge,playbooks:renderPlaybooks,progress:renderProgress})[view]?.();
+  ({home:renderHome,academy:renderAcademy,arsenal:renderArsenal,graph:renderGraph,forge:renderForge,playbooks:renderPlaybooks,progress:renderProgress})[view]?.();
   window.scrollTo({top:0});
   location.hash=view;
 }
@@ -69,7 +69,7 @@ function renderMast(){
     V.man=man; V.show=show; $('#lb').style.width='40%';
     V.idx=await fetch('data/index.json').then(r=>r.json()); $('#lb').style.width='90%';
     buildIndex(); renderMast();
-    const h=location.hash.replace('#',''); go(['home','academy','arsenal','forge','playbooks','progress'].includes(h)?h:'home');
+    const h=location.hash.replace('#',''); go(['home','academy','arsenal','graph','forge','playbooks','progress'].includes(h)?h:'home');
   }catch(e){
     $('#v-home').innerHTML=`<div class="note warn"><span class="ni">▸</span><div><b>Não consegui carregar os dados.</b> Este app precisa ser aberto por um servidor local (os navegadores bloqueiam fetch de arquivos locais). Use o lançador <code>ABRIR.bat</code> / <code>ABRIR.command</code> / <code>abrir.sh</code> na pasta, ou rode <code>python3 -m http.server 8787</code> e abra <code>http://localhost:8787</code>.<br><br>Erro: <code>${esc(e.message)}</code></div></div>`;
   }

@@ -1,0 +1,4973 @@
+{
+ "name": "Detection Rules — cobertura de regras públicas",
+ "versions": {
+  "attack": "20",
+  "navigator": "5.1.0",
+  "layer": "4.5"
+ },
+ "domain": "enterprise-attack",
+ "description": "Número de regras públicas (de 84,570 no catálogo) que citam cada técnica. Gerado em 2026-10-24.",
+ "gradient": {
+  "colors": [
+   "#f5ddcf",
+   "#d4804f",
+   "#7c2406"
+  ],
+  "minValue": 0,
+  "maxValue": 200
+ },
+ "techniques": [
+  {
+   "techniqueID": "T1055.011",
+   "score": 2,
+   "comment": "sigma:1, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1053.005",
+   "score": 248,
+   "comment": "wazuh:109, sigma:80, elastic:38, sentinel:7, splunk:6, suricata:4, yaral:2, panther:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1205.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1560.001",
+   "score": 76,
+   "comment": "wazuh:35, sigma:27, elastic:7, yaral:2, aql:2, playbook:2, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1021.005",
+   "score": 7,
+   "comment": "wazuh:3, sigma:2, elastic:1, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1047",
+   "score": 370,
+   "comment": "wazuh:210, sigma:87, elastic:46, yaral:14, suricata:5, splunk:4, sentinel:2, kql-md:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1687",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1113",
+   "score": 60,
+   "comment": "wazuh:34, sigma:16, elastic:5, sentinel:3, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.011",
+   "score": 3,
+   "comment": "sigma:1, splunk:1, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1037",
+   "score": 60,
+   "comment": "elastic:39, yaral:8, wazuh:4, splunk:3, sentinel:3, suricata:2, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1557",
+   "score": 67,
+   "comment": "elastic:26, wazuh:16, sigma:12, suricata:5, sentinel:3, splunk:2, kql-md:2, yaral:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1033",
+   "score": 181,
+   "comment": "wazuh:87, sigma:50, elastic:24, yaral:13, suricata:4, splunk:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1583",
+   "score": 9,
+   "comment": "elastic:5, sentinel:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.011",
+   "score": 274,
+   "comment": "wazuh:120, sigma:72, elastic:60, yaral:12, sentinel:4, suricata:4, splunk:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1613",
+   "score": 62,
+   "comment": "elastic:58, panther:3, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1583.007",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1132.001",
+   "score": 26,
+   "comment": "wazuh:17, sigma:5, elastic:3, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.009",
+   "score": 4,
+   "comment": "sigma:2, wazuh:1, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1556.003",
+   "score": 11,
+   "comment": "elastic:6, wazuh:5",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1578.004",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1592",
+   "score": 1,
+   "comment": "sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1596.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1056.001",
+   "score": 40,
+   "comment": "wazuh:20, elastic:12, sigma:5, suricata:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.012",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1222.002",
+   "score": 34,
+   "comment": "elastic:15, wazuh:9, sigma:8, falco:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1110.001",
+   "score": 63,
+   "comment": "elastic:31, wazuh:16, sigma:8, yaral:4, sentinel:2, panther:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1216.001",
+   "score": 11,
+   "comment": "wazuh:7, sigma:3, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1597.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1003",
+   "score": 399,
+   "comment": "wazuh:145, elastic:98, yaral:50, sigma:44, sentinel:29, suricata:19, splunk:8, panther:3, playbook:2, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1129",
+   "score": 33,
+   "comment": "elastic:13, yaral:11, wazuh:6, sigma:2, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1602",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1561.002",
+   "score": 2,
+   "comment": "sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1498.001",
+   "score": 6,
+   "comment": "suricata:4, elastic:1, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574.007",
+   "score": 17,
+   "comment": "elastic:7, yaral:3, wazuh:3, sigma:2, splunk:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1213.002",
+   "score": 7,
+   "comment": "wazuh:4, elastic:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1006",
+   "score": 12,
+   "comment": "elastic:7, wazuh:3, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1588.007",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1666",
+   "score": 1,
+   "comment": "panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.008",
+   "score": 21,
+   "comment": "suricata:13, sigma:4, elastic:2, splunk:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1491.002",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.013",
+   "score": 8,
+   "comment": "elastic:8",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1590.005",
+   "score": 1,
+   "comment": "splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1499.001",
+   "score": 5,
+   "comment": "wazuh:3, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1014",
+   "score": 44,
+   "comment": "elastic:30, wazuh:5, splunk:4, sigma:2, suricata:2, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.013",
+   "score": 17,
+   "comment": "wazuh:10, sigma:5, elastic:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.007",
+   "score": 205,
+   "comment": "elastic:122, sigma:42, wazuh:38, splunk:1, sentinel:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1685.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1590.002",
+   "score": 4,
+   "comment": "wazuh:3, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1485.001",
+   "score": 3,
+   "comment": "elastic:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1123",
+   "score": 34,
+   "comment": "wazuh:19, sigma:12, elastic:2, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1543",
+   "score": 230,
+   "comment": "elastic:126, wazuh:75, sigma:11, sentinel:6, yaral:4, falco:3, panther:2, splunk:1, kql-md:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1133",
+   "score": 361,
+   "comment": "sentinel:198, wazuh:54, elastic:30, splunk:28, sigma:25, suricata:18, panther:4, playbook:2, yaral:1, gcp:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.006",
+   "score": 1,
+   "comment": "wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1539",
+   "score": 54,
+   "comment": "elastic:32, wazuh:10, panther:4, sigma:3, yaral:3, sentinel:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1053.007",
+   "score": 4,
+   "comment": "elastic:2, splunk:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1568.002",
+   "score": 28,
+   "comment": "elastic:10, sentinel:9, sigma:3, wazuh:3, yaral:2, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036.007",
+   "score": 25,
+   "comment": "wazuh:19, sigma:3, elastic:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1548.002",
+   "score": 379,
+   "comment": "wazuh:213, sigma:103, elastic:42, yaral:10, splunk:4, sentinel:4, suricata:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1496.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1016.001",
+   "score": 14,
+   "comment": "elastic:8, wazuh:5, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1548.003",
+   "score": 47,
+   "comment": "elastic:25, wazuh:14, sigma:5, falco:1, panther:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1685.001",
+   "score": 138,
+   "comment": "wazuh:92, sigma:36, elastic:5, splunk:2, suricata:2, yaral:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1682",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1560.003",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1578",
+   "score": 32,
+   "comment": "elastic:22, sigma:4, gcp:4, panther:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1584.008",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1583.008",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1069",
+   "score": 81,
+   "comment": "elastic:42, wazuh:12, suricata:8, kql-md:7, sigma:4, sentinel:4, splunk:3, yaral:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1114",
+   "score": 119,
+   "comment": "wazuh:49, suricata:30, elastic:13, sentinel:10, sigma:8, yaral:6, panther:2, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1003.002",
+   "score": 169,
+   "comment": "wazuh:91, sigma:57, elastic:19, sentinel:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1596.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1542.001",
+   "score": 9,
+   "comment": "wazuh:7, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1594",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1069.003",
+   "score": 20,
+   "comment": "elastic:12, kql-md:6, splunk:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574.011",
+   "score": 53,
+   "comment": "wazuh:31, sigma:17, elastic:4, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1596.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1499.003",
+   "score": 2,
+   "comment": "elastic:1, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1195.001",
+   "score": 30,
+   "comment": "elastic:21, sigma:4, wazuh:3, panther:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1588.004",
+   "score": 1,
+   "comment": "splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1583.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1561",
+   "score": 1,
+   "comment": "sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1071.004",
+   "score": 117,
+   "comment": "elastic:36, sigma:34, wazuh:33, suricata:8, splunk:2, sentinel:2, panther:1, gcp:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1552.005",
+   "score": 25,
+   "comment": "elastic:24, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1555.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1615",
+   "score": 39,
+   "comment": "wazuh:24, sigma:7, elastic:4, splunk:1, sentinel:1, kql-md:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1542.003",
+   "score": 9,
+   "comment": "wazuh:3, sigma:2, yaral:2, elastic:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1025",
+   "score": 4,
+   "comment": "splunk:3, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.013",
+   "score": 9,
+   "comment": "wazuh:6, sigma:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1074.001",
+   "score": 37,
+   "comment": "wazuh:15, elastic:14, sigma:8",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036.005",
+   "score": 116,
+   "comment": "elastic:40, wazuh:39, sigma:32, splunk:4, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1587.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1565.001",
+   "score": 43,
+   "comment": "elastic:18, sigma:12, wazuh:6, suricata:4, splunk:1, sentinel:1, gcp:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1110.002",
+   "score": 11,
+   "comment": "wazuh:7, sigma:2, elastic:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1114.001",
+   "score": 15,
+   "comment": "elastic:5, wazuh:5, sigma:2, splunk:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1555.001",
+   "score": 19,
+   "comment": "elastic:17, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547",
+   "score": 203,
+   "comment": "elastic:100, wazuh:61, sentinel:19, sigma:12, yaral:6, playbook:3, splunk:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1003.004",
+   "score": 72,
+   "comment": "wazuh:39, sigma:24, elastic:8, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1600",
+   "score": 3,
+   "comment": "yaral:2, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1606.002",
+   "score": 2,
+   "comment": "elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036.008",
+   "score": 8,
+   "comment": "elastic:5, splunk:2, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1489",
+   "score": 112,
+   "comment": "wazuh:49, sigma:25, elastic:23, sentinel:6, panther:3, suricata:3, yaral:2, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1587.001",
+   "score": 43,
+   "comment": "wazuh:27, sigma:14, elastic:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1652",
+   "score": 3,
+   "comment": "wazuh:2, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1087.002",
+   "score": 180,
+   "comment": "wazuh:110, sigma:35, elastic:23, splunk:8, sentinel:2, kql-md:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.014",
+   "score": 4,
+   "comment": "sigma:1, elastic:1, yaral:1, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564",
+   "score": 185,
+   "comment": "wazuh:79, elastic:74, sigma:15, yaral:7, suricata:5, sentinel:2, panther:2, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1559.002",
+   "score": 10,
+   "comment": "wazuh:6, sigma:2, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1204.002",
+   "score": 259,
+   "comment": "elastic:95, wazuh:81, sigma:58, splunk:11, yaral:6, panther:3, sentinel:2, kql-md:2, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1591.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1685.004",
+   "score": 3,
+   "comment": "wazuh:2, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1071.005",
+   "score": 2,
+   "comment": "elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1592.001",
+   "score": 1,
+   "comment": "wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1080",
+   "score": 12,
+   "comment": "sentinel:7, elastic:2, yaral:2, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1484.002",
+   "score": 19,
+   "comment": "elastic:9, gcp:4, sigma:2, panther:2, sentinel:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1213.006",
+   "score": 2,
+   "comment": "elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1573.001",
+   "score": 5,
+   "comment": "sentinel:4, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1087.001",
+   "score": 98,
+   "comment": "wazuh:54, sigma:22, elastic:10, splunk:9, suricata:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1586.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1176.001",
+   "score": 15,
+   "comment": "elastic:7, wazuh:6, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1542.005",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1686.003",
+   "score": 64,
+   "comment": "wazuh:42, sigma:22",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1543.003",
+   "score": 1916,
+   "comment": "wazuh:1755, sigma:78, elastic:43, yaral:19, splunk:9, suricata:6, sentinel:4, playbook:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1568.001",
+   "score": 1,
+   "comment": "sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1497.001",
+   "score": 16,
+   "comment": "wazuh:8, sigma:4, elastic:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1053.003",
+   "score": 48,
+   "comment": "elastic:23, sigma:13, wazuh:8, panther:2, falco:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1069.002",
+   "score": 91,
+   "comment": "wazuh:30, sigma:24, elastic:19, splunk:9, suricata:5, sentinel:2, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1588.006",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1566.002",
+   "score": 138,
+   "comment": "elastic:62, sentinel:29, suricata:16, yaral:10, splunk:8, kql-md:5, sigma:4, panther:3, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1499.004",
+   "score": 9,
+   "comment": "sigma:7, elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1137",
+   "score": 85,
+   "comment": "wazuh:49, sigma:15, elastic:13, yaral:6, splunk:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.004",
+   "score": 35,
+   "comment": "elastic:16, wazuh:13, splunk:3, yaral:2, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1598.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1021.004",
+   "score": 60,
+   "comment": "elastic:31, wazuh:18, sigma:5, splunk:2, panther:2, sentinel:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1098.003",
+   "score": 122,
+   "comment": "elastic:43, sentinel:19, sigma:16, yaral:16, panther:11, suricata:9, wazuh:6, splunk:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.012",
+   "score": 4,
+   "comment": "wazuh:3, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1566.001",
+   "score": 230,
+   "comment": "elastic:99, wazuh:42, sigma:35, sentinel:22, yaral:14, kql-md:5, splunk:4, panther:4, suricata:4, playbook:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.008",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1559.001",
+   "score": 35,
+   "comment": "elastic:14, sigma:10, wazuh:10, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574.001",
+   "score": 455,
+   "comment": "wazuh:262, sigma:117, elastic:55, yaral:18, sentinel:2, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1119",
+   "score": 72,
+   "comment": "sentinel:32, wazuh:14, sigma:10, elastic:8, yaral:4, suricata:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1689",
+   "score": 17,
+   "comment": "wazuh:7, sigma:3, elastic:3, splunk:2, kql-md:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1115",
+   "score": 33,
+   "comment": "sigma:14, wazuh:12, elastic:5, splunk:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1003.007",
+   "score": 12,
+   "comment": "elastic:11, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1583.005",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1555.005",
+   "score": 6,
+   "comment": "wazuh:3, sigma:2, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1553.001",
+   "score": 12,
+   "comment": "elastic:10, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1675",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1608.004",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1007",
+   "score": 37,
+   "comment": "sigma:20, wazuh:10, elastic:4, yaral:2, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1040",
+   "score": 77,
+   "comment": "wazuh:36, sigma:17, suricata:9, elastic:6, sentinel:5, panther:2, splunk:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1553.002",
+   "score": 11,
+   "comment": "sigma:7, elastic:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1530",
+   "score": 150,
+   "comment": "panther:38, suricata:37, elastic:32, sentinel:23, gcp:9, wazuh:6, splunk:4, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1565.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1552.002",
+   "score": 28,
+   "comment": "wazuh:15, sigma:9, yaral:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1135",
+   "score": 73,
+   "comment": "wazuh:39, sigma:14, elastic:8, sentinel:3, suricata:3, splunk:2, yaral:2, playbook:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1120",
+   "score": 11,
+   "comment": "wazuh:5, sigma:4, elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036.009",
+   "score": 5,
+   "comment": "elastic:5",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1590.004",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1587.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1222.001",
+   "score": 31,
+   "comment": "wazuh:14, sigma:9, elastic:5, suricata:2, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1137.006",
+   "score": 40,
+   "comment": "wazuh:31, sigma:5, elastic:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1685.002",
+   "score": 80,
+   "comment": "elastic:30, yaral:20, panther:17, sigma:3, wazuh:3, splunk:2, sentinel:2, gcp:2, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1505.002",
+   "score": 18,
+   "comment": "wazuh:10, sigma:6, elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1082",
+   "score": 264,
+   "comment": "wazuh:112, elastic:59, sigma:50, suricata:18, yaral:12, sentinel:10, splunk:2, playbook:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1071",
+   "score": 511,
+   "comment": "elastic:214, suricata:101, sentinel:89, yaral:42, wazuh:38, sigma:13, panther:4, kql-md:3, gcp:3, splunk:2, playbook:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574.014",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1074.002",
+   "score": 5,
+   "comment": "elastic:3, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1098.006",
+   "score": 34,
+   "comment": "elastic:33, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1053",
+   "score": 224,
+   "comment": "elastic:66, wazuh:63, yaral:37, sigma:24, sentinel:15, suricata:12, splunk:4, panther:2, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.007",
+   "score": 85,
+   "comment": "elastic:36, wazuh:31, sigma:16, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1590.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1498.002",
+   "score": 1,
+   "comment": "suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1556.002",
+   "score": 16,
+   "comment": "sigma:5, wazuh:5, sentinel:4, yaral:1, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1505.005",
+   "score": 5,
+   "comment": "wazuh:3, sigma:1, yaral:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.002",
+   "score": 49,
+   "comment": "elastic:41, sigma:8",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1176",
+   "score": 36,
+   "comment": "wazuh:20, elastic:11, sigma:2, sentinel:2, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1499.002",
+   "score": 2,
+   "comment": "elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1195.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1106",
+   "score": 118,
+   "comment": "wazuh:41, elastic:40, sigma:25, yaral:4, suricata:3, gcp:3, sentinel:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1558.005",
+   "score": 4,
+   "comment": "elastic:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1070.007",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1558.004",
+   "score": 10,
+   "comment": "wazuh:3, sigma:2, elastic:2, splunk:2, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1584.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.010",
+   "score": 11,
+   "comment": "wazuh:10, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1600.001",
+   "score": 2,
+   "comment": "yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1070.003",
+   "score": 63,
+   "comment": "wazuh:35, sigma:15, elastic:8, suricata:4, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1202",
+   "score": 221,
+   "comment": "wazuh:122, sigma:66, elastic:16, yaral:10, sentinel:3, splunk:2, panther:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1091",
+   "score": 10,
+   "comment": "elastic:5, splunk:3, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1005",
+   "score": 170,
+   "comment": "suricata:45, elastic:39, wazuh:35, sigma:21, sentinel:10, yaral:10, splunk:3, playbook:3, panther:2, falco:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1140",
+   "score": 173,
+   "comment": "elastic:65, wazuh:54, sigma:30, yaral:14, sentinel:8, suricata:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1137.005",
+   "score": 3,
+   "comment": "elastic:2, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1586.003",
+   "score": 33,
+   "comment": "splunk:32, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1586.002",
+   "score": 3,
+   "comment": "sentinel:2, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1098.007",
+   "score": 10,
+   "comment": "elastic:9, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1608.001",
+   "score": 3,
+   "comment": "elastic:2, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1195",
+   "score": 83,
+   "comment": "elastic:42, splunk:20, panther:10, sentinel:5, wazuh:5, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1190",
+   "score": 580,
+   "comment": "sigma:202, suricata:91, elastic:90, wazuh:55, sentinel:54, yaral:30, panther:29, splunk:22, gcp:3, falco:2, kql-md:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1558",
+   "score": 73,
+   "comment": "elastic:28, wazuh:28, sigma:9, suricata:4, kql-md:2, yaral:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1555",
+   "score": 160,
+   "comment": "elastic:67, wazuh:41, sigma:12, sentinel:12, panther:9, yaral:7, falco:5, suricata:5, kql-md:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1567",
+   "score": 162,
+   "comment": "elastic:39, wazuh:30, panther:28, sentinel:24, sigma:18, yaral:16, splunk:4, suricata:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1219",
+   "score": 119,
+   "comment": "elastic:38, wazuh:27, sigma:25, sentinel:8, yaral:7, suricata:6, splunk:4, kql-md:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1583.001",
+   "score": 7,
+   "comment": "sentinel:4, elastic:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1560.002",
+   "score": 6,
+   "comment": "elastic:3, wazuh:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1055.003",
+   "score": 14,
+   "comment": "wazuh:8, sigma:3, elastic:1, splunk:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1684",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036",
+   "score": 453,
+   "comment": "wazuh:177, elastic:135, sigma:68, yaral:34, sentinel:17, suricata:16, splunk:5, playbook:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.011",
+   "score": 40,
+   "comment": "wazuh:28, sigma:8, elastic:2, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1552",
+   "score": 266,
+   "comment": "elastic:138, wazuh:45, sigma:21, panther:21, sentinel:17, yaral:12, splunk:6, yara:2, suricata:2, falco:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.010",
+   "score": 23,
+   "comment": "wazuh:12, sigma:7, elastic:2, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1070.008",
+   "score": 10,
+   "comment": "splunk:3, wazuh:3, sigma:2, elastic:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1037.002",
+   "score": 2,
+   "comment": "elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1659",
+   "score": 4,
+   "comment": "sentinel:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1055",
+   "score": 481,
+   "comment": "elastic:217, wazuh:163, sigma:57, yaral:21, sentinel:15, splunk:5, suricata:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1567.004",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1205",
+   "score": 4,
+   "comment": "elastic:2, wazuh:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1021.008",
+   "score": 2,
+   "comment": "elastic:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218",
+   "score": 920,
+   "comment": "wazuh:438, sigma:228, elastic:217, splunk:14, yaral:12, kql-md:6, sentinel:4, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1070.006",
+   "score": 28,
+   "comment": "sigma:11, wazuh:9, elastic:5, yaral:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1557.004",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1620",
+   "score": 54,
+   "comment": "elastic:41, wazuh:8, sigma:3, splunk:1, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1016.002",
+   "score": 1,
+   "comment": "wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1480.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.011",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1611",
+   "score": 74,
+   "comment": "elastic:53, panther:10, falco:8, splunk:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1518.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.009",
+   "score": 28,
+   "comment": "wazuh:14, sigma:8, elastic:5, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1010",
+   "score": 6,
+   "comment": "wazuh:4, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1569.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1087.003",
+   "score": 1,
+   "comment": "sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1497.003",
+   "score": 2,
+   "comment": "elastic:1, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.003",
+   "score": 61,
+   "comment": "wazuh:29, elastic:14, sigma:12, yaral:6",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1563.001",
+   "score": 11,
+   "comment": "elastic:11",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1029",
+   "score": 3,
+   "comment": "sentinel:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1021.002",
+   "score": 272,
+   "comment": "wazuh:125, sigma:69, elastic:36, yaral:27, splunk:7, sentinel:7, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1525",
+   "score": 7,
+   "comment": "sigma:3, panther:3, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1572",
+   "score": 173,
+   "comment": "wazuh:84, elastic:37, sigma:31, sentinel:10, suricata:6, splunk:5",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.002",
+   "score": 18,
+   "comment": "elastic:7, wazuh:7, sigma:2, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1599.001",
+   "score": 8,
+   "comment": "wazuh:6, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1608.002",
+   "score": 1,
+   "comment": "splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.005",
+   "score": 14,
+   "comment": "wazuh:6, elastic:5, sigma:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036.011",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1550",
+   "score": 115,
+   "comment": "elastic:67, panther:18, sigma:8, wazuh:7, sentinel:5, yaral:5, splunk:4, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1597.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1011",
+   "score": 5,
+   "comment": "sentinel:2, yaral:2, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1602.002",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1589",
+   "score": 11,
+   "comment": "sentinel:8, sigma:2, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1560",
+   "score": 53,
+   "comment": "yaral:12, wazuh:11, elastic:10, sentinel:7, sigma:6, suricata:3, aql:2, splunk:1, playbook:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1553.003",
+   "score": 10,
+   "comment": "wazuh:6, sigma:2, elastic:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1185",
+   "score": 13,
+   "comment": "wazuh:9, sigma:2, elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1021",
+   "score": 289,
+   "comment": "elastic:130, wazuh:46, sentinel:42, suricata:40, sigma:12, yaral:9, panther:7, splunk:2, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1071.003",
+   "score": 6,
+   "comment": "elastic:4, sentinel:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1556.007",
+   "score": 5,
+   "comment": "elastic:3, yaral:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1595.002",
+   "score": 27,
+   "comment": "sentinel:10, elastic:7, splunk:4, sigma:2, wazuh:2, panther:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.009",
+   "score": 11,
+   "comment": "sigma:6, elastic:4, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1596",
+   "score": 1,
+   "comment": "sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.015",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1207",
+   "score": 17,
+   "comment": "wazuh:12, sigma:3, splunk:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1553.006",
+   "score": 5,
+   "comment": "elastic:4, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1610",
+   "score": 45,
+   "comment": "elastic:34, falco:6, panther:5",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1112",
+   "score": 601,
+   "comment": "wazuh:290, sigma:148, elastic:96, yaral:53, suricata:7, splunk:4, sentinel:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1543.004",
+   "score": 16,
+   "comment": "elastic:12, sigma:3, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1580",
+   "score": 48,
+   "comment": "elastic:28, yaral:8, sentinel:6, panther:3, sigma:2, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1555.003",
+   "score": 59,
+   "comment": "wazuh:23, elastic:15, sigma:9, sentinel:9, suricata:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574.008",
+   "score": 10,
+   "comment": "wazuh:5, sigma:3, elastic:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1491",
+   "score": 11,
+   "comment": "sentinel:6, wazuh:4, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1535",
+   "score": 7,
+   "comment": "panther:4, yaral:2, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1557.003",
+   "score": 8,
+   "comment": "wazuh:6, sigma:1, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1563",
+   "score": 15,
+   "comment": "elastic:11, wazuh:3, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.013",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.001",
+   "score": 13,
+   "comment": "sigma:6, elastic:5, wazuh:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1505.003",
+   "score": 210,
+   "comment": "wazuh:74, sigma:57, elastic:35, yaral:18, splunk:15, suricata:5, sentinel:4, falco:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1484.001",
+   "score": 47,
+   "comment": "wazuh:28, sigma:6, elastic:4, splunk:4, sentinel:3, panther:1, gcp:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1685.006",
+   "score": 23,
+   "comment": "elastic:9, sigma:7, wazuh:7",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1217",
+   "score": 19,
+   "comment": "wazuh:10, sigma:7, sentinel:1, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1552.004",
+   "score": 60,
+   "comment": "wazuh:28, sigma:12, elastic:12, yaral:6, sentinel:1, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1583.004",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1021.006",
+   "score": 74,
+   "comment": "wazuh:36, sigma:20, yaral:9, elastic:6, sentinel:2, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1011.001",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1078.001",
+   "score": 16,
+   "comment": "elastic:7, sigma:5, sentinel:3, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.003",
+   "score": 11,
+   "comment": "wazuh:8, sigma:2, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.005",
+   "score": 5,
+   "comment": "wazuh:4, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574.006",
+   "score": 29,
+   "comment": "elastic:22, sigma:4, wazuh:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1136.001",
+   "score": 103,
+   "comment": "wazuh:42, sigma:26, elastic:17, suricata:11, splunk:3, kql-md:2, sentinel:1, yaral:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1681",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1674",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1092",
+   "score": 1,
+   "comment": "wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1585.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1557.001",
+   "score": 68,
+   "comment": "wazuh:39, sigma:15, elastic:8, splunk:3, yaral:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1222",
+   "score": 47,
+   "comment": "elastic:23, wazuh:17, panther:4, sigma:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1003.001",
+   "score": 580,
+   "comment": "wazuh:363, sigma:145, elastic:33, yaral:22, suricata:9, sentinel:4, panther:3, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1176.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1595",
+   "score": 99,
+   "comment": "wazuh:43, elastic:21, sentinel:16, suricata:11, sigma:3, panther:3, splunk:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.016",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1548",
+   "score": 287,
+   "comment": "elastic:127, wazuh:51, sentinel:44, sigma:41, panther:20, splunk:3, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1134.002",
+   "score": 60,
+   "comment": "wazuh:25, elastic:18, sigma:12, kql-md:4, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1548.001",
+   "score": 47,
+   "comment": "elastic:35, wazuh:5, sigma:4, falco:2, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.004",
+   "score": 25,
+   "comment": "wazuh:15, sigma:7, suricata:2, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1021.003",
+   "score": 89,
+   "comment": "wazuh:46, sigma:20, elastic:15, yaral:4, splunk:3, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1110.003",
+   "score": 62,
+   "comment": "elastic:38, sentinel:9, wazuh:6, splunk:3, panther:3, yaral:2, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1090.002",
+   "score": 18,
+   "comment": "elastic:7, wazuh:6, sigma:3, splunk:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1056.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1589.002",
+   "score": 5,
+   "comment": "wazuh:3, sigma:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1598.004",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1683.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1003.005",
+   "score": 32,
+   "comment": "sigma:16, wazuh:10, elastic:6",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1098.004",
+   "score": 16,
+   "comment": "elastic:11, wazuh:3, sentinel:1, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1673",
+   "score": 2,
+   "comment": "elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1590.006",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.012",
+   "score": 28,
+   "comment": "wazuh:14, elastic:6, sigma:4, yaral:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.008",
+   "score": 42,
+   "comment": "wazuh:26, sigma:9, elastic:7",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1593.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1591.002",
+   "score": 2,
+   "comment": "sentinel:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1548.005",
+   "score": 8,
+   "comment": "elastic:8",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1125",
+   "score": 13,
+   "comment": "wazuh:6, sigma:2, elastic:2, sentinel:1, panther:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1055.013",
+   "score": 2,
+   "comment": "splunk:1, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1016",
+   "score": 99,
+   "comment": "elastic:30, wazuh:27, sigma:20, suricata:10, splunk:7, yaral:4, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1578.003",
+   "score": 4,
+   "comment": "sigma:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1593.003",
+   "score": 6,
+   "comment": "sigma:3, wazuh:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574.005",
+   "score": 14,
+   "comment": "wazuh:12, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.008",
+   "score": 40,
+   "comment": "wazuh:24, sigma:9, yaral:3, suricata:2, elastic:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1496.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1087",
+   "score": 230,
+   "comment": "wazuh:89, elastic:48, sentinel:30, sigma:23, suricata:15, yaral:11, kql-md:7, panther:6, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1090",
+   "score": 162,
+   "comment": "wazuh:69, sigma:25, elastic:24, sentinel:18, yaral:10, suricata:7, splunk:5, panther:2, yara:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059",
+   "score": 1467,
+   "comment": "elastic:746, wazuh:272, yaral:157, sigma:135, sentinel:56, suricata:41, splunk:26, falco:13, panther:10, kql-md:6, playbook:4, gcp:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1204.005",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1685.005",
+   "score": 68,
+   "comment": "wazuh:34, sigma:18, elastic:5, suricata:5, yaral:4, kql-md:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1136.002",
+   "score": 27,
+   "comment": "wazuh:11, sigma:9, elastic:3, splunk:2, sentinel:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.014",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1589.003",
+   "score": 1,
+   "comment": "sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1677",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1482",
+   "score": 158,
+   "comment": "wazuh:92, sigma:28, elastic:17, splunk:9, suricata:6, sentinel:4, kql-md:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1558.001",
+   "score": 6,
+   "comment": "wazuh:4, sigma:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1020",
+   "score": 69,
+   "comment": "sentinel:24, sigma:16, elastic:7, wazuh:7, panther:6, yaral:5, suricata:2, splunk:1, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1592.004",
+   "score": 8,
+   "comment": "sigma:6, splunk:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1219.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036.002",
+   "score": 18,
+   "comment": "wazuh:11, sigma:3, elastic:2, suricata:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1588.001",
+   "score": 7,
+   "comment": "wazuh:4, sigma:2, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.017",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1542.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1070",
+   "score": 263,
+   "comment": "wazuh:105, elastic:65, sigma:32, sentinel:20, suricata:14, yaral:11, panther:7, kql-md:5, splunk:2, falco:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1048.001",
+   "score": 12,
+   "comment": "wazuh:9, sigma:2, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1137.001",
+   "score": 2,
+   "comment": "elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1583.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1213.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1550.003",
+   "score": 57,
+   "comment": "wazuh:37, sigma:10, elastic:5, yaral:4, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1609",
+   "score": 42,
+   "comment": "elastic:41, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1083",
+   "score": 137,
+   "comment": "wazuh:47, sigma:37, elastic:34, yaral:8, sentinel:5, suricata:2, playbook:2, falco:1, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1568",
+   "score": 32,
+   "comment": "sentinel:13, elastic:11, sigma:3, suricata:3, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036.004",
+   "score": 31,
+   "comment": "elastic:12, wazuh:10, sigma:5, yaral:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1055.004",
+   "score": 5,
+   "comment": "elastic:3, splunk:1, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1020.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1647",
+   "score": 14,
+   "comment": "elastic:14",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1127.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.009",
+   "score": 18,
+   "comment": "wazuh:13, sigma:3, elastic:1, yaral:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1114.003",
+   "score": 10,
+   "comment": "sigma:4, elastic:3, wazuh:2, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1074",
+   "score": 40,
+   "comment": "elastic:18, sentinel:5, sigma:4, suricata:4, wazuh:3, yaral:2, gcp:2, panther:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1649",
+   "score": 43,
+   "comment": "wazuh:14, sigma:11, suricata:7, elastic:5, splunk:5, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1098.005",
+   "score": 33,
+   "comment": "elastic:22, suricata:7, splunk:3, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1049",
+   "score": 47,
+   "comment": "sigma:17, wazuh:14, elastic:10, splunk:3, yaral:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1584",
+   "score": 13,
+   "comment": "sigma:6, elastic:3, wazuh:3, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1553.005",
+   "score": 29,
+   "comment": "wazuh:15, sigma:9, suricata:2, elastic:1, splunk:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1600.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1542",
+   "score": 12,
+   "comment": "elastic:11, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1612",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1055.002",
+   "score": 3,
+   "comment": "elastic:2, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.012",
+   "score": 2,
+   "comment": "wazuh:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1586",
+   "score": 14,
+   "comment": "sentinel:4, splunk:4, sigma:2, yaral:2, wazuh:1, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1569.001",
+   "score": 4,
+   "comment": "elastic:3, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1584.005",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.008",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1552.003",
+   "score": 10,
+   "comment": "sigma:6, wazuh:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1559.003",
+   "score": 4,
+   "comment": "elastic:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1497",
+   "score": 18,
+   "comment": "wazuh:9, elastic:6, yaral:2, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1102",
+   "score": 98,
+   "comment": "wazuh:34, elastic:31, sigma:14, sentinel:9, yaral:4, splunk:3, suricata:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1552.001",
+   "score": 166,
+   "comment": "elastic:64, sigma:42, wazuh:40, yaral:12, panther:4, splunk:2, sentinel:1, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1568.003",
+   "score": 1,
+   "comment": "wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.005",
+   "score": 130,
+   "comment": "elastic:53, wazuh:48, sigma:16, yaral:8, kql-md:2, suricata:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.015",
+   "score": 5,
+   "comment": "wazuh:3, sigma:1, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1608",
+   "score": 20,
+   "comment": "elastic:7, wazuh:6, sigma:3, splunk:2, panther:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1608.005",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1104",
+   "score": 1,
+   "comment": "sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1657",
+   "score": 2,
+   "comment": "elastic:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1480",
+   "score": 2,
+   "comment": "suricata:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1619",
+   "score": 12,
+   "comment": "elastic:5, sentinel:5, sigma:1, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1606.001",
+   "score": 2,
+   "comment": "sentinel:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1654",
+   "score": 3,
+   "comment": "wazuh:2, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1134.001",
+   "score": 76,
+   "comment": "wazuh:47, elastic:15, sigma:13, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1567.001",
+   "score": 17,
+   "comment": "elastic:9, sigma:4, wazuh:3, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1021.007",
+   "score": 20,
+   "comment": "elastic:7, panther:5, splunk:4, sigma:2, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1205.001",
+   "score": 3,
+   "comment": "elastic:2, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.012",
+   "score": 1,
+   "comment": "kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1583.006",
+   "score": 2,
+   "comment": "elastic:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1528",
+   "score": 105,
+   "comment": "elastic:43, wazuh:24, sigma:16, panther:11, sentinel:7, yaral:2, suricata:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1598.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1098.001",
+   "score": 71,
+   "comment": "elastic:32, panther:12, yaral:11, sigma:4, sentinel:4, wazuh:4, suricata:3, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1204",
+   "score": 326,
+   "comment": "elastic:118, yaral:99, sentinel:33, wazuh:26, suricata:20, sigma:15, panther:8, kql-md:3, splunk:2, falco:1, playbook:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1491.001",
+   "score": 18,
+   "comment": "wazuh:13, sigma:5",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.002",
+   "score": 20,
+   "comment": "wazuh:7, sigma:5, elastic:5, suricata:2, yaral:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1134.003",
+   "score": 29,
+   "comment": "wazuh:21, sigma:4, elastic:2, sentinel:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1552.006",
+   "score": 31,
+   "comment": "wazuh:19, sigma:8, elastic:2, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1048.002",
+   "score": 15,
+   "comment": "yaral:6, wazuh:5, sentinel:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1087.004",
+   "score": 38,
+   "comment": "elastic:14, sentinel:12, kql-md:6, sigma:4, panther:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1683.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1057",
+   "score": 82,
+   "comment": "wazuh:26, elastic:24, sigma:14, suricata:9, sentinel:4, yaral:4, playbook:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1556.008",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.003",
+   "score": 99,
+   "comment": "wazuh:67, sigma:22, elastic:6, yaral:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1596.004",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1497.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1496.004",
+   "score": 5,
+   "comment": "elastic:4, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1585.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1072",
+   "score": 59,
+   "comment": "wazuh:31, panther:11, sigma:6, elastic:4, yaral:2, falco:2, splunk:1, sentinel:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1041",
+   "score": 135,
+   "comment": "sentinel:53, suricata:24, elastic:18, panther:11, wazuh:10, yaral:9, sigma:6, splunk:2, playbook:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1134.004",
+   "score": 28,
+   "comment": "wazuh:15, elastic:9, yaral:2, sigma:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1591",
+   "score": 2,
+   "comment": "sentinel:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1606",
+   "score": 16,
+   "comment": "wazuh:9, elastic:3, sentinel:3, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1621",
+   "score": 27,
+   "comment": "splunk:10, sigma:4, elastic:4, yaral:4, panther:4, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1554",
+   "score": 45,
+   "comment": "elastic:20, sigma:9, wazuh:9, sentinel:5, splunk:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1552.008",
+   "score": 2,
+   "comment": "elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.001",
+   "score": 1340,
+   "comment": "wazuh:606, sigma:389, elastic:199, yaral:69, suricata:41, splunk:21, sentinel:11, kql-md:3, playbook:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.001",
+   "score": 27,
+   "comment": "wazuh:17, sigma:8, elastic:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1055.014",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1071.002",
+   "score": 3,
+   "comment": "sentinel:1, yaral:1, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1679",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1212",
+   "score": 49,
+   "comment": "sentinel:14, sigma:12, yaral:8, wazuh:8, elastic:6, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.014",
+   "score": 5,
+   "comment": "elastic:3, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1102.003",
+   "score": 6,
+   "comment": "sigma:4, elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1590",
+   "score": 16,
+   "comment": "sentinel:8, sigma:3, wazuh:3, elastic:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1210",
+   "score": 192,
+   "comment": "suricata:68, elastic:35, wazuh:33, sigma:21, sentinel:19, yaral:9, splunk:5, panther:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1534",
+   "score": 5,
+   "comment": "elastic:2, sentinel:2, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574.010",
+   "score": 7,
+   "comment": "wazuh:3, elastic:2, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.001",
+   "score": 299,
+   "comment": "wazuh:125, sigma:66, yaral:48, elastic:44, sentinel:7, suricata:5, splunk:3, playbook:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1199",
+   "score": 18,
+   "comment": "panther:6, elastic:5, sigma:4, playbook:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1136.003",
+   "score": 53,
+   "comment": "elastic:14, sentinel:12, sigma:9, panther:8, yaral:6, splunk:1, wazuh:1, kql-md:1, gcp:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1069.001",
+   "score": 50,
+   "comment": "sigma:29, wazuh:10, elastic:9, kql-md:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1593",
+   "score": 8,
+   "comment": "sentinel:8",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1098",
+   "score": 535,
+   "comment": "elastic:208, wazuh:81, panther:64, sigma:59, sentinel:56, yaral:42, suricata:9, splunk:8, kql-md:6, falco:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1048",
+   "score": 151,
+   "comment": "wazuh:44, sentinel:33, elastic:31, sigma:19, suricata:15, yaral:4, panther:3, playbook:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.006",
+   "score": 38,
+   "comment": "elastic:28, wazuh:5, sigma:3, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1678",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1056.002",
+   "score": 25,
+   "comment": "wazuh:13, sigma:6, elastic:5, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1686.002",
+   "score": 2,
+   "comment": "sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1588.002",
+   "score": 35,
+   "comment": "wazuh:21, sigma:12, splunk:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1052.001",
+   "score": 5,
+   "comment": "elastic:4, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574.013",
+   "score": 2,
+   "comment": "elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1597",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1053.006",
+   "score": 8,
+   "comment": "wazuh:5, elastic:2, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1566",
+   "score": 286,
+   "comment": "elastic:144, sentinel:44, suricata:25, panther:19, sigma:18, wazuh:12, kql-md:12, yaral:10, splunk:1, playbook:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1542.004",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.001",
+   "score": 28,
+   "comment": "wazuh:10, sigma:8, elastic:8, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1496.001",
+   "score": 2,
+   "comment": "elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1070.005",
+   "score": 18,
+   "comment": "wazuh:11, sigma:7",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1090.003",
+   "score": 44,
+   "comment": "wazuh:18, yaral:12, sigma:5, sentinel:4, elastic:3, suricata:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1110",
+   "score": 381,
+   "comment": "wazuh:128, elastic:55, suricata:50, sigma:46, sentinel:33, panther:31, yaral:24, splunk:7, kql-md:4, playbook:2, gcp:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.004",
+   "score": 395,
+   "comment": "elastic:342, sigma:29, wazuh:12, splunk:7, sentinel:3, falco:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1137.003",
+   "score": 5,
+   "comment": "wazuh:3, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1219.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1565",
+   "score": 68,
+   "comment": "sentinel:34, elastic:20, sigma:5, wazuh:4, falco:2, panther:2, gcp:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1559",
+   "score": 29,
+   "comment": "elastic:21, wazuh:4, sigma:2, sentinel:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1001",
+   "score": 17,
+   "comment": "sentinel:8, suricata:4, wazuh:3, splunk:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1039",
+   "score": 24,
+   "comment": "wazuh:8, elastic:7, sigma:4, suricata:3, splunk:1, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1584.006",
+   "score": 1,
+   "comment": "sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1601",
+   "score": 4,
+   "comment": "suricata:3, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574",
+   "score": 204,
+   "comment": "elastic:153, wazuh:26, sigma:15, splunk:3, yaral:2, suricata:2, sentinel:1, yara:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036.012",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.011",
+   "score": 15,
+   "comment": "elastic:15",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.005",
+   "score": 24,
+   "comment": "wazuh:16, sigma:6, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1204.003",
+   "score": 3,
+   "comment": "wazuh:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1543.005",
+   "score": 2,
+   "comment": "elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1078",
+   "score": 825,
+   "comment": "elastic:241, wazuh:138, sigma:100, suricata:92, sentinel:86, panther:70, yaral:62, splunk:16, kql-md:8, gcp:8, playbook:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1571",
+   "score": 163,
+   "comment": "suricata:88, sentinel:20, yaral:20, wazuh:13, elastic:10, sigma:8, splunk:2, panther:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1585.001",
+   "score": 4,
+   "comment": "sentinel:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1055.012",
+   "score": 29,
+   "comment": "wazuh:14, sigma:7, elastic:5, yaral:2, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1068",
+   "score": 408,
+   "comment": "wazuh:187, elastic:127, sigma:46, sentinel:14, suricata:14, splunk:11, yaral:5, panther:2, playbook:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.009",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1531",
+   "score": 101,
+   "comment": "wazuh:37, elastic:22, sigma:16, panther:15, sentinel:4, yaral:3, splunk:2, suricata:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1110.004",
+   "score": 35,
+   "comment": "splunk:11, elastic:10, sentinel:4, yaral:4, wazuh:3, panther:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027",
+   "score": 520,
+   "comment": "wazuh:205, sigma:173, elastic:94, sentinel:26, yaral:8, kql-md:5, splunk:4, suricata:3, panther:1, playbook:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1556.006",
+   "score": 41,
+   "comment": "elastic:14, sigma:5, sentinel:5, yaral:5, suricata:5, splunk:3, wazuh:2, panther:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1114.002",
+   "score": 11,
+   "comment": "elastic:7, suricata:2, splunk:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1505.004",
+   "score": 21,
+   "comment": "wazuh:15, sigma:5, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036.001",
+   "score": 19,
+   "comment": "elastic:19",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1683",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.006",
+   "score": 14,
+   "comment": "wazuh:5, sigma:4, elastic:3, splunk:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.014",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1201",
+   "score": 43,
+   "comment": "wazuh:17, sigma:10, elastic:8, sentinel:2, yaral:2, panther:2, suricata:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546",
+   "score": 200,
+   "comment": "elastic:96, wazuh:77, sigma:16, sentinel:7, yaral:2, panther:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.004",
+   "score": 22,
+   "comment": "elastic:18, sigma:2, falco:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1187",
+   "score": 48,
+   "comment": "wazuh:18, sigma:12, elastic:11, splunk:5, sentinel:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1134.005",
+   "score": 9,
+   "comment": "wazuh:4, sigma:2, yaral:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1599",
+   "score": 4,
+   "comment": "panther:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1486",
+   "score": 160,
+   "comment": "yaral:36, wazuh:27, sigma:25, elastic:23, sentinel:18, panther:14, suricata:9, kql-md:4, playbook:3, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1690",
+   "score": 12,
+   "comment": "wazuh:8, sigma:2, panther:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1553",
+   "score": 55,
+   "comment": "elastic:27, wazuh:11, sigma:5, sentinel:5, suricata:5, kql-md:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1548.004",
+   "score": 3,
+   "comment": "elastic:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1592.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1573",
+   "score": 33,
+   "comment": "sigma:13, elastic:9, sentinel:8, yaral:2, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.002",
+   "score": 9,
+   "comment": "wazuh:4, elastic:3, sigma:1, yaral:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.010",
+   "score": 150,
+   "comment": "wazuh:67, sigma:37, elastic:37, yaral:4, kql-md:3, suricata:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1567.003",
+   "score": 4,
+   "comment": "elastic:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1592.002",
+   "score": 2,
+   "comment": "splunk:1, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1056",
+   "score": 35,
+   "comment": "elastic:20, wazuh:7, yaral:4, sigma:2, panther:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1566.004",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1587.004",
+   "score": 4,
+   "comment": "wazuh:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1685",
+   "score": 1275,
+   "comment": "wazuh:540, elastic:243, sigma:235, panther:80, yaral:70, sentinel:50, suricata:24, splunk:18, kql-md:9, gcp:4, playbook:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1593.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1213.004",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.015",
+   "score": 60,
+   "comment": "wazuh:34, sigma:14, elastic:8, splunk:2, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1589.001",
+   "score": 2,
+   "comment": "splunk:1, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1195.002",
+   "score": 74,
+   "comment": "elastic:24, sigma:15, panther:15, wazuh:9, yaral:6, splunk:4, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036.003",
+   "score": 165,
+   "comment": "wazuh:100, sigma:47, elastic:17, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1102.002",
+   "score": 27,
+   "comment": "elastic:14, sigma:6, sentinel:3, wazuh:3, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1203",
+   "score": 202,
+   "comment": "elastic:54, sigma:50, wazuh:48, sentinel:29, suricata:10, splunk:4, yaral:4, panther:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1595.003",
+   "score": 13,
+   "comment": "elastic:10, wazuh:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1667",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1137.004",
+   "score": 5,
+   "comment": "wazuh:3, elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1573.002",
+   "score": 14,
+   "comment": "splunk:5, elastic:4, panther:2, playbook:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1567.002",
+   "score": 85,
+   "comment": "wazuh:33, sigma:19, elastic:16, suricata:7, sentinel:6, splunk:2, panther:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1570",
+   "score": 58,
+   "comment": "elastic:17, wazuh:14, sentinel:10, sigma:9, suricata:5, yaral:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574.009",
+   "score": 3,
+   "comment": "elastic:1, sentinel:1, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1608.003",
+   "score": 1,
+   "comment": "sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1037.005",
+   "score": 3,
+   "comment": "sigma:2, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1614.001",
+   "score": 19,
+   "comment": "wazuh:16, sigma:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1095",
+   "score": 72,
+   "comment": "wazuh:35, elastic:22, sigma:5, sentinel:5, suricata:3, splunk:1, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.013",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.003",
+   "score": 13,
+   "comment": "sigma:10, wazuh:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1584.002",
+   "score": 4,
+   "comment": "wazuh:3, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1671",
+   "score": 2,
+   "comment": "suricata:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1001.003",
+   "score": 7,
+   "comment": "wazuh:6, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1012",
+   "score": 92,
+   "comment": "wazuh:45, sigma:25, yaral:16, elastic:4, splunk:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1030",
+   "score": 17,
+   "comment": "sentinel:5, sigma:4, wazuh:4, elastic:2, suricata:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1550.004",
+   "score": 4,
+   "comment": "elastic:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1078.002",
+   "score": 36,
+   "comment": "elastic:15, wazuh:10, sigma:8, kql-md:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.009",
+   "score": 31,
+   "comment": "elastic:12, wazuh:12, sigma:5, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.018",
+   "score": 3,
+   "comment": "elastic:2, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1553.004",
+   "score": 50,
+   "comment": "wazuh:30, sigma:15, elastic:3, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1037.003",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1499",
+   "score": 107,
+   "comment": "wazuh:48, sentinel:27, suricata:10, elastic:7, sigma:6, panther:4, splunk:3, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.004",
+   "score": 32,
+   "comment": "wazuh:13, sigma:11, elastic:4, yaral:2, splunk:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1688",
+   "score": 2,
+   "comment": "splunk:1, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1614",
+   "score": 12,
+   "comment": "wazuh:10, elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.007",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1197",
+   "score": 94,
+   "comment": "wazuh:44, sigma:34, elastic:8, yaral:6, suricata:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1127.001",
+   "score": 29,
+   "comment": "elastic:15, wazuh:6, sigma:3, splunk:2, kql-md:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1578.005",
+   "score": 19,
+   "comment": "elastic:18, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1090.004",
+   "score": 1,
+   "comment": "sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1557.002",
+   "score": 5,
+   "comment": "splunk:3, wazuh:1, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1518.001",
+   "score": 54,
+   "comment": "wazuh:28, sigma:13, elastic:6, yaral:2, kql-md:2, suricata:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.003",
+   "score": 51,
+   "comment": "wazuh:34, sigma:10, elastic:5, splunk:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1127.002",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.006",
+   "score": 122,
+   "comment": "elastic:91, sigma:15, wazuh:13, splunk:2, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1070.010",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1591.004",
+   "score": 2,
+   "comment": "sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1132",
+   "score": 8,
+   "comment": "elastic:3, yaral:2, sentinel:1, wazuh:1, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.010",
+   "score": 14,
+   "comment": "wazuh:9, sigma:2, yaral:2, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1598",
+   "score": 4,
+   "comment": "panther:3, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1496",
+   "score": 86,
+   "comment": "elastic:23, sigma:19, sentinel:11, wazuh:7, suricata:7, panther:6, falco:5, yaral:4, gcp:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1684.001",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1585",
+   "score": 1,
+   "comment": "panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1588",
+   "score": 17,
+   "comment": "sigma:4, wazuh:4, panther:3, sentinel:2, yaral:2, elastic:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.002",
+   "score": 26,
+   "comment": "wazuh:13, sigma:8, elastic:5",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1556.009",
+   "score": 14,
+   "comment": "panther:8, elastic:5, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1578.002",
+   "score": 6,
+   "comment": "elastic:3, panther:1, kql-md:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1555.006",
+   "score": 11,
+   "comment": "elastic:9, kql-md:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1213.003",
+   "score": 21,
+   "comment": "sigma:8, elastic:6, yaral:6, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1565.002",
+   "score": 7,
+   "comment": "sigma:3, wazuh:3, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1003.008",
+   "score": 16,
+   "comment": "elastic:14, wazuh:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1543.001",
+   "score": 18,
+   "comment": "elastic:14, sigma:2, wazuh:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1569",
+   "score": 41,
+   "comment": "elastic:19, wazuh:12, sigma:8, sentinel:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.003",
+   "score": 269,
+   "comment": "wazuh:104, elastic:80, sigma:66, sentinel:8, splunk:6, yaral:4, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1055.009",
+   "score": 18,
+   "comment": "elastic:15, sigma:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1650",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1601.001",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1558.002",
+   "score": 7,
+   "comment": "wazuh:4, sigma:1, sentinel:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1213",
+   "score": 112,
+   "comment": "wazuh:37, elastic:28, sentinel:21, panther:10, sigma:7, yaral:6, gcp:2, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1070.009",
+   "score": 2,
+   "comment": "panther:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.012",
+   "score": 9,
+   "comment": "sigma:9",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1555.004",
+   "score": 37,
+   "comment": "wazuh:15, elastic:14, sigma:8",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036.010",
+   "score": 1,
+   "comment": "splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1200",
+   "score": 10,
+   "comment": "sigma:5, wazuh:3, splunk:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1219.002",
+   "score": 221,
+   "comment": "wazuh:162, sigma:46, elastic:13",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1505",
+   "score": 78,
+   "comment": "elastic:45, sentinel:11, suricata:8, wazuh:4, yaral:3, sigma:2, splunk:2, falco:1, panther:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1485",
+   "score": 215,
+   "comment": "elastic:48, wazuh:41, panther:41, sigma:31, splunk:15, sentinel:15, yaral:15, suricata:7, falco:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1132.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1556.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1537",
+   "score": 70,
+   "comment": "elastic:17, sentinel:16, panther:16, sigma:11, yaral:8, wazuh:1, gcp:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.006",
+   "score": 2,
+   "comment": "elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1556.005",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.010",
+   "score": 78,
+   "comment": "elastic:27, wazuh:24, suricata:15, sigma:11, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1070.004",
+   "score": 132,
+   "comment": "wazuh:55, elastic:34, sigma:26, yaral:10, suricata:7",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1189",
+   "score": 57,
+   "comment": "sentinel:25, elastic:14, sigma:6, suricata:5, yaral:4, playbook:2, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1498",
+   "score": 74,
+   "comment": "suricata:22, sentinel:21, wazuh:15, elastic:6, splunk:5, sigma:2, yaral:2, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1651",
+   "score": 20,
+   "comment": "elastic:18, panther:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.016",
+   "score": 16,
+   "comment": "elastic:16",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1595.001",
+   "score": 13,
+   "comment": "elastic:6, sentinel:3, panther:3, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1221",
+   "score": 4,
+   "comment": "sigma:3, yara:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1037.004",
+   "score": 13,
+   "comment": "elastic:13",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1134",
+   "score": 82,
+   "comment": "elastic:42, wazuh:20, sentinel:5, panther:5, sigma:4, splunk:3, kql-md:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1111",
+   "score": 3,
+   "comment": "elastic:1, sentinel:1, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.002",
+   "score": 12,
+   "comment": "yaral:6, wazuh:3, sigma:2, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1584.007",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1071.001",
+   "score": 228,
+   "comment": "sigma:70, elastic:54, wazuh:42, sentinel:30, suricata:20, splunk:6, yaral:4, kql-md:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1059.005",
+   "score": 192,
+   "comment": "wazuh:73, elastic:68, sigma:47, splunk:2, sentinel:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.005",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1543.002",
+   "score": 23,
+   "comment": "elastic:16, sigma:6, wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1668",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1563.002",
+   "score": 16,
+   "comment": "wazuh:9, sigma:5, elastic:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1136",
+   "score": 127,
+   "comment": "elastic:32, panther:24, wazuh:22, suricata:16, sentinel:11, yaral:11, sigma:5, kql-md:3, splunk:2, gcp:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.013",
+   "score": 5,
+   "comment": "elastic:5",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1584.004",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1526",
+   "score": 76,
+   "comment": "elastic:25, wazuh:25, panther:9, sentinel:8, sigma:5, splunk:2, suricata:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1204.004",
+   "score": 32,
+   "comment": "wazuh:18, elastic:8, sigma:6",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1018",
+   "score": 157,
+   "comment": "wazuh:69, sigma:31, suricata:27, elastic:16, sentinel:5, splunk:3, yaral:2, gcp:2, panther:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1046",
+   "score": 212,
+   "comment": "wazuh:92, suricata:33, sigma:30, elastic:21, sentinel:20, panther:6, splunk:5, gcp:2, falco:1, kql-md:1, playbook:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1590.001",
+   "score": 11,
+   "comment": "wazuh:9, sigma:1, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1518",
+   "score": 58,
+   "comment": "wazuh:27, elastic:17, sigma:6, yaral:2, panther:2, kql-md:2, sentinel:1, playbook:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1538",
+   "score": 4,
+   "comment": "elastic:1, splunk:1, wazuh:1, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1055.005",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1622",
+   "score": 22,
+   "comment": "wazuh:19, sigma:1, falco:1, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1036.006",
+   "score": 4,
+   "comment": "sigma:2, elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.007",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1608.006",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1550.002",
+   "score": 43,
+   "comment": "wazuh:19, sigma:12, yaral:6, elastic:5, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1052",
+   "score": 4,
+   "comment": "elastic:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1105",
+   "score": 644,
+   "comment": "wazuh:217, elastic:158, sigma:128, suricata:83, yaral:27, splunk:20, sentinel:9, playbook:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1216.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1098.002",
+   "score": 10,
+   "comment": "suricata:6, elastic:2, wazuh:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1588.003",
+   "score": 1,
+   "comment": "sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1648",
+   "score": 18,
+   "comment": "elastic:16, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1548.006",
+   "score": 7,
+   "comment": "elastic:7",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.018",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1055.008",
+   "score": 14,
+   "comment": "elastic:13, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1653",
+   "score": 1,
+   "comment": "sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.007",
+   "score": 2,
+   "comment": "wazuh:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1021.001",
+   "score": 139,
+   "comment": "wazuh:63, sigma:29, elastic:23, yaral:11, suricata:9, playbook:2, splunk:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1037.001",
+   "score": 13,
+   "comment": "wazuh:10, sigma:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1055.015",
+   "score": 1,
+   "comment": "wazuh:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1665",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1484",
+   "score": 168,
+   "comment": "wazuh:113, elastic:32, splunk:8, gcp:5, sigma:4, yaral:3, sentinel:2, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1220",
+   "score": 32,
+   "comment": "wazuh:14, elastic:10, sigma:8",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1596.005",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.001",
+   "score": 76,
+   "comment": "elastic:29, wazuh:25, sigma:16, yaral:4, splunk:1, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1578.001",
+   "score": 1,
+   "comment": "elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1591.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1137.002",
+   "score": 7,
+   "comment": "sigma:3, wazuh:3, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1587",
+   "score": 22,
+   "comment": "wazuh:11, sigma:8, elastic:1, sentinel:1, panther:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1003.003",
+   "score": 157,
+   "comment": "wazuh:97, sigma:42, elastic:8, yaral:6, suricata:3, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1686.001",
+   "score": 69,
+   "comment": "elastic:28, suricata:20, sigma:7, panther:4, sentinel:3, wazuh:3, yaral:2, gcp:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1602.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1686",
+   "score": 56,
+   "comment": "sigma:21, wazuh:20, elastic:10, panther:2, splunk:1, sentinel:1, yaral:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1001.002",
+   "score": 4,
+   "comment": "wazuh:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1204.001",
+   "score": 52,
+   "comment": "elastic:21, sentinel:16, wazuh:9, sigma:3, splunk:1, panther:1, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1550.001",
+   "score": 78,
+   "comment": "elastic:53, sigma:8, sentinel:5, panther:5, yaral:4, suricata:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1547.008",
+   "score": 10,
+   "comment": "wazuh:6, sigma:2, yaral:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1569.002",
+   "score": 230,
+   "comment": "wazuh:117, sigma:76, elastic:17, yaral:14, suricata:2, playbook:2, splunk:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1078.004",
+   "score": 356,
+   "comment": "elastic:169, sigma:77, panther:31, yaral:23, sentinel:21, suricata:15, gcp:8, wazuh:6, kql-md:5, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1480.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1008",
+   "score": 55,
+   "comment": "sentinel:29, wazuh:12, sigma:6, suricata:4, yaral:2, splunk:1, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1680",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.004",
+   "score": 106,
+   "comment": "wazuh:55, sigma:34, suricata:6, elastic:5, yaral:2, playbook:2, splunk:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1558.003",
+   "score": 132,
+   "comment": "wazuh:77, sigma:33, elastic:9, splunk:3, yaral:3, suricata:3, sentinel:2, kql-md:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1003.006",
+   "score": 33,
+   "comment": "sigma:17, wazuh:11, elastic:5",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1124",
+   "score": 18,
+   "comment": "wazuh:10, sigma:5, yaral:2, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1053.002",
+   "score": 32,
+   "comment": "sigma:16, wazuh:8, elastic:7, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1055.001",
+   "score": 40,
+   "comment": "wazuh:19, sigma:15, elastic:4, suricata:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1588.005",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1556",
+   "score": 137,
+   "comment": "elastic:51, sigma:22, panther:22, sentinel:21, yaral:8, wazuh:6, kql-md:3, suricata:2, splunk:1, falco:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.017",
+   "score": 3,
+   "comment": "elastic:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1056.004",
+   "score": 12,
+   "comment": "yaral:8, wazuh:2, sigma:1, sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1495",
+   "score": 3,
+   "comment": "sigma:2, elastic:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1490",
+   "score": 188,
+   "comment": "wazuh:71, sigma:45, elastic:39, panther:18, yaral:5, splunk:3, sentinel:3, suricata:3, kql-md:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1546.007",
+   "score": 20,
+   "comment": "wazuh:13, sigma:5, elastic:1, yaral:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1566.003",
+   "score": 8,
+   "comment": "sentinel:4, elastic:3, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1090.001",
+   "score": 43,
+   "comment": "wazuh:34, sigma:7, elastic:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1216",
+   "score": 75,
+   "comment": "wazuh:44, sigma:27, elastic:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1102.001",
+   "score": 18,
+   "comment": "sigma:6, elastic:6, wazuh:6",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1001.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1598.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1505.006",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1552.007",
+   "score": 40,
+   "comment": "elastic:27, sigma:6, panther:4, wazuh:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1584.001",
+   "score": 3,
+   "comment": "elastic:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1505.001",
+   "score": 6,
+   "comment": "elastic:4, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1556.004",
+   "score": 7,
+   "comment": "suricata:6, sigma:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1561.001",
+   "score": 6,
+   "comment": "wazuh:4, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1213.005",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1048.003",
+   "score": 51,
+   "comment": "sigma:23, wazuh:20, elastic:5, splunk:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1027.015",
+   "score": 3,
+   "comment": "elastic:3",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574.004",
+   "score": 1,
+   "comment": "sentinel:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1601.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1684.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1078.003",
+   "score": 32,
+   "comment": "elastic:15, wazuh:8, sigma:6, sentinel:2, splunk:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1669",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1211",
+   "score": 40,
+   "comment": "elastic:16, wazuh:12, sigma:6, splunk:2, sentinel:2, suricata:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1127",
+   "score": 142,
+   "comment": "wazuh:78, sigma:35, elastic:21, yaral:4, splunk:2, kql-md:1, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1529",
+   "score": 52,
+   "comment": "wazuh:31, sigma:13, splunk:4, elastic:3, suricata:1",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1218.014",
+   "score": 18,
+   "comment": "elastic:7, wazuh:6, splunk:3, sigma:2",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1564.010",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1574.012",
+   "score": 15,
+   "comment": "wazuh:11, sigma:4",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1696",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1697",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1698",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1699",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1608.007",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1696.001",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1696.002",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1685.007",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  },
+  {
+   "techniqueID": "T1700",
+   "score": 0,
+   "comment": "sem regra pública no catálogo",
+   "enabled": true,
+   "showSubtechniques": false
+  }
+ ],
+ "legendItems": [
+  {
+   "label": "sem regra",
+   "color": "#ffffff"
+  },
+  {
+   "label": "muitas regras",
+   "color": "#7c2406"
+  }
+ ]
+}
