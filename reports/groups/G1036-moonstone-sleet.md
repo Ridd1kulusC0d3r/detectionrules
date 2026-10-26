@@ -1,8 +1,9 @@
 # Moonstone Sleet (G1036) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1036) · [ATT&CK](https://attack.mitre.org/groups/G1036/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1036) · [ATT&CK](https://attack.mitre.org/groups/G1036/)
 
 **Também conhecido como:** Storm-1789  
+**Origem atribuída:** Coreia do Norte · **Motivação:** espionagem, financeiro · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2024-08-26, atualizado em 2026-07-31 · referências de 2024 a 2025
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 1 malware e 0 ferramentas (ex.: Qilin).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 90% das técnicas têm ao menos uma regra no catálogo; **3 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Coreia do Norte**, motivação espionagem, financeiro.
+- **Onde a cobertura está:** Windows (23 técnicas com regra), Outros / genérico (21 técnicas com regra), EDR / XDR (18 técnicas com regra), Linux (17 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1027.009 Embedded Payloads, T1587 Develop Capabilities, T1598 Phishing for Information, T1217 Browser Information Discovery, T1591 Gather Victim Org Information.
 
 ## 2. Quem é
@@ -19,7 +22,27 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Coreia do Norte |
+| Motivação | espionagem, financeiro |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | — |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1036 |
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -111,7 +134,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1486](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1486) Data Encrypted for Impact | Moonstone Sleet has deployed ransomware in victim environments. | 160 | 10 | 1 |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -128,17 +151,17 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1569.002 Service Execution | 15 | 2.35 |
 | T1598.003 Spearphishing Link | 15 | 2.35 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
 | [Qilin](https://attack.mitre.org/software/S1242/) | malware | 52 | Moonstone Sleet has deployed Qilin ransomware. |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **27 de 30 técnicas (90%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -147,6 +170,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1598.003 Spearphishing Link** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 23 |
+| Outros / genérico | 21 |
+| EDR / XDR | 18 |
+| Linux | 17 |
+| macOS | 15 |
+| E-mail | 15 |
+| Servidores web & aplicações | 14 |
+| DNS | 13 |
+| Firewall & perímetro | 12 |
+| IDS / NSM / NDR | 12 |
+| Proxy / SWG | 12 |
+| IA, LLMs & agentes | 12 |
 
 ### Regras recomendadas por técnica
 
@@ -209,7 +251,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1608.001 | [M365 OneDrive Malware File Upload](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3Abba1b212-b85c-41c6-9b28-be0e5cdfc9b1) | Elastic | Elastic detection-rules |
 | T1608.001 | [M365 SharePoint Malware File Detected](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A0e52157a-8e96-4a95-a6e3-5faae5081a74) | Elastic | Elastic detection-rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -266,7 +308,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1569.002 — [ID5145-remote service creation over SMB](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0002-Execution/T1569.002-Service%20execution/ID5145-remote%20service%20creation%20over%20SMB.evtx) _(explícito)_
 - T1569.002 — [ID5145-service massive remote creation via named pipe - Tchopper](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0002-Execution/T1569.002-Service%20execution/ID5145-service%20massive%20remote%20creation%20via%20named%20pipe%20-%20Tchopper.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Moonstone Sleet estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -283,7 +325,7 @@ Se Moonstone Sleet estiver no seu ambiente, estas são as perguntas a fazer aos 
 11. **T1583.003 Virtual Private Server** — Once adversaries have provisioned a VPS (ex: for use as a command and control server), internet scans may reveal servers that adversaries have acquired. Consider looking for identifiable patterns such as services listening, certificates in use, SSL/TLS… Dados: `Internet Scan` (None), `Internet Scan` (None).
 12. **T1486 Data Encrypted for Impact** — High-frequency file write operations using uncommon extensions, followed by ransom note creation, registry tampering, or shadow copy deletion. Often uses CLI tools like vssadmin, wbadmin, cipher, or PowerShell. Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=2).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -294,12 +336,12 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1036](https://attack.mitre.org/groups/G1036/)
 
-## 11. Bibliografia (2 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (2 fontes citadas pelo ATT&CK)
 
 - [Microsoft Moonstone Sleet 2024](https://www.microsoft.com/en-us/security/blog/2024/05/28/moonstone-sleet-emerges-as-new-north-korean-threat-actor-with-new-bag-of-tricks/) — Microsoft Threat Intelligence. (2024, May 28). Moonstone Sleet emerges as new North Korean threat actor with new bag of tricks. Retrieved August 26, 2024.
 - [MIcrosoft Moonstone Sleet Qilin MAR 2025](https://x.com/MsftSecIntel/status/1897738961348374621) — Microsoft Threat Intelligence (@MsftSecIntel). (2025, March 6). Microsoft Threat Intelligence on X. Retrieved September 26, 2025.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -307,4 +349,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

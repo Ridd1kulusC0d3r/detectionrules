@@ -1,8 +1,9 @@
 # HAFNIUM (G0125) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0125) · [ATT&CK](https://attack.mitre.org/groups/G0125/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0125) · [ATT&CK](https://attack.mitre.org/groups/G0125/)
 
 **Também conhecido como:** Operation Exchange Marauder, Silk Typhoon  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2021-03-03, atualizado em 2026-07-31 · referências de 2021 a 2025
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 3 malware e 3 ferramentas (ex.: Impacket, China Chopper, Covenant, Tarrask, PsExec).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 93% das técnicas têm ao menos uma regra no catálogo; **3 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem.
+- **Onde a cobertura está:** Windows (38 técnicas com regra), EDR / XDR (32 técnicas com regra), Linux (29 técnicas com regra), Outros / genérico (27 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1592.004 Client Configurations, T1555.006 Cloud Secrets Management Stores, T1583.005 Botnet, T1590 Gather Victim Network Information, T1590.005 IP Addresses.
 
 ## 2. Quem é
@@ -19,7 +22,32 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | Microsoft Exchange Server |
+| Operações conhecidas | Operation Exchange Marauder |
+| Confiança de atribuição (MISP) | 100 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| FireEye | UNC2639, UNC2640, UNC2643 |
+| MITRE ATT&CK | G0125 |
+| Microsoft | Silk Typhoon, HAFNIUM (antigo · old) |
+| Symantec | Ant |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** UNC2639, UNC2640, UNC2643, Ant, ATK233, Red Dev 13, MURKY PANDA, UNC2639/UNC2640/UNC2643, Hafnium/Silk Typhoon
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -144,7 +172,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1567.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1567.002) Exfiltration to Cloud Storage | HAFNIUM has exfiltrated data to file sharing sites, including MEGA. | 85 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -161,7 +189,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1584.005 Botnet | 4 | 3.40 |
 | T1098 Account Manipulation | 5 | 3.24 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -172,11 +200,13 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [PsExec](https://attack.mitre.org/software/S0029/) | ferramenta | 5 |  |
 | [ASPXSpy](https://attack.mitre.org/software/S0073/) | malware | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Procdump, 7-Zip, Nishang, PowerCat
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **41 de 44 técnicas (93%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -185,6 +215,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1583.005 Botnet** — Resource Development
 - **T1584.005 Botnet** — Resource Development
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 38 |
+| EDR / XDR | 32 |
+| Linux | 29 |
+| Outros / genérico | 27 |
+| Firewall & perímetro | 26 |
+| DNS | 22 |
+| Proxy / SWG | 22 |
+| macOS | 22 |
+| Servidores web & aplicações | 21 |
+| AWS | 21 |
+| Microsoft 365 | 21 |
+| IDS / NSM / NDR | 20 |
 
 ### Regras recomendadas por técnica
 
@@ -274,7 +323,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685.005 | [Suspicious Eventlog Clearing or Configuration Change Activity](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Acc36992a-4671-4f21-a91d-6c2b72a2edf5) | Sigma | SigmaHQ |
 | T1685.005 | [Log Cleared](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=hayabusa-native%3A%3Ac2f690ac-53f8-4745-8cfe-7127dda28c74) | Sigma | Hayabusa (native) |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -362,7 +411,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1685.005 — [ID104-1102-Event log cleared](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1070.001-Clear%20Windows%20event%20logs/ID104-1102-Event%20log%20cleared.evtx) _(explícito)_
 - T1685.005 — [ID4688-Clear event log attempt (native)](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1070.001-Clear%20Windows%20event%20logs/ID4688-Clear%20event%20log%20attempt%20%28native%29.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se HAFNIUM estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -379,7 +428,7 @@ Se HAFNIUM estiver no seu ambiente, estas são as perguntas a fazer aos seus dad
 11. **T1114.002 Remote Email Collection** — Detects adversaries accessing remote mail systems (e.g., Exchange Online, O365) using stolen credentials or OAuth tokens, followed by scripted access to mailbox contents via PowerShell, AADInternals, or unattended API queries. Detection focuses on abnormal… Dados: `azure:signinlogs` (Abnormal sign-in from scripting tools (PowerShell, AADInternals)), `m365:purview` (MailItemsAccessed & Exchange Audit), `WinEventLog:PowerShell` (EventCode=4103, 4104, 4105, 4106).
 12. **T1132.001 Standard Encoding** — Process invokes a standard encoder (e.g., PowerShell -enc, certutil -encode, base64 via .NET/Invoke-Expression) or emits long Base64/hex literals → shortly followed by outbound network egress with high bytes_out:bytes_in ratio or HTTP headers/payloads… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:PowerShell` (EventCode=4103, 4104, 4105, 4106).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -395,7 +444,11 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2021 — [HAFNIUM targeting Exchange Servers with 0-day exploits - Microsoft Security](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.03.02.HAFNIUM_APT/HAFNIUM%20targeting%20Exchange%20Servers%20with%200-day%20exploits%20-%20Microsoft%20Security.pdf) _(via “HAFNIUM”)_
 - 2021 — [Operation Exchange Marauder_ Active Exploitation of Multiple Zero-Day Microsoft Exchange Vulnerabilities _ Volexity](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.03.02.Operation_Exchange_Marauder/Operation%20Exchange%20Marauder_%20Active%20Exploitation%20of%20Multiple%20Zero-Day%20Microsoft%20Exchange%20Vulnerabilities%20_%20Volexity.pdf) _(via “Operation Exchange Marauder”)_
 
-## 11. Bibliografia (8 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (1 no total, mais recentes primeiro):
+
+- 2022 — [The APT fallout of vulnerabilities such as ProxyLogon in Exchange (Hafnium), OGNL injection, and log4shell](https://app.box.com/s/mkk5m9l8oozhmwvkqwqkc4uosuwqd6ru) _(HVS Consulting)_
+
+## 12. Bibliografia (8 fontes citadas pelo ATT&CK)
 
 - [FireEye Exchange Zero Days March 2021](https://www.fireeye.com/blog/threat-research/2021/03/detection-response-to-exploitation-of-microsoft-exchange-zero-day-vulnerabilities.html) — Bromiley, M. et al. (2021, March 4). Detection and Response to Exploitation of Microsoft Exchange Zero-Day Vulnerabilities. Retrieved March 9, 2021.
 - [Microsoft HAFNIUM March 2020](https://www.microsoft.com/security/blog/2021/03/02/hafnium-targeting-exchange-servers/) — MSTIC. (2021, March 2). HAFNIUM targeting Exchange Servers with 0-day exploits. Retrieved March 3, 2021.
@@ -406,7 +459,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Tarrask scheduled task](https://www.microsoft.com/security/blog/2022/04/12/tarrask-malware-uses-scheduled-tasks-for-defense-evasion/) — Microsoft Threat Intelligence Team & Detection and Response Team . (2022, April 12). Tarrask malware uses scheduled tasks for defense evasion. Retrieved June 1, 2022.
 - [Volexity Exchange Marauder March 2021](https://www.volexity.com/blog/2021/03/02/active-exploitation-of-microsoft-exchange-zero-day-vulnerabilities/) — Gruzweig, J. et al. (2021, March 2). Operation Exchange Marauder: Active Exploitation of Multiple Zero-Day Microsoft Exchange Vulnerabilities. Retrieved March 3, 2021.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -414,4 +467,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

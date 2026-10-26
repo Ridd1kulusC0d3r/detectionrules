@@ -1,8 +1,9 @@
 # LazyScripter (G0140) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0140) · [ATT&CK](https://attack.mitre.org/groups/G0140/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0140) · [ATT&CK](https://attack.mitre.org/groups/G0140/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** Sem país atribuído · **Motivação:** indefinido · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2021-11-24, atualizado em 2026-07-31 · referências de 2021 a 2021
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 2 malware e 5 ferramentas (ex.: Empire, Remcos, njRAT, Koadic, QuasarRAT).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Sem país atribuído**, motivação indefinido.
+- **Onde a cobertura está:** Windows (18 técnicas com regra), Linux (17 técnicas com regra), E-mail (17 técnicas com regra), Microsoft 365 (17 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1071.004 DNS, T1102 Web Service, T1218.005 Mshta, T1588.001 Malware, T1036 Masquerading.
 
 ## 2. Quem é
@@ -19,7 +22,27 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Sem país atribuído |
+| Motivação | indefinido |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0140 |
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -79,7 +102,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1102](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1102) Web Service | LazyScripter has used GitHub to host its payloads to operate spam campaigns. | 98 | — | — |
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | LazyScripter had downloaded additional tools to a compromised host. | 644 | 39 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -96,7 +119,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1608.001 Upload Malware | 29 | 1.75 |
 | T1027.010 Command Obfuscation | 30 | 1.72 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -108,13 +131,32 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [KOCTOPUS](https://attack.mitre.org/software/S0669/) | malware | 20 |  |
 | [ngrok](https://attack.mitre.org/software/S0508/) | ferramenta | 5 |  |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **20 de 20 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 18 |
+| Linux | 17 |
+| E-mail | 17 |
+| Microsoft 365 | 17 |
+| EDR / XDR | 16 |
+| Proxy / SWG | 15 |
+| Servidores web & aplicações | 15 |
+| IA, LLMs & agentes | 14 |
+| DevOps & supply chain | 13 |
+| macOS | 13 |
+| Outros / genérico | 13 |
+| Firewall & perímetro | 12 |
 
 ### Regras recomendadas por técnica
 
@@ -163,7 +205,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1608.001 | [M365 OneDrive Malware File Upload](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3Abba1b212-b85c-41c6-9b28-be0e5cdfc9b1) | Elastic | Elastic detection-rules |
 | T1608.001 | [M365 SharePoint Malware File Detected](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A0e52157a-8e96-4a95-a6e3-5faae5081a74) | Elastic | Elastic detection-rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -208,7 +250,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1547.001 — [sideloading_injection_persistence_run_key](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/sideloading_injection_persistence_run_key.evtx) _(inferido)_
 - T1547.001 — [evasion_persis_hidden_run_keyvalue_sysmon_13](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Persistence/evasion_persis_hidden_run_keyvalue_sysmon_13.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se LazyScripter estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -225,7 +267,7 @@ Se LazyScripter estiver no seu ambiente, estas são as perguntas a fazer aos seu
 11. **T1059.005 Visual Basic** — Detects execution of VB-based scripts or macros (VBS/VBA/VBScript) through cscript.exe/wscript.exe, Office-based process chains, or HTA usage. Focuses on chained behavior: Office or HTML container spawns script host > script host spawns PowerShell, network… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=7).
 12. **T1566.002 Spearphishing Link** — Correlation of inbound emails with embedded links followed by user-driven browser navigation to suspicious or obfuscated domains. Detection chain includes malicious URL in email → user click recorded in Office logs → browser process spawning unusual child… Dados: `m365:unified` (Send/Receive: Inbound emails containing embedded or shortened URLs), `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=3, 22).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -240,11 +282,15 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 
 - 2021 — [LazyScripter](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.02.24.LazyScripter/LazyScripter.pdf) _(via “LazyScripter”)_
 
-## 11. Bibliografia (1 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (1 no total, mais recentes primeiro):
+
+- 2022 — [Very very lazy Lazyscripter's scripts: double compromise in a single obfuscation](https://app.box.com/s/3rr58tcaqth9rn1ege689pq4f94zjsgx) _(Lab52)_
+
+## 12. Bibliografia (1 fontes citadas pelo ATT&CK)
 
 - [MalwareBytes LazyScripter Feb 2021](https://web.archive.org/web/20211003035156/https://www.malwarebytes.com/resources/files/2021/02/lazyscripter.pdf) — Jazi, H. (2021, February). LazyScripter: From Empire to double RAT. Retrieved November 17, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -252,4 +298,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

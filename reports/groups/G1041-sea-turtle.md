@@ -1,8 +1,9 @@
 # Sea Turtle (G1041) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1041) · [ATT&CK](https://attack.mitre.org/groups/G1041/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1041) · [ATT&CK](https://attack.mitre.org/groups/G1041/)
 
 **Também conhecido como:** Teal Kurma, Marbled Dust, Cosmic Wolf, SILICON  
+**Origem atribuída:** OTAN / Five Eyes · **Motivação:** espionagem · **Setores-alvo:** Energia, Governo, Indústria, Defesa e militar  
 **Registro no ATT&CK:** criado em 2024-11-20, atualizado em 2026-07-31 · referências de 2019 a 2024
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 1 malware e 0 ferramentas (ex.: SnappyTCP).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 89% das técnicas têm ao menos uma regra no catálogo; **3 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **OTAN / Five Eyes**, motivação espionagem; setores Energia, Governo, Indústria, Defesa e militar; 1 países vítimas citados.
+- **Onde a cobertura está:** Windows (18 técnicas com regra), Outros / genérico (17 técnicas com regra), EDR / XDR (15 técnicas com regra), AWS (15 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1608.003 Install Digital Certificate, T1584.002 DNS Server, T1557 Adversary-in-the-Middle, T1583.002 DNS Server, T1027.004 Compile After Delivery.
 
 ## 2. Quem é
@@ -19,7 +22,30 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | OTAN / Five Eyes |
+| Motivação | espionagem |
+| Setores-alvo | Energia, Governo, Indústria, Defesa e militar |
+| Vítimas citadas | Germany |
+| Alvos (planilha) | industries: Ministries of foreign affairs, Military organizations, Intelligence agencies, Prominent energy organizations in US, Libya, Egypt, Lebanon, UAE, Albania, Cyprus, Turkey, Iraq, Jordan, Syria, Armenia, Sweden |
+| Operações conhecidas | Sea Turtle |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1041 |
+| Microsoft | Marbled Dust, SILICON (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** UNC1326, Silicon/Marbled Dust
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -108,7 +134,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1071.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1071.001) Web Protocols | Sea Turtle connected over TCP using HTTP to establish command and control channels. | 228 | 3 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -125,17 +151,19 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1213.006 Databases | 5 | 3.24 |
 | T1588.004 Digital Certificates | 6 | 3.11 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
 | [SnappyTCP](https://attack.mitre.org/software/S1163/) | malware | 5 | Sea Turtle used SnappyTCP following initial access in intrusions from 2021 to 2023. |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** DNS hijacking, CVE-2009-1151, CVE-2014-6271, CVE-2017-3881, CVE-2017-6736, CVE-2017-12617, CVE-2018-0296, CVE-2018-7600, Drupalgeddon
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **24 de 27 técnicas (89%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -144,6 +172,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1583.002 DNS Server** — Resource Development
 - **T1564.011 Ignore Process Interrupts** — Stealth. Fonte de log sugerida pelo MITRE: `auditd:SYSCALL` execve call including 'nohup' or trailing '&'; `WinEventLog:PowerShell` EventCode=4103, 4104, 4105, 4106; `macos:unifiedlog` nohup, disown, or osascript execution patterns
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 18 |
+| Outros / genérico | 17 |
+| EDR / XDR | 15 |
+| AWS | 15 |
+| Firewall & perímetro | 14 |
+| E-mail | 14 |
+| Linux | 13 |
+| Microsoft 365 | 12 |
+| macOS | 11 |
+| DevOps & supply chain | 11 |
+| DNS | 11 |
+| IA, LLMs & agentes | 10 |
 
 ### Regras recomendadas por técnica
 
@@ -198,7 +245,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1690 | [ESXi Syslog Configuration Change Via ESXCLI](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A38eb1dbb-011f-40b1-a126-cf03a0210563) | Sigma | SigmaHQ |
 | T1690 | [ESXi Syslog Configuration Change Via ESXCLI](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A38eb1dbb-011f-40b1-a126-cf03a0210563) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -229,7 +276,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1557 — [ID5145-Print spooler bug abuse](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0006-Credential%20Access/T1557-Man%20in%20the%20middle/ID5145-Print%20spooler%20bug%20abuse.evtx) _(explícito)_
 - T1557 — [ID515-DNS entry created with wildcard](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0006-Credential%20Access/T1557-Man%20in%20the%20middle/ID515-DNS%20entry%20created%20with%20wildcard.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Sea Turtle estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -246,7 +293,7 @@ Se Sea Turtle estiver no seu ambiente, estas são as perguntas a fazer aos seus 
 11. **T1114.001 Local Email Collection** — Detection focuses on processes that attempt to locate, access, or exfiltrate local Outlook data files (.pst/.ost) using file system access, native Windows utilities (e.g., PowerShell, WMI), or remote access tools with file browsing capabilities. The behavior… Dados: `WinEventLog:Security` (EventCode=4663, 4670, 4656), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=11).
 12. **T1583 Acquire Infrastructure** — Monitor for contextual data about an Internet-facing resource gathered from a scan, such as running services or ports that may buy, lease, or rent infrastructure that can be used during targeting. Detection efforts may be focused on related stages of the… Dados: `Internet Scan` (None), `Internet Scan` (None), `Domain Name` (None).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -262,7 +309,11 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2019 — [DNS Hijacking Abuses Trust In Core Internet Service](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2019/2019.04.17.Operation_Sea_Turtle/DNS%20Hijacking%20Abuses%20Trust%20In%20Core%20Internet%20Service.pdf) _(via “Sea Turtle”)_
 - 2019 — [Sea Turtle keeps on swimming, finds new victims, DNS hijacking techniques](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2019/2019.07.09.SeaTurtle_swimming/Sea%20Turtle%20keeps%20on%20swimming%2C%20finds%20new%20victims%2C%20DNS%20hijacking%20techniques.pdf) _(via “Sea Turtle”)_
 
-## 11. Bibliografia (5 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (1 no total, mais recentes primeiro):
+
+- 2019 — [Sea Turtle keeps on swimming, finds new victims, DNS hijacking techniques](https://app.box.com/s/nnixcicwsuf8f5l1k1cxq7e36rp0q1bf) _(Cisco)_
+
+## 12. Bibliografia (5 fontes citadas pelo ATT&CK)
 
 - [Hunt Sea Turtle 2024](https://www.huntandhackett.com/blog/turkish-espionage-campaigns) — Hunt & Hackett Research Team. (2024, January 5). Turkish espionage campaigns in the Netherlands. Retrieved November 20, 2024.
 - [Microsoft Digital Defense 2021](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWMFIi?id=101738) — Microsoft. (2021, October). Microsoft Digital Defense Report. Retrieved November 20, 2024.
@@ -270,7 +321,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Talos Sea Turtle 2019](https://blog.talosintelligence.com/seaturtle/) — Cisco Talos. (2019, April 17). Sea Turtle: DNS Hijacking Abuses Trust In Core Internet Service. Retrieved November 20, 2024.
 - [Talos Sea Turtle 2019_2](https://blog.talosintelligence.com/sea-turtle-keeps-on-swimming/) — Paul Rascagneres. (2019, July 9). Sea Turtle keeps on swimming, finds new victims, DNS hijacking techniques. Retrieved November 20, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -278,4 +329,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

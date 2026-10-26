@@ -1,8 +1,9 @@
 # Aquatic Panda (G0143) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0143) · [ATT&CK](https://attack.mitre.org/groups/G0143/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0143) · [ATT&CK](https://attack.mitre.org/groups/G0143/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2022-01-18, atualizado em 2026-07-31 · referências de 2021 a 2023
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 5 malware e 1 ferramentas (ex.: Cobalt Strike, njRAT, Winnti for Windows, ShadowPad, Winnti for Linux).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem.
+- **Onde a cobertura está:** Windows (33 técnicas com regra), EDR / XDR (32 técnicas com regra), Linux (28 técnicas com regra), Outros / genérico (26 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1021 Remote Services, T1087 Account Discovery, T1574.006 Dynamic Linker Hijacking, T1654 Log Enumeration, T1070.003 Clear Command History.
 
 ## 2. Quem é
@@ -19,7 +22,27 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | — |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0143 |
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -130,7 +153,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | Aquatic Panda has downloaded additional malware onto compromised hosts. | 644 | 39 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -147,7 +170,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1595.002 Vulnerability Scanning | 14 | 2.42 |
 | T1007 System Service Discovery | 15 | 2.35 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -158,13 +181,32 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Winnti for Linux](https://attack.mitre.org/software/S0430/) | malware | 8 | Aquatic Panda used Winnti for Linux for access to victim Linux hosts during intrusions. |
 | [Wevtutil](https://attack.mitre.org/software/S0645/) | ferramenta | 3 | Aquatic Panda uses Wevtutil to extract Windows security event log data from victim machines. |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **35 de 35 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 33 |
+| EDR / XDR | 32 |
+| Linux | 28 |
+| Outros / genérico | 26 |
+| Servidores web & aplicações | 21 |
+| Integridade, conformidade & vulnerabilidade | 21 |
+| Firewall & perímetro | 20 |
+| DNS | 20 |
+| macOS | 20 |
+| Active Directory | 19 |
+| IA, LLMs & agentes | 17 |
+| IDS / NSM / NDR | 16 |
 
 ### Regras recomendadas por técnica
 
@@ -243,7 +285,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685.005 | [Suspicious Eventlog Clearing or Configuration Change Activity](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Acc36992a-4671-4f21-a91d-6c2b72a2edf5) | Sigma | SigmaHQ |
 | T1685.005 | [Log Cleared](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=hayabusa-native%3A%3Ac2f690ac-53f8-4745-8cfe-7127dda28c74) | Sigma | Hayabusa (native) |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -334,7 +376,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1543.003 — [ID4688-4697 RDP hijack via service creation](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0003-Persistence/T1543.003-Create%20or%20Modify%20System%20Process-Windows%20Service/ID4688-4697%20RDP%20hijack%20via%20service%20creation.evtx) _(explícito)_
 - T1550.002 — [ImpersonateUser-via local Pass The Hash Sysmon and Security](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Lateral%20Movement/ImpersonateUser-via%20local%20Pass%20The%20Hash%20Sysmon%20and%20Security.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Aquatic Panda estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -351,7 +393,7 @@ Se Aquatic Panda estiver no seu ambiente, estas são as perguntas a fazer aos se
 11. **T1588.001 Malware** — Monitor for contextual data about a malicious payload, such as compilation times, file hashes, as well as watermarks or other identifiable configuration information. Much of this activity will take place outside the visibility of the target organization,… Dados: `Malware Repository` (None), `Malware Repository` (None).
 12. **T1021.004 SSH** — SSH login from a remote system (via sshd), followed by user context execution of suspicious binaries or privilege escalation behavior. Dados: `auditd:EXECVE` (EXECVE), `linux:syslog` (None), `NSM:Flow` (TCP port 22 traffic).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -362,12 +404,12 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G0143](https://attack.mitre.org/groups/G0143/)
 
-## 11. Bibliografia (2 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (2 fontes citadas pelo ATT&CK)
 
 - [CrowdStrike AQUATIC PANDA December 2021](https://www.crowdstrike.com/blog/overwatch-exposes-aquatic-panda-in-possession-of-log-4-shell-exploit-tools/) — Wiley, B. et al. (2021, December 29). OverWatch Exposes AQUATIC PANDA in Possession of Log4Shell Exploit Tools During Hands-on Intrusion Attempt. Retrieved January 18, 2022.
 - [Crowdstrike HuntReport 2022](https://go.crowdstrike.com/rs/281-OBQ-266/images/2022OverWatchThreatHuntingReport.pdf) — CrowdStrike. (2023). 2022 Falcon OverWatch Threat Hunting Report. Retrieved May 20, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -375,4 +417,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

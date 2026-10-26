@@ -1,8 +1,9 @@
 # Contagious Interview (G1052) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1052) · [ATT&CK](https://attack.mitre.org/groups/G1052/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1052) · [ATT&CK](https://attack.mitre.org/groups/G1052/)
 
 **Também conhecido como:** DeceptiveDevelopment, Gwisin Gang, Tenacious Pungsan, DEV#POPPER, PurpleBravo, TAG-121  
+**Origem atribuída:** Coreia do Norte · **Motivação:** espionagem, financeiro · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2025-10-19, atualizado em 2026-07-31 · referências de 2023 a 2025
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 4 malware e 0 ferramentas (ex.: InvisibleFerret, BeaverTail, HexEval Loader, XORIndex Loader).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 87% das técnicas têm ao menos uma regra no catálogo; **7 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Coreia do Norte**, motivação espionagem, financeiro.
+- **Onde a cobertura está:** Windows (32 técnicas com regra), Linux (31 técnicas com regra), EDR / XDR (29 técnicas com regra), E-mail (25 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1204.005 Malicious Library, T1546.004 Unix Shell Configuration Modification, T1547.013 XDG Autostart Entries, T1543.001 Launch Agent, T1555.001 Keychain.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Coreia do Norte |
+| Motivação | espionagem, financeiro |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1052 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** WageMole, Famous Chollima, UNC5267, Nickel Tapestry, Storm-1877, Void Dokkaebi, WaterPlum, Nickel Tapestry/Nickel Alley, APT-Q-1, CL-STA-0237/CL-STA-0240/CL-STA-0241
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -147,7 +172,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1657](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1657) Financial Theft | Contagious Interview has stolen cryptocurrency wallet credentials and credit card information utilizing BeaverTail and InvisibleFerret malware. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -164,7 +189,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1593.001 Social Media | 2 | 3.80 |
 | T1587 Develop Capabilities | 3 | 3.58 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -173,11 +198,11 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [HexEval Loader](https://attack.mitre.org/software/S1249/) | malware | 12 |  |
 | [XORIndex Loader](https://attack.mitre.org/software/S1248/) | malware | 12 |  |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **47 de 54 técnicas (87%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -190,6 +215,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1683.001 Written Content** — Resource Development
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 32 |
+| Linux | 31 |
+| EDR / XDR | 29 |
+| E-mail | 25 |
+| Outros / genérico | 25 |
+| macOS | 24 |
+| Servidores web & aplicações | 21 |
+| DevOps & supply chain | 20 |
+| AWS | 20 |
+| Firewall & perímetro | 19 |
+| DNS | 19 |
+| IA, LLMs & agentes | 18 |
 
 ### Regras recomendadas por técnica
 
@@ -289,7 +333,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685 | [Windows Defender Configuration Changes](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A801bd44f-ceed-4eb6-887c-11544633c0aa) | Sigma | SigmaHQ |
 | T1685 | [Windows Defender Virus Scanning Feature Disabled](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A686c0b4b-9dd3-4847-9077-d6c1bbe36fcb) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -344,7 +388,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1685 — [ID1-SYSMON driver unload (FilterManager)](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.001-Impair%20Defenses-Disable%20or%20Modify%20tool/ID1-SYSMON%20driver%20unload%20%28FilterManager%29.evtx) _(explícito)_
 - T1685 — [ID13-Defender service configuration disabled](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.001-Impair%20Defenses-Disable%20or%20Modify%20tool/ID13-Defender%20service%20configuration%20disabled.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Contagious Interview estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -361,7 +405,7 @@ Se Contagious Interview estiver no seu ambiente, estas são as perguntas a fazer
 11. **T1567 Exfiltration Over Web Service** — Processes that normally do not initiate network communications suddenly making outbound HTTPS connections with high outbound-to-inbound data ratios. Defender view: correlation between process creation logs (e.g., Word, Excel, PowerShell) and subsequent… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:Sysmon` (EventCode=11).
 12. **T1585 Establish Accounts** — Monitor and analyze traffic patterns and packet inspection associated to protocol(s) that do not follow the expected protocol standards and traffic flows (e.g extraneous packets that do not belong to established flows, gratuitous or anomalous traffic… Dados: `Network Traffic` (None), `Persona` (None).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -372,7 +416,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1052](https://attack.mitre.org/groups/G1052/)
 
-## 11. Bibliografia (17 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (17 fontes citadas pelo ATT&CK)
 
 - [Datadog Contagious Interview Tenacious Pungsan October 2024](https://securitylabs.datadoghq.com/articles/tenacious-pungsan-dprk-threat-actor-contagious-interview/) — Ian Kretz, Sebastian Obregoso, Datadog Security Research Team. (2024, October 24). Tenacious Pungsan: A DPRK threat actor linked to Contagious Interview. Retrieved October 20, 2025.
 - [dtex DPRK 2025 structure ITworkers](https://reports.dtexsystems.com/DTEX-Exposing+DPRK+Cyber+Syndicate+and+Hidden+IT+Workforce.pdf) — Michael “Barni” Barnhart, DTEX, and Anonymous SMEs. (2025, May 14). Exposing DPRK's Cyber Syndicate and Hidden IT Workforce. Retrieved September 3, 2025.
@@ -392,7 +436,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Validin Contagious Interview North Korea ClickFix January 2025](https://www.validin.com/blog/inoculating_contagious_interview_with_validin/) — Efstratios Lontzetidis. (2025, January 16). Lazarus APT: Techniques for Hunting Contagious Interview. Retrieved October 20, 2025.
 - [Zscaler ContagiousInterview BeaverTail InvisibleFerret November 2024](https://www.zscaler.com/blogs/security-research/pyongyang-your-payroll-rise-north-korean-remote-workers-west) — Seongsu Park. (2024, November 4). From Pyongyang to Your Payroll: The Rise of North Korean Remote Workers in the West. Retrieved October 17, 2025.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -400,4 +444,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

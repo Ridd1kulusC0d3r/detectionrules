@@ -1,8 +1,9 @@
 # Inception (G0100) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0100) · [ATT&CK](https://attack.mitre.org/groups/G0100/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0100) · [ATT&CK](https://attack.mitre.org/groups/G0100/)
 
 **Também conhecido como:** Inception Framework, Cloud Atlas  
+**Origem atribuída:** Rússia · **Motivação:** espionagem · **Setores-alvo:** Governo, Setor privado (genérico)  
 **Registro no ATT&CK:** criado em 2020-05-08, atualizado em 2026-07-31 · referências de 2014 a 2019
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 2 malware e 1 ferramentas (ex.: PowerShower, LaZagne, VBShower).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Rússia**, motivação espionagem; setores Governo, Setor privado (genérico); 21 países vítimas citados.
+- **Onde a cobertura está:** Windows (21 técnicas com regra), EDR / XDR (19 técnicas com regra), Linux (17 técnicas com regra), macOS (16 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1221 Template Injection, T1218.010 Regsvr32, T1518 Software Discovery, T1069.002 Domain Groups, T1090.003 Multi-hop Proxy.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Rússia |
+| Motivação | espionagem |
+| Setores-alvo | Governo, Setor privado (genérico) |
+| Vítimas citadas | Afghanistan, Armenia, Azerbaijan, Belarus, Belgium, Czech Republic, Greece, India, Iran, Italy, Kazakhstan, Kenya, Malaysia, Russia, South Africa, Suriname, Turkmenistan, Ukraine, United Kingdom, United States, Vietnam |
+| Alvos (planilha) | This threat actor targets governments and diplomatic organizations for espionage purposes. Suspected Operator in Ukraine working for Russia or its allies. |
+| Operações conhecidas | Red October, Cloud Atlas |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0100 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Blue Odin, Clean Ursa, OXYGEN, ATK116, Hive0097
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -96,7 +121,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1102](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1102) Web Service | Inception has incorporated at least five different cloud service providers into their C2 infrastructure including CloudMe. | 98 | — | — |
 | [T1573.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1573.001) Symmetric Cryptography | Inception has encrypted network communications with AES. | 5 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -113,7 +138,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1555.003 Credentials from Web Browsers | 23 | 1.97 |
 | T1027.013 Encrypted/Encoded File | 39 | 1.47 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -121,13 +146,32 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [LaZagne](https://attack.mitre.org/software/S0349/) | ferramenta | 10 |  |
 | [VBShower](https://attack.mitre.org/software/S0442/) | malware | 5 |  |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **22 de 22 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 21 |
+| EDR / XDR | 19 |
+| Linux | 17 |
+| macOS | 16 |
+| Servidores web & aplicações | 16 |
+| Outros / genérico | 16 |
+| Firewall & perímetro | 15 |
+| Microsoft 365 | 14 |
+| Proxy / SWG | 13 |
+| E-mail | 13 |
+| AWS | 12 |
+| Integridade, conformidade & vulnerabilidade | 12 |
 
 ### Regras recomendadas por técnica
 
@@ -180,7 +224,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1588.002 | [Hacktool Execution - Imphash](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A24e3e58a-646b-4b50-adef-02ef935b9fc8) | Sigma | SigmaHQ |
 | T1588.002 | [Renamed SysInternals DebugView Execution](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Acd764533-2e07-40d6-a718-cfeec7f2da7f) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -235,7 +279,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1555.003 — [CA_4624_4625_LogonType2_LogonProc_chrome](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/CA_4624_4625_LogonType2_LogonProc_chrome.evtx) _(inferido)_
 - T1555.003 — [CA_chrome_firefox_opera_4663](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/CA_chrome_firefox_opera_4663.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Inception estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -252,7 +296,7 @@ Se Inception estiver no seu ambiente, estas são as perguntas a fazer aos seus d
 11. **T1057 Process Discovery** — Identifies adversary behavior that launches commands or invokes APIs to enumerate active processes (e.g., tasklist.exe, Get-Process, or CreateToolhelp32Snapshot). Detects execution combined with parent process lineage, network session context, or remote… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=10).
 12. **T1203 Exploitation for Client Execution** — Cause→effect chain: (1) A client app (browser, Office, PDF/Flash/reader) experiences a crash/abnormal exit or loads from an unusual location, then (2) drops or modifies a file in user-writable paths, and/or (3) spawns an unexpected child (e.g.,… Dados: `WinEventLog:Application` (EventCode=1000), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -272,14 +316,22 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2018 — [Inception Attackers Target Europe with Year-old Office Vulnerability](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2018/2018.11.05.Inception_Attackers_Target_Europe/Inception%20Attackers%20Target%20Europe%20with%20Year-old%20Office%20Vulnerability.pdf) _(via “Inception”)_
 - 2019 — [Recent Cloud Atlas activity _ Securelist](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2019/2019.08.12.Cloud_Atlas_activity/Recent%20Cloud%20Atlas%20activity%20_%20Securelist.pdf) _(via “Cloud Atlas”)_
 
-## 11. Bibliografia (4 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (5 no total, mais recentes primeiro):
+
+- 2022 — [Cloud Atlas targets entities in Russia and Belarus amid the ongoing war in Ukraine](https://app.box.com/s/b20i9u35k3os7h3dlt38emxzmymbb38j) _(checkpoint)_
+- 2019 — [Recent Cloud Atlas activity](https://app.box.com/s/i3x6bxmcche1jwn0j91tll3ln3shzyk6) _(Kaspersky)_
+- 2015 — [Reversing The Inception APT Malware](https://app.box.com/s/sctzfr6aoagpzb9aoajcodvn6we7e055) _(Bluecoat)_
+- 2014 — [Cloud Atlas: Redoctober Apt Is Back In Style](https://app.box.com/s/pyjpzua55mu6j1my5jegdiiovmpx35yi) _(Kaspersky)_
+- 2014 — [The Inception Framework: Cloud-Hosted Apt](https://app.box.com/s/vny8b4ubmxo421amxtk8tvk4b9x1vz52) _(Bluecoat)_
+
+## 12. Bibliografia (4 fontes citadas pelo ATT&CK)
 
 - [Kaspersky Cloud Atlas August 2019](https://securelist.com/recent-cloud-atlas-activity/92016/) — GReAT. (2019, August 12). Recent Cloud Atlas activity. Retrieved May 8, 2020.
 - [Kaspersky Cloud Atlas December 2014](https://securelist.com/cloud-atlas-redoctober-apt-is-back-in-style/68083/) — GReAT. (2014, December 10). Cloud Atlas: RedOctober APT is back in style. Retrieved May 8, 2020.
 - [Symantec Inception Framework March 2018](https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/inception-framework-hiding-behind-proxies) — Symantec. (2018, March 14). Inception Framework: Alive and Well, and Hiding Behind Proxies. Retrieved May 8, 2020.
 - [Unit 42 Inception November 2018](https://unit42.paloaltonetworks.com/unit42-inception-attackers-target-europe-year-old-office-vulnerability/) — Lancaster, T. (2018, November 5). Inception Attackers Target Europe with Year-old Office Vulnerability. Retrieved May 8, 2020.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -287,4 +339,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

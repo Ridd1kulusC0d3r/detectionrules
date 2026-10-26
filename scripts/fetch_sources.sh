@@ -45,6 +45,11 @@ noblob(){ [ -d "$2" ] && return; timeout 600 git clone -q --depth 1 --filter=blo
 noblob mdecrevoisier/EVTX-to-MITRE-Attack evtx_mitre &
 noblob sbousseaden/EVTX-ATTACK-SAMPLES evtx_samples &
 noblob CyberMonitor/APT_CyberCriminal_Campagin_Collections apt_collections &
+# bases do próprio autor (inteligência de atores, modelagem de ameaças TCEM, IA/LLM)
+mkdir -p ext
+clone Ridd1kulusC0d3r/apt4all ext/apt4all &
+clone Ridd1kulusC0d3r/LLmInjection ext/llminjection &
+clone Ridd1kulusC0d3r/Cyber-Threat-Context-Modeling ext/tcem &
 wait
 sparse wazuh/wazuh wazuh_wazuh --branch v4.9.2 '/ruleset/rules/*' '/ruleset/decoders/*' &
 sparse Azure/Azure-Sentinel azure_sentinel '/Detections/**/*.yaml' '/Hunting Queries/**/*.yaml' '/Solutions/*/Analytic Rules/*.yaml' '/Solutions/*/Hunting Queries/*.yaml' &

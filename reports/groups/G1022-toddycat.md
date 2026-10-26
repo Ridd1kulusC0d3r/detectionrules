@@ -1,8 +1,9 @@
 # ToddyCat (G1022) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1022) · [ATT&CK](https://attack.mitre.org/groups/G1022/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1022) · [ATT&CK](https://attack.mitre.org/groups/G1022/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** China · **Motivação:** indefinido · **Setores-alvo:** Governo, Defesa e militar  
 **Registro no ATT&CK:** criado em 2024-01-03, atualizado em 2026-07-31 · referências de 2022 a 2023
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 6 malware e 3 ferramentas (ex.: Cobalt Strike, Ninja, Samurai, Net, China Chopper).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 96% das técnicas têm ao menos uma regra no catálogo; **1 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação indefinido; setores Governo, Defesa e militar; 14 países vítimas citados.
+- **Onde a cobertura está:** Windows (23 técnicas com regra), EDR / XDR (23 técnicas com regra), Outros / genérico (20 técnicas com regra), Linux (18 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1680 Local Storage Discovery, T1074.002 Remote Data Staging, T1069.002 Domain Groups, T1095 Non-Application Layer Protocol, T1686 Disable or Modify System Firewall.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | indefinido |
+| Setores-alvo | Governo, Defesa e militar |
+| Vítimas citadas | Afghanistan, India, Indonesia, Iran, Kyrgyzstan, Malaysia, Pakistan, Russia, Slovakia, Taiwan, Thailand, United Kingdom, Uzbekistan, Vietnam |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | Mid |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1022 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Websiic, Storm-0247
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -108,7 +133,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1567.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1567.002) Exfiltration to Cloud Storage | ToddyCat has used a DropBox uploader to exfiltrate stolen files. | 85 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -125,7 +150,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1106 Native API | 20 | 2.10 |
 | T1567.002 Exfiltration to Cloud Storage | 24 | 1.93 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -139,17 +164,36 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [netstat](https://attack.mitre.org/software/S0104/) | ferramenta | 1 |  |
 | [Ping](https://attack.mitre.org/software/S0097/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **24 de 25 técnicas (96%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
 ### Técnicas sem regra pública (prioridade para engenharia de detecção)
 
 - **T1680 Local Storage Discovery** — Discovery. Fonte de log sugerida pelo MITRE: `WinEventLog:Sysmon` EventCode=1; `auditd:SYSCALL` execve call with argv matching known disk enumeration commands (lsblk, parted, fdisk); `macos:unifiedlog` process launch of diskutil or system_profil
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 23 |
+| EDR / XDR | 23 |
+| Outros / genérico | 20 |
+| Linux | 18 |
+| macOS | 18 |
+| Active Directory | 15 |
+| AWS | 15 |
+| Servidores web & aplicações | 14 |
+| DNS | 13 |
+| Firewall & perímetro | 12 |
+| Proxy / SWG | 12 |
+| Azure (recursos) | 12 |
 
 ### Regras recomendadas por técnica
 
@@ -206,7 +250,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1686 | [Disable System Firewall](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A53059bc0-1472-438b-956a-7508a94a91f0) | Sigma | SigmaHQ |
 | T1686 | [Netsh RDP Port Opening](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A01aeb693-138d-49d2-9403-c4f52d7d3d62) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -270,7 +314,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1686 — [ID2003-4950-Firewall disabled](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.004-Impair%20Defenses-Disable%20or%20Modify%20System%20Firewall/ID2003-4950-Firewall%20disabled.evtx) _(explícito)_
 - T1686 — [ID2004-Any any firewall rule created](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.004-Impair%20Defenses-Disable%20or%20Modify%20System%20Firewall/ID2004-Any%20any%20firewall%20rule%20created.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se ToddyCat estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -287,7 +331,7 @@ Se ToddyCat estiver no seu ambiente, estas são as perguntas a fazer aos seus da
 11. **T1518.001 Security Software Discovery** — Adversary executes commands to enumerate installed antivirus, EDR, or firewall agents using WMI, registry queries, and built-in tools (e.g., tasklist, netsh, sc query). Correlated with elevated process privileges or scripting engine usage. Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=7).
 12. **T1021.002 SMB/Windows Admin Shares** — An SMB-based remote file share access followed by lateral movement actions such as remote service creation, task scheduling, or suspicious process execution on the target host using ADMIN$ or C$ shares. Dados: `WinEventLog:Security` (EventCode=4624, 4648), `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:Sysmon` (EventCode=1).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -302,12 +346,12 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 
 - 2022 — [ToddyCat_ Unveiling an unknown APT actor attacking high-profile entities in Europe and Asia _ Securelist](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.06.21.ToddyCat_APT/ToddyCat_%20Unveiling%20an%20unknown%20APT%20actor%20attacking%20high-profile%20entities%20in%20Europe%20and%20Asia%20_%20Securelist.pdf) _(via “ToddyCat”)_
 
-## 11. Bibliografia (2 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (2 fontes citadas pelo ATT&CK)
 
 - [Kaspersky ToddyCat Check Logs October 2023](https://securelist.com/toddycat-keep-calm-and-check-logs/110696/) — Dedola, G. et al. (2023, October 12). ToddyCat: Keep calm and check logs. Retrieved January 3, 2024.
 - [Kaspersky ToddyCat June 2022](https://securelist.com/toddycat/106799/) — Dedola, G. (2022, June 21). APT ToddyCat. Retrieved January 3, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -315,4 +359,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

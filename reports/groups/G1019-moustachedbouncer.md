@@ -1,8 +1,9 @@
 # MoustachedBouncer (G1019) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1019) · [ATT&CK](https://attack.mitre.org/groups/G1019/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1019) · [ATT&CK](https://attack.mitre.org/groups/G1019/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** Bielorrússia · **Motivação:** espionagem · **Setores-alvo:** Governo  
 **Registro no ATT&CK:** criado em 2023-09-25, atualizado em 2026-07-31 · referências de 2023 a 2023
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 3 malware e 0 ferramentas (ex.: NightClub, SharpDisco, Disco).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Bielorrússia**, motivação espionagem; setores Governo.
+- **Onde a cobertura está:** Windows (7 técnicas com regra), Linux (6 técnicas com regra), Outros / genérico (6 técnicas com regra), EDR / XDR (6 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1659 Content Injection, T1074.002 Remote Data Staging, T1113 Screen Capture, T1090 Proxy, T1068 Exploitation for Privilege Escalation.
 
 ## 2. Quem é
@@ -19,7 +22,27 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Bielorrússia |
+| Motivação | espionagem |
+| Setores-alvo | Governo |
+| Vítimas citadas | Eastern Europe, Europe, Northeast Africa, South Asia |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1019 |
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -62,7 +85,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1090](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1090) Proxy | MoustachedBouncer has used a reverse proxy tool similar to the GitHub repository revsocks. | 162 | — | 1 |
 | [T1659](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1659) Content Injection | MoustachedBouncer has injected content into DNS, HTTP, and SMB replies to redirect specifically-targeted victims to a fake Windows Update page to download malware. | 4 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -77,7 +100,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1059.007 JavaScript | 29 | 1.75 |
 | T1059.001 PowerShell | 85 | 0.72 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -85,13 +108,32 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [SharpDisco](https://attack.mitre.org/software/S1089/) | malware | 11 |  |
 | [Disco](https://attack.mitre.org/software/S1088/) | malware | 5 |  |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **8 de 8 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 7 |
+| Linux | 6 |
+| Outros / genérico | 6 |
+| EDR / XDR | 6 |
+| Integridade, conformidade & vulnerabilidade | 5 |
+| macOS | 4 |
+| AWS | 4 |
+| Firewall & perímetro | 4 |
+| IDS / NSM / NDR | 4 |
+| DNS | 4 |
+| Proxy / SWG | 4 |
+| VPN & acesso remoto | 4 |
 
 ### Regras recomendadas por técnica
 
@@ -116,7 +158,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1659 | [Dynatrace - Problem detection](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=microsoft-sentinel-analytic-rules%3A%3A415978ff-074e-4203-824a-b06153d77bf7) | Sentinel KQL | Microsoft Sentinel (Analytic Rules) |
 | T1659 | [Dynatrace Application Security - Non-critical runtime vulnerability detection](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=microsoft-sentinel-analytic-rules%3A%3Aff0af873-a2f2-4233-8412-0ef4e00b0156) | Sentinel KQL | Microsoft Sentinel (Analytic Rules) |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -141,7 +183,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1068 — [ID4673-Privilege SeMachineAccountPrivilege called](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0004-Privilege%20Escalation/T1068-Exploitation%20for%20Privilege%20Escalation/ID4673-Privilege%20SeMachineAccountPrivilege%20called.evtx) _(explícito)_
 - T1090 — [ID5600-proxy configuration changed](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0011-Command%20and%20Control/T1090-Proxy/ID5600-proxy%20configuration%20changed.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se MoustachedBouncer estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -154,7 +196,7 @@ Se MoustachedBouncer estiver no seu ambiente, estas são as perguntas a fazer ao
 7. **T1059.007 JavaScript** — Detects JavaScript execution through WSH (wscript.exe, cscript.exe) or HTA (mshta.exe), particularly when spawned from Office macros, web browsers, or abnormal user paths. Correlates script execution with outbound network activity or system modification. Dados: `WinEventLog:Sysmon` (EventCode=1), `m365:defender` (ScriptBlockLogging + AMSI), `WinEventLog:Sysmon` (EventCode=7).
 8. **T1059.001 PowerShell** — Detects behavioral chains where PowerShell is launched with encoded commands, unusual parent processes, or suspicious modules loaded, potentially followed by network connections or child process spawning. Supports detection of both direct (powershell.exe) and… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:PowerShell` (EventCode=4103, 4104, 4105, 4106), `WinEventLog:PowerShell` (EventCode=400, 403).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -165,11 +207,11 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1019](https://attack.mitre.org/groups/G1019/)
 
-## 11. Bibliografia (1 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (1 fontes citadas pelo ATT&CK)
 
 - [MoustachedBouncer ESET August 2023](https://www.welivesecurity.com/en/eset-research/moustachedbouncer-espionage-against-foreign-diplomats-in-belarus/) — Faou, M. (2023, August 10). MoustachedBouncer: Espionage against foreign diplomats in Belarus. Retrieved September 25, 2023.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -177,4 +219,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

@@ -1,8 +1,9 @@
 # PLATINUM (G0068) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0068) · [ATT&CK](https://attack.mitre.org/groups/G0068/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0068) · [ATT&CK](https://attack.mitre.org/groups/G0068/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** SG · **Motivação:** indefinido · **Setores-alvo:** Governo, Defesa e militar, Telecomunicações  
 **Registro no ATT&CK:** criado em 2018-04-18, atualizado em 2026-07-31 · referências de 2016 a 2018
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 3 malware e 0 ferramentas (ex.: JPIN, Dipsind, adbupd).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **SG**, motivação indefinido; setores Governo, Defesa e militar, Telecomunicações.
+- **Onde a cobertura está:** Windows (11 técnicas com regra), Servidores web & aplicações (10 técnicas com regra), Outros / genérico (10 técnicas com regra), EDR / XDR (9 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1056.004 Credential API Hooking, T1095 Non-Application Layer Protocol, T1055 Process Injection, T1036 Masquerading, T1068 Exploitation for Privilege Escalation.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | SG |
+| Motivação | indefinido |
+| Setores-alvo | Governo, Defesa e militar, Telecomunicações |
+| Vítimas citadas | — |
+| Alvos (planilha) | primarily targets governmental organizations, defense institutes, intelligence agencies, and telecommunication providers in South and Southeast Asia |
+| Operações conhecidas | Hellsing |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0068 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** TwoForOne, DeadlyKiss, ATK33, APT-C-30
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -72,7 +97,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1095](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1095) Non-Application Layer Protocol | PLATINUM has used the Intel® Active Management Technology (AMT) Serial-over-LAN (SOL) channel for command and control. | 72 | 5 | — |
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | PLATINUM has transferred files using the Intel® Active Management Technology (AMT) Serial-over-LAN (SOL) channel. | 644 | 39 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -89,7 +114,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1566.001 Spearphishing Attachment | 78 | 0.81 |
 | T1204.002 Malicious File | 86 | 0.71 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -97,13 +122,34 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Dipsind](https://attack.mitre.org/software/S0200/) | malware | 7 |  |
 | [adbupd](https://attack.mitre.org/software/S0202/) | malware | 3 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Hotpatching techniques, CVE-2015-2545, AMT Feature FW evasion
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **11 de 11 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 11 |
+| Servidores web & aplicações | 10 |
+| Outros / genérico | 10 |
+| EDR / XDR | 9 |
+| Proxy / SWG | 9 |
+| Firewall & perímetro | 8 |
+| IDS / NSM / NDR | 8 |
+| Linux | 8 |
+| DNS | 7 |
+| IA, LLMs & agentes | 7 |
+| macOS | 7 |
+| Microsoft 365 | 7 |
 
 ### Regras recomendadas por técnica
 
@@ -134,7 +180,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1566.001 | [Ursnif Malware C2 URL Pattern](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A932ac737-33ca-4afd-9869-0d48b391fcc9) | Sigma | SigmaHQ |
 | T1566.001 | [Droppers Exploiting CVE-2017-11882](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A678eb5f4-8597-4be6-8be7-905e4234b53a) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -171,7 +217,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1068 — [ID12-13 Mini_Plasma_PoC_AbortHydration_ArbitraryRegKey_EoP](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0004-Privilege%20Escalation/T1068-Exploitation%20for%20Privilege%20Escalation/ID12-13%20Mini_Plasma_PoC_AbortHydration_ArbitraryRegKey_EoP.evtx) _(explícito)_
 - T1068 — [ID4673-Privilege SeMachineAccountPrivilege called](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0004-Privilege%20Escalation/T1068-Exploitation%20for%20Privilege%20Escalation/ID4673-Privilege%20SeMachineAccountPrivilege%20called.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se PLATINUM estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -187,7 +233,7 @@ Se PLATINUM estiver no seu ambiente, estas são as perguntas a fazer aos seus da
 10. **T1204.002 Malicious File** — User opens a file delivered by email, web, chat, or share. The handler application (Word/PDF reader/archiver) creates a file in user-controlled paths (Downloads, Temp, Desktop) and then spawns a new or unusual child process (e.g., powershell.exe, wscript.exe,… Dados: `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=15).
 11. **T1105 Ingress Tool Transfer** — Unusual or uncommon processes initiate network connections to external destinations followed by file creation (tools downloaded). Dados: `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -203,13 +249,18 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2016 — [Platinum feature article - Targeted attacks in South and Southeast Asia April 2016](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2016/2016.04.12.PLATINUM_Targeted_attacks_in_South_and_Southeast_Asia/Platinum%20feature%20article%20-%20Targeted%20attacks%20in%20South%20and%20Southeast%20Asia%20April%202016.pdf) _(via “PLATINUM”)_
 - 2019 — [Titanium_ the Platinum group strikes again](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2019/2019.11.08_Titanium_Action_Platinum_group/Titanium_%20the%20Platinum%20group%20strikes%20again.pdf) _(via “PLATINUM”)_
 
-## 11. Bibliografia (3 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (2 no total, mais recentes primeiro):
+
+- 2017 — [PLATINUM continues to evolve, find ways to maintain invisibility](https://app.box.com/s/iryvk6gcqx4qyzfn245ruoo7syyex2yv) _(Microsoft)_
+- 2016 — [PLATINUM Targeted attacks in South and Southeast Asia](https://app.box.com/s/ursk78m124t1lagjnu2862kumrnoshcp) _(Microsoft)_
+
+## 12. Bibliografia (3 fontes citadas pelo ATT&CK)
 
 - [Microsoft PLATINUM April 2016](https://download.microsoft.com/download/2/2/5/225BFE3E-E1DE-4F5B-A77B-71200928D209/Platinum%20feature%20article%20-%20Targeted%20attacks%20in%20South%20and%20Southeast%20Asia%20April%202016.pdf) — Windows Defender Advanced Threat Hunting Team. (2016, April 29). PLATINUM: Targeted attacks in South and Southeast Asia. Retrieved February 15, 2018.
 - [Microsoft PLATINUM June 2017](https://cloudblogs.microsoft.com/microsoftsecure/2017/06/07/platinum-continues-to-evolve-find-ways-to-maintain-invisibility/?source=mmpc) — Kaplan, D, et al. (2017, June 7). PLATINUM continues to evolve, find ways to maintain invisibility. Retrieved February 19, 2018.
 - [Twitter ItsReallyNick Platinum Masquerade](https://x.com/ItsReallyNick/status/1055321868641689600) — Carr, N.. (2018, October 25). Nick Carr Status Update. Retrieved September 12, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -217,4 +268,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

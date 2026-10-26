@@ -1,8 +1,9 @@
 # Ke3chang (G0004) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0004) · [ATT&CK](https://attack.mitre.org/groups/G0004/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0004) · [ATT&CK](https://attack.mitre.org/groups/G0004/)
 
 **Também conhecido como:** APT15, Mirage, Vixen Panda, GREF, Playful Dragon, RoyalAPT, NICKEL, Nylon Typhoon  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** Governo  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2014 a 2024
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 3 malware e 8 ferramentas (ex.: Okrum, Mimikatz, Net, Neoichor, MirageFox).
 - **Campanhas atribuídas:** 1 (SPACEHOP Activity).
 - **Cobertura de detecção pública:** 98% das técnicas têm ao menos uma regra no catálogo; **1 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem; setores Governo; 3 países vítimas citados.
+- **Onde a cobertura está:** Windows (45 técnicas com regra), EDR / XDR (40 técnicas com regra), Outros / genérico (36 técnicas com regra), Linux (34 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1558.001 Golden Ticket, T1583.005 Botnet, T1036.002 Right-to-Left Override, T1614.001 System Language Discovery, T1020 Automated Exfiltration.
 
 ## 2. Quem é
@@ -19,7 +22,36 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | Governo |
+| Vítimas citadas | European Union, Germany, India, United Kingdom |
+| Alvos (planilha) | PH, VN, TW, US, UK, IT, PL, UN, SG, NATO - Gov, Political party |
+| Operações conhecidas | Umbrella Revolution |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | Vixen Panda |
+| IRL | Ke3Chang |
+| Kaspersky | Playful Dragon |
+| MITRE ATT&CK | G0004 |
+| Mandiant | APT15 |
+| Microsoft | Nylon Typhoon, NICKEL (antigo · old) |
+| Secureworks | GREF |
+| iSight | Social Network Team |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Social Network Team, Mirage Team, Lurid, Metushy, Winnti Umbrella, Playful Taurus, BackdoorDiplomacy, BRONZE PALACE, BRONZE DAVENPORT, BRONZE IDLEWOOD, Red Vulture, RIVER CASTLE, Ke3chang/Playful Dragon/APT25, Vixen Panda/Envoy Panda, Nickel/Nylon Typhoon, Hive0044, Gref/Bronze Palace, Bronze Davenport/Bronze Idlewood/CTG-9246, ATK103, Flea, DigitalRecyclers
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -139,7 +171,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1020](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1020) Automated Exfiltration | Ke3chang has performed frequent and scheduled data exfiltration from compromised networks. | 69 | 2 | — |
 | [T1041](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1041) Exfiltration Over C2 Channel | Ke3chang transferred compressed and encrypted RAR files containing exfiltration through the established backdoor command and control channel during operations. | 135 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -156,7 +188,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1069.002 Domain Groups | 12 | 2.55 |
 | T1114.002 Remote Email Collection | 12 | 2.55 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -172,19 +204,40 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Systeminfo](https://attack.mitre.org/software/S0096/) | ferramenta | 1 |  |
 | [Ping](https://attack.mitre.org/software/S0097/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Mirage, (Nvidia program side-loading) PlugX, XSLCmd, TidePool, BS2005, RoyalCli, iWebRat, Russian-language decoy document, ENFAL, ENDCMD, QUICKHEAL, SOGU, CYFREE, MIRAGE, NOISEMAKER, SWALLOWFLY, Turian Backdoor
+
+## 7. Campanhas
 
 | Campanha | Período | Resumo (EN) |
 |---|---|---|
 | [SPACEHOP Activity](https://attack.mitre.org/campaigns/C0052/) | 2019-01 → 2024-05 | SPACEHOP Activity is conducted through commercially leased Virtual Private Servers (VPS), otherwise known as provisioned Operational Relay Box (ORB) networks. The network leveraged for SPACEHOP Activity enabled China-nex |
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **45 de 46 técnicas (98%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
 ### Técnicas sem regra pública (prioridade para engenharia de detecção)
 
 - **T1583.005 Botnet** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 45 |
+| EDR / XDR | 40 |
+| Outros / genérico | 36 |
+| Linux | 34 |
+| Servidores web & aplicações | 30 |
+| Active Directory | 29 |
+| IDS / NSM / NDR | 28 |
+| DNS | 28 |
+| macOS | 27 |
+| Firewall & perímetro | 25 |
+| IA, LLMs & agentes | 24 |
+| Proxy / SWG | 21 |
 
 ### Regras recomendadas por técnica
 
@@ -283,7 +336,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1614.001 | [Console CodePage Lookup Via CHCP](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A7090adee-82e2-4269-bd59-80691e7c6338) | Sigma | SigmaHQ |
 | T1614.001 | [CHCP CodePage Locale Lookup](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A7090adee-82e2-4269-bd59-80691e7c6338) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -392,7 +445,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1569.002 — [ID5145-remote service creation over SMB](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0002-Execution/T1569.002-Service%20execution/ID5145-remote%20service%20creation%20over%20SMB.evtx) _(explícito)_
 - T1569.002 — [ID5145-service massive remote creation via named pipe - Tchopper](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0002-Execution/T1569.002-Service%20execution/ID5145-service%20massive%20remote%20creation%20via%20named%20pipe%20-%20Tchopper.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Ke3chang estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -409,7 +462,7 @@ Se Ke3chang estiver no seu ambiente, estas são as perguntas a fazer aos seus da
 11. **T1003.002 Security Account Manager** — An adversary running with SYSTEM-level privileges executes commands or accesses registry keys to dump the SAM hive or directly reads sensitive local files from the config directory. This behavior often involves sequential access to HKLM\SAM, HKLM\SYSTEM, and… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=13, 14), `WinEventLog:Sysmon` (EventCode=11).
 12. **T1078.004 Cloud Accounts** — Detects anomalous authentication activity such as sign-ins from impossible geolocations or legacy protocols from high-privileged accounts. Dados: `azure:signinlogs` (Sign-in activity), `saas:okta` (user.authentication.sso).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -430,7 +483,16 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2018 — [miragefox-apt15-resurfaces-with-new-tools-based-on-old-ones](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2018/2018.06.14.MirageFox_APT15/miragefox-apt15-resurfaces-with-new-tools-based-on-old-ones.pdf) _(via “APT15”)_
 - 2020 — [Intezer - The Evolution of APT15's Codebase 2020](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.05.21.APT15_Codebase_2020/Intezer%20-%20The%20Evolution%20of%20APT15%27s%20Codebase%202020.pdf) _(via “APT15”)_
 
-## 11. Bibliografia (8 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (6 no total, mais recentes primeiro):
+
+- 2018 — [APT15 is alive and strong: An analysis of RoyalCli and RoyalDNS](https://app.box.com/s/4qi7z4cclbg0746pa1x3qfpxtn6zamfd) _(NCC Group)_
+- 2016 — [Operation Ke3chang Resurfaces With New TidePool Malware](https://app.box.com/s/vwuocstge7xud74xhnw9s98h2m812pyr) _(Palo Alto)_
+- 2015 — [Cmstar Downloader: Lurid And Enfal's New Cousin](https://app.box.com/s/67esnb1ppzsgyo3mm5es3zs8khtf3rpe) _(Palo Alto)_
+- 2013 — [Operation Ke3Chang Targeted Attacks Against Ministries Of Foreign Affairs](https://app.box.com/s/8w1uu9e2l7jwq40gtea7xem6ezg79ffu) _(FireEye)_
+- 2012 — [The Mirage Campaign](https://app.box.com/s/h9vlkkgq0yaat56muq6nei95nchysbay) _(Dell Secureworks)_
+- 2011 — [The Lurid Downloader](https://app.box.com/s/7s9bvquu64vafpi14t8p6w2t6hwls1zi) _(Trend Micro)_
+
+## 12. Bibliografia (8 fontes citadas pelo ATT&CK)
 
 - [APT15 Intezer June 2018](https://web.archive.org/web/20180615122133/https://www.intezer.com/miragefox-apt15-resurfaces-with-new-tools-based-on-old-ones/) — Rosenberg, J. (2018, June 14). MirageFox: APT15 Resurfaces With New Tools Based On Old Ones. Retrieved September 21, 2018.
 - [ESET Okrum July 2019](https://www.welivesecurity.com/wp-content/uploads/2019/07/ESET_Okrum_and_Ketrican.pdf) — Hromcova, Z. (2019, July). OKRUM AND KETRICAN: AN OVERVIEW OF RECENT KE3CHANG GROUP ACTIVITY. Retrieved May 6, 2020.
@@ -441,7 +503,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [ORB Mandiant](https://cloud.google.com/blog/topics/threat-intelligence/china-nexus-espionage-orb-networks) — Raggi, Michael. (2024, May 22). IOC Extinction? China-Nexus Cyber Espionage Actors Use ORB Networks to Raise Cost on Defenders. Retrieved July 8, 2024.
 - [Villeneuve et al 2014](https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/wp-operation-ke3chang.pdf) — Villeneuve, N., Bennett, J. T., Moran, N., Haq, T., Scott, M., & Geers, K. (2014). OPERATION “KE3CHANG”: Targeted Attacks Against Ministries of Foreign Affairs. Retrieved November 12, 2014.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -449,4 +511,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

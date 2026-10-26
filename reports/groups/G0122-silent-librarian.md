@@ -1,8 +1,9 @@
 # Silent Librarian (G0122) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0122) · [ATT&CK](https://attack.mitre.org/groups/G0122/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0122) · [ATT&CK](https://attack.mitre.org/groups/G0122/)
 
 **Também conhecido como:** TA407, COBALT DICKENS  
+**Origem atribuída:** Irã · **Motivação:** indefinido · **Setores-alvo:** Educação e pesquisa, Governo  
 **Registro no ATT&CK:** criado em 2021-02-03, atualizado em 2026-07-31 · referências de 2018 a 2020
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 0 malware e 0 ferramentas.
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 69% das técnicas têm ao menos uma regra no catálogo; **4 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Irã**, motivação indefinido; setores Educação e pesquisa, Governo.
+- **Onde a cobertura está:** Windows (7 técnicas com regra), AWS (5 técnicas com regra), Microsoft 365 (5 técnicas com regra), Firewall & perímetro (5 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1589.003 Employee Names, T1114 Email Collection, T1608.005 Link Target, T1114.003 Email Forwarding Rule, T1594 Search Victim-Owned Websites.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Irã |
+| Motivação | indefinido |
+| Setores-alvo | Educação e pesquisa, Governo |
+| Vítimas citadas | — |
+| Alvos (planilha) | 144 universities in the United States, 176 foreign universities in 21 countries, five federal and state government agencies in the United States, 36 private companies in the United States, 11 foreign private companies, and two international non-governmental organizations |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0122 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Mabna Institute, Yellow Nabu, SCHOLAR KITTEN, TA4900, Mabna Institute Group, Dev-0118, ITG22, Academic Serpens
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -79,7 +104,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1114](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1114) Email Collection | Silent Librarian has exfiltrated entire mailboxes from compromised accounts. | 119 | — | — |
 | [T1114.003](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1114.003) Email Forwarding Rule | Silent Librarian has set up auto forwarding rules on compromised e-mail accounts. | 10 | 1 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -96,15 +121,15 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1598.003 Spearphishing Link | 15 | 2.35 |
 | T1585.002 Email Accounts | 20 | 2.10 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 Nenhum software atribuído no ATT&CK.
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **9 de 13 técnicas (69%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -114,6 +139,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1594 Search Victim-Owned Websites** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
 - **T1598.003 Spearphishing Link** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 7 |
+| AWS | 5 |
+| Microsoft 365 | 5 |
+| Firewall & perímetro | 5 |
+| E-mail | 5 |
+| Azure (recursos) | 4 |
+| EDR / XDR | 3 |
+| Active Directory | 3 |
+| Entra ID (Azure AD) | 3 |
+| Outros IdP / PAM | 3 |
+| Google Workspace | 3 |
+| IDS / NSM / NDR | 3 |
 
 ### Regras recomendadas por técnica
 
@@ -138,7 +182,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1589.002 | [AWSCloudTrail - Suspicious AWS CLI Command Execution](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=microsoft-sentinel-analytic-rules%3A%3A8c2dc344-9352-4ca1-8863-b1b7a5e09e59) | Sentinel KQL | Microsoft Sentinel (Analytic Rules) |
 | T1589.003 | [AWSCloudTrail - Suspicious AWS CLI Command Execution](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=microsoft-sentinel-analytic-rules%3A%3A8c2dc344-9352-4ca1-8863-b1b7a5e09e59) | Sentinel KQL | Microsoft Sentinel (Analytic Rules) |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -154,7 +198,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1078 — [ID33205-SQL Server failed login with disabled SA account](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0001-Initial%20access/T1078-Valid%20accounts/ID33205-SQL%20Server%20failed%20login%20with%20disabled%20SA%20account.evtx) _(explícito)_
 - T1110.003 — [kerberos_pwd_spray_4771](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/kerberos_pwd_spray_4771.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Silent Librarian estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -170,7 +214,7 @@ Se Silent Librarian estiver no seu ambiente, estas são as perguntas a fazer aos
 10. **T1078 Valid Accounts** — Detection of compromised or misused valid accounts via anomalous logon patterns, abnormal logon types, and inconsistent geographic or time-based activity across Windows endpoints. Dados: `WinEventLog:Security` (EventCode=4624), `WinEventLog:Security` (EventCode=4776, 4625), `WinEventLog:Sysmon` (EventCode=1).
 11. **T1588.002 Tool** — Monitor for contextual data about a malicious payload, such as compilation times, file hashes, as well as watermarks or other identifiable configuration information. In some cases, malware repositories can also be used to identify features of tool use… Dados: `Malware Repository` (None).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -185,7 +229,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 
 - 2020 — [Silent Librarian APT right on schedule for 20_21 academic year - Malwarebytes Labs _ Malwarebytes Labs](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.10.14.Silent_Librarian_APT/Silent%20Librarian%20APT%20right%20on%20schedule%20for%2020_21%20academic%20year%20-%20Malwarebytes%20Labs%20_%20Malwarebytes%20Labs.pdf) _(via “Silent Librarian”)_
 
-## 11. Bibliografia (6 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (6 fontes citadas pelo ATT&CK)
 
 - [DOJ Iran Indictments March 2018](https://www.justice.gov/usao-sdny/press-release/file/1045781/download) — DOJ. (2018, March 23). U.S. v. Rafatnejad et al . Retrieved February 3, 2021.
 - [Malwarebytes Silent Librarian October 2020](https://blog.malwarebytes.com/malwarebytes-news/2020/10/silent-librarian-apt-phishing-attack/) — Malwarebytes Threat Intelligence Team. (2020, October 14). Silent Librarian APT right on schedule for 20/21 academic year. Retrieved February 3, 2021.
@@ -194,7 +238,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Secureworks COBALT DICKENS August 2018](https://www.secureworks.com/blog/back-to-school-cobalt-dickens-targets-universities) — Counter Threat Unit Research Team. (2018, August 24). Back to School: COBALT DICKENS Targets Universities. Retrieved February 3, 2021.
 - [Secureworks COBALT DICKENS September 2019](https://www.secureworks.com/blog/cobalt-dickens-goes-back-to-school-again) — Counter Threat Unit Research Team. (2019, September 11). COBALT DICKENS Goes Back to School…Again. Retrieved February 3, 2021.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -202,4 +246,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

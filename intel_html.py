@@ -121,8 +121,8 @@ def md_to_html(md, slugger=None):
         else: i += 1
     return "\n".join(out), toc
 
-def page(title, body, desc="", nav_back="", site="", extra_tools=""):
-    back = f'<a href="{nav_back}">← índice dos dossiês</a>' if nav_back else '<span>Detection Rules / dossiês de inteligência</span>'
+def page(title, body, desc="", nav_back="", site="", extra_tools="", back_label="← índice dos dossiês", crumb="Detection Rules / dossiês de inteligência"):
+    back = f'<a href="{nav_back}">{html.escape(back_label)}</a>' if nav_back else f'<span>{html.escape(crumb)}</span>'
     return f"""<!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><link rel="icon" href="{FAVICON}">
@@ -130,5 +130,5 @@ def page(title, body, desc="", nav_back="", site="", extra_tools=""):
 <body><div class="wrap">
 <div class="bar">{back}<span class="tools">{extra_tools}<button type="button" onclick="window.print()">Imprimir / PDF</button><button type="button" onclick="toggleTheme()">Tema</button></span></div>
 <main>{body}</main>
-<footer><span class="nav"><a href="{site}">Detection Rules</a> · </span>Fontes abertas: MITRE ATT&amp;CK® (© The MITRE Corporation, uso com atribuição), Atomic Red Team, EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT &amp; CyberCriminal Campaign Collections. TLP:CLEAR.</footer>
+<footer><span class="nav"><a href="{site}">Detection Rules</a> · </span>Fontes abertas: MITRE ATT&amp;CK® (© The MITRE Corporation, uso com atribuição), Atomic Red Team, EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT &amp; CyberCriminal Campaign Collections, APT4ALL, TCEM, LLmInjection. TLP:CLEAR.</footer>
 </div></body></html>"""

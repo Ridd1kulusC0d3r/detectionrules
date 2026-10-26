@@ -1,8 +1,9 @@
 # Blue Mockingbird (G0108) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0108) · [ATT&CK](https://attack.mitre.org/groups/G0108/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0108) · [ATT&CK](https://attack.mitre.org/groups/G0108/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** Sem país atribuído · **Motivação:** financeiro · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2020-05-26, atualizado em 2026-07-31 · referências de 2020 a 2020
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 0 malware e 2 ferramentas (ex.: Mimikatz, FRP).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Sem país atribuído**, motivação financeiro.
+- **Onde a cobertura está:** Windows (21 técnicas com regra), EDR / XDR (20 técnicas com regra), Servidores web & aplicações (16 técnicas com regra), DNS (15 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1574.012 COR_PROFILER, T1134 Access Token Manipulation, T1496.001 Compute Hijacking, T1546.003 Windows Management Instrumentation Event Subscription, T1218.010 Regsvr32.
 
 ## 2. Quem é
@@ -19,7 +22,27 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Sem país atribuído |
+| Motivação | financeiro |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | Mid |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0108 |
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -112,7 +135,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1496.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1496.001) Compute Hijacking | Blue Mockingbird has used XMRIG to mine cryptocurrency on victim systems. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -129,20 +152,39 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1543.003 Windows Service | 25 | 1.89 |
 | T1021.002 SMB/Windows Admin Shares | 27 | 1.82 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
 | [Mimikatz](https://attack.mitre.org/software/S0002/) | ferramenta | 17 |  |
 | [FRP](https://attack.mitre.org/software/S1144/) | ferramenta | 10 |  |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **22 de 22 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 21 |
+| EDR / XDR | 20 |
+| Servidores web & aplicações | 16 |
+| DNS | 15 |
+| Outros / genérico | 15 |
+| Linux | 15 |
+| Firewall & perímetro | 13 |
+| VPN & acesso remoto | 13 |
+| Active Directory | 12 |
+| Proxy / SWG | 12 |
+| Microsoft 365 | 11 |
+| IDS / NSM / NDR | 10 |
 
 ### Regras recomendadas por técnica
 
@@ -195,7 +237,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1588.002 | [Hacktool Execution - Imphash](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A24e3e58a-646b-4b50-adef-02ef935b9fc8) | Sigma | SigmaHQ |
 | T1588.002 | [Renamed SysInternals DebugView Execution](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Acd764533-2e07-40d6-a718-cfeec7f2da7f) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -264,7 +306,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1543.003 — [ID4688-4697 RDP hijack via service creation](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0003-Persistence/T1543.003-Create%20or%20Modify%20System%20Process-Windows%20Service/ID4688-4697%20RDP%20hijack%20via%20service%20creation.evtx) _(explícito)_
 - T1569.002 — [ID5145-remote service creation over SMB](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0002-Execution/T1569.002-Service%20execution/ID5145-remote%20service%20creation%20over%20SMB.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Blue Mockingbird estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -281,7 +323,7 @@ Se Blue Mockingbird estiver no seu ambiente, estas são as perguntas a fazer aos
 11. **T1112 Modify Registry** — Behavior chain involving abnormal registry modifications via CLI, PowerShell, WMI, or direct API calls, especially targeting persistence, privilege escalation, or defense evasion keys, potentially followed by service restart or process execution. Such as… Dados: `WinEventLog:Sysmon` (EventCode=13, 14), `WinEventLog:Sysmon` (EventCode=1).
 12. **T1021.001 Remote Desktop Protocol** — Remote Desktop (RDP) logon by a user followed by unusual process execution, file access, or lateral movement activity within a short timeframe. Dados: `WinEventLog:Security` (EventCode=4624, 4648), `WinEventLog:Security` (EventCode=4778, EventCode=4779), `WinEventLog:Sysmon` (EventCode=3, 22).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -297,11 +339,11 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2020 — [Blue Mockingbird activity mines Monero cryptocurrency](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.05.07_Blue_Mockingbird/Blue%20Mockingbird%20activity%20mines%20Monero%20cryptocurrency.pdf) _(via “Blue Mockingbird”)_
 - 2020 — [Cryptocurrency-Miners-XMRig-Based-CoinMiner-by-Blue-Mockingbird-Group](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.06.01.Blue_Mockingbird_Group/Cryptocurrency-Miners-XMRig-Based-CoinMiner-by-Blue-Mockingbird-Group.pdf) _(via “Blue Mockingbird”)_
 
-## 11. Bibliografia (1 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (1 fontes citadas pelo ATT&CK)
 
 - [RedCanary Mockingbird May 2020](https://redcanary.com/blog/blue-mockingbird-cryptominer/) — Lambert, T. (2020, May 7). Introducing Blue Mockingbird. Retrieved May 26, 2020.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -309,4 +351,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

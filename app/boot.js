@@ -1,7 +1,7 @@
 /* boot.js — carga de dados, navegação e página Base */
 function go(view){
   V.view=view; $$('.tab').forEach(t=>t.classList.toggle('on',t.dataset.v===view)); $$('.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+view));
-  ({home:renderHome,academy:renderAcademy,arsenal:renderArsenal,graph:renderGraph,forge:renderForge,playbooks:renderPlaybooks,progress:renderProgress})[view]?.();
+  ({home:renderHome,academy:renderAcademy,arsenal:renderArsenal,techno:renderTechno,graph:renderGraph,forge:renderForge,playbooks:renderPlaybooks,progress:renderProgress})[view]?.();
   window.scrollTo({top:0});
   location.hash=view;
 }
@@ -29,6 +29,7 @@ function renderHome(){
   <div class="grid g4">
     <div class="card click" onclick="go('academy')"><div class="eyebrow">8 lições</div><h3 class="h">Academia</h3><p style="font-size:14px">A gramática que todos os formatos compartilham, explicada como para uma criança e levada até o nível de quem escreve regra.</p></div>
     <div class="card click" onclick="go('arsenal')"><div class="eyebrow">${total.toLocaleString('pt-BR')} regras</div><h3 class="h">Arsenal</h3><p style="font-size:14px">Busque e filtre por tática, fonte e severidade. Cada regra abre com campos explicados, dados necessários, simulação e guia de investigação.</p></div>
+    <div class="card click" onclick="go('techno')"><div class="eyebrow">${(V.idx.tech||[]).length-1} tecnologias</div><h3 class="h">Tecnologias</h3><p style="font-size:14px">O catálogo pelo que ele observa: Okta, AWS, ESXi, Kubernetes… cobertura por tática, lacunas, grupos na mira, ferramentas de ransomware e cenários TCEM.</p></div>
     <div class="card click" onclick="go('forge')"><div class="eyebrow">6 formatos</div><h3 class="h">Forja</h3><p style="font-size:14px">Diga o comportamento e os dados que você tem; receba Sigma, KQL, SPL, EQL, TOML Elastic e Wazuh, com validação e explicação.</p></div>
     <div class="card click" onclick="go('progress')"><div class="eyebrow">XP e ranks</div><h3 class="h">Progressão</h3><p style="font-size:14px">XP por regra lida, lição concluída, quiz e regra forjada. Sete ranks e doze conquistas, salvos no seu navegador.</p></div>
   </div>
@@ -70,11 +71,12 @@ function renderMast(){
     V.idx=await fetch('data/index.json').then(r=>r.json()); $('#lb').style.width='90%';
     buildIndex(); renderMast();
     const h=location.hash.replace('#','');
-    const dl=h.match(/^(group|tech|rule)=(.+)$/);
+    const dl=h.match(/^(group|tech|rule|techno)=(.+)$/);
     if(dl){ const [,k,v]=dl; const val=decodeURIComponent(v);
       if(k==='rule'){ go('arsenal'); setTimeout(()=>openRuleByUid(val),300); }
+      else if(k==='techno'){ go('techno'); setTimeout(()=>openTechno(val),400); }
       else { go('graph'); setTimeout(()=>(k==='group'?openGroup(val):openTech(val.toUpperCase())),600); }
-    } else go(['home','academy','arsenal','graph','forge','playbooks','progress'].includes(h)?h:'home');
+    } else go(['home','academy','arsenal','techno','graph','forge','playbooks','progress'].includes(h)?h:'home');
   }catch(e){
     $('#v-home').innerHTML=`<div class="note warn"><span class="ni">▸</span><div><b>Não consegui carregar os dados.</b> Este app precisa ser aberto por um servidor local (os navegadores bloqueiam fetch de arquivos locais). Use o lançador <code>ABRIR.bat</code> / <code>ABRIR.command</code> / <code>abrir.sh</code> na pasta, ou rode <code>python3 -m http.server 8787</code> e abra <code>http://localhost:8787</code>.<br><br>Erro: <code>${esc(e.message)}</code></div></div>`;
   }

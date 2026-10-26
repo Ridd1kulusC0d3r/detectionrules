@@ -1,8 +1,9 @@
 # Earth Lusca (G1006) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1006) · [ATT&CK](https://attack.mitre.org/groups/G1006/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1006) · [ATT&CK](https://attack.mitre.org/groups/G1006/)
 
 **Também conhecido como:** TAG-22, Charcoal Typhoon, CHROMIUM, ControlX  
+**Origem atribuída:** China · **Motivação:** espionagem, financeiro · **Setores-alvo:** Sociedade civil e mídia, Educação e pesquisa, Financeiro, Governo, Saúde, Telecomunicações  
 **Registro no ATT&CK:** criado em 2022-07-01, atualizado em 2026-07-31 · referências de 2021 a 2023
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 3 malware e 6 ferramentas (ex.: Cobalt Strike, PowerSploit, ShadowPad, Mimikatz, Winnti for Linux).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 95% das técnicas têm ao menos uma regra no catálogo; **2 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem, financeiro; setores Sociedade civil e mídia, Educação e pesquisa, Financeiro, Governo, Saúde; 15 países vítimas citados.
+- **Onde a cobertura está:** Windows (39 técnicas com regra), EDR / XDR (34 técnicas com regra), Linux (31 técnicas com regra), Outros / genérico (28 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1547.012 Print Processors, T1098.004 SSH Authorized Keys, T1584.006 Web Services, T1003.006 DCSync, T1583.004 Server.
 
 ## 2. Quem é
@@ -21,7 +24,30 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem, financeiro |
+| Setores-alvo | Sociedade civil e mídia, Educação e pesquisa, Financeiro, Governo, Saúde, Telecomunicações |
+| Vítimas citadas | Australia, China, France, Germany, Hong Kong, Japan, Mongolia, Nepal, Nigeria, Philippines, Taiwan, Thailand, United Arab Emirates, United States, Vietnam |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1006 |
+| Microsoft | Charcoal Typhoon, CHROMIUM (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** FISHMONGER, BRONZE UNIVERSITY, AQUATIC PANDA, Red Dev 10, RedHotel, BountyGlad, Red Scylla, Fishmaster, Aquatic Panda/ControlX, Chromium/Charcoal Typhoon, Hive0119, Red Scylla/Red Dev 10, DRBControl/Earth Lusca, TAG-22/RedHotel
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -146,7 +172,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1567.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1567.002) Exfiltration to Cloud Storage | Earth Lusca has used the megacmd tool to upload stolen files from a victim network to MEGA. | 85 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -163,7 +189,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1548.002 Bypass User Account Control | 10 | 2.70 |
 | T1210 Exploitation of Remote Services | 11 | 2.62 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -177,11 +203,11 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Tasklist](https://attack.mitre.org/software/S0057/) | ferramenta | 3 |  |
 | [Nltest](https://attack.mitre.org/software/S0359/) | ferramenta | 3 |  |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **42 de 44 técnicas (95%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -189,6 +215,25 @@ Nenhuma campanha atribuída no ATT&CK.
 
 - **T1583.004 Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1584.004 Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 39 |
+| EDR / XDR | 34 |
+| Linux | 31 |
+| Outros / genérico | 28 |
+| Servidores web & aplicações | 27 |
+| Firewall & perímetro | 24 |
+| IDS / NSM / NDR | 23 |
+| DNS | 23 |
+| Proxy / SWG | 21 |
+| macOS | 21 |
+| Active Directory | 20 |
+| Microsoft 365 | 19 |
 
 ### Regras recomendadas por técnica
 
@@ -280,7 +325,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1608.001 | [M365 OneDrive Malware File Upload](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3Abba1b212-b85c-41c6-9b28-be0e5cdfc9b1) | Elastic | Elastic detection-rules |
 | T1608.001 | [M365 SharePoint Malware File Detected](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A0e52157a-8e96-4a95-a6e3-5faae5081a74) | Elastic | Elastic detection-rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -368,7 +413,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1482 — [ID800,4103,4104-Active Directory Forest PowerShell class](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0007-Discovery/T1482-Domain%20Trust%20Discovery/ID800%2C4103%2C4104-Active%20Directory%20Forest%20PowerShell%20class.evtx) _(explícito)_
 - T1543.003 — [ID13-New service for Mimikatz](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0003-Persistence/T1543.003-Create%20or%20Modify%20System%20Process-Windows%20Service/ID13-New%20service%20for%20Mimikatz.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Earth Lusca estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -385,7 +430,7 @@ Se Earth Lusca estiver no seu ambiente, estas são as perguntas a fazer aos seus
 11. **T1595.002 Vulnerability Scanning** — Monitor and analyze traffic patterns and packet inspection associated to protocol(s) that do not follow the expected protocol standards and traffic flows (e.g extraneous packets that do not belong to established flows, gratuitous or anomalous traffic… Dados: `Network Traffic` (None), `Network Traffic` (None).
 12. **T1007 System Service Discovery** — Enumeration of services via native CLI tools (e.g., `sc query`, `tasklist /svc`, `net start`) or API calls via PowerShell and WMI. Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:PowerShell` (EventCode=4103, 4104, 4105, 4106).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -401,14 +446,14 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2022 — [technical-brief-delving-deep-an-analysis-of-earth-lusca-operations](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.01.17.Earth_Lucsa/technical-brief-delving-deep-an-analysis-of-earth-lusca-operations.pdf) _(via “Earth Lusca”)_
 - 2024 — [earth-lusca-uses-geopolitical-lure-to-target-taiwan](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2024/2024.02.26.Earth_Lusca_Uses_Geopolitical_Lure_to_Target_Taiwan_Before_Elections/earth-lusca-uses-geopolitical-lure-to-target-taiwan.pdf) _(via “Earth Lusca”)_
 
-## 11. Bibliografia (4 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (4 fontes citadas pelo ATT&CK)
 
 - [Microsoft Threat Actor Naming July 2023](https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide) — Microsoft . (2023, July 12). How Microsoft names threat actors. Retrieved November 17, 2023.
 - [Recorded Future RedHotel August 2023](https://go.recordedfuture.com/hubfs/reports/cta-2023-0808.pdf) — Insikt Group. (2023, August 8). RedHotel: A Prolific, Chinese State-Sponsored Group Operating at a Global Scale. Retrieved March 11, 2024.
 - [Recorded Future TAG-22 July 2021](https://www.recordedfuture.com/research/chinese-group-tag-22-targets-nepal-philippines-taiwan) — INSIKT GROUP. (2021, July 8). Chinese State-Sponsored Activity Group TAG-22 Targets Nepal, the Philippines, and Taiwan Using Winnti and Other Tooling. Retrieved September 16, 2024.
 - [TrendMicro EarthLusca 2022](https://www.trendmicro.com/content/dam/trendmicro/global/en/research/22/a/earth-lusca-employs-sophisticated-infrastructure-varied-tools-and-techniques/technical-brief-delving-deep-an-analysis-of-earth-lusca-operations.pdf) — Chen, J., et al. (2022). Delving Deep: An Analysis of Earth Lusca’s Operations. Retrieved July 1, 2022.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -416,4 +461,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

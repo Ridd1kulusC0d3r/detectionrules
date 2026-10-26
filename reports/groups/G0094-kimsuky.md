@@ -1,8 +1,9 @@
 # Kimsuky (G0094) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0094) · [ATT&CK](https://attack.mitre.org/groups/G0094/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0094) · [ATT&CK](https://attack.mitre.org/groups/G0094/)
 
 **Também conhecido como:** Black Banshee, Velvet Chollima, Emerald Sleet, THALLIUM, APT43, TA427, Springtail, Earth Kumiho, PatheticSlug  
+**Origem atribuída:** Coreia do Norte · **Motivação:** espionagem, financeiro · **Setores-alvo:** Sociedade civil e mídia, Educação e pesquisa, Energia, Governo, Indústria, Defesa e militar, Setor privado (genérico)  
 **Registro no ATT&CK:** criado em 2019-08-26, atualizado em 2026-07-31 · referências de 2013 a 2026
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 13 malware e 6 ferramentas (ex.: AppleSeed, QuasarRAT, gh0st RAT, Troll Stealer, KGH_SPY).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 88% das técnicas têm ao menos uma regra no catálogo; **15 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Coreia do Norte**, motivação espionagem, financeiro; setores Sociedade civil e mídia, Educação e pesquisa, Energia, Governo, Indústria; 9 países vítimas citados.
+- **Onde a cobertura está:** Windows (96 técnicas com regra), EDR / XDR (83 técnicas com regra), Linux (72 técnicas com regra), Outros / genérico (65 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1132.002 Non-Standard Encoding, T1176.001 Browser Extensions, T1185 Browser Session Hijacking, T1546.001 Change Default File Association, T1593.002 Search Engines.
 
 ## 2. Quem é
@@ -23,7 +26,31 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Coreia do Norte |
+| Motivação | espionagem, financeiro |
+| Setores-alvo | Sociedade civil e mídia, Educação e pesquisa, Energia, Governo, Indústria, Defesa e militar, Setor privado (genérico) |
+| Vítimas citadas | China, France, Germany, India, Japan, Korea Institute for Defense Analyses, Ministry of Unification, North America, Russia, Sejong Institute, South Africa, South Korea, United Kingdom |
+| Alvos (planilha) | This threat actor targets South Korean think tanks, industry, nuclear power operators, and the Ministry of Unification for espionage purposes. |
+| Operações conhecidas | Campaign Rifle, Honeybee |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | Velvet Chollima, Archipelago |
+| MITRE ATT&CK | G0094 |
+| Microsoft | Emerald Sleet, THALLIUM (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Kimsuki, TA408, TAG-115, CloudDragon, TA406, SharpTongue, Crooked Pisces, Osmium, Cerium, Archipelago, Ruby Sleet, Operation Stolen Pencil, Sparkling Pisces, Opal Sleet, Konni, Vedalia, Osmium/Opal Sleet, Nickel Juniper, UNC1130/UNC3782/UNC4469/APT43, TA406/TA427, Thallium/Cerium/Ruby Sleet/Emerald Sleet, ITG16, Nickel Kimball, APT-C-55, Larva-24005, UAT-5394
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -253,7 +280,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1489](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1489) Service Stop | Kimsuky has disabled actively running virtual environments using the `KillMe` function to include VMware, Microsoft Hypervisors, and VirtualBox. | 112 | 9 | — |
 | [T1657](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1657) Financial Theft | Kimsuky has stolen and laundered cryptocurrency to self-fund operations including the acquisition of infrastructure. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -270,7 +297,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1564.002 Hidden Users | 1 | 4.09 |
 | T1596 Search Open Technical Databases | 1 | 4.09 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -294,11 +321,13 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [GoBear](https://attack.mitre.org/software/S1197/) | malware | 3 | GoBear is exclusively linked to Kimsuky operations. |
 | [schtasks](https://attack.mitre.org/software/S0111/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** KPortScan, Procdump, Eternal suite of exploits, Mechanical, Grease
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **115 de 130 técnicas (88%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -319,6 +348,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1680 Local Storage Discovery** — Discovery. Fonte de log sugerida pelo MITRE: `WinEventLog:Sysmon` EventCode=1; `auditd:SYSCALL` execve call with argv matching known disk enumeration commands (lsblk, parted, fdisk); `macos:unifiedlog` process launch of diskutil or system_profil
 - **T1598.003 Spearphishing Link** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 96 |
+| EDR / XDR | 83 |
+| Linux | 72 |
+| Outros / genérico | 65 |
+| macOS | 61 |
+| Servidores web & aplicações | 53 |
+| E-mail | 48 |
+| Firewall & perímetro | 46 |
+| Microsoft 365 | 46 |
+| DNS | 43 |
+| AWS | 43 |
+| IA, LLMs & agentes | 42 |
 
 ### Regras recomendadas por técnica
 
@@ -550,7 +598,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1686 | [Disable System Firewall](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A53059bc0-1472-438b-956a-7508a94a91f0) | Sigma | SigmaHQ |
 | T1686 | [Netsh RDP Port Opening](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A01aeb693-138d-49d2-9403-c4f52d7d3d62) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -720,7 +768,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1140 — [ID4688-Certutil download](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1140-Deobfuscate-Decode%20Files%20or%20Information/ID4688-Certutil%20download.evtx) _(explícito)_
 - T1218.005 — [exec_persist_rundll32_mshta_scheduledtask_sysmon_1_3_11](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Execution/exec_persist_rundll32_mshta_scheduledtask_sysmon_1_3_11.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Kimsuky estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -737,7 +785,7 @@ Se Kimsuky estiver no seu ambiente, estas são as perguntas a fazer aos seus dad
 11. **T1204.004 Malicious Copy and Paste** — A user is socially engineered (web page, email, document) to open Run/PowerShell/CMD and paste an obfuscated one-liner. The chain is: (1) user context active in a browser/email/office app → (2) process creation of a command interpreter with suspicious… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:PowerShell` (EventCode=4103, 4104, 4105, 4106), `WinEventLog:Sysmon` (EventCode=11).
 12. **T1205 Traffic Signaling** — A remote host sends a short sequence of failed connection attempts (RST/ICMP unreachable) to a set of closed ports. Within a brief window the endpoint (a) adds/enables a firewall rule or (b) a sniffer-backed process begins listening or opens a new socket,… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:Microsoft-Windows-Windows Firewall With Advanced Security/Firewall` (EventCode=2004, 2005, 2006).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -755,7 +803,14 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2020 — [TLP-WHITE_AA20-301A_North_Korean_APT_Focus_Kimsuky](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.10.27_AA20-301A.North_Korean_APT/TLP-WHITE_AA20-301A_North_Korean_APT_Focus_Kimsuky.pdf) _(via “Kimsuky”)_
 - 2024 — [(3) Kimsuky is targeting an arms manufacturer in Europe. _ LinkedIn](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2024/2024.06.10.Kimsuky_Europe/%283%29%20Kimsuky%20is%20targeting%20an%20arms%20manufacturer%20in%20Europe.%20_%20LinkedIn.pdf) _(via “Kimsuky”)_
 
-## 11. Bibliografia (33 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (4 no total, mais recentes primeiro):
+
+- 2023 — [Kimsuky Group Uses AutoIt to Create Malware (RftRAT, Amadey)](https://app.box.com/s/xs2z8yf59q58ph1qn5sqr92sj2g6zefo) _(Ahnlab)_
+- 2022 — [Kimsuky Group's APT Attacks (AppleSeed, PebbleDash)](https://app.box.com/s/iygnjm6cv5mwzlry3ct3dtor049ci6pk) _(Ahnlab)_
+- 2021 — [Kimsuky Espionage Campaign](https://app.box.com/s/t7evyuuhbdiqo9q3mtowy9exwn9flner) _(Inquest)_
+- 2013 — [The "Kimsuky" Operation: A North Korean Apt?](https://app.box.com/s/bel4s8xubunn5gxjvorgm7qg2v0e9kgt) _(Kaspersky)_
+
+## 12. Bibliografia (33 fontes citadas pelo ATT&CK)
 
 - [AhnLab Kimsuky Kabar Cobra Feb 2019](https://global.ahnlab.com/global/upload/download/techreport/%5BAnalysis_Report%5DOperation%20Kabar%20Cobra.pdf) — AhnLab. (2019, February 28). Operation Kabar Cobra - Tenacious cyber-espionage campaign by Kimsuky Group. Retrieved September 29, 2021.
 - [Aryaka Kimsuky July 2025](https://www.aryaka.com/docs/reports/aryaka-kimsuky-apt-operational-blueprint.pdf) — Varadharajan Krishnasamy, Aditya K Sood. (2025, July 29). From Reconnaissance to Control: The Operational Blueprint of Kimsuky APT for Cyber Espionage. Retrieved April 18, 2026.
@@ -791,7 +846,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Zdnet Kimsuky Group September 2020](https://www.zdnet.com/article/north-korea-has-tried-to-hack-11-officials-of-the-un-security-council/) — Cimpanu, C. (2020, September 30). North Korea has tried to hack 11 officials of the UN Security Council. Retrieved November 4, 2020.
 - [Zscaler Kimsuky TRANSLATEXT](https://www.zscaler.com/blogs/security-research/kimsuky-deploys-translatext-target-south-korean-academia#technical-analysis) — Park, S. (2024, June 27). Kimsuky deploys TRANSLATEXT to target South Korean academia. Retrieved October 14, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -799,4 +854,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

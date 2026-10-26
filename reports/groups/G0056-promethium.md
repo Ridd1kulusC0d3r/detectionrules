@@ -1,8 +1,9 @@
 # PROMETHIUM (G0056) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0056) · [ATT&CK](https://attack.mitre.org/groups/G0056/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0056) · [ATT&CK](https://attack.mitre.org/groups/G0056/)
 
 **Também conhecido como:** StrongPity  
+**Origem atribuída:** Turquia · **Motivação:** espionagem · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2018-01-16, atualizado em 2026-07-31 · referências de 2016 a 2020
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 2 malware e 0 ferramentas (ex.: StrongPity, Truvasys).
 - **Campanhas atribuídas:** 1 (C0033).
 - **Cobertura de detecção pública:** 82% das técnicas têm ao menos uma regra no catálogo; **2 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Turquia**, motivação espionagem.
+- **Onde a cobertura está:** Windows (8 técnicas com regra), Linux (7 técnicas com regra), EDR / XDR (7 técnicas com regra), Outros / genérico (7 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1205.001 Port Knocking, T1587.002 Code Signing Certificates, T1587.003 Digital Certificates, T1078.003 Local Accounts, T1036.004 Masquerade Task or Service.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Turquia |
+| Motivação | espionagem |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0056 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** APT-C-41, Promethium/Magenta Dust, Teal Dev 2
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -81,7 +106,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1205.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1205.001) Port Knocking | PROMETHIUM has used a script that configures the knockd service and firewall to only accept C2 connections from systems that use a specified sequence of knock ports. | 3 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -98,20 +123,22 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1547.001 Registry Run Keys / Startup Folder | 58 | 1.09 |
 | T1036.005 Match Legitimate Resource Name or Location | 65 | 0.98 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
 | [StrongPity](https://attack.mitre.org/software/S0491/) | malware | 26 |  |
 | [Truvasys](https://attack.mitre.org/software/S0178/) | malware | 2 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Imminent RAT, Quasar RAT, APKs
+
+## 7. Campanhas
 
 | Campanha | Período | Resumo (EN) |
 |---|---|---|
 | [C0033](https://attack.mitre.org/campaigns/C0033/) | 2016-05 → 2023-01 | C0033 was a PROMETHIUM campaign during which they used StrongPity to target Android users. C0033 was the first publicly documented mobile campaign for PROMETHIUM, who previously used Windows-based techniques. |
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **9 de 11 técnicas (82%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -119,6 +146,25 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 
 - **T1587.002 Code Signing Certificates** — Resource Development. Fonte de log sugerida pelo MITRE: `Malware Repository` None
 - **T1587.003 Digital Certificates** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 8 |
+| Linux | 7 |
+| EDR / XDR | 7 |
+| Outros / genérico | 7 |
+| macOS | 6 |
+| DNS | 5 |
+| Microsoft 365 | 5 |
+| Servidores web & aplicações | 5 |
+| IA, LLMs & agentes | 4 |
+| Proxy / SWG | 4 |
+| Firewall & perímetro | 4 |
+| IDS / NSM / NDR | 4 |
 
 ### Regras recomendadas por técnica
 
@@ -145,7 +191,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1553.002 | [Driver Loaded (Invalid Signature)](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=hayabusa-native%3A%3A1f666722-3948-40a2-9d78-d9d374477a90) | Sigma | Hayabusa (native) |
 | T1553.002 | [Driver Loaded (Expired/Revoked Cert)](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=hayabusa-native%3A%3Ac837dd6d-0c91-4593-aeab-f6a1f3ca1961) | Sigma | Hayabusa (native) |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -171,7 +217,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1547.001 — [sideloading_injection_persistence_run_key](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/sideloading_injection_persistence_run_key.evtx) _(inferido)_
 - T1547.001 — [evasion_persis_hidden_run_keyvalue_sysmon_13](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Persistence/evasion_persis_hidden_run_keyvalue_sysmon_13.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se PROMETHIUM estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -187,7 +233,7 @@ Se PROMETHIUM estiver no seu ambiente, estas são as perguntas a fazer aos seus 
 10. **T1036.005 Match Legitimate Resource Name or Location** — Detects processes or binaries executed from trusted directories (e.g., System32) or using trusted names (e.g., svchost.exe) where the metadata, hash, or parent process does not align with legitimate activity patterns. Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=11).
 11. **T1204.002 Malicious File** — User opens a file delivered by email, web, chat, or share. The handler application (Word/PDF reader/archiver) creates a file in user-controlled paths (Downloads, Temp, Desktop) and then spawns a new or unusual child process (e.g., powershell.exe, wscript.exe,… Dados: `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=15).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -206,14 +252,19 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2020 — [Talos Blog __ Cisco Talos Intelligence Group - Comprehensive Threat Intelligence_ PROMETHIUM extends global reach with S](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.06.29.PROMETHIUM_StrongPity3_APT/Talos%20Blog%20__%20Cisco%20Talos%20Intelligence%20Group%20-%20Comprehensive%20Threat%20Intelligence_%20PROMETHIUM%20extends%20global%20reach%20with%20StrongPity3%20APT.pdf) _(via “PROMETHIUM”)_
 - 2020 — [Bitdefender-Whitepaper-StrongPity-APT](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.06.30_StrongPity_APT/Bitdefender-Whitepaper-StrongPity-APT.pdf) _(via “StrongPity”)_
 
-## 11. Bibliografia (4 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (2 no total, mais recentes primeiro):
+
+- 2016 — [PROMETHIUM and NEODYMIUM: Parallel zero-day attacks targeting individuals in Europe](https://app.box.com/s/12f9s3qxwk4oyr1vwfpaxco9p50xc2v8) _(Microsoft)_
+- 2016 — [On the StrongPity Waterhole Attacks Targeting Italian and Belgian Encryption Users](https://app.box.com/s/c9w0xp0mgndij268ku7ti5ee4lxu54bv) _(Kaspersky)_
+
+## 12. Bibliografia (4 fontes citadas pelo ATT&CK)
 
 - [Bitdefender StrongPity June 2020](https://www.bitdefender.com/files/News/CaseStudies/study/353/Bitdefender-Whitepaper-StrongPity-APT.pdf) — Tudorica, R. et al. (2020, June 30). StrongPity APT - Revealing Trojanized Tools, Working Hours and Infrastructure. Retrieved July 20, 2020.
 - [Microsoft NEODYMIUM Dec 2016](https://blogs.technet.microsoft.com/mmpc/2016/12/14/twin-zero-day-attacks-promethium-and-neodymium-target-individuals-in-europe/) — Microsoft. (2016, December 14). Twin zero-day attacks: PROMETHIUM and NEODYMIUM target individuals in Europe. Retrieved November 27, 2017.
 - [Microsoft SIR Vol 21](http://download.microsoft.com/download/E/B/0/EB0F50CC-989C-4B66-B7F6-68CD3DC90DE3/Microsoft_Security_Intelligence_Report_Volume_21_English.pdf) — Anthe, C. et al. (2016, December 14). Microsoft Security Intelligence Report Volume 21. Retrieved November 27, 2017.
 - [Talos Promethium June 2020](https://blog.talosintelligence.com/2020/06/promethium-extends-with-strongpity3.html) — Mercer, W. et al. (2020, June 29). PROMETHIUM extends global reach with StrongPity3 APT. Retrieved July 20, 2020.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -221,4 +272,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

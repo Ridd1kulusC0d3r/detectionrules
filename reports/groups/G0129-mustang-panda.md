@@ -1,8 +1,9 @@
 # Mustang Panda (G0129) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0129) · [ATT&CK](https://attack.mitre.org/groups/G0129/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0129) · [ATT&CK](https://attack.mitre.org/groups/G0129/)
 
 **Também conhecido como:** TA416, RedDelta, BRONZE PRESIDENT, STATELY TAURUS, FIREANT, CAMARO DRAGON, EARTH PRETA, HIVE0154, TWILL TYPHOON, TANTALUM, LUMINOUS MOTH, UNC6384, TEMP.Hex, Red Lich, ClumsyToad  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** Sociedade civil e mídia, Governo  
 **Registro no ATT&CK:** criado em 2021-04-12, atualizado em 2026-07-31 · referências de 2015 a 2026
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 18 malware e 5 ferramentas (ex.: Cobalt Strike, PlugX, TONESHELL, PUBLOAD, RCSession).
 - **Campanhas atribuídas:** 1 (RedDelta Modified PlugX Infection Chain Operations).
 - **Cobertura de detecção pública:** 93% das técnicas têm ao menos uma regra no catálogo; **6 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem; setores Sociedade civil e mídia, Governo; 2 países vítimas citados.
+- **Onde a cobertura está:** Windows (70 técnicas com regra), EDR / XDR (62 técnicas com regra), Linux (53 técnicas com regra), Outros / genérico (49 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1129 Shared Modules, T1219.001 IDE Tunneling, T1574.005 Executable Installer File Permissions Weakness, T1608 Stage Capabilities, T1622 Debugger Evasion.
 
 ## 2. Quem é
@@ -19,7 +22,32 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | Sociedade civil e mídia, Governo |
+| Vítimas citadas | Germany, United States |
+| Alvos (planilha) | Mining sector in Mongolia, private individuals \|=\| gathering geo-political and economic intelligence, NGOs, political & law enforcement org in South and East Asia |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| Kaspersky | HoneyMyte |
+| MITRE ATT&CK | G0129 |
+| Secureworks | BRONZE PRESIDENT |
+| iSight | Temp.Hex |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** HoneyMyte, Earth Preta (TrendMicro), BASIN, Polaris, BASIN CASTLE, ITG27, UNK_SteadySplit, Vertigo Panda, HoneyMyte/LuminousMoth, Tantalum/Twill Typhoon, UAC-0084, Bronze Fillmore, PKPLUG/Stately Taurus/Squeaking Scorpius
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -190,7 +218,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1052.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1052.001) Exfiltration over USB | Mustang Panda has used a customized PlugX variant which could exfiltrate documents from air-gapped networks. | 5 | — | — |
 | [T1567.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1567.002) Exfiltration to Cloud Storage | Mustang Panda has also exfiltrated archived files to cloud services such as Dropbox using `curl`. | 85 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -207,7 +235,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1218.004 InstallUtil | 1 | 4.09 |
 | T1001.003 Protocol or Service Impersonation | 2 | 3.80 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -235,13 +263,15 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [AdFind](https://attack.mitre.org/software/S0552/) | ferramenta | 5 | Mustang Panda has utilized AdFind for enumerating domain groups, users, and computers. |
 | [Wevtutil](https://attack.mitre.org/software/S0645/) | ferramenta | 3 | Mustang Panda has leveraged Wevtutil to gather information about usernames and Windows Security Event logs. |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** ORat, Nmap, Wmiexec, China Chopper web shell, MQsTTang
+
+## 7. Campanhas
 
 | Campanha | Período | Resumo (EN) |
 |---|---|---|
 | [RedDelta Modified PlugX Infection Chain Operations](https://attack.mitre.org/campaigns/C0047/) | 2023-07 → 2024-12 | RedDelta Modified PlugX Infection Chain Operations was executed by Mustang Panda from mid-2023 through the end of 2024 against multiple entities in East and Southeast Asia. RedDelta Modified PlugX Infection Chain Operati |
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **79 de 85 técnicas (93%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -253,6 +283,25 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 - **T1027.016 Junk Code Insertion** — Stealth. Fonte de log sugerida pelo MITRE: `WinEventLog:Sysmon` EventCode=11; `auditd:SYSCALL` write; `macos:endpointsecurity` ES_EVENT_TYPE_NOTIFY_EXEC
 - **T1598.003 Spearphishing Link** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 70 |
+| EDR / XDR | 62 |
+| Linux | 53 |
+| Outros / genérico | 49 |
+| Servidores web & aplicações | 44 |
+| macOS | 43 |
+| Firewall & perímetro | 38 |
+| DNS | 37 |
+| Microsoft 365 | 36 |
+| IDS / NSM / NDR | 35 |
+| Proxy / SWG | 34 |
+| E-mail | 31 |
 
 ### Regras recomendadas por técnica
 
@@ -415,7 +464,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1654 | [Sysmon - Event 1: Process creation $(win.eventdata.description)](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=socfortress-wazuh-rules%3A%3Awazuh-100950) | Wazuh | SOCFortress Wazuh-Rules |
 | T1654 | [Sysmon - Event 1: Process creation $(win.eventdata.description)](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=socfortress-wazuh-rules%3A%3Awazuh-100951) | Wazuh | SOCFortress Wazuh-Rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -551,7 +600,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1070.006 — [DE_timestomp_and_dll_sideloading_and_RunPersist](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/DE_timestomp_and_dll_sideloading_and_RunPersist.evtx) _(inferido)_
 - T1087.002 — [discovery_bloodhound](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Discovery/discovery_bloodhound.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Mustang Panda estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -568,7 +617,7 @@ Se Mustang Panda estiver no seu ambiente, estas são as perguntas a fazer aos se
 11. **T1027.007 Dynamic API Resolution** — Behavioral chain involving suspicious use of GetProcAddress and LoadLibrary following memory allocation and manual mapping, often paired with low entropy strings, abnormal API use without static import tables, or delayed module load behaviors. Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=7), `etw:Microsoft-Windows-Kernel-Process` (API tracing / stack tracing via ETW or telemetry-based EDR).
 12. **T1027.012 LNK Icon Smuggling** — Correlates LNK file execution with embedded resource extraction or suspicious network activity following initial launch, often leading to payload delivery via disguised icons. Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=15), `WinEventLog:Sysmon` (EventCode=3, 22).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -591,7 +640,12 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2022 — [Mustang Panda Abuses Legitimate Apps to Target Myanmar Based Victims](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.10.06.Mustang_Panda_Myanmar/Mustang%20Panda%20Abuses%20Legitimate%20Apps%20to%20Target%20Myanmar%20Based%20Victims.pdf) _(via “Mustang Panda”)_
 - 2022 — [Mustang Panda Uses the Russian-Ukrainian War to Attack Europe and Asia Pacific Targets](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.12.06.Mustang_Panda/Mustang%20Panda%20Uses%20the%20Russian-Ukrainian%20War%20to%20Attack%20Europe%20and%20Asia%20Pacific%20Targets.pdf) _(via “Mustang Panda”)_
 
-## 11. Bibliografia (38 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (2 no total, mais recentes primeiro):
+
+- 2023 — [MQsTTang: Mustang Panda's latest backdoor treads new ground with Qt and MQTT](https://app.box.com/s/01nfw2cbbp4hi4my8tuoik8eazecd9wm) _(ESET)_
+- 2023 — [Mustang Panda APT Group Uses European Commission-Themed Lure to Deliver PlugX Malware](https://app.box.com/s/3r1jwpewyxlnj8efx3tr6ctw9d2xghsf) _(Eclecticiq)_
+
+## 12. Bibliografia (38 fontes citadas pelo ATT&CK)
 
 - [2022 November_TrendMicro_Earth Preta_Toneshell_Pubload](https://www.trendmicro.com/en_us/research/22/k/earth-preta-spear-phishing-governments-worldwide.html) — Nick Dai, Vickie Su, Sunny Lu. (2022, November 18). Earth Preta Spear-Phishing Governments Worldwide. Retrieved August 4, 2025.
 - [2025_IBM_PUBLOAD_TONESHELL_HIUPAN_CLAIMLOADER_MUSTANG PANDA](https://www.ibm.com/think/x-force/hive0154-targeting-us-philippines-pakistan-taiwan) — Golo Muhr, Joshua Chung. (2025, May 15). Hive0154 targeting US, Philippines, Pakistan and Taiwan in suspected espionage campaign. Retrieved August 4, 2025.
@@ -632,7 +686,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Zscaler](https://www.zscaler.com/blogs/security-research/latest-mustang-panda-arsenal-toneshell-and-starproxy-p1) — Sudeep Singh. (2025, April 16). Latest Mustang Panda Arsenal: ToneShell and StarProxy | P1. Retrieved July 21, 2025.
 - [Zscaler PAKLOG CorkLog SplatCloak Splatdropper April 2025](https://www.zscaler.com/blogs/security-research/latest-mustang-panda-arsenal-paklog-corklog-and-splatcloak-p2) — Sudeep Singh. (2025, April 16). Latest Mustang Panda Arsenal: PAKLOG, CorKLOG, and SplatCloak | P2. Retrieved September 12, 2025.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -640,4 +694,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

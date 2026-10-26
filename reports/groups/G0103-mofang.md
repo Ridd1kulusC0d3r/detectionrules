@@ -1,8 +1,9 @@
 # Mofang (G0103) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0103) · [ATT&CK](https://attack.mitre.org/groups/G0103/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0103) · [ATT&CK](https://attack.mitre.org/groups/G0103/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** Governo, Infraestrutura crítica, Indústria, Defesa e militar, Setor privado (genérico)  
 **Registro no ATT&CK:** criado em 2020-05-12, atualizado em 2026-07-31 · referências de 2016 a 2016
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 1 malware e 1 ferramentas (ex.: ShimRat, ShimRatReporter).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem; setores Governo, Infraestrutura crítica, Indústria, Defesa e militar, Setor privado (genérico); 7 países vítimas citados.
+- **Onde a cobertura está:** Windows (6 técnicas com regra), Linux (6 técnicas com regra), EDR / XDR (6 técnicas com regra), macOS (5 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1027.015 Compression, T1027.013 Encrypted/Encoded File, T1566.002 Spearphishing Link, T1204.001 Malicious Link, T1566.001 Spearphishing Attachment.
 
 ## 2. Quem é
@@ -19,7 +22,30 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | Governo, Infraestrutura crítica, Indústria, Defesa e militar, Setor privado (genérico) |
+| Vítimas citadas | Canada, Germany, India, Myanmar, Singapore, South Korea, United States |
+| Alvos (planilha) | Government, military, Critical Infrastructure,Automotive Industry*,Weapon Industry*, This threat actor compromises government and critical infrastructure entities, primarily in Myanmar, for espionage purposes. Myanmar, Canada, United States, Germany, India, South Korea, Singapore |
+| Operações conhecidas | SingHealth |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0103 |
+| Secureworks | BRONZE WALKER |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** BRONZE WALKER, Whitefly, Superman, Temp.Mimic, G0107/G0103, CTG-2810, ATK83, SectorM04
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -44,7 +70,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1027.013](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1027.013) Encrypted/Encoded File | Mofang has encrypted payloads before they are downloaded to victims. | 8 | 4 | — |
 | [T1027.015](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1027.015) Compression | Mofang has compressed the ShimRat executable within malicious email attachments. | 3 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -57,20 +83,39 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1566.001 Spearphishing Attachment | 78 | 0.81 |
 | T1204.002 Malicious File | 86 | 0.71 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
 | [ShimRat](https://attack.mitre.org/software/S0444/) | malware | 21 |  |
 | [ShimRatReporter](https://attack.mitre.org/software/S0445/) | ferramenta | 16 |  |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **6 de 6 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 6 |
+| Linux | 6 |
+| EDR / XDR | 6 |
+| macOS | 5 |
+| IoT & embarcados | 5 |
+| Microsoft 365 | 4 |
+| Google Workspace | 4 |
+| IDS / NSM / NDR | 4 |
+| E-mail | 4 |
+| Servidores web & aplicações | 4 |
+| IA, LLMs & agentes | 4 |
+| Outros / genérico | 4 |
 
 ### Regras recomendadas por técnica
 
@@ -91,7 +136,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1566.002 | [Potential Malicious Usage of CloudTrail System Manager](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A38e7f511-3f74-41d4-836e-f57dfa18eead) | Sigma | SigmaHQ |
 | T1566.002 | [Google Workspace Device Registration After OAuth from Suspicious ASN](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A012bfca7-45cb-4507-a3ba-3777167f8b81) | Elastic | Elastic detection-rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -105,7 +150,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 | Stealth | [T1027.013](https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1027.013/T1027.013.md) | Decode Eicar File and Write to File | linux, macos, windows |
 | Stealth | [T1027.013](https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1027.013/T1027.013.md) | Decrypt Eicar File and Write to File | linux, macos, windows |
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Mofang estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -116,7 +161,7 @@ Se Mofang estiver no seu ambiente, estas são as perguntas a fazer aos seus dado
 5. **T1566.001 Spearphishing Attachment** — Detection of spearphishing attachments by correlating suspicious email delivery with subsequent file creation and abnormal process execution (e.g., Office spawning PowerShell or CMD). Behavior chain includes inbound email metadata → attachment stored on disk… Dados: `m365:unified` (Send/Receive: Inbound emails with attachments from suspicious or spoofed senders), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1).
 6. **T1204.002 Malicious File** — User opens a file delivered by email, web, chat, or share. The handler application (Word/PDF reader/archiver) creates a file in user-controlled paths (Downloads, Temp, Desktop) and then spawns a new or unusual child process (e.g., powershell.exe, wscript.exe,… Dados: `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=15).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -131,11 +176,15 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 
 - 2016 — [fox-it_mofang_threatreport_tlp-white](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2016/2016.05.17.Mofang/fox-it_mofang_threatreport_tlp-white.pdf) _(via “Mofang”)_
 
-## 11. Bibliografia (1 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (1 no total, mais recentes primeiro):
+
+- 2016 — [Mofang: A politically motivated information stealing adversary](https://app.box.com/s/p2oftago51ohnku082ztx1kbvaa1lxps) _(Fox-IT)_
+
+## 12. Bibliografia (1 fontes citadas pelo ATT&CK)
 
 - [FOX-IT May 2016 Mofang](https://foxitsecurity.files.wordpress.com/2016/06/fox-it_mofang_threatreport_tlp-white.pdf) — Yonathan Klijnsma. (2016, May 17). Mofang: A politically motivated information stealing adversary. Retrieved May 12, 2020.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -143,4 +192,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

@@ -1,8 +1,9 @@
 # Andariel (G0138) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0138) · [ATT&CK](https://attack.mitre.org/groups/G0138/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0138) · [ATT&CK](https://attack.mitre.org/groups/G0138/)
 
 **Também conhecido como:** Silent Chollima, PLUTONIUM, Onyx Sleet  
+**Origem atribuída:** Coreia do Norte · **Motivação:** espionagem, financeiro, sabotagem · **Setores-alvo:** Tecnologia  
 **Registro no ATT&CK:** criado em 2021-09-29, atualizado em 2026-07-31 · referências de 2017 a 2023
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 2 malware e 0 ferramentas (ex.: gh0st RAT, Rifdoor).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Coreia do Norte**, motivação espionagem, financeiro, sabotagem; setores Tecnologia.
+- **Onde a cobertura está:** Windows (10 técnicas com regra), Linux (10 técnicas com regra), Outros / genérico (10 técnicas com regra), macOS (8 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1590.005 IP Addresses, T1592.002 Software, T1027.003 Steganography, T1588.001 Malware, T1189 Drive-by Compromise.
 
 ## 2. Quem é
@@ -23,7 +26,32 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Coreia do Norte |
+| Motivação | espionagem, financeiro, sabotagem |
+| Setores-alvo | Tecnologia |
+| Vítimas citadas | — |
+| Alvos (planilha) | Information gathering and profit |
+| Operações conhecidas | Dark Hotel, DesertWolf, Vanxatm, Mayday, INITROY, XEDA, Sony |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | Silent Chollima |
+| FSI (KR) | Andariel |
+| MITRE ATT&CK | G0138 |
+| Microsoft | Storm-0530, DEV-0530 (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** DEV-0530, APT45, Jumpy Pisces, DarkSeoul, Guardian of Peace, GOP, Storm-0530, H0lyGh0st, OperationTroy, WHOis Team, Subgroup: Andariel, GRASS NEPTUNE, UNC614/UNC2970/UNC4131/UNC4369/APT45, Plutonium/Onyx Sleet, Nickel Hyatt, Stonefly, Maui, DEV-0530/Storm-0530
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -79,7 +107,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | Andariel has downloaded additional tools and malware onto compromised hosts. | 644 | 39 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -96,20 +124,41 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1005 Data from Local System | 46 | 1.32 |
 | T1566.001 Spearphishing Attachment | 78 | 0.81 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
 | [gh0st RAT](https://attack.mitre.org/software/S0032/) | malware | 24 |  |
 | [Rifdoor](https://attack.mitre.org/software/S0433/) | malware | 9 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Phandoor, H0lyGh0st
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **12 de 12 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 10 |
+| Linux | 10 |
+| Outros / genérico | 10 |
+| macOS | 8 |
+| EDR / XDR | 8 |
+| Firewall & perímetro | 7 |
+| IDS / NSM / NDR | 7 |
+| Proxy / SWG | 7 |
+| AWS | 6 |
+| Microsoft 365 | 6 |
+| E-mail | 6 |
+| Servidores web & aplicações | 6 |
 
 ### Regras recomendadas por técnica
 
@@ -141,7 +190,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1592.002 | [Windows WinPEAS PowerShell Script Execution](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=splunk-security-content%3A%3A5cb208df-e1aa-478d-ab2f-8270ff9999b9) | Splunk | Splunk security_content |
 | T1592.002 | [Possible IP geolocation lookup with curl (T1592.002)](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=socfortress-wazuh-rules%3A%3Awazuh-700182) | Wazuh | SOCFortress Wazuh-Rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -160,7 +209,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 | Command and Control | [T1105](https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md) | rsync remote file copy (push) | linux, macos |
 | Command and Control | [T1105](https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1105/T1105.md) | rsync remote file copy (pull) | linux, macos |
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Andariel estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -176,7 +225,7 @@ Se Andariel estiver no seu ambiente, estas são as perguntas a fazer aos seus da
 10. **T1204.002 Malicious File** — User opens a file delivered by email, web, chat, or share. The handler application (Word/PDF reader/archiver) creates a file in user-controlled paths (Downloads, Temp, Desktop) and then spawns a new or unusual child process (e.g., powershell.exe, wscript.exe,… Dados: `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=15).
 11. **T1105 Ingress Tool Transfer** — Unusual or uncommon processes initiate network connections to external destinations followed by file creation (tools downloaded). Dados: `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -192,7 +241,12 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2018 — [[AhnLab]Andariel_a_Subgroup_of_Lazarus (3)](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2018/2018.06.23.Andariel_Group/%5BAhnLab%5DAndariel_a_Subgroup_of_Lazarus%20%283%29.pdf) _(via “Andariel”)_
 - 2018 — [new-andariel-reconnaissance-tactics-hint-at-next-targets](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2018/2018.07.16.new-andariel/new-andariel-reconnaissance-tactics-hint-at-next-targets.pdf) _(via “Andariel”)_
 
-## 11. Bibliografia (9 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (2 no total, mais recentes primeiro):
+
+- 2022 — [Stonefly: North Korea-linked Spying Operation Continues to Hit High-value Targets](https://app.box.com/s/aaubak30ry3tyox9elzknurce4by7lxq) _(Symantec)_
+- 2016 — [FROM SEOUL TO SONY: THE HISTORY OF THE DARKSEOUL GROUP AND THE SONY INTRUSION MALWARE DESTOVER](https://app.box.com/s/xyyord0b806e6or2nh92coxw2areyyx4) _(Bluecoat)_
+
+## 12. Bibliografia (9 fontes citadas pelo ATT&CK)
 
 - [AhnLab Andariel Subgroup of Lazarus June 2018](https://web.archive.org/web/20230213154832/http://download.ahnlab.com/global/brochure/%5BAnalysis%5DAndariel_Group.pdf) — AhnLab. (2018, June 23). Targeted attacks by Andariel Threat Group, a subgroup of the Lazarus. Retrieved September 29, 2021.
 - [CrowdStrike Silent Chollima Adversary September 2021](https://adversary.crowdstrike.com/en-US/adversary/silent-chollima/) — CrowdStrike. (2021, September 29). Silent Chollima Adversary Profile. Retrieved September 29, 2021.
@@ -204,7 +258,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Treasury North Korean Cyber Groups September 2019](https://home.treasury.gov/news/press-releases/sm774) — US Treasury . (2019, September 13). Treasury Sanctions North Korean State-Sponsored Malicious Cyber Groups. Retrieved September 29, 2021.
 - [TrendMicro New Andariel Tactics July 2018](https://www.trendmicro.com/en_us/research/18/g/new-andariel-reconnaissance-tactics-hint-at-next-targets.html) — Chen, Joseph. (2018, July 16). New Andariel Reconnaissance Tactics Uncovered. Retrieved September 29, 2021.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -212,4 +266,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

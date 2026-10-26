@@ -1,8 +1,9 @@
 # Akira (G1024) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1024) · [ATT&CK](https://attack.mitre.org/groups/G1024/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1024) · [ATT&CK](https://attack.mitre.org/groups/G1024/)
 
 **Também conhecido como:** GOLD SAHARA, PUNK SPIDER, Howling Scorpius  
+**Origem atribuída:** Sem país atribuído · **Motivação:** financeiro · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2024-02-20, atualizado em 2026-07-31 · referências de 2023 a 2024
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 3 malware e 5 ferramentas (ex.: Mimikatz, Akira, LaZagne, Megazord, Akira _v2).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Sem país atribuído**, motivação financeiro.
+- **Onde a cobertura está:** Windows (16 técnicas com regra), EDR / XDR (14 técnicas com regra), Linux (13 técnicas com regra), Servidores web & aplicações (13 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1558 Steal or Forge Kerberos Tickets, T1531 Account Access Removal, T1027.001 Binary Padding, T1213.002 Sharepoint, T1482 Domain Trust Discovery.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Sem país atribuído |
+| Motivação | financeiro |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | Mid |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1024 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Storm-1567
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -109,7 +134,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1531](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1531) Account Access Removal | Akira deletes administrator accounts in victim networks prior to encryption. | 101 | 8 | — |
 | [T1657](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1657) Financial Theft | Akira engages in double-extortion ransomware, exfiltrating files then encrypting them, in order to prompt victims to pay a ransom. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -126,7 +151,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1567.002 Exfiltration to Cloud Storage | 24 | 1.93 |
 | T1133 External Remote Services | 27 | 1.82 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -139,13 +164,69 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [AdFind](https://attack.mitre.org/software/S0552/) | ferramenta | 5 |  |
 | [PsExec](https://attack.mitre.org/software/S0029/) | ferramenta | 5 |  |
 
-## 6. Campanhas
+### Ferramentas observadas em intrusões (Akira) — Ransomware Tool Matrix
+
+Ferramentas legítimas e ofensivas que afiliados usam dentro da rede. Cada uma é um ponto de detecção: veja quantas regras do catálogo a citam.
+
+| Ferramenta | Categoria | Regras que citam |
+|---|---|---:|
+| Mimikatz | credenciais | 253 |
+| Bloodhound | descoberta | 181 |
+| OpenSSH | rede | 130 |
+| TeamViewer | rmm | 104 |
+| AnyDesk | rmm | 102 |
+| Impacket | offsec | 78 |
+| MEGA | exfiltracao | 74 |
+| CrackMapExec | offsec | 71 |
+| Temp[.]sh | exfiltracao | 52 |
+| Ngrok | rede | 51 |
+| Cloudflared | rede | 45 |
+| SharpHound | descoberta | 44 |
+| RClone | exfiltracao | 35 |
+| LaZagne | credenciais | 30 |
+| MeshAgent | rmm | 24 |
+| WinSCP | exfiltracao | 24 |
+| Advanced IP Scanner | descoberta | 22 |
+| Radmin | rmm | 22 |
+| NetExec | offsec | 15 |
+| Masscan | descoberta | 13 |
+| PowerTool | evasao | 13 |
+| SoftPerfect NetScan | descoberta | 10 |
+| FileZilla | exfiltracao | 9 |
+| MobaXterm | rmm | 9 |
+| RustDesk | rmm | 7 |
+| SharpShares | descoberta | 3 |
+| ldapdomaindump | descoberta | 1 |
+| DonPAPI | credenciais | **0** |
+| ReconFTW | descoberta | **0** |
+| Zemana Anti-Rootkit driver | evasao | **0** |
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **17 de 17 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 16 |
+| EDR / XDR | 14 |
+| Linux | 13 |
+| Servidores web & aplicações | 13 |
+| macOS | 12 |
+| AWS | 12 |
+| Active Directory | 11 |
+| Outros / genérico | 11 |
+| Microsoft 365 | 11 |
+| Azure (recursos) | 10 |
+| Firewall & perímetro | 10 |
+| IDS / NSM / NDR | 10 |
 
 ### Regras recomendadas por técnica
 
@@ -188,7 +269,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685 | [Windows Defender Configuration Changes](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A801bd44f-ceed-4eb6-887c-11544633c0aa) | Sigma | SigmaHQ |
 | T1685 | [Windows Defender Virus Scanning Feature Disabled](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A686c0b4b-9dd3-4847-9077-d6c1bbe36fcb) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -236,7 +317,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1685 — [ID1-SYSMON driver unload (FilterManager)](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.001-Impair%20Defenses-Disable%20or%20Modify%20tool/ID1-SYSMON%20driver%20unload%20%28FilterManager%29.evtx) _(explícito)_
 - T1685 — [ID13-Defender service configuration disabled](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.001-Impair%20Defenses-Disable%20or%20Modify%20tool/ID13-Defender%20service%20configuration%20disabled.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Akira estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -253,7 +334,7 @@ Se Akira estiver no seu ambiente, estas são as perguntas a fazer aos seus dados
 11. **T1685 Disable or Modify Tools** — Detection of adversary behavior that disables or modifies security tools, including killing AV/EDR processes, stopping services, altering Sysmon registry keys, or tampering with exclusion lists. Defenders observe process/service termination, registry… Dados: `WinEventLog:System` (EventCode=7045), `WinEventLog:Sysmon` (EventCode=5), `WinEventLog:Sysmon` (EventCode=13, 14).
 12. **T1021.001 Remote Desktop Protocol** — Remote Desktop (RDP) logon by a user followed by unusual process execution, file access, or lateral movement activity within a short timeframe. Dados: `WinEventLog:Security` (EventCode=4624, 4648), `WinEventLog:Security` (EventCode=4778, EventCode=4779), `WinEventLog:Sysmon` (EventCode=3, 22).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -264,7 +345,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1024](https://attack.mitre.org/groups/G1024/)
 
-## 11. Bibliografia (8 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (8 fontes citadas pelo ATT&CK)
 
 - [Arctic Wolf Akira 2023](https://arcticwolf.com/resources/blog/conti-and-akira-chained-together/) — Steven Campbell, Akshay Suthar, & Connor Belfiorre. (2023, July 26). Conti and Akira: Chained Together. Retrieved February 20, 2024.
 - [BushidoToken Akira 2023](https://blog.bushidotoken.net/2023/09/tracking-adversaries-akira-another.html) — Will Thomas. (2023, September 15). Tracking Adversaries: Akira, another descendent of Conti. Retrieved February 21, 2024.
@@ -275,7 +356,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Palo Alto Howling Scorpius DEC 2024](https://unit42.paloaltonetworks.com/threat-assessment-howling-scorpius-akira-ransomware/) — Zemah, Y. (2024, December 2). Threat Assessment: Howling Scorpius (Akira Ransomware). Retrieved January 8, 2025.
 - [Secureworks GOLD SAHARA](https://www.secureworks.com/research/threat-profiles/gold-sahara) — Secureworks. (n.d.). GOLD SAHARA. Retrieved February 20, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -283,4 +364,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

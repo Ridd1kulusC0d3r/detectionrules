@@ -1,6 +1,6 @@
 # The Gentlemen (G1058) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1058) · [ATT&CK](https://attack.mitre.org/groups/G1058/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1058) · [ATT&CK](https://attack.mitre.org/groups/G1058/)
 
 **Também conhecido como:** Storm-2697, GOLD SHERWOOD  
 **Registro no ATT&CK:** criado em 2026-09-18, atualizado em 2026-09-30 · referências de 2025 a 2026
@@ -11,6 +11,7 @@
 - **Arsenal:** 1 malware e 2 ferramentas (ex.: The Gentlemen Ransomware, PsExec, Wevtutil).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 88% das técnicas têm ao menos uma regra no catálogo; **2 técnicas sem nenhuma regra pública**.
+- **Onde a cobertura está:** Windows (12 técnicas com regra), DNS (10 técnicas com regra), Outros / genérico (10 técnicas com regra), Linux (9 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1036.001 Invalid Code Signature, T1683.002 Audio-Visual Content, T1585 Establish Accounts, T1683.001 Written Content, T1219.002 Remote Desktop Software.
 
 ## 2. Quem é
@@ -19,7 +20,11 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Este grupo ainda não tem registro consolidado no APT4ALL (país, setores e nomes por fornecedor).
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -83,7 +88,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1486](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1486) Data Encrypted for Impact | The Gentlemen has used The Gentlemen Ransomware to encrypt victim’s data. | 160 | 10 | 1 |
 | [T1657](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1657) Financial Theft | The Gentlemen has used double-extortion tactics to sway victims to pay a ransom to include exfiltrating sensitive data, encrypting files, and threatening public release if a payment is not received. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -100,7 +105,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1068 Exploitation for Privilege Escalation | 22 | 2.01 |
 | T1585.001 Social Media Accounts | 22 | 2.01 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -108,11 +113,11 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [PsExec](https://attack.mitre.org/software/S0029/) | ferramenta | 5 |  |
 | [Wevtutil](https://attack.mitre.org/software/S0645/) | ferramenta | 3 |  |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **15 de 17 técnicas (88%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -120,6 +125,25 @@ Nenhuma campanha atribuída no ATT&CK.
 
 - **T1683.002 Audio-Visual Content** — Resource Development
 - **T1683.001 Written Content** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 12 |
+| DNS | 10 |
+| Outros / genérico | 10 |
+| Linux | 9 |
+| macOS | 9 |
+| EDR / XDR | 9 |
+| AWS | 8 |
+| Firewall & perímetro | 8 |
+| Microsoft 365 | 8 |
+| Azure (recursos) | 7 |
+| IDS / NSM / NDR | 7 |
+| Servidores web & aplicações | 7 |
 
 ### Regras recomendadas por técnica
 
@@ -157,7 +181,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1657 | [AWS S3 Bucket Enumeration or Brute Force](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A5f0234fd-7f21-42af-8391-511d5fd11d5c) | Elastic | Elastic detection-rules |
 | T1657 | [Monitor ransomwarelive for companies of interest on ransowmare data leak sites (DLS)](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=bert-janp-hunting-queries%3A%3A8b9af12a820a) | KQL hunting | Bert-JanP Hunting Queries |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -186,7 +210,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1078 — [ID33205-SQL Server failed login with disabled SA account](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0001-Initial%20access/T1078-Valid%20accounts/ID33205-SQL%20Server%20failed%20login%20with%20disabled%20SA%20account.evtx) _(explícito)_
 - T1486 — [ID 768,775,793,796,817,840-BitLocker encryption activated](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0040-Impact/T1486-Data%20Encrypted%20for%20Impact/ID%20768%2C775%2C793%2C796%2C817%2C840-BitLocker%20encryption%20activated.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se The Gentlemen estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -203,7 +227,7 @@ Se The Gentlemen estiver no seu ambiente, estas são as perguntas a fazer aos se
 11. **T1190 Exploit Public-Facing Application** — Adversary sends crafted HTTP/S (or other service) input to an Internet-facing app (IIS/ASP.NET, API, device portal). Chain: (1) abnormal request patterns to public endpoint → (2) elevated 4xx/5xx or unusual methods/paths → (3) server process (w3wp.exe/other… Dados: `ApplicationLog:IIS` (IIS W3C logs in C:\inetpub\logs\LogFiles\W3SVC* (spikes in 5xx, RCE/SQLi/path traversal/JNDI patterns)), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=7).
 12. **T1583.001 Domains** — Monitor logged domain name system (DNS) data for purchased domains that can be used during targeting. Reputation/category-based detection may be difficult until the categorization is updated. Detection efforts may be focused on related stages of the adversary… Dados: `Domain Name` (None), `Domain Name` (None), `Domain Name` (None).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -214,7 +238,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1058](https://attack.mitre.org/groups/G1058/)
 
-## 11. Bibliografia (8 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (8 fontes citadas pelo ATT&CK)
 
 - [BradyUnit42_TheGentlemen_July2026](https://unit42.paloaltonetworks.com/the-gentlemen-ransomware/) — Brady, M. (2026, July 10). No Manners Here: The Ruthless Rise of The Gentlemen Ransomware. Retrieved September 18, 2026.
 - [CarveyODonnellWelchHuntress_TheGentlemen_May2026](https://www.huntress.com/blog/the-gentlemen-ransomware-defense-evasion-ttps) — Carvey, H., O'Donnell-Welch, L. (2026, May 21). The Gentlemen (Ransomware) in Disguise: Defense Evasion and other TTPs. Retrieved September 18, 2026.
@@ -225,7 +249,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [SoučekESET_Gentlemen_Jun2026](https://www.welivesecurity.com/en/eset-research/killing-me-gently-inside-gentlemens-edr-killer-framework/) — Souček, J. (2026, June 18). Killing me gently: Inside Gentlemen’s EDR killer framework. Retrieved September 18, 2026.
 - [TrendAI_TheGentlemen_Sept2025](https://www.trendaisecurity.com/en-us/resources-insights/trendai-security-blog/unmasking-the-gentlemen-ransomware) — Santos, J., et al. (2025, September 9). Unmasking The Gentlemen Ransomware: Tactics, Techniques, and Procedures Revealed . Retrieved September 18, 2026.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -233,4 +257,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

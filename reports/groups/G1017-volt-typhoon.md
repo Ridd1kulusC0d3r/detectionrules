@@ -1,8 +1,9 @@
 # Volt Typhoon (G1017) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1017) · [ATT&CK](https://attack.mitre.org/groups/G1017/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1017) · [ATT&CK](https://attack.mitre.org/groups/G1017/)
 
 **Também conhecido como:** BRONZE SILHOUETTE, Vanguard Panda, DEV-0391, UNC3236, Voltzite, Insidious Taurus, DazedToad  
+**Origem atribuída:** China · **Motivação:** espionagem, sabotagem · **Setores-alvo:** Governo, Infraestrutura crítica, Indústria, Defesa e militar  
 **Registro no ATT&CK:** criado em 2023-07-27, atualizado em 2026-07-31 · referências de 2023 a 2026
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 1 malware e 16 ferramentas (ex.: Mimikatz, Net, Impacket, FRP, VersaMem).
 - **Campanhas atribuídas:** 2 (KV Botnet Activity, Versa Director Zero Day Exploitation).
 - **Cobertura de detecção pública:** 86% das técnicas têm ao menos uma regra no catálogo; **11 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem, sabotagem; setores Governo, Infraestrutura crítica, Indústria, Defesa e militar.
+- **Onde a cobertura está:** Windows (63 técnicas com regra), EDR / XDR (54 técnicas com regra), Outros / genérico (54 técnicas com regra), Linux (47 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1590.006 Network Security Appliances, T1592 Gather Victim Host Information, T1006 Direct Volume Access, T1218 System Binary Proxy Execution, T1552 Unsecured Credentials.
 
 ## 2. Quem é
@@ -21,7 +24,32 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem, sabotagem |
+| Setores-alvo | Governo, Infraestrutura crítica, Indústria, Defesa e militar |
+| Vítimas citadas | — |
+| Alvos (planilha) | Government, Military industrial complexes, critical infrastructure,Israel,USA,Saudi Arabia,South Africa,Brazil,France,UK,Thailand |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | Mid |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | VANGUARD PANDA |
+| MITRE ATT&CK | G1017 |
+| Secureworks | BRONZE SILHOUETTE |
+| Symantec | Redfly |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Redfly, Storm-0391, UNC3236/UNC5291, DEV-0391/Storm-0391/Volt Typhoon
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -181,7 +209,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | Volt Typhoon has downloaded an outdated version of comsvcs.dll to a compromised domain controller in a non-standard folder. | 644 | 39 | — |
 | [T1573.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1573.001) Symmetric Cryptography | Volt Typhoon has used a version of the Awen web shell that employed AES encryption and decryption for C2 communications. | 5 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -198,7 +226,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1010 Application Window Discovery | 2 | 3.80 |
 | T1588.006 Vulnerabilities | 2 | 3.80 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -220,14 +248,16 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Systeminfo](https://attack.mitre.org/software/S0096/) | ferramenta | 1 |  |
 | [Ping](https://attack.mitre.org/software/S0097/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** ProcDump, Nbtscan, SparrowDoor, KV-Botnet, KV, JDY
+
+## 7. Campanhas
 
 | Campanha | Período | Resumo (EN) |
 |---|---|---|
 | [KV Botnet Activity](https://attack.mitre.org/campaigns/C0035/) | 2022-10 → 2024-01 | KV Botnet Activity consisted of exploitation of primarily “end-of-life” small office-home office (SOHO) equipment from manufacturers such as Cisco, NETGEAR, and DrayTek. KV Botnet Activity was used by Volt Typhoon to obf |
 | [Versa Director Zero Day Exploitation](https://attack.mitre.org/campaigns/C0039/) | 2024-06 → 2024-08 | Versa Director Zero Day Exploitation was conducted by Volt Typhoon from early June through August 2024 as zero-day exploitation of Versa Director servers controlling software-defined wide area network (SD-WAN) applicatio |
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **70 de 81 técnicas (86%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -244,6 +274,25 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 - **T1594 Search Victim-Owned Websites** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
 - **T1584.004 Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1680 Local Storage Discovery** — Discovery. Fonte de log sugerida pelo MITRE: `WinEventLog:Sysmon` EventCode=1; `auditd:SYSCALL` execve call with argv matching known disk enumeration commands (lsblk, parted, fdisk); `macos:unifiedlog` process launch of diskutil or system_profil
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 63 |
+| EDR / XDR | 54 |
+| Outros / genérico | 54 |
+| Linux | 47 |
+| Servidores web & aplicações | 39 |
+| macOS | 37 |
+| Active Directory | 34 |
+| DNS | 32 |
+| Firewall & perímetro | 29 |
+| IDS / NSM / NDR | 28 |
+| Proxy / SWG | 28 |
+| AWS | 28 |
 
 ### Regras recomendadas por técnica
 
@@ -391,7 +440,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685.005 | [Suspicious Eventlog Clearing or Configuration Change Activity](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Acc36992a-4671-4f21-a91d-6c2b72a2edf5) | Sigma | SigmaHQ |
 | T1685.005 | [Log Cleared](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=hayabusa-native%3A%3Ac2f690ac-53f8-4745-8cfe-7127dda28c74) | Sigma | Hayabusa (native) |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -528,7 +577,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1078.002 — [ID4964-Login of a member of a special group](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1078.002-Valid%20accounts-Domain%20accounts/ID4964-Login%20of%20a%20member%20of%20a%20special%20group.evtx) _(explícito)_
 - T1087.002 — [discovery_bloodhound](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Discovery/discovery_bloodhound.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Volt Typhoon estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -545,7 +594,7 @@ Se Volt Typhoon estiver no seu ambiente, estas são as perguntas a fazer aos seu
 11. **T1584.008 Network Devices** — Once adversaries leverage compromised network devices as infrastructure (ex: for command and control), it may be possible to look for unique characteristics associated with adversary software, if known. Much of this activity will take place outside the… Dados: `Internet Scan` (None).
 12. **T1654 Log Enumeration** — Monitor for use of native utilities such as wevtutil.exe or PowerShell cmdlets (Get-WinEvent, Get-EventLog) to enumerate or export logs. Unusual access to security or system event channels, especially by non-administrative users or processes, should be… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Security` (EventCode=4663, 4670, 4656).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -560,7 +609,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 
 - 2023 — [Volt Typhoon targets US critical infrastructure with living-off-the-land techniques _ Microsoft Security Blog](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2023/2023.05.24.Volt_Typhoon/Volt%20Typhoon%20targets%20US%20critical%20infrastructure%20with%20living-off-the-land%20techniques%20_%20Microsoft%20Security%20Blog.pdf) _(via “Volt Typhoon”)_
 
-## 11. Bibliografia (8 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (8 fontes citadas pelo ATT&CK)
 
 - [CISA AA24-038A PRC Critical Infrastructure February 2024](https://www.cisa.gov/sites/default/files/2024-03/aa24-038a_csa_prc_state_sponsored_actors_compromise_us_critical_infrastructure_3.pdf) — CISA et al.. (2024, February 7). PRC State-Sponsored Actors Compromise and Maintain Persistent Access to U.S. Critical Infrastructure. Retrieved May 15, 2024.
 - [Cloudflare 2026 Threat Report New Threat Actors March 2026](https://blog.cloudflare.com/2026-threat-report/) — Cloudflare. (2026, March 3). Introducing the 2026 Cloudflare Threat Report. Retrieved April 18, 2026.
@@ -571,7 +620,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Microsoft Volt Typhoon May 2023](https://www.microsoft.com/en-us/security/blog/2023/05/24/volt-typhoon-targets-us-critical-infrastructure-with-living-off-the-land-techniques/) — Microsoft Threat Intelligence. (2023, May 24). Volt Typhoon targets US critical infrastructure with living-off-the-land techniques. Retrieved July 27, 2023.
 - [Secureworks BRONZE SILHOUETTE May 2023](https://web.archive.org/web/20230601025540/https://www.secureworks.com/blog/chinese-cyberespionage-group-bronze-silhouette-targets-us-government-and-defense-organizations) — Counter Threat Unit Research Team. (2023, May 24). Chinese Cyberespionage Group BRONZE SILHOUETTE Targets U.S. Government and Defense Organizations. Retrieved July 27, 2023.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -579,4 +628,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

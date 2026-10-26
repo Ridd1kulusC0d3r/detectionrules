@@ -1,14 +1,19 @@
 /* ============================================================
-   arsenal.js — navegador das 44.595 regras: busca, filtros, mapa ATT&CK, modal campo-a-campo
+   arsenal.js — navegador do catálogo inteiro: busca, filtros, mapa ATT&CK, modal campo-a-campo
    ============================================================ */
-const A = { q:'', src:new Set(), fmt:new Set(), sev:new Set(), tac:new Set(), ctype:new Set(), tech:'', prod:'', page:0, per:40, sort:'rel', rows:[], fav:false };
+const A = { q:'', src:new Set(), fmt:new Set(), sev:new Set(), tac:new Set(), ctype:new Set(), techno:new Set(), pat:new Set(), tech:'', prod:'', page:0, per:40, sort:'rel', rows:[], fav:false };
 let IDX=null; // linhas normalizadas em objetos
 
+/* tecnologias e padrões de correlação (techmap.py) — globais para o app inteiro */
+let TECHS=[], TECH_BY={}, PATS=[], PAT_BY={};
 function buildIndex(){
-  const I=V.idx; IDX=I.rows.map((r,i)=>({
+  const I=V.idx; TECHS=I.tech||[]; PATS=I.pat||[]; TECH_BY={}; TECHS.forEach(t=>TECH_BY[t.id]=t); PAT_BY={}; PATS.forEach(p=>PAT_BY[p.id]=p);
+  window.TECHS=TECHS; window.TECH_BY=TECH_BY; window.PATS=PATS; window.PAT_BY=PAT_BY;
+  IDX=I.rows.map((r,i)=>({
     i, id:r[0], title:r[1], desc:r[2], src:I.src[r[3]], slug:I.src_slug[r[3]], fmt:I.fmt[r[4]], lang:I.lang[r[5]], sev:r[6]||'',
     tac:r[7], tech:r[8], prod:r[9], cat:r[10], status:r[11], lic:I.lic[r[12]], ctype:r[13]||"detection",
-    hay:(r[1]+' '+r[2]+' '+r[8].join(' ')+' '+(r[9]||'')+' '+(r[10]||'')).toLowerCase(),
+    techs:(r[14]||[]).map(k=>TECHS[k]?.id).filter(Boolean), pat:PATS[r[15]]?.id||'',
+    hay:(r[1]+' '+r[2]+' '+r[8].join(' ')+' '+(r[9]||'')+' '+(r[10]||'')+' '+(r[14]||[]).map(k=>TECHS[k]?.n||'').join(' ')).toLowerCase(),
   }));
 }
 
@@ -38,7 +43,7 @@ function renderArsenal(){
   $('#sort').value=A.sort; $('#sort').onchange=e=>{A.sort=e.target.value; applyFilters();};
   $('#favbtn').onclick=()=>{A.fav=!A.fav; A.page=0; renderArsenal();};
   $('#heatbtn').onclick=()=>{const h=$('#heat'); h.style.display=h.style.display==='none'?'block':'none'; if(h.style.display==='block') renderHeat();};
-  $('#clearbtn').onclick=()=>{A.q='';A.src.clear();A.fmt.clear();A.sev.clear();A.tac.clear();A.ctype.clear();A.tech='';A.prod='';A.page=0;A.fav=false;renderArsenal();};
+  $('#clearbtn').onclick=()=>{A.q='';A.src.clear();A.fmt.clear();A.sev.clear();A.tac.clear();A.ctype.clear();A.techno.clear();A.pat.clear();A.tech='';A.prod='';A.page=0;A.fav=false;renderArsenal();};
   $('#exportbtn').onclick=exportCSV;
   applyFilters();
 }
@@ -52,6 +57,8 @@ function applyFilters(){
     if(A.sev.size && !A.sev.has(r.sev||'none')) return false;
     if(A.ctype.size && !A.ctype.has(r.ctype)) return false;
     if(A.tac.size && !r.tac.some(t=>A.tac.has(t))) return false;
+    if(A.techno.size && !r.techs.some(t=>A.techno.has(t))) return false;
+    if(A.pat.size && !A.pat.has(r.pat)) return false;
     if(A.tech && !r.tech.some(t=>t.startsWith(A.tech))) return false;
     if(A.prod && (r.prod||'').toLowerCase()!==A.prod) return false;
     if(terms.length){ for(const t of terms){ if(!r.hay.includes(t)) return false; } }
@@ -66,7 +73,7 @@ function applyFilters(){
   A.rows=rows; renderFilters(rows); renderList();
 }
 
-function facet(rows, key, all){ const c={}; for(const r of rows){ const vals = key==='tac'? r.tac : [key==='sev'?(r.sev||'none'):(key==='ctype'?r.ctype:r[key])]; for(const v of vals){ if(v==null) continue; c[v]=(c[v]||0)+1; } } return c; }
+function facet(rows, key, all){ const c={}; for(const r of rows){ const vals = key==='tac'? r.tac : key==='techs'? r.techs : [key==='sev'?(r.sev||'none'):(key==='ctype'?r.ctype:r[key])]; for(const v of vals){ if(v==null) continue; c[v]=(c[v]||0)+1; } } return c; }
 function renderFilters(rows){
   const base = IDX; // contagens totais sempre do índice inteiro para orientação
   const fs=facet(rows,'src'), ff=facet(rows,'fmt'), fv=facet(rows,'sev'), ft=facet(rows,'tac');
@@ -76,8 +83,11 @@ function renderFilters(rows){
   const sevOrder=['critical','high','medium','low','informational','none'];
   const CT={detection:'Detecção',hunting:'Hunting',signature:'Assinatura (arquivo/rede)',playbook:'Playbook (resposta)'};
   const fct=facet(rows,'ctype');
+  const ftn=facet(rows,'techs'), fpt=facet(rows,'pat');
   $('#filters').innerHTML=
     group('Tipo de conteúdo',A.ctype,fct,['detection','hunting','signature','playbook'],k=>CT[k]||k)+
+    group('Tecnologia',A.techno,ftn,TECHS.map(t=>t.id),k=>`<span title="${esc(TECH_BY[k]?.dom||'')}">${esc(TECH_BY[k]?.n||k)}</span>`)+
+    group('Padrão de correlação',A.pat,fpt,PATS.map(p=>p.id),k=>`<span title="${esc(PAT_BY[k]?.d||'')}">${esc(PAT_BY[k]?.n||k)}</span>`)+
     group('Fonte',A.src,fs,srcOrder,k=>k)+
     group('Formato',A.fmt,ff,fmtOrder,k=>FMT_PT[k]||k)+
     group('Severidade',A.sev,fv,sevOrder,k=>`<span class="sev ${k}">${SEV_PT[k==='none'?'':k]||k}</span>`)+
@@ -85,7 +95,7 @@ function renderFilters(rows){
     `<div class="fgroup"><b>Técnica (prefixo)</b><input class="search" style="padding:7px 10px;font-size:12px" id="techf" placeholder="T1059" value="${esc(A.tech)}"></div>
      <div class="fgroup"><b>Produto / logsource</b><input class="search" style="padding:7px 10px;font-size:12px" id="prodf" placeholder="windows, aws, linux…" value="${esc(A.prod)}"></div>`;
   $$('.fopt','#filters').forEach(o=>o.onclick=()=>{
-    const set={'Tipo de conteúdo':A.ctype,Fonte:A.src,Formato:A.fmt,Severidade:A.sev,'Tática ATT&CK':A.tac}[o.dataset.g];
+    const set={'Tipo de conteúdo':A.ctype,'Tecnologia':A.techno,'Padrão de correlação':A.pat,Fonte:A.src,Formato:A.fmt,Severidade:A.sev,'Tática ATT&CK':A.tac}[o.dataset.g];
     set.has(o.dataset.k)? set.delete(o.dataset.k): set.add(o.dataset.k); A.page=0; applyFilters();
   });
   $('#techf').oninput=e=>{A.tech=e.target.value.trim().toUpperCase(); A.page=0; applyFilters();};
@@ -98,7 +108,7 @@ function renderList(){
   $('#rlist').innerHTML= slice.length? slice.map(r=>`<div class="row" data-i="${r.i}">
       <div class="t">${esc(r.title)}</div><span class="sev ${sevClass(r.sev)}">${SEV_PT[r.sev]||'—'}</span>
       <div class="d">${esc(r.desc)||'<i style="color:var(--ink-faint)">sem descrição no arquivo original</i>'}</div>
-      <div class="m"><span class="src">${esc(r.src)}</span><span class="tag ${r.ctype==='playbook'?'a':r.ctype==='hunting'?'b':r.ctype==='signature'?'':'s'}">${({detection:'detecção',hunting:'hunting',signature:'assinatura',playbook:'playbook'})[r.ctype]||r.ctype}</span><span class="tag">${FMT_PT[r.fmt]||r.fmt}</span>${r.prod?`<span class="tag b">${esc(r.prod)}</span>`:''}${r.tac.slice(0,2).map(t=>`<span class="tag v">${TACTIC_PT[t]||t}</span>`).join('')}${r.tech.slice(0,4).map(t=>`<span class="tech">${t}</span>`).join('')}${V.state.fav[r.slug+'::'+r.id]?'<span style="color:var(--amber)">★</span>':''}</div>
+      <div class="m"><span class="src">${esc(r.src)}</span><span class="tag ${r.ctype==='playbook'?'a':r.ctype==='hunting'?'b':r.ctype==='signature'?'':'s'}">${({detection:'detecção',hunting:'hunting',signature:'assinatura',playbook:'playbook'})[r.ctype]||r.ctype}</span><span class="tag">${FMT_PT[r.fmt]||r.fmt}</span>${r.techs.slice(0,2).map(t=>`<span class="tag b">${esc(TECH_BY[t]?.n||t)}</span>`).join('')}${r.tac.slice(0,2).map(t=>`<span class="tag v">${TACTIC_PT[t]||t}</span>`).join('')}${r.tech.slice(0,4).map(t=>`<span class="tech">${t}</span>`).join('')}${V.state.fav[r.slug+'::'+r.id]?'<span style="color:var(--amber)">★</span>':''}</div>
     </div>`).join('') : `<div class="loading">Nenhuma regra com esses filtros. Tente ampliar a busca.</div>`;
   $$('.row','#rlist').forEach(x=>x.onclick=()=>openRule(IDX[+x.dataset.i]));
   const pages=Math.ceil(rows.length/A.per);
@@ -116,8 +126,8 @@ function renderHeat(){
 }
 
 function exportCSV(){
-  const h=['id','title','source','format','severity','tactics','techniques','product','category','status','license'];
-  const lines=[h.join(',')].concat(A.rows.map(r=>[r.id,r.title,r.src,r.fmt,r.sev,r.tac.join('|'),r.tech.join('|'),r.prod||'',r.cat||'',r.status||'',r.lic].map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')));
+  const h=['id','title','source','format','severity','tactics','techniques','technology','correlation_pattern','product','category','status','license'];
+  const lines=[h.join(',')].concat(A.rows.map(r=>[r.id,r.title,r.src,r.fmt,r.sev,r.tac.join('|'),r.tech.join('|'),r.techs.map(t=>TECH_BY[t]?.n||t).join('|'),PAT_BY[r.pat]?.n||'',r.prod||'',r.cat||'',r.status||'',r.lic].map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')));
   download(`vigia_regras_${A.rows.length}.csv`, lines.join('\n'), 'text/csv');
 }
 
@@ -183,6 +193,7 @@ async function openRule(r){
   if($('#edsim')) $('#edsim').onclick=()=>{$$('.mtab','#mbox').forEach(x=>x.classList.remove('on'));$('.mtab[data-p="experiment"]').classList.add('on');$$('.mpane','#mbox').forEach(p=>p.classList.remove('on'));$('#p-experiment').classList.add('on');$('#ed')&&runSim(r,$('#ed').value,key);};
   $('#edpkg').onclick=()=>downloadPackage(r,d,key);
   if($('#addcase')) $('#addcase').onclick=()=>caseAddRule(r);
+  if(window.renderStory) renderStory(r,d).catch(e=>console.warn('story',e));
   if(r.tech.length && window.groupsForRuleHTML){ groupsForRuleHTML(r).then(h=>{ const z=$('#ctx-groups'); if(z) z.innerHTML=h; }); }
   if(r.tech.length && window.attackContextHTML){ (async()=>{ const [c,l,v]=await Promise.all([attackContextHTML(r),attackLogsHTML(r),attackValidationHTML(r)]); const a=$('#ctx-attack'),b=$('#ctx-logs'),z=$('#ctx-valid'); if(a) a.innerHTML=c; if(b) b.innerHTML=l; if(z) z.innerHTML=v; })(); }
   if(r.fmt==='sigma'){ setTimeout(()=>{ const sr=$('#simrun'); if(sr) sr.onclick=()=>runSim(r, (V.state['edit_'+key]||d.raw), key); const se=$('#simedit'); if(se) se.onclick=()=>{ const t=prompt('Cole um evento JSON para testar contra a regra:','{"ParentImage":"C:\\\\...\\\\WINWORD.EXE","Image":"C:\\\\Windows\\\\System32\\\\cmd.exe","CommandLine":"cmd /c x"}'); if(!t) return; try{ const ev=JSON.parse(t); const rule=Sigma.parseSigma(V.state['edit_'+key]||d.raw); const res=Sigma.evaluate(rule,ev); $('#simout').innerHTML=`<div class="lint ${res.matched?'bad':'ok'}">${res.matched?'A regra DISPARARIA para este evento.':'A regra NÃO dispararia.'}</div>`+term('evento',JSON.stringify(ev,null,2),'kql-md')+`<div style="font-size:12.5px;color:var(--ink-dim);margin-top:8px">${Object.entries(res.blocks).map(([n,b])=>`<code style="color:${b.hit?'var(--signal)':'var(--ink-3)'}">${esc(n)} ${b.hit?'✓':'✗'}</code>: ${b.fields.map(f=>`<span style="color:${f.hit?'var(--ink)':'var(--ink-3)'}">${esc(f.field)} ${f.hit?'✓':'✗'}</span>`).join(', ')}`).join('<br>')}</div>`; }catch(e){ toast('✗','JSON inválido'); } }; },0); }
@@ -313,16 +324,12 @@ function curationBar(r,key){
 }
 /* ===== ① ENTENDA ===== */
 function understandPane(r,d){
-  const info=FORMAT_INFO[r.fmt]; const inv=investigateFor(r.tac);
   const scenario = r.desc||d.desc||'';
-  return `<div class="feynman"><div class="lbl">O QUE ESTA REGRA DETECTA — EM LINGUAGEM SIMPLES</div>
+  return `<div id="story-host"><div class="feynman"><div class="lbl">O QUE ESTA REGRA DETECTA — EM LINGUAGEM SIMPLES</div>
     <p>${esc(scenario)||'Esta regra não traz descrição no arquivo original. Veja a lógica na aba ② para inferir o comportamento.'}</p>
-    ${r.tac.length?`<p style="margin-top:8px"><span class="em">Objetivo do adversário:</span> ${r.tac.map(t=>TACTIC_PT[t]||t).join(', ')}${r.tech.length?` (${r.tech.join(', ')})`:''}. ${TACTIC_HINT[r.tac[0]]||''}</p>`:''}</div>
-  <div class="grid g2">
-    <div class="card"><h3 class="h" style="margin-top:0">Cenário</h3><p style="font-size:13px;color:var(--ink-dim)">${CENARIO(r)}</p></div>
-    <div class="card"><h3 class="h" style="margin-top:0">O que ela <b>não</b> vê (ponto cego)</h3><p style="font-size:13px;color:var(--ink-dim)">${BLINDSPOTS[r.fmt]||'Toda regra tem limites: campos ausentes, evasão por variação mínima, e atividade legítima parecida. Veja a aba ④ para testar o limite.'}</p></div>
-  </div>
-  <div class="note tip"><span class="ni">▸</span><div><b>Pergunta-guia (o diferencial):</b> ao sair deste modal você deve saber responder — <i>o que ela detecta, de quais dados depende (aba ③), por que dispararia (aba ④) e como provar que funciona (aba ④/⑤)</i>.</div></div>`;
+    ${r.tac.length?`<p style="margin-top:8px"><span class="em">Objetivo do adversário:</span> ${r.tac.map(t=>TACTIC_PT[t]||t).join(', ')}${r.tech.length?` (${r.tech.join(', ')})`:''}. ${TACTIC_HINT[r.tac[0]]||''}</p>`:''}
+    <p class="id" style="margin-top:8px">Montando a história desta regra…</p></div></div>
+  <div class="note tip"><span class="ni">▸</span><div><b>Pergunta-guia:</b> ao sair deste modal você deve saber responder — <i>o que ela detecta, de quais dados depende (aba ③), por que dispararia (aba ④) e como provar que funciona (aba ④/⑤)</i>.</div></div>`;
 }
 const TACTIC_HINT={'Credential Access':'Roubar credenciais é o que permite o atacante "virar" usuário legítimo e se mover.','Execution':'Rodar código é o passo que transforma o acesso em ação.','Persistence':'Garantir que volta mesmo após reboot.','Privilege Escalation':'Sair de usuário comum para admin/root.','Defense Evasion':'Apagar rastros e cegar defesas.','Lateral Movement':'Pular de máquina em máquina rumo ao alvo.','Command and Control':'Telefonar para casa e receber ordens.','Exfiltration':'Levar os dados para fora.','Impact':'O dano final (ex.: ransomware).','Discovery':'Mapear o ambiente invadido.','Initial Access':'A porta de entrada.','Collection':'Reunir os dados antes de levar.'};
 function CENARIO(r){

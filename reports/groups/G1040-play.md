@@ -1,8 +1,9 @@
 # Play (G1040) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1040) · [ATT&CK](https://attack.mitre.org/groups/G1040/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1040) · [ATT&CK](https://attack.mitre.org/groups/G1040/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** Sem país atribuído · **Motivação:** financeiro · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2024-09-24, atualizado em 2026-07-31 · referências de 2023 a 2023
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 2 malware e 7 ferramentas (ex.: Cobalt Strike, Empire, Mimikatz, BloodHound, AdFind).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Sem país atribuído**, motivação financeiro.
+- **Onde a cobertura está:** Windows (25 técnicas com regra), EDR / XDR (24 técnicas com regra), Outros / genérico (22 técnicas com regra), Linux (21 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1048 Exfiltration Over Alternative Protocol, T1030 Data Transfer Size Limits, T1078.003 Local Accounts, T1685.005 Clear Windows Event Logs, T1657 Financial Theft.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Sem país atribuído |
+| Motivação | financeiro |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | Mid |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1040 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Gold Encore, Balloonfly, Fiddling Scorpius
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -129,7 +154,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1657](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1657) Financial Theft | Play demands ransom payments from victims to unencrypt filesystems and to not publish sensitive data exfiltrated from victim networks. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -146,7 +171,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1021.002 SMB/Windows Admin Shares | 27 | 1.82 |
 | T1133 External Remote Services | 27 | 1.82 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -160,13 +185,50 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Nltest](https://attack.mitre.org/software/S0359/) | ferramenta | 3 |  |
 | [Wevtutil](https://attack.mitre.org/software/S0645/) | ferramenta | 3 |  |
 
-## 6. Campanhas
+### Ferramentas observadas em intrusões (PLAY) — Ransomware Tool Matrix
+
+Ferramentas legítimas e ofensivas que afiliados usam dentro da rede. Cada uma é um ponto de detecção: veja quantas regras do catálogo a citam.
+
+| Ferramenta | Categoria | Regras que citam |
+|---|---|---:|
+| PsExec | lolbas | 260 |
+| Cobalt Strike | offsec | 258 |
+| Mimikatz | credenciais | 253 |
+| AdFind | descoberta | 68 |
+| WinPEAS | offsec | 54 |
+| Plink | rede | 26 |
+| WinSCP | exfiltracao | 24 |
+| PowerTool | evasao | 13 |
+| GMER | evasao | 11 |
+| IOBit | evasao | 2 |
+| WKTools | descoberta | **0** |
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **26 de 26 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 25 |
+| EDR / XDR | 24 |
+| Outros / genérico | 22 |
+| Linux | 21 |
+| Firewall & perímetro | 19 |
+| macOS | 19 |
+| DNS | 18 |
+| AWS | 16 |
+| Active Directory | 14 |
+| IDS / NSM / NDR | 14 |
+| Servidores web & aplicações | 14 |
+| IA, LLMs & agentes | 14 |
 
 ### Regras recomendadas por técnica
 
@@ -227,7 +289,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685.005 | [Suspicious Eventlog Clearing or Configuration Change Activity](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Acc36992a-4671-4f21-a91d-6c2b72a2edf5) | Sigma | SigmaHQ |
 | T1685.005 | [Log Cleared](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=hayabusa-native%3A%3Ac2f690ac-53f8-4745-8cfe-7127dda28c74) | Sigma | Hayabusa (native) |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -291,7 +353,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1685.005 — [ID104-1102-Event log cleared](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1070.001-Clear%20Windows%20event%20logs/ID104-1102-Event%20log%20cleared.evtx) _(explícito)_
 - T1685.005 — [ID4688-Clear event log attempt (native)](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1070.001-Clear%20Windows%20event%20logs/ID4688-Clear%20event%20log%20attempt%20%28native%29.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Play estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -308,7 +370,7 @@ Se Play estiver no seu ambiente, estas são as perguntas a fazer aos seus dados 
 11. **T1027.010 Command Obfuscation** — Detection of command-line activity exhibiting syntactic obfuscation patterns, such as excessive escape characters, base64 encoding, command concatenation, or outlier command length and entropy. Dados: `WinEventLog:Security` (EventCode=4688).
 12. **T1685 Disable or Modify Tools** — Detection of adversary behavior that disables or modifies security tools, including killing AV/EDR processes, stopping services, altering Sysmon registry keys, or tampering with exclusion lists. Defenders observe process/service termination, registry… Dados: `WinEventLog:System` (EventCode=7045), `WinEventLog:Sysmon` (EventCode=5), `WinEventLog:Sysmon` (EventCode=13, 14).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -323,12 +385,12 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 
 - 2020 — [First Active Attack Exploiting CVE-2019-2215 Found on Google Play, Linked to SideWinder APT Group](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.01.06.SideWinder_Google_Play/First%20Active%20Attack%20Exploiting%20CVE-2019-2215%20Found%20on%20Google%20Play%2C%20Linked%20to%20SideWinder%20APT%20Group.pdf) _(via “Play”)_
 
-## 11. Bibliografia (2 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (2 fontes citadas pelo ATT&CK)
 
 - [CISA Play Ransomware Advisory December 2023](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-352a) — CISA. (2023, December 18). #StopRansomware: Play Ransomware AA23-352A. Retrieved September 24, 2024.
 - [Trend Micro Ransomware Spotlight Play July 2023](https://www.trendmicro.com/vinfo/us/security/news/ransomware-spotlight/ransomware-spotlight-play) — Trend Micro Research. (2023, July 21). Ransomware Spotlight: Play. Retrieved September 24, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -336,4 +398,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

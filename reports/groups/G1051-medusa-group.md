@@ -1,8 +1,9 @@
 # Medusa Group (G1051) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1051) · [ATT&CK](https://attack.mitre.org/groups/G1051/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1051) · [ATT&CK](https://attack.mitre.org/groups/G1051/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** Sem país atribuído · **Motivação:** financeiro · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2025-10-15, atualizado em 2026-07-31 · referências de 2024 a 2025
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 1 malware e 4 ferramentas (ex.: Medusa Ransomware, Mimikatz, Rclone, PsExec, certutil).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 96% das técnicas têm ao menos uma regra no catálogo; **2 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Sem país atribuído**, motivação financeiro.
+- **Onde a cobertura está:** Windows (52 técnicas com regra), EDR / XDR (45 técnicas com regra), Linux (42 técnicas com regra), Outros / genérico (40 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1218.014 MMC, T1650 Acquire Access, T1652 Device Driver Discovery, T1608.002 Upload Tool, T1529 System Shutdown/Reboot.
 
 ## 2. Quem é
@@ -19,7 +22,27 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Sem país atribuído |
+| Motivação | financeiro |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | — |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1051 |
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -151,7 +174,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1529](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1529) System Shutdown/Reboot | Medusa Group has manually turned off and encrypted virtual machines. | 52 | 16 | — |
 | [T1657](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1657) Financial Theft | Medusa Group has stolen and encrypted victims' data in order to extort victims into paying a ransom. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -168,7 +191,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1489 Service Stop | 6 | 3.11 |
 | T1490 Inhibit System Recovery | 6 | 3.11 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -178,11 +201,11 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [PsExec](https://attack.mitre.org/software/S0029/) | ferramenta | 5 | Medusa Group has utilized PsExec to facilitate execution, lateral movement, defense evasion, and exfiltration. |
 | [certutil](https://attack.mitre.org/software/S0160/) | ferramenta | 4 | Medusa Group has utilized certutil to download additional tools within victim environments. |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **55 de 57 técnicas (96%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -190,6 +213,25 @@ Nenhuma campanha atribuída no ATT&CK.
 
 - **T1650 Acquire Access** — Resource Development
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 52 |
+| EDR / XDR | 45 |
+| Linux | 42 |
+| Outros / genérico | 40 |
+| Firewall & perímetro | 36 |
+| Servidores web & aplicações | 34 |
+| Active Directory | 29 |
+| IDS / NSM / NDR | 28 |
+| DNS | 27 |
+| macOS | 27 |
+| Integridade, conformidade & vulnerabilidade | 27 |
+| AWS | 26 |
 
 ### Regras recomendadas por técnica
 
@@ -307,7 +349,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1690 | [ESXi Syslog Configuration Change Via ESXCLI](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A38eb1dbb-011f-40b1-a126-cf03a0210563) | Sigma | SigmaHQ |
 | T1690 | [ESXi Syslog Configuration Change Via ESXCLI](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A38eb1dbb-011f-40b1-a126-cf03a0210563) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -427,7 +469,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1490 — [ID4688-Delete VSS backup (WMI)](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0040-Impact/T1490-Inhibit%20System%20Recovery/ID4688-Delete%20VSS%20backup%20%28WMI%29.evtx) _(explícito)_
 - T1490 — [ID4688-Delete Window backup (webadmin)](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0040-Impact/T1490-Inhibit%20System%20Recovery/ID4688-Delete%20Window%20backup%20%28webadmin%29.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Medusa Group estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -444,7 +486,7 @@ Se Medusa Group estiver no seu ambiente, estas são as perguntas a fazer aos seu
 11. **T1072 Software Deployment Tools** — Detects SCCM, Intune, or remote push execution spawning scripts or binaries from SYSTEM context or unusual consoles (e.g., cmtrace.exe launching PowerShell or cmd.exe). Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Application` (SCCM, Intune logs).
 12. **T1548.002 Bypass User Account Control** — Detects a multi-event behavior chain involving UAC bypass attempts via known auto-elevated binaries (e.g., eventvwr.exe, sdclt.exe), unauthorized Registry changes to UAC-related keys, and anomalous process execution with elevated privileges but lacking… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Security` (EventCode=4672), `WinEventLog:Sysmon` (EventCode=13, 14).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -455,7 +497,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1051](https://attack.mitre.org/groups/G1051/)
 
-## 11. Bibliografia (6 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (6 fontes citadas pelo ATT&CK)
 
 - [Broadcom Medusa Ransomware Medusa Group March 2025](https://www.security.com/threat-intelligence/medusa-ransomware-attacks) — Threat Hunter Team Symantec and Carbon Black. (2025, March 6). Medusa Ransomware Activity Continues to Increase. Retrieved October 15, 2025.
 - [Check Point Medusa Ransomware April 2025](https://www.checkpoint.com/cyber-hub/threat-prevention/ransomware/medusa-ransomware-group/) — Check Point. (2025, April 16). The 2025 Ransomware Surge: Context for Medusa’s Rise. Retrieved October 15, 2025.
@@ -464,7 +506,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Palo Alto Unit 42 Medusa Group Medusa Ransomware January 2024](https://unit42.paloaltonetworks.com/medusa-ransomware-escalation-new-leak-site/) — Anthony Galiette, Doel Santos. (2024, January 11). Medusa Ransomware Turning Your Files into Stone. Retrieved October 15, 2025.
 - [Security Scorecard Medusa Ransomware January 2024](https://securityscorecard.com/wp-content/uploads/2024/01/deep-dive-into-medusa-ransomware.pdf) — Vlad Pasca. (2024, January 1). A Deep Dive into Medusa Ransomware. Retrieved October 15, 2025.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -472,4 +514,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

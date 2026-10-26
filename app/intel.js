@@ -155,6 +155,7 @@ window.openGroup=async function(gid){
    <div class="mtabs"><button class="mtab on" data-dp="sum">Resumo</button><button class="mtab" data-dp="ttp">TTP e procedimentos</button><button class="mtab" data-dp="ars">Arsenal</button><button class="mtab" data-dp="det">Detecção</button><button class="mtab" data-dp="emu">Emulação e hunting</button><button class="mtab" data-dp="osint">OSINT e fontes</button></div>
    <div class="mpane on" id="dp-sum">
      <p style="font:16px/1.6 var(--serif)">${esc(p.d)}</p><p class="note">Texto original do MITRE ATT&CK (inglês). Registro criado em ${p.cr}, atualizado em ${p.md}${p.yrs.length?` · referências de ${p.yrs[0]} a ${p.yrs[1]}`:''}.</p>
+     ${groupContext(p)}
      <h3 class="h">Da tática à detecção</h3><p class="sub" style="margin-top:0">Cada técnica do grupo, agrupada por tática, e se existe regra pública para ela. Clique para abrir.</p>
      ${groupSankey(p,tacOrder)}
      <h3 class="h">Assinatura comportamental</h3><p class="sub" style="margin-top:0">Técnicas raras entre os ${NG()} grupos: as mais úteis para reconhecer este grupo pelo comportamento.</p>
@@ -164,6 +165,8 @@ window.openGroup=async function(gid){
    <div class="mpane" id="dp-ttp">${tacOrder.map(s=>{ const rows=tech.filter(t=>t.ta.includes(s)); if(!rows.length) return ''; return `<h3 class="h">${esc(tacName(s))} · ${rows.length}</h3><div class="rlist">${rows.map(t=>`<div class="row" onclick="openTech('${t.id}')"><div class="t">${t.id} · ${esc(t.n)}</div><span class="tag ${t.rt?'':'r'}">${t.rt?t.rt+' regras':'sem regra'}</span>${t.pr.length?`<div class="d" style="-webkit-line-clamp:4">${esc(t.pr[0].p)}</div>`:''}<div class="m">${t.pr[0]?.c?.length?`<span>fonte: ${esc(t.pr[0].c.join('; '))}</span>`:''}<span>${t.at} Atomic</span><span>${t.ev} EVTX</span></div></div>`).join('')}</div>`; }).join('')}<p class="note">Procedimentos: texto original do ATT&CK (inglês), com a fonte citada.</p></div>
    <div class="mpane" id="dp-ars">
      <h3 class="h">Softwares (${p.sw.length})</h3>${p.sw.length?`<table class="tbl"><tr><th>Software</th><th>Tipo</th><th class="num">Técnicas</th><th>Uso relatado (EN)</th></tr>${p.sw.map(s=>`<tr><td><a href="https://attack.mitre.org/software/${s.id}/" target="_blank" rel="noopener">${esc(s.n)}</a> <span class="id">${s.id}</span></td><td>${s.k==='malware'?'malware':'ferramenta'}</td><td class="num">${s.t}</td><td style="font-size:13px">${esc(s.p.slice(0,200))}</td></tr>`).join('')}</table>`:'<p class="empty">Nenhum software atribuído.</p>'}
+     ${(p.ctx?.ferr||[]).length?`<h3 class="h">Outras ferramentas e malware relatados</h3><p class="note">Planilha APT Groups & Operations e MISP, via APT4ALL.</p><div class="pill-row">${p.ctx.ferr.map(f=>`<span class="tag">${esc(f)}</span>`).join('')}</div>`:''}
+     ${(p.rw||[]).length?`<h3 class="h">Ferramentas observadas em intrusões (${esc(p.rwg.join(', '))})</h3><p class="note">Ransomware Tool Matrix via APT4ALL. Clique para ver as regras que citam a ferramenta.</p><div class="pill-row">${p.rw.map(t=>`<a class="tag ${t.r?'':'r'}" href="#" onclick="event.preventDefault();${t.r?`loadTech().then(()=>rwRules('${esc(t.n).replace(/'/g,"\\'")}'))`:''}">${esc(t.n)} · ${t.r} regras</a>`).join('')}</div>`:''}
      <h3 class="h">Campanhas (${p.camp.length})</h3>${p.camp.length?`<table class="tbl"><tr><th>Campanha</th><th>Período</th><th>Resumo (EN)</th></tr>${p.camp.map(c=>`<tr><td><a href="https://attack.mitre.org/campaigns/${c.id}/" target="_blank" rel="noopener">${esc(c.n)}</a></td><td class="num">${esc(c.f||'?')} → ${esc(c.l||'?')}</td><td style="font-size:13px">${esc(c.d.slice(0,220))}</td></tr>`).join('')}</table>`:'<p class="empty">Nenhuma campanha atribuída.</p>'}
    </div>
    <div class="mpane" id="dp-det">
@@ -177,6 +180,16 @@ window.openGroup=async function(gid){
   </div>`);
   $$('[data-dp]','#mbox').forEach(b=>b.onclick=()=>{ $$('[data-dp]','#mbox').forEach(z=>z.classList.remove('on')); b.classList.add('on'); $$('#mbox .mpane').forEach(x=>x.classList.remove('on')); $('#dp-'+b.dataset.dp).classList.add('on'); });
 };
+function groupContext(p){
+  const c=p.ctx||{}; if(!c.pais_n&&!(c.forn&&Object.keys(c.forn).length)) return '';
+  const flag=k=>k&&k.length===2&&k!=='??'?String.fromCodePoint(...[...k].map(x=>0x1F1E6+x.charCodeAt(0)-65))+' ':'';
+  const extra=(c.al||[]).filter(a=>a!==p.n&&!p.al.includes(a));
+  return `<h3 class="h">Contexto, nomes e alvos</h3><p class="note">Consolidado pelo APT4ALL (MISP Galaxy, APT Groups & Operations, EternalLiberty, APTnotes). Atribuição é afirmação de quem publicou.</p>
+   <div class="kv"><dt>Origem atribuída</dt><dd>${flag(c.pais)}${esc(c.pais_n||'—')}</dd><dt>Motivação</dt><dd>${esc((c.mot||[]).join(', ')||'—')}</dd><dt>Setores-alvo</dt><dd>${esc((c.set||[]).join(', ')||'—')}</dd>
+   ${(c.vit||[]).length?`<dt>Vítimas citadas</dt><dd>${esc(c.vit.join(', '))}</dd>`:''}${c.alvos?`<dt>Alvos (planilha)</dt><dd>${esc(c.alvos)}</dd>`:''}${(c.ops||[]).length?`<dt>Operações</dt><dd>${esc(c.ops.join(', '))}</dd>`:''}</div>
+   ${c.forn&&Object.keys(c.forn).length?`<table class="tbl"><tr><th>Fornecedor</th><th>Como chama este grupo</th></tr>${Object.entries(c.forn).sort().map(([v,n])=>`<tr><td>${esc(v)}</td><td>${esc(n.join(', '))}</td></tr>`).join('')}</table>`:''}
+   ${extra.length?`<p class="id">Outros nomes no APT4ALL: ${esc(extra.slice(0,40).join(', '))}</p>`:''}`;
+}
 function groupSankey(p,tacOrder){
   const nodes=[],links=[]; const add=new Set();
   const top=new Set([...p.tech].sort((a,b)=>b.idf-a.idf).slice(0,28).map(t=>t.id));
@@ -213,6 +226,7 @@ function groupOsint(p){
     <div class="row" onclick="window.open('https://malpedia.caad.fkie.fraunhofer.de/actors','_blank','noopener')"><div class="t">Malpedia — atores e famílias de malware</div><span class="tag">malware</span><div class="m"><span>busque por ${esc(names.slice(0,3).join(', '))}</span></div></div>
     <div class="row" onclick="window.open('https://apt.etda.or.th/cgi-bin/listgroups.cgi','_blank','noopener')"><div class="t">ThaiCERT Threat Group Cards</div><span class="tag">perfis</span></div>
    </div>
+   ${(p.ctx?.rel||[]).length?`<h3 class="h">Relatórios públicos ligados pelo APT4ALL (${p.ctx.nrel||p.ctx.rel.length})</h3><div class="rlist">${p.ctx.rel.map(r=>`<div class="row" onclick="window.open('${esc(r.u)}','_blank','noopener')"><div class="t">${esc(r.t)}</div><span class="tag">${esc((r.d||'').slice(-4))}</span><div class="m"><span>${esc(r.f)}</span><span>APTnotes</span></div></div>`).join('')}</div>`:''}
    <h3 class="h">Relatórios na coleção CyberMonitor (${p.rep.length})</h3>${p.rep.length?`<div class="rlist">${p.rep.map(r=>`<div class="row" onclick="window.open('${GH.apt+encPath(r.p)}','_blank','noopener')"><div class="t">${esc(r.t)}</div><span class="tag">${esc(r.y)}</span><div class="m"><span>${esc(r.f)}</span><span>via “${esc(r.via)}” (inferido)</span></div></div>`).join('')}</div>`:'<p class="empty">Nenhum relatório ligado pelo nome.</p>'}
    <h3 class="h">Bibliografia citada pelo ATT&CK (${p.refs.length})</h3>${p.refs.length?`<ul style="padding-left:18px">${p.refs.map(r=>`<li style="margin:6px 0;font-size:14px"><a href="${esc(r.u)}" target="_blank" rel="noopener">${esc(r.n)}</a> <span style="color:var(--ink-3)">— ${esc(r.d)}</span></li>`).join('')}</ul>`:'<p class="empty">—</p>'}
    ${p.contrib.length?`<p class="note">Contribuidores do registro no ATT&CK: ${esc(p.contrib.join('; '))}.</p>`:''}`;

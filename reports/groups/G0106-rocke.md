@@ -1,8 +1,9 @@
 # Rocke (G0106) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0106) · [ATT&CK](https://attack.mitre.org/groups/G0106/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0106) · [ATT&CK](https://attack.mitre.org/groups/G0106/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** China · **Motivação:** financeiro · **Setores-alvo:** Financeiro  
 **Registro no ATT&CK:** criado em 2020-05-26, atualizado em 2026-07-31 · referências de 2018 a 2019
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 0 malware e 0 ferramentas.
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação financeiro; setores Financeiro.
+- **Onde a cobertura está:** Linux (35 técnicas com regra), EDR / XDR (34 técnicas com regra), Windows (31 técnicas com regra), macOS (29 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1055.002 Portable Executable Injection, T1053.003 Cron, T1574.006 Dynamic Linker Hijacking, T1027.004 Compile After Delivery, T1037 Boot or Logon Initialization Scripts.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | financeiro |
+| Setores-alvo | Financeiro |
+| Vítimas citadas | — |
+| Alvos (planilha) | Cybercrime, Cryptomining, Cryptojacking |
+| Operações conhecidas | Bayer Cyber Attack |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0106 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Iron Group, Iron Cyber Group, Aged Libra
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -121,7 +146,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1496.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1496.001) Compute Hijacking | Rocke has distributed cryptomining malware. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -138,17 +163,38 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1685.006 Clear Linux or Mac System Logs | 3 | 3.58 |
 | T1014 Rootkit | 5 | 3.24 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 Nenhum software atribuído no ATT&CK.
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** XBash
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **36 de 36 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Linux | 35 |
+| EDR / XDR | 34 |
+| Windows | 31 |
+| macOS | 29 |
+| Outros / genérico | 28 |
+| Contêineres (Docker/runtime) | 23 |
+| Servidores web & aplicações | 21 |
+| Integridade, conformidade & vulnerabilidade | 21 |
+| AWS | 18 |
+| Firewall & perímetro | 17 |
+| DevOps & supply chain | 17 |
+| DNS | 16 |
 
 ### Regras recomendadas por técnica
 
@@ -229,7 +275,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1686 | [Disable System Firewall](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A53059bc0-1472-438b-956a-7508a94a91f0) | Sigma | SigmaHQ |
 | T1686 | [Netsh RDP Port Opening](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A01aeb693-138d-49d2-9403-c4f52d7d3d62) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -314,7 +360,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1686 — [ID2003-4950-Firewall disabled](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.004-Impair%20Defenses-Disable%20or%20Modify%20System%20Firewall/ID2003-4950-Firewall%20disabled.evtx) _(explícito)_
 - T1686 — [ID2004-Any any firewall rule created](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.004-Impair%20Defenses-Disable%20or%20Modify%20System%20Firewall/ID2004-Any%20any%20firewall%20rule%20created.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Rocke estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -331,7 +377,7 @@ Se Rocke estiver no seu ambiente, estas são as perguntas a fazer aos seus dados
 11. **T1071 Application Layer Protocol** — Detects suspicious usage of common application-layer protocols (e.g., HTTP, HTTPS, DNS, SMB) by abnormal processes, with high outbound byte counts or irregular ports, possibly indicating command and control or data exfiltration. Dados: `NSM:Flow` (http, dns, smb, ssl logs), `WinEventLog:Sysmon` (EventCode=3, 22).
 12. **T1102.001 Dead Drop Resolver** — Detection of a process or script that accesses a common web service to retrieve content containing obfuscated indicators of a secondary C2 server (dead drop resolver behavior). Dados: `WinEventLog:Sysmon` (EventCode=3, 22), `etw:Microsoft-Windows-NDIS-PacketCapture` (TLS Handshake/Network Flow).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -346,13 +392,13 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 
 - 2019 — [Malware Used by Rocke Group Evolves to Evade Detection by Cloud Security Products](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2019/2019.01.17.Rocke_Group/Malware%20Used%20by%20Rocke%20Group%20Evolves%20to%20Evade%20Detection%20by%20Cloud%20Security%20Products.pdf) _(via “Rocke”)_
 
-## 11. Bibliografia (3 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (3 fontes citadas pelo ATT&CK)
 
 - [Anomali Rocke March 2019](https://www.anomali.com/blog/rocke-evolves-its-arsenal-with-a-new-malware-family-written-in-golang) — Anomali Labs. (2019, March 15). Rocke Evolves Its Arsenal With a New Malware Family Written in Golang. Retrieved April 24, 2019.
 - [Talos Rocke August 2018](https://blog.talosintelligence.com/2018/08/rocke-champion-of-monero-miners.html) — Liebenberg, D.. (2018, August 30). Rocke: The Champion of Monero Miners. Retrieved May 26, 2020.
 - [Unit 42 Rocke January 2019](https://unit42.paloaltonetworks.com/malware-used-by-rocke-group-evolves-to-evade-detection-by-cloud-security-products/) — Xingyu, J.. (2019, January 17). Malware Used by Rocke Group Evolves to Evade Detection by Cloud Security Products. Retrieved May 26, 2020.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -360,4 +406,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

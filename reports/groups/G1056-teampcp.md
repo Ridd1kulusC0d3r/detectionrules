@@ -1,8 +1,9 @@
 # TeamPCP (G1056) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1056) · [ATT&CK](https://attack.mitre.org/groups/G1056/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1056) · [ATT&CK](https://attack.mitre.org/groups/G1056/)
 
 **Também conhecido como:** PCPCat, ShellForce, DeadCatx3, SHADOW-WATER-058, UNC6780  
+**Origem atribuída:** Sem país atribuído · **Motivação:** financeiro · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2026-07-16, atualizado em 2026-09-02 · referências de 2026 a 2026
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 3 malware e 0 ferramentas (ex.: Mini Shai-Hulud, TeamPCP Cloud Stealer, CanisterWorm).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 86% das técnicas têm ao menos uma regra no catálogo; **5 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Sem país atribuído**, motivação financeiro.
+- **Onde a cobertura está:** Windows (23 técnicas com regra), Linux (23 técnicas com regra), EDR / XDR (22 técnicas com regra), DevOps & supply chain (21 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1176.002 IDE Extensions, T1546.016 Installer Packages, T1677 Poisoned Pipeline Execution, T1059.013 Container CLI/API, T1195.001 Compromise Software Dependencies and Development Tools.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Sem país atribuído |
+| Motivação | financeiro |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | — |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1056 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Altered Spider, CanisterWorm
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -130,7 +155,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1486](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1486) Data Encrypted for Impact | TeamPCP has deployed ransomware and has announced partnerships with ransomware groups including Vect and CipherForce in online criminal forums. | 160 | 10 | 1 |
 | [T1657](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1657) Financial Theft | TeamPCP has engaged in cryptocurrency mining and theft. TeamPCP has also partnered with ransomware and data theft extortion groups, sold leaked code, and crowdsourced supply chain compromises by open-sourcing their Mini Shai-Hulud malware. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -147,7 +172,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1543.002 Systemd Service | 3 | 3.58 |
 | T1550.001 Application Access Token | 3 | 3.58 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -155,11 +180,11 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [TeamPCP Cloud Stealer](https://attack.mitre.org/software/S9041/) | malware | 48 | TeamPCP has used TeamPCP Cloud Stealer in credential harvesting and exfiltration. |
 | [CanisterWorm](https://attack.mitre.org/software/S9042/) | malware | 32 | TeamPCP has used CanisterWorm in credential harvesting and software supply chain campaigns since at least 2026. |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **32 de 37 técnicas (86%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -170,6 +195,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1059.013 Container CLI/API** — Execution. Fonte de log sugerida pelo MITRE: `auditd:SYSCALL` execve: Execution of container management CLIs (docker, crictl, kubectl) or interpreted shells (sh, bash, python) within container context
 - **T1683.001 Written Content** — Resource Development
 - **T1583.004 Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 23 |
+| Linux | 23 |
+| EDR / XDR | 22 |
+| DevOps & supply chain | 21 |
+| AWS | 20 |
+| Outros / genérico | 19 |
+| macOS | 18 |
+| Microsoft 365 | 18 |
+| E-mail | 18 |
+| IA, LLMs & agentes | 16 |
+| Kubernetes | 15 |
+| Contêineres (Docker/runtime) | 15 |
 
 ### Regras recomendadas por técnica
 
@@ -241,7 +285,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1657 | [Monitor ransomwarelive for companies of interest on ransowmare data leak sites (DLS)](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=bert-janp-hunting-queries%3A%3A8b9af12a820a) | KQL hunting | Bert-JanP Hunting Queries |
 | T1684.001 | [Entra ID OAuth user_impersonation Scope for Unusual User and Client](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A9563dace-5822-11f0-b1d3-f661ea17fbcd) | Elastic | Elastic detection-rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -289,7 +333,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1547.001 — [evasion_persis_hidden_run_keyvalue_sysmon_13](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Persistence/evasion_persis_hidden_run_keyvalue_sysmon_13.evtx) _(inferido)_
 - T1552.004 — [ID70-CAPI-Private key accessed Mimikatz](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0006-Credential%20Access/T1552.004-Unsecured%20Credentials-Private%20Keys/ID70-CAPI-Private%20key%20accessed%20Mimikatz.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se TeamPCP estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -306,7 +350,7 @@ Se TeamPCP estiver no seu ambiente, estas são as perguntas a fazer aos seus dad
 11. **T1098 Account Manipulation** — Account attribute changes (e.g., password set, group membership, servicePrincipalName, logon hours) correlated with unusual process lineage or timing, indicating privilege escalation or persistence via valid accounts. Dados: `WinEventLog:Security` (EventCode=4738, 4728, 4670), `WinEventLog:Sysmon` (EventCode=1).
 12. **T1485 Data Destruction** — Adversary spawns command-line tools (e.g., del, cipher /w, SDelete) or scripts to recursively delete or overwrite user/system files. This may be correlated with abnormal file IO activity, registry writes, or tampering in critical system directories. Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=23).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -317,7 +361,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1056](https://attack.mitre.org/groups/G1056/)
 
-## 11. Bibliografia (17 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (17 fontes citadas pelo ATT&CK)
 
 - [Aikido CanisterWorm MAR 2026](https://www.aikido.dev/blog/teampcp-stage-payload-canisterworm-iran) — Eriksen, C. (2026, March 22). CanisterWorm Gets Teeth: TeamPCP's Kubernetes Wiper Targets Iran. Retrieved July 27, 2026.
 - [Aikido TeamPCP Telnyx MAR 2026](https://www.aikido.dev/blog/telnyx-pypi-compromised-teampcp-canisterworm) — Eriksen, C. (2026, March 27). Popular telnyx package compromised on PyPI by TeamPCP. Retrieved July 16, 2026.
@@ -337,7 +381,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Wiz TeamPCP Profile MAY 2026](https://threats.wiz.io/all-actors/teampcp) — Wiz. (2026, May 20). TeamPCP. Retrieved July 16, 2026.
 - [Wiz Trivy Compromise MAR 2026](https://www.wiz.io/blog/trivy-compromised-teampcp-supply-chain-attack) — McCarthy, R. (2026, March 20). Trivy Compromised: Everything You Need to Know about the Latest Supply Chain Attack. Retrieved July 1, 2026.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -345,4 +389,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

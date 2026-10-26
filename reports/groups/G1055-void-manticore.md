@@ -1,8 +1,9 @@
 # VOID MANTICORE (G1055) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1055) · [ATT&CK](https://attack.mitre.org/groups/G1055/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1055) · [ATT&CK](https://attack.mitre.org/groups/G1055/)
 
 **Também conhecido como:** COBALT MYSTIQUE, Handala Hack, Homeland Justice, Karma, Karmabelow80, BANISHED KITTEN, Red Sandstorm  
+**Origem atribuída:** Irã · **Motivação:** espionagem, sabotagem, influência · **Setores-alvo:** Sociedade civil e mídia, Educação e pesquisa, Governo, Saúde, Tecnologia, Telecomunicações  
 **Registro no ATT&CK:** criado em 2026-04-20, atualizado em 2026-07-31 · referências de 2026 a 2026
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 0 malware e 0 ferramentas.
 - **Campanhas atribuídas:** 1 (HomeLand Justice).
 - **Cobertura de detecção pública:** 94% das técnicas têm ao menos uma regra no catálogo; **4 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Irã**, motivação espionagem, sabotagem, influência; setores Sociedade civil e mídia, Educação e pesquisa, Governo, Saúde, Tecnologia; 2 países vítimas citados.
+- **Onde a cobertura está:** Windows (51 técnicas com regra), EDR / XDR (44 técnicas com regra), Outros / genérico (44 técnicas com regra), Linux (41 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1679 Selective Exclusion, T1110.004 Credential Stuffing, T1123 Audio Capture, T1651 Cloud Administration Command, T1552.002 Credentials in Registry.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Irã |
+| Motivação | espionagem, sabotagem, influência |
+| Setores-alvo | Sociedade civil e mídia, Educação e pesquisa, Governo, Saúde, Tecnologia, Telecomunicações |
+| Vítimas citadas | Europe, Israel, Middle East, United States |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | Mid |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1055 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** DUNE, Storm-0842, DEV-0842/Storm-0842/Red Sandstorm, Yellow Dev 31
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -175,7 +200,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1561.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1561.002) Disk Structure Wipe | VOID MANTICORE has deployed custom wipers that overwrite system files and the host devices master boot records (MBR) to corrupt or destroy files. | 2 | — | — |
 | [T1657](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1657) Financial Theft | VOID MANTICORE has conducted data exfiltration and posted stolen information on data leak sites for the purposes of financial and political extortion. VOID MANTICORE has also sold stolen data to prospective buyers for cryptocurrency. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -192,17 +217,17 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1074 Data Staged | 4 | 3.40 |
 | T1484.001 Group Policy Modification | 4 | 3.40 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 Nenhum software atribuído no ATT&CK.
 
-## 6. Campanhas
+## 7. Campanhas
 
 | Campanha | Período | Resumo (EN) |
 |---|---|---|
 | [HomeLand Justice](https://attack.mitre.org/campaigns/C0038/) | 2021-05 → 2022-09 | HomeLand Justice was a disruptive cyber campaign conducted by Iranian state-affiliated actors against Albanian government networks in July and September 2022. The activity combined ransomware, wiper malware, and data lea |
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **59 de 63 técnicas (94%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -212,6 +237,25 @@ Nenhum software atribuído no ATT&CK.
 - **T1583.004 Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 51 |
+| EDR / XDR | 44 |
+| Outros / genérico | 44 |
+| Linux | 41 |
+| Firewall & perímetro | 33 |
+| AWS | 31 |
+| IDS / NSM / NDR | 30 |
+| IA, LLMs & agentes | 29 |
+| macOS | 29 |
+| Microsoft 365 | 28 |
+| Integridade, conformidade & vulnerabilidade | 28 |
+| Active Directory | 27 |
 
 ### Regras recomendadas por técnica
 
@@ -337,7 +381,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1686.003 | [Suspicious Program Location Whitelisted In Firewall Via Netsh.EXE](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Aa35f5a72-f347-4e36-8895-9869b0d5fc6d) | Sigma | SigmaHQ |
 | T1686.003 | [RDP Connection Allowed Via Netsh.EXE](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A01aeb693-138d-49d2-9403-c4f52d7d3d62) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -437,7 +481,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1547.001 — [evasion_persis_hidden_run_keyvalue_sysmon_13](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Persistence/evasion_persis_hidden_run_keyvalue_sysmon_13.evtx) _(inferido)_
 - T1572 — [ID4688-netsh RDP port forwarding abuse](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0011-Command%20and%20Control/T1572-Protocol%20tunneling/ID4688-netsh%20RDP%20port%20forwarding%20abuse.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se VOID MANTICORE estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -454,7 +498,7 @@ Se VOID MANTICORE estiver no seu ambiente, estas são as perguntas a fazer aos s
 11. **T1098 Account Manipulation** — Account attribute changes (e.g., password set, group membership, servicePrincipalName, logon hours) correlated with unusual process lineage or timing, indicating privilege escalation or persistence via valid accounts. Dados: `WinEventLog:Security` (EventCode=4738, 4728, 4670), `WinEventLog:Sysmon` (EventCode=1).
 12. **T1561.002 Disk Structure Wipe** — Processes attempting raw disk access to overwrite sensitive structures such as the MBR or partition table using \\.\PhysicalDrive notation. Detection relies on correlating process creation, privilege escalation, and raw sector writes in Sysmon and Security… Dados: `WinEventLog:Security` (EventCode=4673), `WinEventLog:Sysmon` (Raw write attempts targeting \\.\PhysicalDrive0 or sector 0 (MBR/partition table)), `WinEventLog:Sysmon` (EventCode=6).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -465,7 +509,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1055](https://attack.mitre.org/groups/G1055/)
 
-## 11. Bibliografia (9 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (9 fontes citadas pelo ATT&CK)
 
 - [Check Point VOID MANTICORE Handala Hack March 2026](https://research.checkpoint.com/2026/handala-hack-unveiling-groups-modus-operandi/) — Check Point Research. (2026, March 12). “Handala Hack” – Unveiling Group’s Modus Operandi. Retrieved April 20, 2026.
 - [DOJ FBI Handala Hack March 2026](https://www.justice.gov/opa/media/1431956/dl?inline) — DOJ/FBI. (2026, March 19). Case 1:26-mj-00683-CDA: Affidavit in Support of Seizure Warrant: In the Matter of the Seizure of Domain Names Justicehomeland[.]org; karmabelow80[.]org; handala-hack[.]to; and handala-redwatned
@@ -477,7 +521,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Sophos VOID MANTICORE COBALT MYSTIQUE other Names April 2026](https://www.sophos.com/en-us/threat-profiles/cobalt-mystique) — Sophos. (2026, April 20). Iran COBALT MYSTIQUE. Retrieved April 20, 2026.
 - [SPECOPS Outpost24 Handala Hack Stryker March 2026](https://specopssoft.com/blog/stryker-cyber-attack-what-we-know-remote-wipe/) — David Ketler. (2026, March 30). Stryker Cyber-Attack: What we Know so Far About the Remote Wipe Attack. Retrieved April 20, 2026.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -485,4 +529,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

@@ -1,8 +1,9 @@
 # Stealth Falcon (G0038) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0038) · [ATT&CK](https://attack.mitre.org/groups/G0038/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0038) · [ATT&CK](https://attack.mitre.org/groups/G0038/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** Emirados Árabes Unidos · **Motivação:** espionagem, hacktivismo · **Setores-alvo:** Sociedade civil e mídia  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2016 a 2016
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 0 malware e 0 ferramentas.
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Emirados Árabes Unidos**, motivação espionagem, hacktivismo; setores Sociedade civil e mídia; 2 países vítimas citados.
+- **Onde a cobertura está:** Windows (15 técnicas com regra), EDR / XDR (15 técnicas com regra), Outros / genérico (14 técnicas com regra), Servidores web & aplicações (13 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1555.004 Windows Credential Manager, T1555 Credentials from Password Stores, T1573.001 Symmetric Cryptography, T1059 Command and Scripting Interpreter, T1012 Query Registry.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Emirados Árabes Unidos |
+| Motivação | espionagem, hacktivismo |
+| Setores-alvo | Sociedade civil e mídia |
+| Vítimas citadas | United Arab Emirates, United Kingdom |
+| Alvos (planilha) | Middle Eastern region |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0038 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** FruityArmor, Project Raven
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -81,7 +106,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1041](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1041) Exfiltration Over C2 Channel | After data is collected by Stealth Falcon malware, it is exfiltrated over the existing C2 channel. | 135 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -98,17 +123,38 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1057 Process Discovery | 41 | 1.43 |
 | T1047 Windows Management Instrumentation | 42 | 1.40 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 Nenhum software atribuído no ATT&CK.
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** MS16-120, CVE-2016-3393 0day exploits, 0day CVE-2018-8453, PowerShell backdoor, CVE-2018-8611
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **16 de 16 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 15 |
+| EDR / XDR | 15 |
+| Outros / genérico | 14 |
+| Servidores web & aplicações | 13 |
+| Firewall & perímetro | 12 |
+| Linux | 11 |
+| macOS | 11 |
+| Active Directory | 11 |
+| IDS / NSM / NDR | 10 |
+| DNS | 10 |
+| IA, LLMs & agentes | 10 |
+| DevOps & supply chain | 9 |
 
 ### Regras recomendadas por técnica
 
@@ -149,7 +195,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1573.001 | [CYFIRMA - High severity Command & Control Network Indicators with Monitor Recommendation Rule](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=microsoft-sentinel-analytic-rules%3A%3A6d8fb3fe-2501-4103-8137-34261fa3a596) | Sentinel KQL | Microsoft Sentinel (Analytic Rules) |
 | T1573.001 | [CYFIRMA - High severity Command & Control Network Indicators with Block Recommendation Rule](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=microsoft-sentinel-analytic-rules%3A%3A6b61b716-afd9-4f6c-ad00-965d5987cafd) | Sentinel KQL | Microsoft Sentinel (Analytic Rules) |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -201,7 +247,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1555.003 — [CA_chrome_firefox_opera_4663](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/CA_chrome_firefox_opera_4663.evtx) _(inferido)_
 - T1555.004 — [ID 5376, 5379, 5382, 5381, 5382 credential manager and vault](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1555.004-Windows%20Credential%20Manager/ID%205376%2C%205379%2C%205382%2C%205381%2C%205382%20credential%20manager%20and%20vault.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Stealth Falcon estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -218,7 +264,7 @@ Se Stealth Falcon estiver no seu ambiente, estas são as perguntas a fazer aos s
 11. **T1016 System Network Configuration Discovery** — Execution of built-in tools (e.g., ipconfig, route, netsh) or PowerShell/WMI queries to enumerate IP, MAC, interface status, or routing configuration. Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:PowerShell` (EventCode=4103, 4104, 4105, 4106).
 12. **T1005 Data from Local System** — Adversaries collecting local files via PowerShell, WMI, or direct file API calls often include recursive file listings, targeted file reads, and temporary file staging. Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=11).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -229,11 +275,15 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G0038](https://attack.mitre.org/groups/G0038/)
 
-## 11. Bibliografia (1 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (1 no total, mais recentes primeiro):
+
+- 2016 — [Stealth Falcon](https://app.box.com/s/is08b06f6fj6a9z6wymf4u5y5xjm6opr) _(Citizen Lab)_
+
+## 12. Bibliografia (1 fontes citadas pelo ATT&CK)
 
 - [Citizen Lab Stealth Falcon May 2016](https://citizenlab.org/2016/05/stealth-falcon/) — Marczak, B. and Scott-Railton, J.. (2016, May 29). Keep Calm and (Don’t) Enable Macros: A New Threat Actor Targets UAE Dissidents. Retrieved June 8, 2016.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -241,4 +291,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

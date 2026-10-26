@@ -1,8 +1,9 @@
 # Deep Panda (G0009) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0009) · [ATT&CK](https://attack.mitre.org/groups/G0009/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0009) · [ATT&CK](https://attack.mitre.org/groups/G0009/)
 
 **Também conhecido como:** Shell Crew, WebMasters, KungFu Kittens, PinkPanther, Black Vine  
+**Origem atribuída:** China · **Motivação:** indefinido · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2014 a 2017
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 4 malware e 3 ferramentas (ex.: Derusbi, Net, Sakula, StreamEx, Mivast).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação indefinido.
+- **Onde a cobertura está:** Windows (10 técnicas com regra), EDR / XDR (9 técnicas com regra), Firewall & perímetro (6 técnicas com regra), DNS (6 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1546.008 Accessibility Features, T1027.005 Indicator Removal from Tools, T1218.010 Regsvr32, T1564.003 Hidden Window, T1021.002 SMB/Windows Admin Shares.
 
 ## 2. Quem é
@@ -19,7 +22,34 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | indefinido |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | Anthem, OPM, Anthem Hack |
+| Confiança de atribuição (MISP) | — |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| Cisco Talos | Group 13 |
+| CrowdStrike | Deep Panda |
+| FireEye | KungFu Kittens |
+| Kaspersky | WebMasters |
+| MITRE ATT&CK | G0009 |
+| Mandiant | APT19 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** APT19, Group 13, Sh3llCr3w, Winnti Group
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -64,7 +94,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1021.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1021.002) SMB/Windows Admin Shares | Deep Panda uses net.exe to connect to network shares using net use commands with compromised credentials. | 272 | 4 | 20 |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -81,7 +111,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1047 Windows Management Instrumentation | 42 | 1.40 |
 | T1059.001 PowerShell | 85 | 0.72 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -93,13 +123,34 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Tasklist](https://attack.mitre.org/software/S0057/) | ferramenta | 3 |  |
 | [Ping](https://attack.mitre.org/software/S0097/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Sakula/Sakurel, Scanbox Framework, many Webshells including China Chopper, WCE
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **10 de 10 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 10 |
+| EDR / XDR | 9 |
+| Firewall & perímetro | 6 |
+| DNS | 6 |
+| Outros / genérico | 6 |
+| macOS | 5 |
+| IDS / NSM / NDR | 5 |
+| VPN & acesso remoto | 5 |
+| Servidores web & aplicações | 5 |
+| Proxy / SWG | 5 |
+| Linux | 4 |
+| Active Directory | 4 |
 
 ### Regras recomendadas por técnica
 
@@ -128,7 +179,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1564.003 | [Potential Data Stealing Via Chromium Headless Debugging](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A3e8207c5-fcd2-4ea6-9418-15d45b4890e4) | Sigma | SigmaHQ |
 | T1564.003 | [HackTool - Covenant PowerShell Launcher](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Ac260b6db-48ba-4b4a-a76f-2f67644e99d2) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -164,7 +215,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1218.010 — [exec_sysmon_1_lolbin_renamed_regsvr32_scrobj](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Execution/exec_sysmon_1_lolbin_renamed_regsvr32_scrobj.evtx) _(inferido)_
 - T1218.010 — [exec_sysmon_lobin_regsvr32_sct](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Execution/exec_sysmon_lobin_regsvr32_sct.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Deep Panda estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -179,7 +230,7 @@ Se Deep Panda estiver no seu ambiente, estas são as perguntas a fazer aos seus 
 9. **T1047 Windows Management Instrumentation** — Detects adversarial abuse of WMI to execute local or remote commands via WMIC, PowerShell, or COM API through a multi-event chain: process creation, command execution, and corresponding network connection if remote. Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:WMI` (EventCode=5857, 5858, 5860, 5861).
 10. **T1059.001 PowerShell** — Detects behavioral chains where PowerShell is launched with encoded commands, unusual parent processes, or suspicious modules loaded, potentially followed by network connections or child process spawning. Supports detection of both direct (powershell.exe) and… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:PowerShell` (EventCode=4103, 4104, 4105, 4106), `WinEventLog:PowerShell` (EventCode=400, 403).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -200,7 +251,15 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2015 — [the-black-vine-cyberespionage-group](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2015/2015.07.28.Black_Vine/the-black-vine-cyberespionage-group.pdf) _(via “Black Vine”)_
 - 2022 — [New Milestones for Deep Panda_ Log4Shell and Digitally Signed Fire Chili Rootkits](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.03.30.Deep_Panda_New_Milestones/New%20Milestones%20for%20Deep%20Panda_%20Log4Shell%20and%20Digitally%20Signed%20Fire%20Chili%20Rootkits.pdf) _(via “Deep Panda”)_
 
-## 11. Bibliografia (7 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (5 no total, mais recentes primeiro):
+
+- 2022 — [New Milestones for Deep Panda: Log4Shell and Digitally Signed Fire Chili Rootkits](https://app.box.com/s/y1uuj9no6pq6acfcne8lb1laj23jyxtj) _(Fortinet)_
+- 2015 — [The Black Vine Cyberespionage Group](https://app.box.com/s/0ahidgtzecyx94hgvxoai9kmu5r6yw49) _(Symantec)_
+- 2014 — [I Am Ironman: Deep Panda Uses Sakula Malware To Target Organizations In Multiple Sectors](https://app.box.com/s/4dfaheem1io3i71o51rf4lfo2ivotuol) _(Crowdstrike)_
+- 2014 — [Mo' Shells Mo' Problems - Deep Panda Web Shells](https://app.box.com/s/pn1mtot3a2d2seuqx46unamdl7udlwq0) _(Crowdstrike)_
+- 2013 — [Deep Panda](https://app.box.com/s/6po2pgedkjf4br5p7tm51go7p5g3z6g3) _(Crowdstrike)_
+
+## 12. Bibliografia (7 fontes citadas pelo ATT&CK)
 
 - [Alperovitch 2014](https://web.archive.org/web/20200424075623/https:/www.crowdstrike.com/blog/deep-thought-chinese-targeting-national-security-think-tanks/) — Alperovitch, D. (2014, July 7). Deep in Thought: Chinese Targeting of National Security Think Tanks. Retrieved November 12, 2014.
 - [CrowdStrike Deep Panda Web Shells](http://www.crowdstrike.com/blog/mo-shells-mo-problems-deep-panda-web-shells/) — RYANJ. (2014, February 20). Mo’ Shells Mo’ Problems – Deep Panda Web Shells. Retrieved September 16, 2015.
@@ -210,7 +269,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Symantec Black Vine](https://web.archive.org/web/20170823094836/http:/www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/the-black-vine-cyberespionage-group.pdf) — DiMaggio, J.. (2015, August 6). The Black Vine cyberespionage group. Retrieved January 26, 2016.
 - [ThreatConnect Anthem](https://www.threatconnect.com/the-anthem-hack-all-roads-lead-to-china/) — ThreatConnect Research Team. (2015, February 27). The Anthem Hack: All Roads Lead to China. Retrieved January 26, 2016.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -218,4 +277,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

@@ -1,8 +1,9 @@
 # Tonto Team (G0131) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0131) · [ATT&CK](https://attack.mitre.org/groups/G0131/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0131) · [ATT&CK](https://attack.mitre.org/groups/G0131/)
 
 **Também conhecido como:** Earth Akhlut, BRONZE HUNTLEY, CactusPete, Karma Panda  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** Sociedade civil e mídia, Governo, Defesa e militar, Setor privado (genérico)  
 **Registro no ATT&CK:** criado em 2021-05-05, atualizado em 2026-07-31 · referências de 2003 a 2021
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 2 malware e 4 ferramentas (ex.: Bisonal, ShadowPad, Mimikatz, LaZagne, NBTscan).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem; setores Sociedade civil e mídia, Governo, Defesa e militar, Setor privado (genérico); 4 países vítimas citados.
+- **Onde a cobertura está:** Windows (15 técnicas com regra), Linux (15 técnicas com regra), EDR / XDR (14 técnicas com regra), Servidores web & aplicações (14 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1069.001 Local Groups, T1090.002 External Proxy, T1210 Exploitation of Remote Services, T1003 OS Credential Dumping, T1135 Network Share Discovery.
 
 ## 2. Quem é
@@ -19,7 +22,34 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | Sociedade civil e mídia, Governo, Defesa e militar, Setor privado (genérico) |
+| Vítimas citadas | Eastern Europe, Japan, South Korea, Taiwan, United States |
+| Alvos (planilha) | Dissident groups |
+| Operações conhecidas | Seven Pointed Dagger |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | Karma Panda |
+| FireEye | Tonto Team |
+| IRL | CactusPete |
+| Kaspersky | CactusPete |
+| MITRE ATT&CK | G0131 |
+| iSight | Tonto Team |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Bisonal (malware), Lone Ranger, COPPER, Red Beifang, PLA Unit 65017, TAG-74, LONE CASTLE
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -90,7 +120,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1090.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1090.002) External Proxy | Tonto Team has routed their traffic through an external server in order to obfuscate their location. | 18 | — | — |
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | Tonto Team has downloaded malicious DLLs which served as a ShadowPad loader. | 644 | 39 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -107,7 +137,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1505.003 Web Shell | 30 | 1.72 |
 | T1574.001 DLL | 35 | 1.58 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -118,13 +148,34 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [NBTscan](https://attack.mitre.org/software/S0590/) | ferramenta | 5 |  |
 | [gsecdump](https://attack.mitre.org/software/S0008/) | ferramenta | 2 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** RoyalRoad RTF Weaponizer
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **15 de 15 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 15 |
+| Linux | 15 |
+| EDR / XDR | 14 |
+| Servidores web & aplicações | 14 |
+| Outros / genérico | 14 |
+| Firewall & perímetro | 11 |
+| IDS / NSM / NDR | 11 |
+| Active Directory | 10 |
+| Microsoft 365 | 10 |
+| Proxy / SWG | 10 |
+| SaaS de negócio | 10 |
+| macOS | 9 |
 
 ### Regras recomendadas por técnica
 
@@ -163,7 +214,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1574.001 | [Winnti Pipemon Characteristics](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A73d70463-75c9-4258-92c6-17500fe972f2) | Sigma | SigmaHQ |
 | T1574.001 | [Winnti Pipemon Characteristics](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A73d70463-75c9-4258-92c6-17500fe972f2) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -207,7 +258,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1574.001 — [DE_timestomp_and_dll_sideloading_and_RunPersist](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/DE_timestomp_and_dll_sideloading_and_RunPersist.evtx) _(inferido)_
 - T1574.001 — [sideloading_injection_persistence_run_key](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/sideloading_injection_persistence_run_key.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Tonto Team estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -224,7 +275,7 @@ Se Tonto Team estiver no seu ambiente, estas são as perguntas a fazer aos seus 
 11. **T1203 Exploitation for Client Execution** — Cause→effect chain: (1) A client app (browser, Office, PDF/Flash/reader) experiences a crash/abnormal exit or loads from an unusual location, then (2) drops or modifies a file in user-writable paths, and/or (3) spawns an unexpected child (e.g.,… Dados: `WinEventLog:Application` (EventCode=1000), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1).
 12. **T1566.001 Spearphishing Attachment** — Detection of spearphishing attachments by correlating suspicious email delivery with subsequent file creation and abnormal process execution (e.g., Office spawning PowerShell or CMD). Behavior chain includes inbound email metadata → attachment stored on disk… Dados: `m365:unified` (Send/Receive: Inbound emails with attachments from suspicious or spoofed senders), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -235,7 +286,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G0131](https://attack.mitre.org/groups/G0131/)
 
-## 11. Bibliografia (10 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (10 fontes citadas pelo ATT&CK)
 
 - [ARS Technica China Hack SK April 2017](https://arstechnica.com/information-technology/2017/04/researchers-claim-china-trying-to-hack-south-korea-missile-defense-efforts/) — Sean Gallagher. (2017, April 21). Researchers claim China trying to hack South Korea missile defense efforts. Retrieved October 17, 2021.
 - [CrowdStrike Manufacturing Threat July 2020](https://www.crowdstrike.com/blog/adversaries-targeting-the-manufacturing-industry/) — Falcon OverWatch Team. (2020, July 14). Manufacturing Industry in the Adversaries’ Crosshairs. Retrieved October 17, 2021.
@@ -248,7 +299,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Trend Micro HeartBeat Campaign January 2013](https://www.trendmicro.de/cloud-content/us/pdfs/security-intelligence/white-papers/wp_the-heartbeat-apt-campaign.pdf?) — Roland Dela Paz. (2003, January 3). The HeartBeat APT Campaign. Retrieved October 17, 2021.
 - [TrendMicro Tonto Team October 2020](https://vb2020.vblocalhost.com/uploads/VB2020-06.pdf) — Daniel Lughi, Jaromir Horejsi. (2020, October 2). Tonto Team - Exploring the TTPs of an advanced threat actor operating a large infrastructure. Retrieved October 17, 2021.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -256,4 +307,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

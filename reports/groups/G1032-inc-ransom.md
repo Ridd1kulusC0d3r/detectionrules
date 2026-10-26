@@ -1,8 +1,9 @@
 # INC Ransom (G1032) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1032) · [ATT&CK](https://attack.mitre.org/groups/G1032/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1032) · [ATT&CK](https://attack.mitre.org/groups/G1032/)
 
 **Também conhecido como:** GOLD IONIC  
+**Origem atribuída:** Sem país atribuído · **Motivação:** financeiro · **Setores-alvo:** Educação e pesquisa, Governo, Setor privado (genérico)  
 **Registro no ATT&CK:** criado em 2024-06-06, atualizado em 2026-07-31 · referências de 2023 a 2024
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 1 malware e 7 ferramentas (ex.: Net, INC Ransomware, Rclone, esentutl, AdFind).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Sem país atribuído**, motivação financeiro; setores Educação e pesquisa, Governo, Setor privado (genérico).
+- **Onde a cobertura está:** Windows (24 técnicas com regra), EDR / XDR (23 técnicas com regra), Outros / genérico (22 técnicas com regra), Linux (21 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1537 Transfer Data to Cloud Account, T1074 Data Staged, T1071 Application Layer Protocol, T1566 Phishing, T1069.002 Domain Groups.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Sem país atribuído |
+| Motivação | financeiro |
+| Setores-alvo | Educação e pesquisa, Governo, Setor privado (genérico) |
+| Vítimas citadas | — |
+| Alvos (planilha) | INC Ransom is a new ransomware group that emerged in August 2023, spreading ransomware with the same name.  From the start of the operation till mid-September of the same year the group leaked the data of more than a dozen victims on their blog similarly to other groups of this type.  The ransomware group exercises double and triple extortion on them.  The INC Ransom group was first observed by se |
+| Operações conhecidas | Inc. ransomware |
+| Confiança de atribuição (MISP) | Mid |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1032 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** INC ransomware, INC ransomware group, INC
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -116,7 +141,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1486](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1486) Data Encrypted for Impact | INC Ransom has used INC Ransomware to encrypt victim's data. | 160 | 10 | 1 |
 | [T1657](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1657) Financial Theft | INC Ransom has stolen and encrypted victim's data in order to extort payment for keeping it private or decrypting it. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -133,7 +158,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1570 Lateral Tool Transfer | 18 | 2.19 |
 | T1657 Financial Theft | 18 | 2.19 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -146,13 +171,50 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Nltest](https://attack.mitre.org/software/S0359/) | ferramenta | 3 |  |
 | [Tor](https://attack.mitre.org/software/S0183/) | ferramenta | 2 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** INC Virus, IncRansom
+
+### Ferramentas observadas em intrusões (INC Ransom) — Ransomware Tool Matrix
+
+Ferramentas legítimas e ofensivas que afiliados usam dentro da rede. Cada uma é um ponto de detecção: veja quantas regras do catálogo a citam.
+
+| Ferramenta | Categoria | Regras que citam |
+|---|---|---:|
+| PsExec | lolbas | 260 |
+| MEGA | exfiltracao | 74 |
+| AdFind | descoberta | 68 |
+| Finger | lolbas | 67 |
+| RClone | exfiltracao | 35 |
+| Advanced IP Scanner | descoberta | 22 |
+| Restic | exfiltracao | 12 |
+| s5cmd | exfiltracao | 1 |
+| BackBlaze | exfiltracao | **0** |
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **25 de 25 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 24 |
+| EDR / XDR | 23 |
+| Outros / genérico | 22 |
+| Linux | 21 |
+| Servidores web & aplicações | 20 |
+| IDS / NSM / NDR | 18 |
+| Active Directory | 17 |
+| macOS | 17 |
+| AWS | 16 |
+| Firewall & perímetro | 16 |
+| Microsoft 365 | 14 |
+| DNS | 14 |
 
 ### Regras recomendadas por técnica
 
@@ -211,7 +273,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685 | [Windows Defender Configuration Changes](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A801bd44f-ceed-4eb6-887c-11544633c0aa) | Sigma | SigmaHQ |
 | T1685 | [Windows Defender Virus Scanning Feature Disabled](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A686c0b4b-9dd3-4847-9077-d6c1bbe36fcb) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -273,7 +335,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1685 — [ID1-SYSMON driver unload (FilterManager)](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.001-Impair%20Defenses-Disable%20or%20Modify%20tool/ID1-SYSMON%20driver%20unload%20%28FilterManager%29.evtx) _(explícito)_
 - T1685 — [ID13-Defender service configuration disabled](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.001-Impair%20Defenses-Disable%20or%20Modify%20tool/ID13-Defender%20service%20configuration%20disabled.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se INC Ransom estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -290,7 +352,7 @@ Se INC Ransom estiver no seu ambiente, estas são as perguntas a fazer aos seus 
 11. **T1486 Data Encrypted for Impact** — High-frequency file write operations using uncommon extensions, followed by ransom note creation, registry tampering, or shadow copy deletion. Often uses CLI tools like vssadmin, wbadmin, cipher, or PowerShell. Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=2).
 12. **T1087.002 Domain Account** — Adversary enumeration of domain accounts using net.exe, PowerShell, WMI, or LDAP queries from non-domain controllers or non-admin endpoints. Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:PowerShell` (EventCode=4103, 4104, 4105, 4106), `NSM:Flow` (LDAP Bind/Search).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -301,7 +363,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1032](https://attack.mitre.org/groups/G1032/)
 
-## 11. Bibliografia (7 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (7 fontes citadas pelo ATT&CK)
 
 - [Bleeping Computer INC Ransomware March 2024](https://www.bleepingcomputer.com/news/security/inc-ransom-threatens-to-leak-3tb-of-nhs-scotland-stolen-data/) — Toulas, B. (2024, March 27). INC Ransom threatens to leak 3TB of NHS Scotland stolen data. Retrieved June 5, 2024.
 - [Cybereason INC Ransomware November 2023](https://www.cybereason.com/hubfs/dam/collateral/reports/threat-alert-inc-ransomware.pdf) — Cybereason Security Research Team. (2023, November 20). Threat Alert: INC Ransomware. Retrieved June 5, 2024.
@@ -311,7 +373,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [SentinelOne INC Ransomware](https://www.sentinelone.com/anthology/inc-ransom/) — SentinelOne. (n.d.). What Is Inc. Ransomware?. Retrieved June 5, 2024.
 - [SOCRadar INC Ransom January 2024](https://socradar.io/dark-web-profile-inc-ransom/) — SOCRadar. (2024, January 24). Dark Web Profile: INC Ransom. Retrieved June 5, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -319,4 +381,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

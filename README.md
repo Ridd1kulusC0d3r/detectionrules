@@ -2,7 +2,7 @@
 
 **Toda regra pública de detecção, explicada até o último campo.**
 
-84.570 regras reais de 48 fontes públicas (Sigma, Elastic, Splunk, Sentinel, Chronicle, OpenSearch, Wazuh, Suricata/Snort/Sagan, YARA, Falco, Panther, QRadar AQL e playbooks SOAR), normalizadas num só esquema. Cada regra responde quatro perguntas: **o que detecta, de quais dados depende, por que disparou e como provar que funciona.**
+84.578 regras reais de 49 fontes públicas (Sigma, Elastic, Splunk, Sentinel, Chronicle, OpenSearch, Wazuh, Suricata/Snort/Sagan, YARA, Falco, Panther, QRadar AQL e playbooks SOAR), normalizadas num só esquema. Cada regra responde quatro perguntas: **o que detecta, de quais dados depende, por que disparou e como provar que funciona.**
 
 **Site:** https://ridd1kulusc0d3r.github.io/detectionrules/
 
@@ -11,13 +11,15 @@
 | 34.838 | 42.843 | 3.440 | 3.449 |
 
 ## O que o site faz
-- **Arsenal:** busca e filtros por tipo, fonte, formato, severidade, tática e técnica ATT&CK. Cada regra abre numa ficha com 7 abas: *Entenda · Veja a lógica · Prepare os dados · Experimente · Adapte · Investigue · Origem & versões*.
+- **Arsenal:** busca e filtros por tipo, **tecnologia**, **padrão de correlação**, fonte, formato, severidade, tática e técnica ATT&CK. Cada regra abre numa ficha com 7 abas: *Entenda · Veja a lógica · Prepare os dados · Experimente · Adapte · Investigue · Origem & versões*.
+- **Cada regra contada como história (aba Entenda):** prólogo em uma frase com analogia de Feynman e a posição na cadeia do ataque; **Ato 1 · o palco** (tecnologia e lente TCEM), **Ato 2 · quem faz isso de verdade** (procedimentos reais do ATT&CK com o país atribuído pelo APT4ALL, ferramentas de ransomware citadas, ameaças de IA do LLmInjection), **Ato 3 · o rastro** (eventos e fontes de log), **Ato 4 · a armadilha** (padrão de correlação, o que procura e o que ignora, limiar e janela), **Ato 5 · onde ela tropeça** (falsos positivos e evasão) e **epílogo** (triagem e o próximo capítulo provável do ataque).
+- **Tecnologias:** o catálogo reclassificado pelo que cada regra observa (36 tecnologias em 12 domínios: Windows, Okta, Entra ID, AWS, Kubernetes, ESXi, Microsoft 365, IA/LLMs…), com mapa por domínio, heatmap tecnologia × tática, Sankey fonte → domínio → tecnologia, padrões de correlação do TCEM, matriz de linguagens, **detecção pela ausência** (técnicas da plataforma sem regra), grupos que miram cada plataforma, Ransomware Tool Matrix × regras, ameaças de IA do LLmInjection e cenários de referência do TCEM. Um relatório por tecnologia no app e em [`reports/tech/`](reports/tech/index.html).
 - **Experimente:** regras Sigma rodam numa simulação no navegador com eventos que devem e que não devem disparar, mostrando campo a campo por quê.
 - **Adapte:** editor com validador por formato e download do **pacote de detecção** (regra + guia + casos de teste).
 - **Forja:** você diz o comportamento e os dados que tem; o motor monta a regra e traduz para Sigma, KQL, SPL, EQL, TOML Elastic e Wazuh, explicando cada decisão.
 - **Grafo de conhecimento (ATT&CK v20.0):** matriz de cobertura das 706 técnicas, lacunas prioritárias (técnicas usadas por muitos grupos e com poucas regras), 178 grupos APT com o percentual de técnicas que o catálogo público consegue ver, e um grafo de relacionamentos por técnica: grupos, subtécnicas, regras por formato, testes Atomic Red Team, logs EVTX reais, mitigações e softwares.
 - **Atribuição por TTP:** monte um caso com os alertas que dispararam (pelo botão *+ caso* na ficha da regra, colando nomes do SIEM ou códigos de técnica) e veja os grupos mais compatíveis, ponderados pela raridade de cada técnica, num Sankey alertas → técnicas → grupos. Inclui as próximas caças para confirmar ou descartar a hipótese e exporta o relatório do caso em Markdown.
-- **Dossiês de inteligência:** um por grupo (178), com perfil, TTP e procedimentos por tática, assinatura comportamental, arsenal, campanhas, cobertura de detecção, regras recomendadas, plano de emulação, hipóteses de hunting, OSINT e bibliografia. No site e em [`reports/`](reports/README.md), prontos para compartilhar (TLP:CLEAR).
+- **Dossiês de inteligência:** um por grupo (178), com perfil, origem atribuída, motivação, setores, vítimas e nomes por fornecedor (APT4ALL), ferramentas de intrusão (Ransomware Tool Matrix), cobertura por tecnologia, TTP e procedimentos por tática, assinatura comportamental, arsenal, campanhas, cobertura de detecção, regras recomendadas, plano de emulação, hipóteses de hunting, OSINT e bibliografia. No site e em [`reports/`](reports/README.md), prontos para compartilhar (TLP:CLEAR).
 - **Fluxos (Sankey):** oferta de detecção (formato → tática) e demanda adversária (grupo → tática → com ou sem regra pública).
 - **Ficha da regra enriquecida:** contexto ATT&CK na aba *Entenda*, fontes de log recomendadas pelo MITRE na aba *Prepare os dados* e testes Atomic + logs EVTX para provar a detecção na aba *Experimente*.
 - **Ferramentas e materiais:** 282 itens da planilha *Malware IR – Tools & Resources*, organizados por fase do trabalho e ligados aos formatos de regra que cada fase produz.
@@ -42,9 +44,20 @@ Duplo clique em `ABRIR.bat` (Windows), `ABRIR.command` (macOS) ou `./abrir.sh` (
 python3 build_catalog.py     # normaliza tudo em catalog.json
 python3 make_data.py         # gera data/: índice + blocos de ~3 MB
 python3 build_graph.py .     # gera data/graph/: grafo ATT&CK, recursos e exportações
-python3 build_intel.py .     # gera data/graph/groups.json e os dossiês em reports/
+python3 build_context.py .   # APT4ALL, Ransomware Tool Matrix, TCEM e LLmInjection → data/graph/
+python3 build_intel.py .     # gera data/graph/groups.json, story.json e os dossiês em reports/
+python3 build_tech.py        # gera data/graph/tech.json e os relatórios por tecnologia em reports/tech/
 ```
 Somente biblioteca padrão do Python.
+
+## Bases integradas do autor
+| Base | O que entra | Onde aparece |
+|---|---|---|
+| [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) | 1.355 atores consolidados (MISP Galaxy, APT Groups & Operations, EternalLiberty, APTnotes): país, motivação, setores, vítimas, nomes por fornecedor, relatórios; Ransomware Tool Matrix (347 ferramentas × 92 gangues) | dossiês, história da regra, aba Tecnologias |
+| [TCEM](https://github.com/Ridd1kulusC0d3r/Cyber-Threat-Context-Modeling) | 21 lentes de contexto, 5 padrões de correlação, ponte de esquemas OCSF/ECS/ASIM/CIM, 6 cenários de referência | padrão de cada regra, lente de cada tecnologia, cenários TCEM |
+| [LLmInjection](https://github.com/Ridd1kulusC0d3r/LLmInjection) | 8 regras de IA (Sigma, KQL, SPL, ES\|QL, YARA-L), 28 técnicas mapeadas para ATLAS/OWASP, 45 especificações de detecção, 40 testes seguros, atores e campanhas | Arsenal, aba Tecnologias → IA e agentes |
+
+A tecnologia e o padrão de cada regra são inferidos por `techmap.py` (heurística transparente sobre logsource, caminho, título e descrição). Os YAML do TCEM são lidos por `mini_yaml.py`, sem dependências.
 
 ## Grafo e exportações
 `build_graph.py` cruza o catálogo com o MITRE ATT&CK v20.0 (STIX oficial), 1.847 testes do Atomic Red Team (só metadados), 483 amostras EVTX (279 organizadas por técnica no EVTX-to-MITRE-Attack, 204 ligadas por palavra-chave no EVTX-ATTACK-SAMPLES), 1528 relatórios APT da coleção CyberMonitor (471 ligados a grupos pelo nome) e a planilha de ferramentas.
@@ -113,6 +126,7 @@ IDs antigos citados pelas regras são convertidos pelas revogações oficiais do
 | Shuffle workflows | 23 |
 | awesome-playbooks · shuffle | 18 |
 | Suricata nmap/OPNsense rules | 10 |
+| LLmInjection (IA/LLM/agentes) | 8 |
 | SpiderLabs malware-analysis (YARA) | 4 |
 | awesome-playbooks · chronicle | 4 |
 | awesome-playbooks · catalyst | 3 |

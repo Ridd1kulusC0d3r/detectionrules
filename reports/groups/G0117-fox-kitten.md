@@ -1,8 +1,9 @@
 # Fox Kitten (G0117) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0117) · [ATT&CK](https://attack.mitre.org/groups/G0117/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0117) · [ATT&CK](https://attack.mitre.org/groups/G0117/)
 
 **Também conhecido como:** UNC757, Parisite, Pioneer Kitten, RUBIDIUM, Lemon Sandstorm  
+**Origem atribuída:** Irã · **Motivação:** indefinido · **Setores-alvo:** Energia, Governo, Telecomunicações, Transporte e logística  
 **Registro no ATT&CK:** criado em 2020-12-21, atualizado em 2026-07-31 · referências de 2020 a 2025
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 3 malware e 2 ferramentas (ex.: SystemBC, China Chopper, Pay2Key, ngrok, PsExec).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 98% das técnicas têm ao menos uma regra no catálogo; **1 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Irã**, motivação indefinido; setores Energia, Governo, Telecomunicações, Transporte e logística.
+- **Onde a cobertura está:** Windows (38 técnicas com regra), EDR / XDR (35 técnicas com regra), Outros / genérico (30 técnicas com regra), Linux (29 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1021.005 VNC, T1213.005 Messaging Applications, T1530 Data from Cloud Storage, T1546.008 Accessibility Features, T1585 Establish Accounts.
 
 ## 2. Quem é
@@ -19,7 +22,30 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Irã |
+| Motivação | indefinido |
+| Setores-alvo | Energia, Governo, Telecomunicações, Transporte e logística |
+| Vítimas citadas | — |
+| Alvos (planilha) | IT, Telecommunication, Oil and Gas, Aviation, Government, and Security sectors around the world. |
+| Operações conhecidas | Pay2Key |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0117 |
+| Microsoft | Lemon Sandstorm, RUBIDIUM (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Pay2key, Rubidium/Lemon Sandstorm, Cobalt Foxglove, Yellow Dev 15
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -125,7 +151,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | Fox Kitten has downloaded additional tools including PsExec directly to endpoints. | 644 | 39 | — |
 | [T1572](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1572) Protocol Tunneling | Fox Kitten has used protocol tunneling for communication and RDP activity on compromised hosts through the use of open source tools such as ngrok and custom tool SSHMinion. | 173 | 9 | 1 |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -142,7 +168,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1210 Exploitation of Remote Services | 11 | 2.62 |
 | T1102 Web Service | 14 | 2.42 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -152,17 +178,38 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [ngrok](https://attack.mitre.org/software/S0508/) | ferramenta | 5 |  |
 | [PsExec](https://attack.mitre.org/software/S0029/) | ferramenta | 5 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** SSHNET, Juicy Potato, Port, STSRCHECK, LPManager, Invoke-SMBClient, Invoke-SMBEnum, Invoke-SMBExec, Invoke-TheHash, Invoke-WMIExec, SOCKET-Based Backdoor, Pay2Key ransomware, FRPC
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **40 de 41 técnicas (98%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
 ### Técnicas sem regra pública (prioridade para engenharia de detecção)
 
 - **T1213.005 Messaging Applications** — Collection. Fonte de log sugerida pelo MITRE: `saas:slack` conversations.history, files.list, users.info, audit_logs; `m365:unified` TeamsMessagesAccessedViaEDiscovery, TeamsGraphMessageExport
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 38 |
+| EDR / XDR | 35 |
+| Outros / genérico | 30 |
+| Linux | 29 |
+| IDS / NSM / NDR | 24 |
+| Servidores web & aplicações | 24 |
+| Firewall & perímetro | 23 |
+| Proxy / SWG | 23 |
+| macOS | 23 |
+| VPN & acesso remoto | 22 |
+| DNS | 21 |
+| AWS | 21 |
 
 ### Regras recomendadas por técnica
 
@@ -250,7 +297,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1585.001 | [CYFIRMA - Brand Intelligence - Social Media Handle Impersonation Detected High Rule](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=microsoft-sentinel-analytic-rules%3A%3A22f49d67-7da7-4809-8d07-89e4478aa6b0) | Sentinel KQL | Microsoft Sentinel (Analytic Rules) |
 | T1585.001 | [CYFIRMA - Brand Intelligence - Executive/People Impersonation High Rule](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=microsoft-sentinel-analytic-rules%3A%3A159d26a1-591c-4f70-b1ca-2843c881aaec) | Sentinel KQL | Microsoft Sentinel (Analytic Rules) |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -342,7 +389,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1110 — [ID18456-SQL Server failed login because only Windows auth](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0006-Credential%20Access/T1110.xxx-Brut%20force/ID18456-SQL%20Server%20failed%20login%20because%20only%20Windows%20auth.evtx) _(explícito)_
 - T1210 — [Zerologon_CVE-2020-1472_DFIR_System_NetLogon_Error_EventID_5805](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/Zerologon_CVE-2020-1472_DFIR_System_NetLogon_Error_EventID_5805.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Fox Kitten estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -359,7 +406,7 @@ Se Fox Kitten estiver no seu ambiente, estas são as perguntas a fazer aos seus 
 11. **T1572 Protocol Tunneling** — Processes such as plink.exe, ssh.exe, or netsh.exe establishing outbound network connections where traffic patterns show encapsulated protocols (e.g., RDP over SSH). Defender observations include anomalous process-to-network relationships, large asymmetric… Dados: `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:Sysmon` (EventCode=1).
 12. **T1110 Brute Force** — High volume of failed logon attempts followed by a successful one from a suspicious user, host, or timeframe Dados: `WinEventLog:Security` (EventCode=4776, 4625).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -374,7 +421,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 
 - 2020 — [ClearSky-Fox-Kitten-Campaign-v1](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.02.17_Fox_Kitten_Campaign/ClearSky-Fox-Kitten-Campaign-v1.pdf) _(via “Fox Kitten”)_
 
-## 11. Bibliografia (8 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (8 fontes citadas pelo ATT&CK)
 
 - [Check Point Pay2Key November 2020](https://research.checkpoint.com/2020/ransomware-alert-pay2key/) — Check Point. (2020, November 6). Ransomware Alert: Pay2Key. Retrieved January 4, 2021.
 - [CISA AA20-259A Iran-Based Actor September 2020](https://us-cert.cisa.gov/ncas/alerts/aa20-259a) — CISA. (2020, September 15). Iran-Based Threat Actor Exploits VPN Vulnerabilities. Retrieved December 21, 2020.
@@ -385,7 +432,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [FortinetEtAl_IranianIntrusion_Mar2025](https://www.fortinet.com/content/dam/fortinet/assets/reports/report-incident-response-middle-east.pdf) — Robson, M., et al. (2025, March 7). Investigating Iranian Intrusion into Strategic Middle East Critical Infrastructure. Retrieved June 18, 2025.
 - [Microsoft Threat Actor Naming July 2023](https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide) — Microsoft . (2023, July 12). How Microsoft names threat actors. Retrieved November 17, 2023.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -393,4 +440,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

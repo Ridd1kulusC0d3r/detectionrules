@@ -1744,19 +1744,19 @@
 <node id="software:S9050"><data key="label">Vidar</data><data key="kind">software:malware</data></node>
 <node id="software:S9046"><data key="label">IOControl</data><data key="kind">software:malware</data></node>
 <node id="format:aql"><data key="label">aql</data><data key="kind">rule_format</data><data key="rules">30</data></node>
-<node id="format:elastic"><data key="label">elastic</data><data key="kind">rule_format</data><data key="rules">3918</data></node>
+<node id="format:elastic"><data key="label">elastic</data><data key="kind">rule_format</data><data key="rules">3919</data></node>
 <node id="format:falco"><data key="label">falco</data><data key="kind">rule_format</data><data key="rules">96</data></node>
 <node id="format:gcp"><data key="label">gcp</data><data key="kind">rule_format</data><data key="rules">277</data></node>
-<node id="format:kql-md"><data key="label">kql-md</data><data key="kind">rule_format</data><data key="rules">443</data></node>
+<node id="format:kql-md"><data key="label">kql-md</data><data key="kind">rule_format</data><data key="rules">444</data></node>
 <node id="format:panther"><data key="label">panther</data><data key="kind">rule_format</data><data key="rules">1151</data></node>
 <node id="format:playbook"><data key="label">playbook</data><data key="kind">rule_format</data><data key="rules">3449</data></node>
 <node id="format:sentinel"><data key="label">sentinel</data><data key="kind">rule_format</data><data key="rules">4609</data></node>
-<node id="format:sigma"><data key="label">sigma</data><data key="kind">rule_format</data><data key="rules">6956</data></node>
-<node id="format:splunk"><data key="label">splunk</data><data key="kind">rule_format</data><data key="rules">2551</data></node>
+<node id="format:sigma"><data key="label">sigma</data><data key="kind">rule_format</data><data key="rules">6960</data></node>
+<node id="format:splunk"><data key="label">splunk</data><data key="kind">rule_format</data><data key="rules">2552</data></node>
 <node id="format:suricata"><data key="label">suricata</data><data key="kind">rule_format</data><data key="rules">20159</data></node>
 <node id="format:wazuh"><data key="label">wazuh</data><data key="kind">rule_format</data><data key="rules">16540</data></node>
 <node id="format:yara"><data key="label">yara</data><data key="kind">rule_format</data><data key="rules">22684</data></node>
-<node id="format:yaral"><data key="label">yaral</data><data key="kind">rule_format</data><data key="rules">1707</data></node>
+<node id="format:yaral"><data key="label">yaral</data><data key="kind">rule_format</data><data key="rules">1708</data></node>
 <node id="resource:0"><data key="label">Attack Mitre</data><data key="kind">resource</data></node>
 <node id="resource:1"><data key="label">Cyber Research</data><data key="kind">resource</data></node>
 <node id="resource:2"><data key="label">Threat Actor Encyclopedia</data><data key="kind">resource</data></node>

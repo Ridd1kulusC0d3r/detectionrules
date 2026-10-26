@@ -1,8 +1,9 @@
 # HEXANE (G1001) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1001) · [ATT&CK](https://attack.mitre.org/groups/G1001/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1001) · [ATT&CK](https://attack.mitre.org/groups/G1001/)
 
 **Também conhecido como:** Lyceum, Siamesekitten, Spirlin  
+**Origem atribuída:** Irã · **Motivação:** espionagem · **Setores-alvo:** Educação e pesquisa, Energia, Governo, Defesa e militar, Tecnologia, Telecomunicações  
 **Registro no ATT&CK:** criado em 2018-10-17, atualizado em 2026-07-31 · referências de 2019 a 2022
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 5 malware e 7 ferramentas (ex.: Empire, PoshC2, Kevin, Milan, Shark).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 94% das técnicas têm ao menos uma regra no catálogo; **2 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Irã**, motivação espionagem; setores Educação e pesquisa, Energia, Governo, Defesa e militar, Tecnologia; 1 países vítimas citados.
+- **Onde a cobertura está:** Windows (29 técnicas com regra), Linux (23 técnicas com regra), EDR / XDR (23 técnicas com regra), Outros / genérico (22 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1010 Application Window Discovery, T1583.002 DNS Server, T1591.004 Identify Roles, T1069.001 Local Groups, T1534 Internal Spearphishing.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Irã |
+| Motivação | espionagem |
+| Setores-alvo | Educação e pesquisa, Energia, Governo, Defesa e militar, Tecnologia, Telecomunicações |
+| Vítimas citadas | Israel, Middle East |
+| Alvos (planilha) | Middle East, Kuwait, South Africa |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1001 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** COBALT LYCEUM, UNC1530, MYSTICDOME, Chrono Kitten, Storm-0133, ScorchedEpoch/Chrono Kitten, DEV-0133/Storm-0133, Hive0112, Yellow Dev 9, ATK120
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -123,7 +148,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1567.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1567.002) Exfiltration to Cloud Storage | HEXANE has used cloud services, including OneDrive, for data exfiltration. | 85 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -140,7 +165,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1110.003 Password Spraying | 11 | 2.62 |
 | T1518 Software Discovery | 11 | 2.62 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -157,11 +182,13 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [netstat](https://attack.mitre.org/software/S0104/) | ferramenta | 1 |  |
 | [Ping](https://attack.mitre.org/software/S0097/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** DanDrop, Invoke-Obfuscation, PowerShell
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **34 de 36 técnicas (94%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -169,6 +196,25 @@ Nenhuma campanha atribuída no ATT&CK.
 
 - **T1583.002 DNS Server** — Resource Development
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 29 |
+| Linux | 23 |
+| EDR / XDR | 23 |
+| Outros / genérico | 22 |
+| macOS | 20 |
+| Servidores web & aplicações | 18 |
+| Active Directory | 17 |
+| Microsoft 365 | 17 |
+| Firewall & perímetro | 16 |
+| AWS | 16 |
+| E-mail | 14 |
+| DNS | 13 |
 
 ### Regras recomendadas por técnica
 
@@ -245,7 +291,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1608.001 | [M365 OneDrive Malware File Upload](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3Abba1b212-b85c-41c6-9b28-be0e5cdfc9b1) | Elastic | Elastic detection-rules |
 | T1608.001 | [M365 SharePoint Malware File Detected](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A0e52157a-8e96-4a95-a6e3-5faae5081a74) | Elastic | Elastic detection-rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -315,7 +361,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1555.003 — [CA_4624_4625_LogonType2_LogonProc_chrome](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/CA_4624_4625_LogonType2_LogonProc_chrome.evtx) _(inferido)_
 - T1555.003 — [CA_chrome_firefox_opera_4663](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/CA_chrome_firefox_opera_4663.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se HEXANE estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -332,7 +378,7 @@ Se HEXANE estiver no seu ambiente, estas são as perguntas a fazer aos seus dado
 11. **T1102.002 Bidirectional Communication** — Suspicious processes initiating encrypted HTTPS connections to common web service domains, followed by abnormal data upload behavior or automated posting behavior indicative of C2 bidirectional traffic. Dados: `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:Sysmon` (EventCode=1), `etw:Microsoft-Windows-WinINet` (HTTPS Inspection).
 12. **T1110 Brute Force** — High volume of failed logon attempts followed by a successful one from a suspicious user, host, or timeframe Dados: `WinEventLog:Security` (EventCode=4776, 4625).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -348,7 +394,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2019 — [Cyber Threat Group LYCEUM Takes Center Stage in Middle East Campaign](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2019/2019.08.27.LYCEUM_threat_group/Cyber%20Threat%20Group%20LYCEUM%20Takes%20Center%20Stage%20in%20Middle%20East%20Campaign.pdf) _(via “Lyceum”)_
 - 2021 — [2021.08.17_new_iranian_campaign_by_Siamesekitten](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.08.17_new_iranian_campaign_by_Siamesekitten/2021.08.17_new_iranian_campaign_by_Siamesekitten.pdf) _(via “Siamesekitten”)_
 
-## 11. Bibliografia (8 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (8 fontes citadas pelo ATT&CK)
 
 - [Accenture Lyceum Targets November 2021](https://www.accenture.com/us-en/blogs/cyber-defense/iran-based-lyceum-campaigns) — Accenture. (2021, November 9). Who are latest targets of cyber group Lyceum?. Retrieved June 16, 2022.
 - [ClearSky Siamesekitten August 2021](https://www.clearskysec.com/siamesekitten/) — ClearSky Cyber Security . (2021, August). New Iranian Espionage Campaign By “Siamesekitten” - Lyceum. Retrieved June 6, 2022.
@@ -359,7 +405,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [SecureWorks August 2019](https://www.secureworks.com/blog/lyceum-takes-center-stage-in-middle-east-campaign) — SecureWorks 2019, August 27 LYCEUM Takes Center Stage in Middle East Campaign Retrieved. 2019/11/19
 - [Zscaler Lyceum DnsSystem June 2022](https://www.zscaler.com/blogs/security-research/lyceum-net-dns-backdoor) — Shivtarkar, N. and Kumar, A. (2022, June 9). Lyceum .NET DNS Backdoor. Retrieved June 23, 2022.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -367,4 +413,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

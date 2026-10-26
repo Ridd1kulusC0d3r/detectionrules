@@ -1,8 +1,9 @@
 # Leviathan (G0065) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0065) · [ATT&CK](https://attack.mitre.org/groups/G0065/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0065) · [ATT&CK](https://attack.mitre.org/groups/G0065/)
 
 **Também conhecido como:** MUDCARP, Kryptonite Panda, Gadolinium, BRONZE MOHAWK, TEMP.Jumper, APT40, TEMP.Periscope, Gingham Typhoon  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** Educação e pesquisa, Governo, Indústria, Defesa e militar, Setor privado (genérico), Transporte e logística  
 **Registro no ATT&CK:** criado em 2018-04-18, atualizado em 2026-07-31 · referências de 2017 a 2024
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 10 malware e 7 ferramentas (ex.: Cobalt Strike, Empire, PowerSploit, gh0st RAT, Derusbi).
 - **Campanhas atribuídas:** 1 (Leviathan Australian Intrusions).
 - **Cobertura de detecção pública:** 92% das técnicas têm ao menos uma regra no catálogo; **4 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem; setores Educação e pesquisa, Governo, Indústria, Defesa e militar, Setor privado (genérico); 11 países vítimas citados.
+- **Onde a cobertura está:** Windows (40 técnicas com regra), EDR / XDR (34 técnicas com regra), Linux (31 técnicas com regra), Outros / genérico (29 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1102.003 One-Way Communication, T1586.001 Social Media Accounts, T1547.009 Shortcut Modification, T1587.004 Exploits, T1197 BITS Jobs.
 
 ## 2. Quem é
@@ -19,7 +22,33 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | Educação e pesquisa, Governo, Indústria, Defesa e militar, Setor privado (genérico), Transporte e logística |
+| Vítimas citadas | Asia Pacific Economic Cooperation, Belgium, Cambodia, Germany, Hong Kong, Malaysia, Norway, Philippines, Saudi Arabia, Switzerland, The Philippines, United Kingdom, United States |
+| Alvos (planilha) | maritime-related targets across multiple verticals, including engineering firms, shipping and transportation, manufacturing, defense, government offices, and research universities \| Cambodia |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | Leviathan |
+| FireEye | Temp.Periscope |
+| MITRE ATT&CK | G0065 |
+| Mandiant | APT40 |
+| Microsoft | Gingham Typhoon, GADOLINIUM (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Hainan Xiandun Technology Company, TA423, Red Ladon, ScanBox, ATK29, ITG09, ISLANDDREAMS, ISLAND CASTLE, Temp.Periscope/Temp.Jumper/APT40, Gadolinium/Gingham Typhoon, Pickleworm, Jumper Taurus, Flaccid Rose, Nanhaishu
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -148,7 +177,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1041](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1041) Exfiltration Over C2 Channel | Leviathan has exfiltrated data over its C2 channel. | 135 | 2 | — |
 | [T1567.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1567.002) Exfiltration to Cloud Storage | Leviathan has used an uploader known as LUNCHMONEY that can exfiltrate files to Dropbox. | 85 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -165,7 +194,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1027.001 Binary Padding | 7 | 2.99 |
 | T1027.003 Steganography | 9 | 2.79 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -187,13 +216,15 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [at](https://attack.mitre.org/software/S0110/) | ferramenta | 1 |  |
 | [Windows Credential Editor](https://attack.mitre.org/software/S0005/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** AIRBREAK, PHOTO, LUNCHMONEY, Beacon, CVE-2017-11882, RoyalRoad RTF Weaponizer, 8.t exploit document builder
+
+## 7. Campanhas
 
 | Campanha | Período | Resumo (EN) |
 |---|---|---|
 | [Leviathan Australian Intrusions](https://attack.mitre.org/campaigns/C0049/) | 2022-04 → 2022-09 | Leviathan Australian Intrusions consisted of at least two long-term intrusions against victims in Australia by Leviathan, relying on similar tradecraft such as external service exploitation followed by extensive credenti |
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **46 de 50 técnicas (92%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -203,6 +234,25 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 - **T1584.008 Network Devices** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1584.004 Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 40 |
+| EDR / XDR | 34 |
+| Linux | 31 |
+| Outros / genérico | 29 |
+| Servidores web & aplicações | 28 |
+| Proxy / SWG | 25 |
+| Microsoft 365 | 24 |
+| E-mail | 23 |
+| macOS | 22 |
+| Firewall & perímetro | 22 |
+| IDS / NSM / NDR | 22 |
+| AWS | 21 |
 
 ### Regras recomendadas por técnica
 
@@ -303,7 +353,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1595.002 | [DNS Query to External Service Interaction Domains](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Aaff715fa-4dd5-497a-8db3-910bea555566) | Sigma | SigmaHQ |
 | T1595.002 | [Web Server Potential SQL Injection Request](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A7f7a0ee1-7b6f-466a-85b4-110fb105f5e2) | Elastic | Elastic detection-rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -389,7 +439,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1547.001 — [evasion_persis_hidden_run_keyvalue_sysmon_13](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Persistence/evasion_persis_hidden_run_keyvalue_sysmon_13.evtx) _(inferido)_
 - T1572 — [ID4688-netsh RDP port forwarding abuse](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0011-Command%20and%20Control/T1572-Protocol%20tunneling/ID4688-netsh%20RDP%20port%20forwarding%20abuse.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Leviathan estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -406,7 +456,7 @@ Se Leviathan estiver no seu ambiente, estas são as perguntas a fazer aos seus d
 11. **T1584.004 Server** — Once adversaries have provisioned software on a compromised server (ex: for use as a command and control server), internet scans may reveal servers that adversaries have compromised. Consider looking for identifiable patterns such as services listening,… Dados: `Internet Scan` (None), `Internet Scan` (None).
 12. **T1074.002 Remote Data Staging** — Detects file transfers or mounting operations from remote hosts followed by write actions into a local staging directory, often using SMB or remote shell activity. Dados: `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Microsoft-Windows-SMBClient/Security` (EventCode=31001), `WinEventLog:PowerShell` (CommandLine=copy-item or robocopy from UNC path).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -425,7 +475,13 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2020 — [Leviathan APT campaign in 2020 Malaysian political crisis _ Elastic Blog](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.06.25.Malaysian-focused-APT_campaign/Leviathan%20APT%20campaign%20in%202020%20Malaysian%20political%20crisis%20_%20Elastic%20Blog.pdf) _(via “Leviathan”)_
 - 2021 — [CSA_TTPs-of-Indicted-APT40-Actors-Associated-with-China-MSS-Hainan-State-Security-Department](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.07.19.APT40_TTP/CSA_TTPs-of-Indicted-APT40-Actors-Associated-with-China-MSS-Hainan-State-Security-Department.pdf) _(via “APT40”)_
 
-## 11. Bibliografia (10 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (3 no total, mais recentes primeiro):
+
+- 2015 — [Scanbox Ii](https://app.box.com/s/o83u5pekus9251w0cl5lo2m1k5u0u2vn) _(PWC)_
+- 2014 — [Scanbox Framework: Who's Affected, And Who's Using It?](https://app.box.com/s/u273q9utje6wds8mtv17efskdu5oj8la) _(PWC)_
+- 2014 — [Scanbox: A Reconnaissance Framework Used With Watering Hole Attacks](https://app.box.com/s/vlbe0y40djeaadl2l4iqdm13cju3v3n6) _(Alienvault)_
+
+## 12. Bibliografia (10 fontes citadas pelo ATT&CK)
 
 - [Accenture MUDCARP March 2019](https://www.accenture.com/us-en/blogs/cyber-defense/mudcarps-focus-on-submarine-technologies) — Accenture iDefense Unit. (2019, March 5). Mudcarp's Focus on Submarine Technologies. Retrieved August 24, 2021.
 - [CISA AA21-200A APT40 July 2021](https://us-cert.cisa.gov/ncas/alerts/aa21-200a) — CISA. (2021, July 19). (AA21-200A) Joint Cybersecurity Advisory – Tactics, Techniques, and Procedures of Indicted APT40 Actors Associated with China’s MSS Hainan State Security Department. Retrieved August 12, 2021.
@@ -438,7 +494,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Proofpoint Leviathan Oct 2017](https://www.proofpoint.com/us/threat-insight/post/leviathan-espionage-actor-spearphishes-maritime-and-defense-targets) — Axel F, Pierre T. (2017, October 16). Leviathan: Espionage actor spearphishes maritime and defense targets. Retrieved February 15, 2018.
 - [SecureWorks BRONZE MOHAWK n.d.](https://www.secureworks.com/research/threat-profiles/bronze-mohawk) — SecureWorks. (n.d.). Threat Profile - BRONZE MOHAWK. Retrieved August 24, 2021.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -446,4 +502,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

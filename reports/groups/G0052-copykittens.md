@@ -1,8 +1,9 @@
 # CopyKittens (G0052) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0052) · [ATT&CK](https://attack.mitre.org/groups/G0052/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0052) · [ATT&CK](https://attack.mitre.org/groups/G0052/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** Irã · **Motivação:** espionagem · **Setores-alvo:** Sociedade civil e mídia, Educação e pesquisa, Governo, Setor privado (genérico)  
 **Registro no ATT&CK:** criado em 2018-01-16, atualizado em 2026-07-31 · referências de 2015 a 2022
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 3 malware e 1 ferramentas (ex.: Cobalt Strike, Empire, Matryoshka, TDTESS).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Irã**, motivação espionagem; setores Sociedade civil e mídia, Educação e pesquisa, Governo, Setor privado (genérico); 5 países vítimas citados.
+- **Onde a cobertura está:** Windows (7 técnicas com regra), EDR / XDR (5 técnicas com regra), Firewall & perímetro (5 técnicas com regra), Linux (4 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1560.003 Archive via Custom Method, T1564.003 Hidden Window, T1090 Proxy, T1218.011 Rundll32, T1553.002 Code Signing.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Irã |
+| Motivação | espionagem |
+| Setores-alvo | Sociedade civil e mídia, Educação e pesquisa, Governo, Setor privado (genérico) |
+| Vítimas citadas | Germany, Israel, Jordan, Saudi Arabia, United States |
+| Alvos (planilha) | Israel’s Ministry of Foreign Affairs and some well-known Israeli academic researchers specializing in Middle East Studies. Israel, Saudi Arabia, United States, Jordan, Germany |
+| Operações conhecidas | Wilted Tulip |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0052 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Slayer Kitten, DarkHydrus, LazyMeerkat, DEV-0588
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -61,7 +86,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1090](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1090) Proxy | CopyKittens has used the AirVPN service for operational activity. | 162 | — | 1 |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -76,7 +101,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1588.002 Tool | 83 | 0.74 |
 | T1059.001 PowerShell | 85 | 0.72 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -85,13 +110,34 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Matryoshka](https://attack.mitre.org/software/S0167/) | malware | 10 |  |
 | [TDTESS](https://attack.mitre.org/software/S0164/) | malware | 5 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** TDTESS backdoor, Vminst, NetSrv, ZPP, Matryoshka v1 and Matryoshka v2
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **8 de 8 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 7 |
+| EDR / XDR | 5 |
+| Firewall & perímetro | 5 |
+| Linux | 4 |
+| macOS | 4 |
+| IA, LLMs & agentes | 4 |
+| DevOps & supply chain | 3 |
+| DNS | 3 |
+| Proxy / SWG | 3 |
+| VPN & acesso remoto | 3 |
+| Outros / genérico | 3 |
+| Active Directory | 2 |
 
 ### Regras recomendadas por técnica
 
@@ -115,7 +161,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1588.002 | [Hacktool Execution - Imphash](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A24e3e58a-646b-4b50-adef-02ef935b9fc8) | Sigma | SigmaHQ |
 | T1588.002 | [Renamed SysInternals DebugView Execution](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Acd764533-2e07-40d6-a718-cfeec7f2da7f) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -138,7 +184,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1218.011 — [rundll32_cmd_schtask](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/rundll32_cmd_schtask.evtx) _(inferido)_
 - T1218.011 — [rundll32_hollowing_wermgr_masquerading](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/rundll32_hollowing_wermgr_masquerading.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se CopyKittens estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -151,7 +197,7 @@ Se CopyKittens estiver no seu ambiente, estas são as perguntas a fazer aos seus
 7. **T1588.002 Tool** — Monitor for contextual data about a malicious payload, such as compilation times, file hashes, as well as watermarks or other identifiable configuration information. In some cases, malware repositories can also be used to identify features of tool use… Dados: `Malware Repository` (None).
 8. **T1059.001 PowerShell** — Detects behavioral chains where PowerShell is launched with encoded commands, unusual parent processes, or suspicious modules loaded, potentially followed by network connections or child process spawning. Supports detection of both direct (powershell.exe) and… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:PowerShell` (EventCode=4103, 4104, 4105, 4106), `WinEventLog:PowerShell` (EventCode=400, 403).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -166,7 +212,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 
 - 2015 — [CopyKittens](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2015/2015.11.23.CopyKittens_Attack_Group/CopyKittens.pdf) _(via “CopyKittens”)_
 
-## 11. Bibliografia (5 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (5 fontes citadas pelo ATT&CK)
 
 - [ClearSky and Trend Micro Operation Wilted Tulip July 2017](https://www.clearskysec.com/wp-content/uploads/2017/07/Operation_Wilted_Tulip.pdf) — ClearSky and Trend Micro. (2017, July). Operation Wilted Tulip - Exposing a cyber espionage apparatus. Retrieved May 17, 2021.
 - [ClearSky CopyKittens March 2017](http://www.clearskysec.com/copykitten-jpost/) — ClearSky Cyber Security. (2017, March 30). Jerusalem Post and other Israeli websites compromised by Iranian threat agent CopyKitten. Retrieved August 21, 2017.
@@ -174,7 +220,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [CopyKittens Nov 2015](https://cdn2.hubspot.net/hubfs/1903456/Whitepapers/CopyKittens.pdf) — Minerva Labs LTD and ClearSky Cyber Security. (2015, November 23). CopyKittens Attack Group. Retrieved November 17, 2024.
 - [Microsoft POLONIUM June 2022](https://www.microsoft.com/security/blog/2022/06/02/exposing-polonium-activity-and-infrastructure-targeting-israeli-organizations/) — Microsoft. (2022, June 2). Exposing POLONIUM activity and infrastructure targeting Israeli organizations. Retrieved July 1, 2022.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -182,4 +228,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

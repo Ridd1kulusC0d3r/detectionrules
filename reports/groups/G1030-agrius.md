@@ -1,8 +1,9 @@
 # Agrius (G1030) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1030) · [ATT&CK](https://attack.mitre.org/groups/G1030/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1030) · [ATT&CK](https://attack.mitre.org/groups/G1030/)
 
 **Também conhecido como:** Pink Sandstorm, AMERICIUM, Agonizing Serpens, BlackShadow  
+**Origem atribuída:** Irã · **Motivação:** financeiro, sabotagem · **Setores-alvo:** Educação e pesquisa, Financeiro, Telecomunicações  
 **Registro no ATT&CK:** criado em 2024-05-21, atualizado em 2026-07-31 · referências de 2021 a 2023
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 7 malware e 2 ferramentas (ex.: Mimikatz, IPsec Helper, MultiLayer Wiper, Apostle, DEADWOOD).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Irã**, motivação financeiro, sabotagem; setores Educação e pesquisa, Financeiro, Telecomunicações.
+- **Onde a cobertura está:** Windows (21 técnicas com regra), EDR / XDR (21 técnicas com regra), Linux (19 técnicas com regra), Outros / genérico (18 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1583 Acquire Infrastructure, T1110.003 Password Spraying, T1003.002 Security Account Manager, T1110 Brute Force, T1570 Lateral Tool Transfer.
 
 ## 2. Quem é
@@ -19,7 +22,30 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Irã |
+| Motivação | financeiro, sabotagem |
+| Setores-alvo | Educação e pesquisa, Financeiro, Telecomunicações |
+| Vítimas citadas | — |
+| Alvos (planilha) | Finance, Hosting, Telecomminication, Israeli people, Academic Sector |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1030 |
+| Microsoft | Pink Sandstorm, AMERICIUM (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Deadwood, SharpBoys, DEV-0227, Agoniznig Serpens, DEV-0022, UNC2428, SPECTRAL KITTEN, DEV-0227/Americium/Pink Sandstorm, Cobalt Shadow, ATK241
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -109,7 +135,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1041](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1041) Exfiltration Over C2 Channel | Agrius exfiltrated staged data using tools such as Putty and WinSCP, communicating with command and control servers. | 135 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -126,7 +152,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1543.003 Windows Service | 25 | 1.89 |
 | T1041 Exfiltration Over C2 Channel | 27 | 1.82 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -140,13 +166,34 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Moneybird](https://attack.mitre.org/software/S1137/) | malware | 2 | Moneybird is associated with ransomware operations launched by Agrius. |
 | [ASPXSpy](https://attack.mitre.org/software/S0073/) | malware | 1 | Agrius relies on web shells for persistent access post exploitation, with an emphasis on variants of ASPXSpy. |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Detbosit, IPSecHelper, Apstole
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **22 de 22 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 21 |
+| EDR / XDR | 21 |
+| Linux | 19 |
+| Outros / genérico | 18 |
+| DNS | 16 |
+| Servidores web & aplicações | 16 |
+| Active Directory | 15 |
+| Firewall & perímetro | 15 |
+| IDS / NSM / NDR | 15 |
+| Bancos de dados | 14 |
+| AWS | 14 |
+| Microsoft 365 | 14 |
 
 ### Regras recomendadas por técnica
 
@@ -199,7 +246,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685 | [Windows Defender Configuration Changes](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A801bd44f-ceed-4eb6-887c-11544633c0aa) | Sigma | SigmaHQ |
 | T1685 | [Windows Defender Virus Scanning Feature Disabled](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A686c0b4b-9dd3-4847-9077-d6c1bbe36fcb) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -262,7 +309,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1685 — [ID1-SYSMON driver unload (FilterManager)](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.001-Impair%20Defenses-Disable%20or%20Modify%20tool/ID1-SYSMON%20driver%20unload%20%28FilterManager%29.evtx) _(explícito)_
 - T1685 — [ID13-Defender service configuration disabled](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.001-Impair%20Defenses-Disable%20or%20Modify%20tool/ID13-Defender%20service%20configuration%20disabled.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Agrius estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -279,7 +326,7 @@ Se Agrius estiver no seu ambiente, estas são as perguntas a fazer aos seus dado
 11. **T1074.001 Local Data Staging** — Detects file reads across locations followed by writes to temp or staging directories, often compressed or encrypted, indicating local staging behavior. Dados: `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Security` (EventCode=4663, 4670, 4656).
 12. **T1505.003 Web Shell** — Unexpected file creation in web directories followed by web server processes (e.g., w3wp.exe) spawning command shells or script interpreters (e.g., cmd.exe, powershell.exe) Dados: `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Security` (EventCode=4624, 4648).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -295,7 +342,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2021 — [evol-agrius](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.05.25.AGRIUSAuthor/evol-agrius.pdf) _(via “Agrius”)_
 - 2023 — [Agonizing Serpens (Aka Agrius) Targeting the Israeli Higher Education and Tech Sectors](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2023/2023.11.06.Agrius_Israeli/Agonizing%20Serpens%20%28Aka%20Agrius%29%20Targeting%20the%20Israeli%20Higher%20Education%20and%20Tech%20Sectors.pdf) _(via “Agrius”)_
 
-## 11. Bibliografia (5 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (5 fontes citadas pelo ATT&CK)
 
 - [CheckPoint Agrius 2023](https://research.checkpoint.com/2023/agrius-deploys-moneybird-in-targeted-attacks-against-israeli-organizations/) — Marc Salinas Fernandez & Jiri Vinopal. (2023, May 23). AGRIUS DEPLOYS MONEYBIRD IN TARGETED ATTACKS AGAINST ISRAELI ORGANIZATIONS. Retrieved May 21, 2024.
 - [Microsoft Iran Cyber 2023](https://www.microsoft.com/en-us/security/business/security-insider/wp-content/uploads/2023/05/Iran-turning-to-cyber-enabled-influence-operations-for-greater-effect-05022023.pdf) — Microsoft Threat Intelligence. (2023, May 2). Iran turning to cyber-enabled influence operations for greater effect. Retrieved May 21, 2024.
@@ -303,7 +350,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [SentinelOne Agrius 2021](https://assets.sentinelone.com/sentinellabs/evol-agrius) — Amitai Ben & Shushan Ehrlich. (2021, May). From Wiper to Ransomware: The Evolution of Agrius. Retrieved May 21, 2024.
 - [Unit42 Agrius 2023](https://unit42.paloaltonetworks.com/agonizing-serpens-targets-israeli-tech-higher-ed-sectors/) — Or Chechik, Tom Fakterman, Daniel Frank & Assaf Dahan. (2023, November 6). Agonizing Serpens (Aka Agrius) Targeting the Israeli Higher Education and Tech Sectors. Retrieved May 22, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -311,4 +358,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

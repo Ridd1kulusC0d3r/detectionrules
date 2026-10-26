@@ -1,8 +1,9 @@
 # Patchwork (G0040) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0040) · [ATT&CK](https://attack.mitre.org/groups/G0040/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0040) · [ATT&CK](https://attack.mitre.org/groups/G0040/)
 
 **Também conhecido como:** Hangover Group, Dropping Elephant, Chinastrats, MONSOON, Operation Hangover  
+**Origem atribuída:** Índia · **Motivação:** espionagem · **Setores-alvo:** Financeiro, Governo, Defesa e militar, Setor privado (genérico)  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2013 a 2020
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 6 malware e 2 ferramentas (ex.: PowerSploit, QuasarRAT, BADNEWS, BackConfig, Unknown Logger).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 93% das técnicas têm ao menos uma regra no catálogo; **3 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Índia**, motivação espionagem; setores Financeiro, Governo, Defesa e militar, Setor privado (genérico); 4 países vítimas citados.
+- **Onde a cobertura está:** Windows (38 técnicas com regra), EDR / XDR (32 técnicas com regra), Linux (30 técnicas com regra), Outros / genérico (27 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1587.002 Code Signing Certificates, T1197 BITS Jobs, T1102.001 Dead Drop Resolver, T1027.005 Indicator Removal from Tools, T1027.001 Binary Padding.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Índia |
+| Motivação | espionagem |
+| Setores-alvo | Financeiro, Governo, Defesa e militar, Setor privado (genérico) |
+| Vítimas citadas | Bangladesh, Germany, Pakistan, Sri Lanka |
+| Alvos (planilha) | global, including targets in the US, Europe, and the Middle East, many of the target countries are in the area surrounding the Indian subcontinent |
+| Operações conhecidas | Hangover, Monsoon |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0040 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Capricorn Organisation, APT-C-09, Maha Grass, Viceroy Tiger, Mahaboo, Neon, Confucius, Donot Team, APT-C-35, SectorE02, Orange Kala, QUILTED TIGER, Sarit, ZINC EMERSON, ATK11, Orange Athos, Thirsty Gemini, Quilted Tiger/Mirage Tiger, G0040/G0089, Hive0047, TG-4410, Orange Dev 1/Orange Athos, Confucius/Thirsty Gemini, Orange Berserker/Orange Kala
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -137,7 +162,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | Patchwork payloads download additional files from the C2 server. | 644 | 39 | — |
 | [T1132.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1132.001) Standard Encoding | Patchwork used Base64 to encode C2 traffic. | 26 | 3 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -154,7 +179,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1559.002 Dynamic Data Exchange | 10 | 2.70 |
 | T1132.001 Standard Encoding | 12 | 2.55 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -167,11 +192,13 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [TINYTYPHON](https://attack.mitre.org/software/S0131/) | malware | 4 |  |
 | [AutoIt backdoor](https://attack.mitre.org/software/S0129/) | malware | 4 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Unknown Logger Public
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **38 de 41 técnicas (93%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -180,6 +207,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1587.002 Code Signing Certificates** — Resource Development. Fonte de log sugerida pelo MITRE: `Malware Repository` None
 - **T1680 Local Storage Discovery** — Discovery. Fonte de log sugerida pelo MITRE: `WinEventLog:Sysmon` EventCode=1; `auditd:SYSCALL` execve call with argv matching known disk enumeration commands (lsblk, parted, fdisk); `macos:unifiedlog` process launch of diskutil or system_profil
 - **T1598.003 Spearphishing Link** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 38 |
+| EDR / XDR | 32 |
+| Linux | 30 |
+| Outros / genérico | 27 |
+| macOS | 26 |
+| Servidores web & aplicações | 26 |
+| Microsoft 365 | 21 |
+| IA, LLMs & agentes | 20 |
+| Firewall & perímetro | 19 |
+| Proxy / SWG | 19 |
+| E-mail | 18 |
+| IDS / NSM / NDR | 17 |
 
 ### Regras recomendadas por técnica
 
@@ -264,7 +310,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1588.002 | [Hacktool Execution - Imphash](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A24e3e58a-646b-4b50-adef-02ef935b9fc8) | Sigma | SigmaHQ |
 | T1588.002 | [Renamed SysInternals DebugView Execution](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Acd764533-2e07-40d6-a718-cfeec7f2da7f) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -353,7 +399,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1574.001 — [DE_timestomp_and_dll_sideloading_and_RunPersist](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/DE_timestomp_and_dll_sideloading_and_RunPersist.evtx) _(inferido)_
 - T1574.001 — [sideloading_injection_persistence_run_key](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/sideloading_injection_persistence_run_key.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Patchwork estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -370,7 +416,7 @@ Se Patchwork estiver no seu ambiente, estas são as perguntas a fazer aos seus d
 11. **T1560 Archive Collected Data** — Detects adversarial archiving of files prior to exfiltration by correlating execution of compression/encryption utilities (e.g., makecab.exe, rar.exe, 7z.exe, powershell Compress-Archive) with subsequent creation of large compressed or encrypted files.… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=7).
 12. **T1598.003 Spearphishing Link** — Monitor for suspicious email activity, such as numerous accounts receiving messages from a single unusual/unknown sender. Filtering based on DKIM+SPF or header analysis can help detect when the email sender is spoofed. Monitor for references to uncategorized… Dados: `Application Log` (None), `Network Traffic` (None), `Network Traffic` (None).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -400,7 +446,16 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2021 — [A Deep Dive Into Patchwork APT Group _ Cyble](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.01.20.Deep_Dive_Patchwork/A%20Deep%20Dive%20Into%20Patchwork%20APT%20Group%20_%20Cyble.pdf) _(via “Patchwork”)_
 - 2022 — [Patchwork_Patchwork-APT-caught-in-its-own-web_MalwarebytesLabs](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.01.07.Patchwork_APT_India/Patchwork_Patchwork-APT-caught-in-its-own-web_MalwarebytesLabs.pdf) _(via “Patchwork”)_
 
-## 11. Bibliografia (9 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (6 no total, mais recentes primeiro):
+
+- 2016 — [Patchwork cyberespionage group expands targets from governments to wide range of industries](https://app.box.com/s/8k4ikxiyz3od5bg6juqpjf99dcfdba4l) _(Symantec)_
+- 2016 — [The Dropping Elephant - aggressive cyber-espionage in the Asian region](https://app.box.com/s/9yczw853br9y9bs98j44uwc3kx6e414y) _(Kaspersky)_
+- 2016 — [Unveiling Patchwork the Copy Paste APT](https://app.box.com/s/r9pw9xbcy2fz2ssewg5p7lqyvtn1b6jc) _(Cymmetria)_
+- 2013 — [Operation Hangover - Unveiling An Indian Cyberattack Infrastructure (Appendix)](https://app.box.com/s/2k6oduwj3aetbetxdjx6gjqcg7mrcvvj) _(Norman)_
+- 2013 — [Operation Hangover - Unveiling An Indian Cyberattack Infrastructure](https://app.box.com/s/f5wyu7306nti3lbp58uesioijsl9zamm) _(Norman, Shadowserver)_
+- 2013 — [Operation Hangover \|Executive Summary](https://app.box.com/s/d3q764or208vbbg26gtcasv5uxnkcij1) _(Norman)_
+
+## 12. Bibliografia (9 fontes citadas pelo ATT&CK)
 
 - [Cymmetria Patchwork](https://web.archive.org/web/20180825085952/https:/s3-us-west-2.amazonaws.com/cymmetria-blog/public/Unveiling_Patchwork.pdf) — Cymmetria. (2016). Unveiling Patchwork - The Copy-Paste APT. Retrieved November 17, 2024.
 - [Forcepoint Monsoon](https://www.forcepoint.com/sites/default/files/resources/files/forcepoint-security-labs-monsoon-analysis-report.pdf) — Settle, A., et al. (2016, August 8). MONSOON - Analysis Of An APT Campaign. Retrieved September 22, 2016.
@@ -412,7 +467,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Unit 42 BackConfig May 2020](https://unit42.paloaltonetworks.com/updated-backconfig-malware-targeting-government-and-military-organizations/) — Hinchliffe, A. and Falcone, R. (2020, May 11). Updated BackConfig Malware Targeting Government and Military Organizations in South Asia. Retrieved June 17, 2020.
 - [Volexity Patchwork June 2018](https://www.volexity.com/blog/2018/06/07/patchwork-apt-group-targets-us-think-tanks/) — Meltzer, M, et al. (2018, June 07). Patchwork APT Group Targets US Think Tanks. Retrieved July 16, 2018.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -420,4 +475,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

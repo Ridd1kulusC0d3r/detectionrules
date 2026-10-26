@@ -1,8 +1,9 @@
 # Wizard Spider (G0102) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0102) · [ATT&CK](https://attack.mitre.org/groups/G0102/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0102) · [ATT&CK](https://attack.mitre.org/groups/G0102/)
 
 **Também conhecido como:** UNC1878, TEMP.MixMaster, Grim Spider, FIN12, GOLD BLACKBURN, ITG23, Periwinkle Tempest, DEV-0193, Pistachio Tempest, DEV-0237  
+**Origem atribuída:** Rússia · **Motivação:** financeiro · **Setores-alvo:** Financeiro, Governo, Saúde, Defesa e militar, Telecomunicações  
 **Registro no ATT&CK:** criado em 2020-05-12, atualizado em 2026-07-31 · referências de 2017 a 2024
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 11 malware e 11 ferramentas (ex.: Cobalt Strike, Empire, TrickBot, Bazar, Emotet).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 97% das técnicas têm ao menos uma regra no catálogo; **2 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Rússia**, motivação financeiro; setores Financeiro, Governo, Saúde, Defesa e militar, Telecomunicações; 18 países vítimas citados.
+- **Onde a cobertura está:** Windows (61 técnicas com regra), EDR / XDR (57 técnicas com regra), Linux (45 técnicas com regra), Servidores web & aplicações (41 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1518.002 Backup Software Discovery, T1222.001 Windows Permissions, T1552.006 Group Policy Preferences, T1557.001 Name Resolution Poisoning and SMB Relay, T1021 Remote Services.
 
 ## 2. Quem é
@@ -19,7 +22,30 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Rússia |
+| Motivação | financeiro |
+| Setores-alvo | Financeiro, Governo, Saúde, Defesa e militar, Telecomunicações |
+| Vítimas citadas | Australia, Bahamas, Canada, Costa Rica, France, Germany, India, Ireland, Italy, Japan, Mexico, New Zealand, Spain, Switzerland, Taiwan, Ukraine, United Kingdom, United States |
+| Alvos (planilha) | — |
+| Operações conhecidas | Onslow, North Carolina water, Dataresolution.net (MSP for multiple US newpapers) |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0102 |
+| Microsoft | Periwinkle Tempest, DEV-0193 (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** GOLD ULRICK, Storm-0193, Trickbot LLC, UNC2053, Storm-0230, FIN12/TEMP.MixMaster/UNC2053, White Magician/Pistachio Tempest, UNC1756/UNC1878/UNC2727, White Onibi/Blue Cronus
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -175,7 +201,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1489](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1489) Service Stop | Wizard Spider has used taskkill.exe and net.exe to stop backup, catalog, cloud, and other services prior to network encryption. | 112 | 9 | — |
 | [T1490](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1490) Inhibit System Recovery | Wizard Spider has used WMIC and vssadmin to manually delete volume shadow copies. Wizard Spider has also used Conti ransomware to delete volume shadow copies automatically with the use of vssadmin. | 188 | 13 | 5 |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -192,7 +218,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1021.006 Windows Remote Management | 4 | 3.40 |
 | T1074 Data Staged | 4 | 3.40 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -219,11 +245,11 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Nltest](https://attack.mitre.org/software/S0359/) | ferramenta | 3 |  |
 | [Ping](https://attack.mitre.org/software/S0097/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **62 de 64 técnicas (97%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -231,6 +257,25 @@ Nenhuma campanha atribuída no ATT&CK.
 
 - **T1518.002 Backup Software Discovery** — Discovery. Fonte de log sugerida pelo MITRE: `WinEventLog:Security` EventCode=4688; `auditd:SYSCALL` execve: Execution of discovery commands targeting backup binaries, processes, or config paths; `macos:unifiedlog` Process execution logs showing
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 61 |
+| EDR / XDR | 57 |
+| Linux | 45 |
+| Servidores web & aplicações | 41 |
+| Active Directory | 40 |
+| Outros / genérico | 40 |
+| IDS / NSM / NDR | 37 |
+| Firewall & perímetro | 35 |
+| DNS | 33 |
+| macOS | 33 |
+| VPN & acesso remoto | 30 |
+| Proxy / SWG | 28 |
 
 ### Regras recomendadas por técnica
 
@@ -362,7 +407,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685 | [Windows Defender Configuration Changes](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A801bd44f-ceed-4eb6-887c-11544633c0aa) | Sigma | SigmaHQ |
 | T1685 | [Windows Defender Virus Scanning Feature Disabled](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A686c0b4b-9dd3-4847-9077-d6c1bbe36fcb) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -498,7 +543,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1059.003 — [ID4688-SQL Server payload injectection for reverse shell (MSF)](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0002-Execution/T1059.003-Windows%20Command%20Shell/ID4688-SQL%20Server%20payload%20injectection%20for%20reverse%20shell%20%28MSF%29.evtx) _(explícito)_
 - T1078 — [ID1149-RDP success logins to multiple hosts](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0001-Initial%20access/T1078-Valid%20accounts/ID1149-RDP%20success%20logins%20to%20multiple%20hosts.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Wizard Spider estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -515,7 +560,7 @@ Se Wizard Spider estiver no seu ambiente, estas são as perguntas a fazer aos se
 11. **T1136.002 Domain Account** — Adversary uses built-in tools such as 'net user /add /domain' or PowerShell to create a domain user account. The behavior chain includes: (1) suspicious process execution on a domain controller followed by (2) user account creation event (Event ID 4720) on… Dados: `WinEventLog:Security` (EventCode=4720), `WinEventLog:Sysmon` (EventCode=1).
 12. **T1197 BITS Jobs** — Behavioral chain: (1) An actor creates or modifies a BITS job via bitsadmin.exe, PowerShell BITS cmdlets, or COM; (2) the job performs HTTP(S)/SMB network transfers while the owning user is logged on; (3) upon job completion/error, BITS launches a notify… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:PowerShell` (EventCode=4103, 4104, 4105, 4106).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -526,7 +571,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G0102](https://attack.mitre.org/groups/G0102/)
 
-## 11. Bibliografia (21 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (21 fontes citadas pelo ATT&CK)
 
 - [CrowdStrike Grim Spider May 2019](https://www.crowdstrike.com/blog/timelining-grim-spiders-big-game-hunting-tactics/) — John, E. and Carvey, H. (2019, May 30). Unraveling the Spiderweb: Timelining ATT&CK Artifacts Used by GRIM SPIDER. Retrieved May 12, 2020.
 - [CrowdStrike Ryuk January 2019](https://www.crowdstrike.com/blog/big-game-hunting-with-ryuk-another-lucrative-targeted-ransomware/) — Hanel, A. (2019, January 10). Big Game Hunting with Ryuk: Another Lucrative Targeted Ransomware. Retrieved May 12, 2020.
@@ -550,7 +595,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Secureworks Gold Blackburn Mar 2022](https://www.secureworks.com/research/threat-profiles/gold-blackburn) — Secureworks Counter Threat Unit. (2022, March 1). Gold Blackburn Threat Profile. Retrieved June 15, 2023.
 - [Sophos New Ryuk Attack October 2020](https://news.sophos.com/en-us/2020/10/14/inside-a-new-ryuk-ransomware-attack/) — Sean Gallagher, Peter Mackenzie, Elida Leite, Syed Shahram, Bill Kearney, Anand Aijan, Sivagnanam Gn, Suraj Mundalik. (2020, October 14). They’re back: inside a new Ryuk ransomware attack. Retrieved October 14, 2020.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -558,4 +603,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

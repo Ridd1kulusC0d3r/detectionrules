@@ -1,8 +1,9 @@
 # Carbanak (G0008) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0008) · [ATT&CK](https://attack.mitre.org/groups/G0008/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0008) · [ATT&CK](https://attack.mitre.org/groups/G0008/)
 
 **Também conhecido como:** Anunak  
+**Origem atribuída:** Ucrânia · **Motivação:** financeiro · **Setores-alvo:** Financeiro  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2014 a 2021
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 1 malware e 3 ferramentas (ex.: Carbanak, Mimikatz, PsExec, netsh).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Ucrânia**, motivação financeiro; setores Financeiro.
+- **Onde a cobertura está:** Windows (9 técnicas com regra), Linux (8 técnicas com regra), EDR / XDR (8 técnicas com regra), DNS (7 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1219 Remote Access Tools, T1686 Disable or Modify System Firewall, T1102.002 Bidirectional Communication, T1036.004 Masquerade Task or Service, T1218.011 Rundll32.
 
 ## 2. Quem é
@@ -19,7 +22,30 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Ucrânia |
+| Motivação | financeiro |
+| Setores-alvo | Financeiro |
+| Vítimas citadas | — |
+| Alvos (planilha) | Banks of Russia and payment system |
+| Operações conhecidas | Odinaff |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0008 |
+| Microsoft | Sangria Tempest, ELBRUS (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Carbanak Group, Carbon Spider, FIN7, GOLD NIAGARA, Calcium, ATK32, Coreid, Sangria Tempest, ELBRUS, JokerStash, WILD COMET
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -71,7 +97,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1102.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1102.002) Bidirectional Communication | Carbanak has used a VBScript named "ggldr" that uses Google Apps Script, Sheets, and Forms services for C2. | 27 | — | — |
 | [T1219](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1219) Remote Access Tools | Carbanak used legitimate programs such as AmmyyAdmin and Team Viewer for remote interactive C2 to target systems. | 119 | 15 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -87,7 +113,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1036.005 Match Legitimate Resource Name or Location | 65 | 0.98 |
 | T1588.002 Tool | 83 | 0.74 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -96,13 +122,34 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [PsExec](https://attack.mitre.org/software/S0029/) | ferramenta | 5 |  |
 | [netsh](https://attack.mitre.org/software/S0108/) | ferramenta | 4 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** MBR Eraser, SoftPerfect Network Scanner, SSHd with BackDoor, Ammy Admin, CVE-2012-2539 and CVE-2012-0158, Netscan, Backdoor Batel, Bateleur JScript Backdoor, Cobalt Strike, Sekur, Agent ORM, VB Flash, JS FLash, Bateleur
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **9 de 9 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 9 |
+| Linux | 8 |
+| EDR / XDR | 8 |
+| DNS | 7 |
+| Microsoft 365 | 7 |
+| Firewall & perímetro | 7 |
+| Active Directory | 6 |
+| Servidores web & aplicações | 6 |
+| macOS | 5 |
+| IA, LLMs & agentes | 5 |
+| Outros / genérico | 5 |
+| Proxy / SWG | 4 |
 
 ### Regras recomendadas por técnica
 
@@ -129,7 +176,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1686 | [Disable System Firewall](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A53059bc0-1472-438b-956a-7508a94a91f0) | Sigma | SigmaHQ |
 | T1686 | [Netsh RDP Port Opening](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A01aeb693-138d-49d2-9403-c4f52d7d3d62) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -159,7 +206,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1686 — [ID2003-4950-Firewall disabled](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.004-Impair%20Defenses-Disable%20or%20Modify%20System%20Firewall/ID2003-4950-Firewall%20disabled.evtx) _(explícito)_
 - T1686 — [ID2004-Any any firewall rule created](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.004-Impair%20Defenses-Disable%20or%20Modify%20System%20Firewall/ID2004-Any%20any%20firewall%20rule%20created.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Carbanak estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -173,7 +220,7 @@ Se Carbanak estiver no seu ambiente, estas são as perguntas a fazer aos seus da
 8. **T1036.005 Match Legitimate Resource Name or Location** — Detects processes or binaries executed from trusted directories (e.g., System32) or using trusted names (e.g., svchost.exe) where the metadata, hash, or parent process does not align with legitimate activity patterns. Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=11).
 9. **T1588.002 Tool** — Monitor for contextual data about a malicious payload, such as compilation times, file hashes, as well as watermarks or other identifiable configuration information. In some cases, malware repositories can also be used to identify features of tool use… Dados: `Malware Repository` (None).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -193,7 +240,22 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2017 — [paper_the-shadows-of-ghosts-carbanak-report](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2017/2017.12.04.The_Shadows_of_Ghosts/paper_the-shadows-of-ghosts-carbanak-report.pdf) _(via “Carbanak”)_
 - 2021 — [[Morphisec]_The_Evolution_of_the_FIN7_JssLoader](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.01.04.Carbanak_evolution_of_FIN7_JssLoader/%5BMorphisec%5D_The_Evolution_of_the_FIN7_JssLoader.pdf) _(via “Carbanak”)_
 
-## 11. Bibliografia (8 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (12 no total, mais recentes primeiro):
+
+- 2019 — [CARBANAK Week Part Four: The CARBANAK Desktop Video Player](https://app.box.com/s/30mizln4f525yv482qqampa8vybjj764) _(FireEye)_
+- 2019 — [CARBANAK Week Part Three: Behind the CARBANAK Backdoor](https://app.box.com/s/rel5slouyleepdl3u7xilbmzsuk091n3) _(FireEye)_
+- 2019 — [CARBANAK Week Part Two: Continuing the CARBANAK Source Code Analysis](https://app.box.com/s/etrhh2gb4df9sybsieg3xs1j9mx6yw8s) _(FireEye)_
+- 2019 — [CARBANAK Week Part One: A Rare Occurrence](https://app.box.com/s/l3dcqd6i8rnmxgi0ykd9zfmlwctcaq1g) _(FireEye)_
+- 2017 — [Inside the Response of a Unique CARBANAK Intrusion](https://app.box.com/s/egwg3so00e433s191jow7xlb1o27z7m7) _(RSA)_
+- 2017 — [The Carbanak/Fin7 syndicate](https://app.box.com/s/kos1krnm5s1r47do98nlyv6y9jcybf12) _(RSA)_
+- 2017 — [The Digital Plagiarist Campaign: TelePorting the Carbanak Crew to a New Dimension](https://app.box.com/s/7pr8b7cy9liv1bi88ha7frtzgrjycex3) _(tr1adx)_
+- 2016 — [New Carbanak / Anunak Attack Methodology](https://app.box.com/s/cbclbgiu54ihivxe7bvblwsv1e8jq44h) _(Trustwave)_
+- 2016 — [Carbanak Oracle Breach](https://app.box.com/s/4sfhcqaaxwui1dbvd13254wm5wfy9bmk) _(Visa)_
+- 2015 — [Carbanak is packing new guns](https://app.box.com/s/h1dn7d6ptcpwjbcfj468fy5201ev4bbz) _(ESET)_
+- 2015 — [Carbanak APT The Great Bank Robbery](https://app.box.com/s/p7qzcury97tuwk26694uutujwqmwqyhe) _(Kaspersky)_
+- 2014 — [Anunak: Apt Against Financial Institutions](https://app.box.com/s/exmsfcvad1sjqtmvtzbiil9k52js62ir) _(Group-IB, FOX-IT)_
+
+## 12. Bibliografia (8 fontes citadas pelo ATT&CK)
 
 - [Europol Cobalt Mar 2018](https://www.europol.europa.eu/newsroom/news/mastermind-behind-eur-1-billion-cyber-bank-robbery-arrested-in-spain) — Europol. (2018, March 26). Mastermind Behind EUR 1 Billion Cyber Bank Robbery Arrested in Spain. Retrieved October 10, 2018.
 - [FireEye FIN7 April 2017](https://www.fireeye.com/blog/threat-research/2017/04/fin7-phishing-lnk.html) — Carr, N., et al. (2017, April 24). FIN7 Evolution and the Phishing LNK. Retrieved April 24, 2017.
@@ -204,7 +266,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Secureworks GOLD KINGSWOOD Threat Profile](https://www.secureworks.com/research/threat-profiles/gold-kingswood?filter=item-financial-gain) — Secureworks. (n.d.). GOLD KINGSWOOD. Retrieved October 18, 2021.
 - [Secureworks GOLD NIAGARA Threat Profile](https://www.secureworks.com/research/threat-profiles/gold-niagara) — CTU. (n.d.). GOLD NIAGARA. Retrieved September 21, 2021.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -212,4 +274,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

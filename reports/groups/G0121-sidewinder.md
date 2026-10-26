@@ -1,8 +1,9 @@
 # Sidewinder (G0121) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0121) · [ATT&CK](https://attack.mitre.org/groups/G0121/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0121) · [ATT&CK](https://attack.mitre.org/groups/G0121/)
 
 **Também conhecido como:** T-APT-04, Rattlesnake  
+**Origem atribuída:** OTAN / Five Eyes · **Motivação:** espionagem · **Setores-alvo:** Sociedade civil e mídia, Educação e pesquisa, Energia, Financeiro, Governo, Defesa e militar, Setor privado (genérico), Telecomunicações  
 **Registro no ATT&CK:** criado em 2021-01-27, atualizado em 2026-07-31 · referências de 2018 a 2021
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 0 malware e 1 ferramentas (ex.: Koadic).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 93% das técnicas têm ao menos uma regra no catálogo; **2 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **OTAN / Five Eyes**, motivação espionagem; setores Sociedade civil e mídia, Educação e pesquisa, Energia, Financeiro, Governo; 4 países vítimas citados.
+- **Onde a cobertura está:** Windows (28 técnicas com regra), Linux (26 técnicas com regra), EDR / XDR (26 técnicas com regra), macOS (22 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1598.002 Spearphishing Attachment, T1020 Automated Exfiltration, T1559.002 Dynamic Data Exchange, T1518 Software Discovery, T1124 System Time Discovery.
 
 ## 2. Quem é
@@ -19,7 +22,31 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | OTAN / Five Eyes |
+| Motivação | espionagem |
+| Setores-alvo | Sociedade civil e mídia, Educação e pesquisa, Energia, Financeiro, Governo, Defesa e militar, Setor privado (genérico), Telecomunicações |
+| Vítimas citadas | Afghanistan, China, Global, Nepal, Pakistan |
+| Alvos (planilha) | PRC \| Military, Govenment, Pakistan, "South Asian countries" |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| Kaspersky | Lamberts |
+| MITRE ATT&CK | G0121 |
+| Symantec | Longhorn |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Lamberts, APT-C-39, Longhorn, the Lamberts, PLATINUM TERMINAL, RAZOR TIGER, APT-C-17, Orange Chandi, T-APT-04/Rattlesnake, APT-C-24/APT-C-17
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -105,7 +132,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1020](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1020) Automated Exfiltration | Sidewinder has configured tools to automatically send collected files to attacker controlled servers. | 69 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -122,17 +149,19 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1518.001 Security Software Discovery | 26 | 1.85 |
 | T1074.001 Local Data Staging | 28 | 1.79 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
 | [Koadic](https://attack.mitre.org/software/S0250/) | ferramenta | 27 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** SideWinder.AntiBot.Script
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **28 de 30 técnicas (93%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -140,6 +169,25 @@ Nenhuma campanha atribuída no ATT&CK.
 
 - **T1598.002 Spearphishing Attachment** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Network Traffic` None
 - **T1598.003 Spearphishing Link** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 28 |
+| Linux | 26 |
+| EDR / XDR | 26 |
+| macOS | 22 |
+| Microsoft 365 | 21 |
+| Servidores web & aplicações | 20 |
+| Outros / genérico | 19 |
+| Firewall & perímetro | 17 |
+| Proxy / SWG | 16 |
+| E-mail | 16 |
+| IDS / NSM / NDR | 15 |
+| DevOps & supply chain | 15 |
 
 ### Regras recomendadas por técnica
 
@@ -204,7 +252,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1574.001 | [Winnti Pipemon Characteristics](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A73d70463-75c9-4258-92c6-17500fe972f2) | Sigma | SigmaHQ |
 | T1574.001 | [Winnti Pipemon Characteristics](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A73d70463-75c9-4258-92c6-17500fe972f2) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -273,7 +321,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1574.001 — [DE_timestomp_and_dll_sideloading_and_RunPersist](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/DE_timestomp_and_dll_sideloading_and_RunPersist.evtx) _(inferido)_
 - T1574.001 — [sideloading_injection_persistence_run_key](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/sideloading_injection_persistence_run_key.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Sidewinder estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -290,7 +338,7 @@ Se Sidewinder estiver no seu ambiente, estas são as perguntas a fazer aos seus 
 11. **T1059.007 JavaScript** — Detects JavaScript execution through WSH (wscript.exe, cscript.exe) or HTA (mshta.exe), particularly when spawned from Office macros, web browsers, or abnormal user paths. Correlates script execution with outbound network activity or system modification. Dados: `WinEventLog:Sysmon` (EventCode=1), `m365:defender` (ScriptBlockLogging + AMSI), `WinEventLog:Sysmon` (EventCode=7).
 12. **T1027.010 Command Obfuscation** — Detection of command-line activity exhibiting syntactic obfuscation patterns, such as excessive escape characters, base64 encoding, command concatenation, or outlier command length and entropy. Dados: `WinEventLog:Security` (EventCode=4688).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -311,7 +359,12 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2020 — [SideWinder_APT_2020_H1_CN_version](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.07.12_SideWinder_2020_H1/SideWinder_APT_2020_H1_CN_version.pdf) _(via “Sidewinder”)_
 - 2020 — [SideWinder Uses South Asian Issues for Spear Phishing, Mobile Attacks](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.12.09.SideWinder/SideWinder%20Uses%20South%20Asian%20Issues%20for%20Spear%20Phishing%2C%20Mobile%20Attacks.pdf) _(via “Sidewinder”)_
 
-## 11. Bibliografia (5 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (2 no total, mais recentes primeiro):
+
+- 2017 — [Longhorn: Tools used by cyberespionage group](https://app.box.com/s/jpmrhxe5hbpjv7l7a8x0hlusep41zo5q) _(Symantec)_
+- 2014 — [Sidewinder Targeted Attack Against Android In The Golden Age Of Ad Libraries](https://app.box.com/s/qwg36lcvf9iaz3alks4w24btqcxmzlkq) _(FireEye)_
+
+## 12. Bibliografia (5 fontes citadas pelo ATT&CK)
 
 - [ATT Sidewinder January 2021](https://cdn-cybersecurity.att.com/docs/global-perspective-of-the-sidewinder-apt.pdf) — Hegel, T. (2021, January 13). A Global Perspective of the SideWinder APT. Retrieved January 27, 2021.
 - [Cyble Sidewinder September 2020](https://cybleinc.com/2020/09/26/sidewinder-apt-targets-with-futuristic-tactics-and-techniques/) — Cyble. (2020, September 26). SideWinder APT Targets with futuristic Tactics and Techniques. Retrieved January 29, 2021.
@@ -319,7 +372,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Rewterz Sidewinder COVID-19 June 2020](https://www.rewterz.com/articles/analysis-on-sidewinder-apt-group-covid-19) — Rewterz. (2020, June 22). Analysis on Sidewinder APT Group – COVID-19. Retrieved January 29, 2021.
 - [Securelist APT Trends April 2018](https://securelist.com/apt-trends-report-q1-2018/85280/) — Global Research and Analysis Team . (2018, April 12). APT Trends report Q1 2018. Retrieved January 27, 2021.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -327,4 +380,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

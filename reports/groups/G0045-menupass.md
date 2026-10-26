@@ -1,8 +1,9 @@
 # menuPass (G0045) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0045) · [ATT&CK](https://attack.mitre.org/groups/G0045/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0045) · [ATT&CK](https://attack.mitre.org/groups/G0045/)
 
 **Também conhecido como:** Cicada, POTASSIUM, Stone Panda, APT10, Red Apollo, CVNX, HOGFISH, BRONZE RIVERSIDE  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** Governo, Saúde, Defesa e militar, Setor privado (genérico), Tecnologia  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2013 a 2022
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 13 malware e 12 ferramentas (ex.: Cobalt Strike, PlugX, PowerSploit, QuasarRAT, RedLeaves).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem; setores Governo, Saúde, Defesa e militar, Setor privado (genérico), Tecnologia; 15 países vítimas citados.
+- **Onde a cobertura está:** Windows (45 técnicas com regra), EDR / XDR (40 técnicas com regra), Linux (32 técnicas com regra), Outros / genérico (32 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1218.004 InstallUtil, T1568.001 Fast Flux DNS, T1036.003 Rename Legitimate Utilities, T1055.012 Process Hollowing, T1039 Data from Network Shared Drive.
 
 ## 2. Quem é
@@ -21,7 +24,35 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | Governo, Saúde, Defesa e militar, Setor privado (genérico), Tecnologia |
+| Vítimas citadas | Australia, Brazil, Canada, Finland, France, India, Japan, Norway, South Africa, South Korea, Sweden, Switzerland, Thailand, United Kingdom, United States |
+| Alvos (planilha) | Healthcare; Pharma, Defense, Aerospace, Government, MSP, |
+| Operações conhecidas | Dust Storm, Cloud Hopper, ChessMaster |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | Stone Panda |
+| MITRE ATT&CK | G0045 |
+| Mandiant | APT10 |
+| Microsoft | Cinnamon Tempest, DEV-0401 (antigo · old) |
+| Palo Alto Unit 42 | menuPass |
+| Secureworks | BRONZE RIVERSIDE |
+| iSight | MenuPass Team |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** MenuPass Team, Cloud Hopper, TA429, TALONITE, DEV-0401, happyyongzi, ATK41, Granite Taurus, Purple Typhoon, Happyyongzi/MenuPass, Potassium/Purple Typhoon, ITG01, CTG-5938
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -139,7 +170,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | menuPass has installed updates and new malware on victims. | 644 | 39 | — |
 | [T1568.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1568.001) Fast Flux DNS | menuPass has used dynamic DNS service providers to host malicious domains. | 1 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -156,7 +187,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1090.002 External Proxy | 10 | 2.70 |
 | T1210 Exploitation of Remote Services | 11 | 2.62 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -186,13 +217,34 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [pwdump](https://attack.mitre.org/software/S0006/) | ferramenta | 1 |  |
 | [Ping](https://attack.mitre.org/software/S0097/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Poison Ivy, IEChecker, Quasar, CobaltStrike, Trochilus, UPPERCUT (aka ANEL), StoneNetLoader
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **46 de 46 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 45 |
+| EDR / XDR | 40 |
+| Linux | 32 |
+| Outros / genérico | 32 |
+| Servidores web & aplicações | 28 |
+| macOS | 28 |
+| DNS | 26 |
+| Active Directory | 23 |
+| Proxy / SWG | 23 |
+| IDS / NSM / NDR | 22 |
+| AWS | 22 |
+| Firewall & perímetro | 21 |
 
 ### Regras recomendadas por técnica
 
@@ -292,7 +344,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1588.002 | [Hacktool Execution - Imphash](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A24e3e58a-646b-4b50-adef-02ef935b9fc8) | Sigma | SigmaHQ |
 | T1588.002 | [Renamed SysInternals DebugView Execution](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Acd764533-2e07-40d6-a718-cfeec7f2da7f) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -398,7 +450,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1078 — [ID33205-SQL Server failed login with disabled SA account](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0001-Initial%20access/T1078-Valid%20accounts/ID33205-SQL%20Server%20failed%20login%20with%20disabled%20SA%20account.evtx) _(explícito)_
 - T1087.002 — [discovery_bloodhound](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Discovery/discovery_bloodhound.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se menuPass estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -415,7 +467,7 @@ Se menuPass estiver no seu ambiente, estas são as perguntas a fazer aos seus da
 11. **T1560 Archive Collected Data** — Detects adversarial archiving of files prior to exfiltration by correlating execution of compression/encryption utilities (e.g., makecab.exe, rar.exe, 7z.exe, powershell Compress-Archive) with subsequent creation of large compressed or encrypted files.… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=7).
 12. **T1003.002 Security Account Manager** — An adversary running with SYSTEM-level privileges executes commands or accesses registry keys to dump the SAM hive or directly reads sensitive local files from the config directory. This behavior often involves sequential access to HKLM\SAM, HKLM\SYSTEM, and… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=13, 14), `WinEventLog:Sysmon` (EventCode=11).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -440,7 +492,12 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2021 — [APT10_ sophisticated multi-layered loader Ecipekac discovered in A41APT campaign _ Securelist](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.03.30.APT10/APT10_%20sophisticated%20multi-layered%20loader%20Ecipekac%20discovered%20in%20A41APT%20campaign%20_%20Securelist.pdf) _(via “APT10”)_
 - 2024 — [The Endless Struggle Against APT10_ Insights from LODEINFO v0.6.6 - v0.7.3 Analysis - Researcher Blog - ITOCHU Cyber & I](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2024/2024.01.24.APT10_LODEINFO/The%20Endless%20Struggle%20Against%20APT10_%20Insights%20from%20LODEINFO%20v0.6.6%20-%20v0.7.3%20Analysis%20-%20Researcher%20Blog%20-%20ITOCHU%20Cyber%20%26%20Intelligence%20Inc_.pdf) _(via “APT10”)_
 
-## 11. Bibliografia (14 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (2 no total, mais recentes primeiro):
+
+- 2018 — [Two Birds, One STONE PANDA](https://app.box.com/s/uupum93o78ta8zw7fsl8fv3nyzlpsvpi) _(Crowdstrike)_
+- 2017 — [Operation Cloud Hopper](https://app.box.com/s/ifeoa5huug0aqdecsniw7jmrxym0k85i) _(PWC)_
+
+## 12. Bibliografia (14 fontes citadas pelo ATT&CK)
 
 - [Accenture Hogfish April 2018](http://web.archive.org/web/20220810112638/https:/www.accenture.com/t20180423T055005Z_w_/se-en/_acnmedia/PDF-76/Accenture-Hogfish-Threat-Analysis.pdf) — Accenture Security. (2018, April 23). Hogfish Redleaves Campaign. Retrieved July 2, 2018.
 - [Crowdstrike CrowdCast Oct 2013](https://www.slideshare.net/slideshow/crowd-casts-monthly-you-have-an-adversary-problem/27262315) — Crowdstrike. (2013, October 16). CrowdCasts Monthly: You Have an Adversary Problem. Retrieved November 17, 2024.
@@ -457,7 +514,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [SecureWorks BRONZE STARLIGHT Ransomware Operations June 2022](https://www.secureworks.com/research/bronze-starlight-ransomware-operations-use-hui-loader) — Counter Threat Unit Research Team . (2022, June 23). BRONZE STARLIGHT RANSOMWARE OPERATIONS USE HUI LOADER. Retrieved December 7, 2023.
 - [Symantec Cicada November 2020](https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/cicada-apt10-japan-espionage) — Symantec. (2020, November 17). Japan-Linked Organizations Targeted in Long-Running and Sophisticated Attack Campaign. Retrieved December 17, 2020.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -465,4 +522,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

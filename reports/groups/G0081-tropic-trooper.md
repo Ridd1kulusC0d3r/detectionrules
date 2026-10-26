@@ -1,8 +1,9 @@
 # Tropic Trooper (G0081) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0081) · [ATT&CK](https://attack.mitre.org/groups/G0081/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0081) · [ATT&CK](https://attack.mitre.org/groups/G0081/)
 
 **Também conhecido como:** Pirate Panda, KeyBoy  
+**Origem atribuída:** China · **Motivação:** indefinido · **Setores-alvo:** Governo, Saúde, Indústria, Defesa e militar, Tecnologia, Transporte e logística  
 **Registro no ATT&CK:** criado em 2019-01-29, atualizado em 2026-07-31 · referências de 2015 a 2021
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 5 malware e 1 ferramentas (ex.: ShadowPad, KeyBoy, PoisonIvy, USBferry, YAHOYAH).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 98% das técnicas têm ao menos uma regra no catálogo; **1 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação indefinido; setores Governo, Saúde, Indústria, Defesa e militar, Tecnologia.
+- **Onde a cobertura está:** Windows (39 técnicas com regra), Linux (36 técnicas com regra), EDR / XDR (35 técnicas com regra), Outros / genérico (29 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1052.001 Exfiltration over USB, T1547.004 Winlogon Helper DLL, T1573 Encrypted Channel, T1020 Automated Exfiltration, T1091 Replication Through Removable Media.
 
 ## 2. Quem é
@@ -19,7 +22,31 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | indefinido |
+| Setores-alvo | Governo, Saúde, Indústria, Defesa e militar, Tecnologia, Transporte e logística |
+| Vítimas citadas | — |
+| Alvos (planilha) | Taiwan, High-Tech in Asia, Taiwanese Government, Fossil Fuel Provider, Taiwanese, Philippine, and Hong Kong targets, focusing on their government, healthcare, transportation, and high-tech industries |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | Pirate Panda, KeyBoy |
+| IRL | Earth Centaur |
+| MITRE ATT&CK | G0081 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** KeyBoys, Earth Centaur, APT23, BRONZE HOBART, Red Orthrus, APT23/Temp.Hex/UNC53/UNC4191, TA428, Pirate Panda/Vicious Panda/Colourful Panda, Bronze Hobart/Bronze Dudley
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -122,7 +149,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1020](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1020) Automated Exfiltration | Tropic Trooper has used a copy function to automatically exfiltrate sensitive data from air-gapped systems using USB storage. | 69 | 2 | — |
 | [T1052.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1052.001) Exfiltration over USB | Tropic Trooper has exfiltrated data using USB storage devices. | 5 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -139,7 +166,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1680 Local Storage Discovery | 9 | 2.79 |
 | T1071.004 DNS | 10 | 2.70 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -150,17 +177,38 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [YAHOYAH](https://attack.mitre.org/software/S0388/) | malware | 6 |  |
 | [BITSAdmin](https://attack.mitre.org/software/S0190/) | ferramenta | 4 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Poison Ivy, PCShare
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **39 de 40 técnicas (98%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
 ### Técnicas sem regra pública (prioridade para engenharia de detecção)
 
 - **T1680 Local Storage Discovery** — Discovery. Fonte de log sugerida pelo MITRE: `WinEventLog:Sysmon` EventCode=1; `auditd:SYSCALL` execve call with argv matching known disk enumeration commands (lsblk, parted, fdisk); `macos:unifiedlog` process launch of diskutil or system_profil
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 39 |
+| Linux | 36 |
+| EDR / XDR | 35 |
+| Outros / genérico | 29 |
+| Servidores web & aplicações | 28 |
+| macOS | 26 |
+| Firewall & perímetro | 21 |
+| DNS | 21 |
+| IDS / NSM / NDR | 20 |
+| Microsoft 365 | 19 |
+| Active Directory | 18 |
+| Proxy / SWG | 18 |
 
 ### Regras recomendadas por técnica
 
@@ -247,7 +295,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1574.001 | [Winnti Pipemon Characteristics](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A73d70463-75c9-4258-92c6-17500fe972f2) | Sigma | SigmaHQ |
 | T1574.001 | [Winnti Pipemon Characteristics](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A73d70463-75c9-4258-92c6-17500fe972f2) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -337,7 +385,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1574.001 — [DE_timestomp_and_dll_sideloading_and_RunPersist](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/DE_timestomp_and_dll_sideloading_and_RunPersist.evtx) _(inferido)_
 - T1574.001 — [sideloading_injection_persistence_run_key](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/sideloading_injection_persistence_run_key.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Tropic Trooper estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -354,7 +402,7 @@ Se Tropic Trooper estiver no seu ambiente, estas são as perguntas a fazer aos s
 11. **T1518 Software Discovery** — Adversary spawns a process or script to enumerate installed software using WMI, registry, or PowerShell, potentially followed by additional discovery or evasion behavior. Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:PowerShell` (Execution of 'Get-WmiObject Win32_Product' or similar PowerShell cmdlets).
 12. **T1573.002 Asymmetric Cryptography** — Processes not typically associated with encryption loading asymmetric crypto libraries (e.g., rsaenh.dll, crypt32.dll) and subsequently initiating outbound TLS/SSL connections with abnormal certificate chains or handshakes. Defender correlates process… Dados: `WinEventLog:Sysmon` (EventCode=7), `WinEventLog:Sysmon` (EventCode=3, 22).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -372,7 +420,14 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2016 — [tropic-trooper-targets-taiwanese](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2016/2016.11.22.tropic-trooper-targets-taiwanese-government-and-fossil-fuel-provider-with-poison-ivy/tropic-trooper-targets-taiwanese.pdf) _(via “Tropic Trooper”)_
 - 2018 — [Tropic_Trooper_microsoft](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2018/2018.11.28.Tropic_Trooper_microsoft/Tropic_Trooper_microsoft.pdf) _(via “Tropic Trooper”)_
 
-## 11. Bibliografia (10 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (4 no total, mais recentes primeiro):
+
+- 2017 — [The KeyBoys are back in town](https://app.box.com/s/fjeyg8km8vu1a2bu0itwe9pv8zqfl3gs) _(PWC)_
+- 2016 — [It's Parliamentary: KeyBoy and the targeting of the Tibetan Community](https://app.box.com/s/q7rywbgt6s5c380vvjpk643ppcdtdl8v) _(Citizen Lab)_
+- 2015 — [Operation Tropic Trooper: Relying On Tried-And-Tested Flaws To Infiltrate Secret Keepers](https://app.box.com/s/h3xtomk798hufzzqxnhn2kjmvt6yrcxh) _(Trend Micro)_
+- 2013 — [Keyboy, Targeted Attacks Against Vietnam And India](https://app.box.com/s/f8p3dagvmdezcpgmnh04mgqz21viklpz) _(Rapid7)_
+
+## 12. Bibliografia (10 fontes citadas pelo ATT&CK)
 
 - [Anomali Pirate Panda April 2020](https://www.anomali.com/blog/anomali-suspects-that-china-backed-apt-pirate-panda-may-be-seeking-access-to-vietnam-government-data-center#When:15:00:00Z) — Moore, S. et al. (2020, April 30). Anomali Suspects that China-Backed APT Pirate Panda May Be Seeking Access to Vietnam Government Data Center. Retrieved May 19, 2020.
 - [CitizenLab KeyBoy Nov 2016](https://citizenlab.ca/2016/11/parliament-keyboy/) — Hulcoop, A., et al. (2016, November 17). It’s Parliamentary KeyBoy and the targeting of the Tibetan Community. Retrieved June 13, 2019.
@@ -385,7 +440,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [TrendMicro TropicTrooper 2015](https://documents.trendmicro.com/assets/wp/wp-operation-tropic-trooper.pdf) — Alintanahin, K. (2015). Operation Tropic Trooper: Relying on Tried-and-Tested Flaws to Infiltrate Secret Keepers. Retrieved June 14, 2019.
 - [Unit 42 Tropic Trooper Nov 2016](https://researchcenter.paloaltonetworks.com/2016/11/unit42-tropic-trooper-targets-taiwanese-government-and-fossil-fuel-provider-with-poison-ivy/) — Ray, V. (2016, November 22). Tropic Trooper Targets Taiwanese Government and Fossil Fuel Provider With Poison Ivy. Retrieved November 9, 2018.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -393,4 +448,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

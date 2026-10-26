@@ -39,7 +39,9 @@ jobs:
           python3 build_catalog.py
           python3 make_data.py
           python3 build_graph.py .
+          python3 build_context.py .
           python3 build_intel.py .
+          python3 build_tech.py
 
       - name: Montar site (somente arquivos do app)
         run: |

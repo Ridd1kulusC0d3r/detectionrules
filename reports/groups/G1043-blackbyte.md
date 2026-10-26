@@ -1,8 +1,9 @@
 # BlackByte (G1043) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1043) · [ATT&CK](https://attack.mitre.org/groups/G1043/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1043) · [ATT&CK](https://attack.mitre.org/groups/G1043/)
 
 **Também conhecido como:** Hecamede  
+**Origem atribuída:** Rússia · **Motivação:** financeiro · **Setores-alvo:** Educação e pesquisa, Saúde, Tecnologia  
 **Registro no ATT&CK:** criado em 2024-12-16, atualizado em 2026-07-31 · referências de 2021 a 2024
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 4 malware e 4 ferramentas (ex.: Cobalt Strike, BlackByte Ransomware, Mimikatz, BlackByte 2.0 Ransomware, Exbyte).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 98% das técnicas têm ao menos uma regra no catálogo; **1 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Rússia**, motivação financeiro; setores Educação e pesquisa, Saúde, Tecnologia.
+- **Onde a cobertura está:** Windows (46 técnicas com regra), EDR / XDR (42 técnicas com regra), Linux (37 técnicas com regra), Outros / genérico (37 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1134.003 Make and Impersonate Token, T1491.001 Internal Defacement, T1036.008 Masquerade File Type, T1136.002 Domain Account, T1480 Execution Guardrails.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Rússia |
+| Motivação | financeiro |
+| Setores-alvo | Educação e pesquisa, Saúde, Tecnologia |
+| Vítimas citadas | — |
+| Alvos (planilha) | Healthcare, manifacturing, professional, scientific, technical services, wholesale, education |
+| Operações conhecidas | BazarCall Campaign |
+| Confiança de atribuição (MISP) | Mid |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1043 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Royal, DEV-0569, Conti, Quantum, Diavol, Black Basta, Ryuk (as FIN12), Wizard Spider (DEV-0193), Storm-0569, Mangled Spider, Gold Lotus, Powerful Scorpius, DEV--0506/Storm-0506, Gold Rebellion, White Dev 115, Dark Scorpius, DEV-0569/Storm-0569
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -155,7 +180,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1490](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1490) Inhibit System Recovery | BlackByte resized and deleted volume shadow copy files to prevent system recovery after encryption. | 188 | 13 | 5 |
 | [T1491.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1491.001) Internal Defacement | BlackByte left ransom notes in all directories where encryption takes place. | 18 | 4 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -172,7 +197,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1055.012 Process Hollowing | 7 | 2.99 |
 | T1482 Domain Trust Discovery | 9 | 2.79 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -185,17 +210,54 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [PsExec](https://attack.mitre.org/software/S0029/) | ferramenta | 5 | BlackByte has used PsExec to remotely execute payloads during wormable ransomware execution. |
 | [Arp](https://attack.mitre.org/software/S0099/) | ferramenta | 2 | BlackByte used Arp to identify connected hosts in victim networks. |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** BATLOADER, Royal Ransomware, Ursnif, Gozi
+
+### Ferramentas observadas em intrusões (BlackByte) — Ransomware Tool Matrix
+
+Ferramentas legítimas e ofensivas que afiliados usam dentro da rede. Cada uma é um ponto de detecção: veja quantas regras do catálogo a citam.
+
+| Ferramenta | Categoria | Regras que citam |
+|---|---|---:|
+| Cobalt Strike | offsec | 258 |
+| AnyDesk | rmm | 102 |
+| PowerView | descoberta | 74 |
+| SoftPerfect NetScan | descoberta | 10 |
+| PowerShell Empire | offsec | 9 |
+| MSI Afterburner driver (BYOVD) | evasao | 1 |
+| Dell Client driver (BYOVD) | evasao | **0** |
+| GIGABYTE Motherboard driver (BYOVD) | evasao | **0** |
+| Zemana Anti-Rootkit driver | evasao | **0** |
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **47 de 48 técnicas (98%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
 ### Técnicas sem regra pública (prioridade para engenharia de detecção)
 
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 46 |
+| EDR / XDR | 42 |
+| Linux | 37 |
+| Outros / genérico | 37 |
+| Servidores web & aplicações | 33 |
+| Active Directory | 31 |
+| Firewall & perímetro | 31 |
+| IDS / NSM / NDR | 29 |
+| DNS | 27 |
+| macOS | 26 |
+| VPN & acesso remoto | 25 |
+| Proxy / SWG | 24 |
 
 ### Regras recomendadas por técnica
 
@@ -298,7 +360,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1686 | [Disable System Firewall](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A53059bc0-1472-438b-956a-7508a94a91f0) | Sigma | SigmaHQ |
 | T1686 | [Netsh RDP Port Opening](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A01aeb693-138d-49d2-9403-c4f52d7d3d62) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -409,7 +471,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1068 — [ID4673-Privilege SeMachineAccountPrivilege called](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0004-Privilege%20Escalation/T1068-Exploitation%20for%20Privilege%20Escalation/ID4673-Privilege%20SeMachineAccountPrivilege%20called.evtx) _(explícito)_
 - T1078 — [ID1149-RDP success logins to multiple hosts](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0001-Initial%20access/T1078-Valid%20accounts/ID1149-RDP%20success%20logins%20to%20multiple%20hosts.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se BlackByte estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -426,7 +488,7 @@ Se BlackByte estiver no seu ambiente, estas são as perguntas a fazer aos seus d
 11. **T1003 OS Credential Dumping** — Processes accessing LSASS memory or SAM registry hives outside of trusted security tools, often followed by file creation or lateral movement. Detects unauthorized access to sensitive OS subsystems for credential extraction. Dados: `WinEventLog:Sysmon` (EventCode=10), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Security` (EventCode=4663, 4670, 4656).
 12. **T1219 Remote Access Tools** — Chain of remote access tool behavior: (1) initial execution of remote-control/assist agent or GUI under user context; (2) persistence via service or autorun; (3) long-lived outbound connection/tunnel to external infrastructure; (4) interactive control signals… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:System` (EventCode=7045), `WinEventLog:Sysmon` (EventCode=12).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -437,7 +499,11 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1043](https://attack.mitre.org/groups/G1043/)
 
-## 11. Bibliografia (6 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (1 no total, mais recentes primeiro):
+
+- 2014 — [Operation Quantum Entanglement](https://app.box.com/s/qvuhc7j8tle0a83z3iivsz3yz6aok3tv) _(FireEye)_
+
+## 12. Bibliografia (6 fontes citadas pelo ATT&CK)
 
 - [Cisco BlackByte 2024](https://blog.talosintelligence.com/blackbyte-blends-tried-and-true-tradecraft-with-newly-disclosed-vulnerabilities-to-support-ongoing-attacks/) — James Nutland, Craig Jackson, Terryn Valikodath, & Brennan Evans. (2024, August 28). BlackByte blends tried-and-true tradecraft with newly disclosed vulnerabilities to support ongoing attacks. Retrieved December 16, 2024
 - [FBI BlackByte 2022](https://www.ic3.gov/CSA/2022/220211.pdf) — US Federal Bureau of Investigation & US Secret Service. (2022, February 11). Indicators of Compromise Associated with BlackByte Ransomware. Retrieved December 16, 2024.
@@ -446,7 +512,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Symantec BlackByte 2022](https://www.security.com/threat-intelligence/blackbyte-exbyte-ransomware) — Symantec Threat Hunter Team. (2022, October 21). Exbyte: BlackByte Ransomware Attackers Deploy New Exfiltration Tool. Retrieved December 16, 2024.
 - [Trustwave BlackByte 2021](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/blackbyte-ransomware-pt-1-in-depth-analysis/) — Rodel Mendrez & Lloyd Macrohon. (2021, October 15). BlackByte Ransomware – Pt. 1 In-depth Analysis. Retrieved December 16, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -454,4 +520,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

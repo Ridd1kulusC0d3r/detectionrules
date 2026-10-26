@@ -1,8 +1,9 @@
 # Lazarus Group (G0032) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0032) · [ATT&CK](https://attack.mitre.org/groups/G0032/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0032) · [ATT&CK](https://attack.mitre.org/groups/G0032/)
 
 **Também conhecido como:** Labyrinth Chollima, HIDDEN COBRA, Guardians of Peace, ZINC, NICKEL ACADEMY, Diamond Sleet  
+**Origem atribuída:** Coreia do Norte · **Motivação:** espionagem, sabotagem · **Setores-alvo:** Financeiro, Governo, Indústria, Tecnologia  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2016 a 2025
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 22 malware e 4 ferramentas (ex.: Bankshot, Dtrack, BLINDINGCAN, HOPLIGHT, HotCroissant).
 - **Campanhas atribuídas:** 1 (Operation Dream Job).
 - **Cobertura de detecção pública:** 97% das técnicas têm ao menos uma regra no catálogo; **3 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Coreia do Norte**, motivação espionagem, sabotagem; setores Financeiro, Governo, Indústria, Tecnologia.
+- **Onde a cobertura está:** Windows (80 técnicas com regra), EDR / XDR (65 técnicas com regra), Linux (61 técnicas com regra), Outros / genérico (59 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1574.013 KernelCallbackTable, T1134.002 Create Process with Token, T1202 Indirect Command Execution, T1218 System Binary Proxy Execution, T1557.001 Name Resolution Poisoning and SMB Relay.
 
 ## 2. Quem é
@@ -21,7 +24,33 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Coreia do Norte |
+| Motivação | espionagem, sabotagem |
+| Setores-alvo | Financeiro, Governo, Indústria, Tecnologia |
+| Vítimas citadas | — |
+| Alvos (planilha) | Believed to be responsible for Dark Seoul, Ten Days of Rain, the Sony Pictures Entertainment attack, the SWIFT-related bank heists, and WannaCry. Known to the U.S. government as Hidden Cobra. Targeting also BitCoin Exchanges, financial sector, technology/engineering sector |
+| Operações conhecidas | Troy, Blockbuster, Dark Seoul, Applejeus, Inception, NorthStar, Dream Job, KuCoin Hack, ThreatNeedle |
+| Confiança de atribuição (MISP) | — |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| Cisco Talos | Group 77 |
+| CrowdStrike | Labyrinth Chollima |
+| MITRE ATT&CK | G0032 |
+| Microsoft | Diamond Sleet, ZINC (antigo · old) |
+| Secureworks | Hastati Group |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Group 77, Hastati Group, Bureau 121, BeagleBoyzBureau121, BeagleBoyz, Unit 121, Whois Hacking Team, WHOis Team, NewRomanic Cyber Army Team, APT-C-26, UNC2970, UNC577, UNC4736, Appleworm, NICKEL GLADSTONE, COVELLITE, ATK3, Black Artemis, LolZarus
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -209,7 +238,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1561.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1561.001) Disk Content Wipe | Lazarus Group has used malware like WhiskeyAlfa to overwrite the first 64MB of every drive with a mix of static and random buffers. A similar process is then used to wipe content in logical drives and, finally, attempt to wipe every byte of every sector on eve… | 6 | — | — |
 | [T1561.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1561.002) Disk Structure Wipe | Lazarus Group malware SHARPKNOT overwrites and deletes the Master Boot Record (MBR) on the victim's machine and has possessed MBR wiper malware since at least 2009. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -226,7 +255,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1027.009 Embedded Payloads | 2 | 3.80 |
 | T1542.003 Bootkit | 2 | 3.80 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -257,13 +286,15 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Responder](https://attack.mitre.org/software/S0174/) | ferramenta | 2 |  |
 | [route](https://attack.mitre.org/software/S0103/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Tdrop, Tdrop2, Troy, Destover, FallChill RAT, Hawup, Manuscrypt, WolfRAT, SheepRAT, HtDnDownLoader, Whois Wiper
+
+## 7. Campanhas
 
 | Campanha | Período | Resumo (EN) |
 |---|---|---|
 | [Operation Dream Job](https://attack.mitre.org/campaigns/C0022/) | 2019-09 → 2020-08 | Operation Dream Job was a cyber espionage operation likely conducted by Lazarus Group that targeted the defense, aerospace, government, and other sectors in the United States, Israel, Australia, Russia, and India. In at  |
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **90 de 93 técnicas (97%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -272,6 +303,25 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 - **T1584.004 Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1680 Local Storage Discovery** — Discovery. Fonte de log sugerida pelo MITRE: `WinEventLog:Sysmon` EventCode=1; `auditd:SYSCALL` execve call with argv matching known disk enumeration commands (lsblk, parted, fdisk); `macos:unifiedlog` process launch of diskutil or system_profil
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 80 |
+| EDR / XDR | 65 |
+| Linux | 61 |
+| Outros / genérico | 59 |
+| macOS | 51 |
+| Servidores web & aplicações | 46 |
+| Firewall & perímetro | 42 |
+| DNS | 39 |
+| Proxy / SWG | 39 |
+| AWS | 35 |
+| IDS / NSM / NDR | 35 |
+| Microsoft 365 | 34 |
 
 ### Regras recomendadas por técnica
 
@@ -457,7 +507,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1686.003 | [Suspicious Program Location Whitelisted In Firewall Via Netsh.EXE](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Aa35f5a72-f347-4e36-8895-9869b0d5fc6d) | Sigma | SigmaHQ |
 | T1686.003 | [RDP Connection Allowed Via Netsh.EXE](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A01aeb693-138d-49d2-9403-c4f52d7d3d62) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -617,7 +667,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1098 — [ID33205-SQL Server member added to server role](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0003-Persistence/T1098.xxx-Account%20manipulation/ID33205-SQL%20Server%20member%20added%20to%20server%20role.evtx) _(explícito)_
 - T1110.003 — [kerberos_pwd_spray_4771](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/kerberos_pwd_spray_4771.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Lazarus Group estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -634,7 +684,7 @@ Se Lazarus Group estiver no seu ambiente, estas são as perguntas a fazer aos se
 11. **T1560.002 Archive via Library** — Detects adversarial archiving using libraries (zlib, zip APIs) invoked by scripts or binaries. Correlates process executions of Python, PowerShell, or custom .NET binaries with DLL/module loads linked to compression libraries, followed by archive file… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=7), `WinEventLog:Sysmon` (EventCode=11).
 12. **T1561.001 Disk Content Wipe** — Processes attempting raw disk access via \\.\PhysicalDrive paths, abnormal file I/O to MBR/boot sectors, or loading of third-party drivers (e.g., RawDisk) that enable disk overwrite. Correlate process creation, privilege usage, and disk modification events… Dados: `WinEventLog:Security` (EventCode=4673), `WinEventLog:Sysmon` (Raw disk writes targeting \\.\PhysicalDrive* or MBR locations), `WinEventLog:Sysmon` (EventCode=6).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -656,7 +706,14 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2021 — [Lazarus Group Recruitment_ Threat Hunters vs Head Hunters](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.04.27.Lazarus_Group_Recruitment/Lazarus%20Group%20Recruitment_%20Threat%20Hunters%20vs%20Head%20Hunters.pdf) _(via “Lazarus Group”)_
 - 2024 — [JSAC2024_1_6_dongwook-kim_seulgi-lee_en](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2024/2024.01.25.Lazarus_Group/JSAC2024_1_6_dongwook-kim_seulgi-lee_en.pdf) _(via “Lazarus Group”)_
 
-## 11. Bibliografia (51 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (4 no total, mais recentes primeiro):
+
+- 2023 — [Stealing the LIGHTSHOW (Part One) - North Korea's UNC2970](https://app.box.com/s/t1wj2s9hwf71dh65w5re5est9yhvh0mu) _(Mandiant)_
+- 2023 — [Lazarus group using public certificate vulnerability](https://app.box.com/s/ovpepub4io3zuwkn65viaoxcn18ifunk) _(Ahnlab)_
+- 2018 — [Lazarus Group Targets More Cryptocurrency Exchanges and FinTech Companies](https://app.box.com/s/yepeditzh0t0upifbucv99utoretbbzl) _(Intezer)_
+- 2018 — [Hidden Cobra Targets Turkish Financial Sector With New Bankshot Implant](https://app.box.com/s/a5yxk9ttke0l3wg054ub6tgb54hwp35a) _(McAfee)_
+
+## 12. Bibliografia (51 fontes citadas pelo ATT&CK)
 
 - [ASEC Lazarus 2022](https://asec.ahnlab.com/en/39828/) — AhnLab ASEC. (2022, October 6). Lazarus Group Uses the DLL Side-Loading Technique (mi.dll). Retrieved January 7, 2025.
 - [CISA AppleJeus Feb 2021](https://us-cert.cisa.gov/ncas/alerts/aa21-048a) — Cybersecurity and Infrastructure Security Agency. (2021, February 21). AppleJeus: Analysis of North Korea’s Cryptocurrency Malware. Retrieved March 1, 2021.
@@ -710,7 +767,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [US-CERT TYPEFRAME June 2018](https://www.us-cert.gov/ncas/analysis-reports/AR18-165A) — US-CERT. (2018, June 14). MAR-10135536-12 – North Korean Trojan: TYPEFRAME. Retrieved July 13, 2018.
 - [US-CERT Volgmer Nov 2017](https://www.us-cert.gov/ncas/alerts/TA17-318B) — US-CERT. (2017, November 22). Alert (TA17-318B): HIDDEN COBRA – North Korean Trojan: Volgmer. Retrieved December 7, 2017.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -718,4 +775,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

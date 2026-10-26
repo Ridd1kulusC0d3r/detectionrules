@@ -1,8 +1,9 @@
 # Salt Typhoon (G1045) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1045) · [ATT&CK](https://attack.mitre.org/groups/G1045/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1045) · [ATT&CK](https://attack.mitre.org/groups/G1045/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** Governo  
 **Registro no ATT&CK:** criado em 2025-02-24, atualizado em 2026-09-23 · referências de 2025 a 2026
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 1 malware e 0 ferramentas (ex.: JumbledPath).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 84% das técnicas têm ao menos uma regra no catálogo; **9 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem; setores Governo.
+- **Onde a cobertura está:** Linux (41 técnicas com regra), EDR / XDR (40 técnicas com regra), Windows (38 técnicas com regra), Outros / genérico (33 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1020.001 Traffic Duplication, T1059.008 Network Device CLI, T1070.009 Clear Persistence, T1543.005 Container Service, T1569 System Services.
 
 ## 2. Quem é
@@ -19,7 +22,32 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | Governo |
+| Vítimas citadas | — |
+| Alvos (planilha) | US Government wiretap system, via Verizon and AT&T. |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | Mid |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | Famous Sparrow |
+| Kaspersky | GhostEmperor |
+| MITRE ATT&CK | G1045 |
+| Mandiant | UNC4841 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** FamousSparrow, GhostEmperor, UNC4841, SLIME57, UNC2286, RedMike, OPERATOR PANDA, Earth Estries
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -160,7 +188,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1020.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1020.001) Traffic Duplication | Salt Typhoon has enabled traffic mirroring to exfiltrate data. | **0** | — | — |
 | [T1048.003](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1048.003) Exfiltration Over Unencrypted Non-C2 Protocol | Salt Typhoon has exfiltrated configuration files from exploited network devices over FTP and TFTP. | 51 | 8 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -177,17 +205,17 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1548.003 Sudo and Sudo Caching | 1 | 4.09 |
 | T1556 Modify Authentication Process | 1 | 4.09 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
 | [JumbledPath](https://attack.mitre.org/software/S1206/) | malware | 6 |  |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **49 de 58 técnicas (84%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -202,6 +230,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1590.004 Network Topology** — Reconnaissance
 - **T1584.008 Network Devices** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Linux | 41 |
+| EDR / XDR | 40 |
+| Windows | 38 |
+| Outros / genérico | 33 |
+| Firewall & perímetro | 29 |
+| AWS | 28 |
+| macOS | 27 |
+| Contêineres (Docker/runtime) | 26 |
+| Integridade, conformidade & vulnerabilidade | 26 |
+| IDS / NSM / NDR | 24 |
+| Azure (recursos) | 24 |
+| Servidores web & aplicações | 23 |
 
 ### Regras recomendadas por técnica
 
@@ -307,7 +354,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1686.002 | [FortiGate - New Firewall Policy Added](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Af24ab7a8-f09a-4319-82c1-915586aa642b) | Sigma | SigmaHQ |
 | T1686.002 | [FortiGate - Firewall Address Object Added](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A5c8d7b41-3812-432f-a0bb-4cfb7c31827e) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -392,7 +439,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1686 — [ID2003-4950-Firewall disabled](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.004-Impair%20Defenses-Disable%20or%20Modify%20System%20Firewall/ID2003-4950-Firewall%20disabled.evtx) _(explícito)_
 - T1686 — [ID2004-Any any firewall rule created](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.004-Impair%20Defenses-Disable%20or%20Modify%20System%20Firewall/ID2004-Any%20any%20firewall%20rule%20created.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Salt Typhoon estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -409,7 +456,7 @@ Se Salt Typhoon estiver no seu ambiente, estas são as perguntas a fazer aos seu
 11. **T1599 Network Boundary Bridging** — From a defender’s perspective, suspicious bridging is observed when network devices begin allowing traffic that contradicts existing segmentation or access policies. Observable behaviors include sudden modifications to ACLs or firewall rules, unusual… Dados: `NSM:Flow` (Unexpected flows between segmented networks or prohibited ports), `networkdevice:syslog` (ACL/Firewall rule modification or new route injection).
 12. **T1686.002 Network Device Firewall** — Defender observes configuration changes on firewall/network appliance involving rule creation, modification, or deletion from abnormal management IPs or non-console channels (e.g., remote CLI, API). These are often correlated with a spike in previously… Dados: `networkdevice:Firewall` (update_rule: Access control or NAT rule modified or disabled outside maintenance window), `networkdevice:Firewall` (Login from untrusted IP, or new admin account accessing firewall console/API), `networkdevice:Firewall` (Audit trail or CLI/API access indicating commands like no access-list, delete rule-set, clear config).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -420,7 +467,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1045](https://attack.mitre.org/groups/G1045/)
 
-## 11. Bibliografia (8 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (8 fontes citadas pelo ATT&CK)
 
 - [CarySentinelLabs_CiscoSaltTyphoon_Dec2025](https://www.sentinelone.com/labs/malicious-apprentice-how-two-hackers-went-from-cisco-academy-to-cisco-cves/) — Cary, D. (2025, December 10). Malicious Apprentice | How Two Hackers Went From Cisco Academy to Cisco CVEs. Retrieved September 22, 2026.
 - [CISA_AA25-239ASaltTyphoon_Sept2025](https://www.cisa.gov/news-events/cybersecurity-advisories/aa25-239a) — CISA. (2025, September 3). Countering Chinese State-Sponsored Actors Compromise of Networks Worldwide to Feed Global Espionage System. Retrieved September 22, 2026.
@@ -431,7 +478,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [RF_SaltTyphoon_Feb2025](https://www.recordedfuture.com/research/redmike-salt-typhoon-exploits-vulnerable-devices) — Insikt Group. (2025, February 13). RedMike (Salt Typhoon) Exploits Cisco Vulnerabilities for Cyber Espionage. Retrieved September 22, 2026.
 - [US Dept. of Treasury Salt Typhoon JAN 2025](https://home.treasury.gov/news/press-releases/jy2792) — US Department of Treasury. (2025, January 17). Treasury Sanctions Company Associated with Salt Typhoon and Hacker Associated with Treasury Compromise. Retrieved February 24, 2025.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -439,4 +486,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

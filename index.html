@@ -388,6 +388,62 @@ svg.sankey .sk-link.hot{opacity:.62}
 .sk-node:hover text,.sk-node.hot text,.sk-node:focus-visible text{fill:var(--signal)}
 .sk-node:focus{outline:none}
 
+/* ---------- história da regra (aba Entenda) ---------- */
+.story{margin:2px 0 14px}
+.st-pro{border-left:3px solid var(--signal);background:var(--paper-2);padding:14px 18px 12px}
+.st-pro .lbl{font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--signal);margin-bottom:6px}
+.st-pro p{font:17px/1.55 var(--serif);color:var(--ink)}
+.st-pro .st-feyn{font-size:15px;color:var(--ink-2);margin-top:8px}
+.kc{display:grid;grid-template-columns:repeat(14,1fr);gap:3px;margin-top:12px;padding-bottom:16px;position:relative}
+.kc span{position:relative;min-width:0}
+.kc i{display:block;height:6px;background:var(--rule)}
+.kc span.past i{background:var(--seq-1)}
+.kc span.on i{background:var(--signal);height:10px;margin-top:-2px}
+.kc em{display:none;position:absolute;top:12px;left:50%;transform:translateX(-50%);font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--signal);white-space:nowrap;font-style:normal}
+.kc span.on em{display:block}
+.kc span:first-child.on em{left:0;transform:none}.kc span:last-child.on em{left:auto;right:0;transform:none}
+.act{display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;border-top:1px solid var(--rule);padding:14px 0 10px}
+.act .an{font:600 10.5px var(--mono);letter-spacing:.14em;color:var(--signal);padding-top:5px}
+.act.ep .an{color:var(--ink-3)}
+.act h3{font:600 20px/1.25 var(--serif);margin:0 0 6px;color:var(--ink)}
+.act p{font-size:14.5px;line-height:1.6;color:var(--ink-2);margin:6px 0}
+.act b{color:var(--ink)}
+.st-q{border-left:2px solid var(--rule);margin:8px 0 10px;padding:2px 0 2px 14px}
+.st-q p{font:italic 15px/1.55 var(--serif);color:var(--ink);margin:0}
+.st-q footer{display:block;border:0;padding:4px 0 0;font:11px var(--mono);color:var(--ink-3)}
+.st-q footer a{color:var(--ink-2)}
+.st-ul,.st-ol{margin:6px 0 8px 20px;font-size:14px;color:var(--ink-2);line-height:1.55}
+.st-ul code{overflow-wrap:anywhere;white-space:normal}
+.st-warn{font-style:italic;color:var(--ink-3)!important}
+.st-rw{background:var(--paper-2);padding:8px 12px}
+.st-lens{font-size:13.5px!important}
+/* ---------- tecnologias ---------- */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:6px 0 18px}
+.tile{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:6px;border-top:2px solid var(--ink);background:var(--paper-2);padding:12px 12px 10px;min-width:0}
+.tile:hover,.tile:focus-visible{border-top-color:var(--signal);outline:none}
+.tile .tn{font:600 14px var(--sans);color:var(--ink)}
+.tile .tv{font:600 26px/1 var(--mono);letter-spacing:-.03em;color:var(--ink)}
+.tile .tm{font:11px var(--mono);color:var(--ink-3)}
+.tile .tm b{color:var(--signal)}
+.stk{display:flex;height:10px;background:var(--rule-2);overflow:hidden;min-width:0}
+.stk i{display:block;height:100%}
+.lgd{display:inline-flex;align-items:center;gap:5px;margin-right:10px;font:11px var(--mono);color:var(--ink-2);white-space:nowrap}
+.lgd::before{content:"";width:10px;height:10px;background:var(--c)}
+.sw{display:inline-block;width:9px;height:9px;margin-right:6px;vertical-align:middle}
+.hmx{border-collapse:separate;border-spacing:2px;font:11px var(--mono);margin:8px}
+.hmx thead th{height:150px;vertical-align:bottom;padding:0 0 4px;font-weight:600;color:var(--ink-2)}
+.hmx thead th span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;display:inline-block}
+.hmx tbody th{text-align:right;padding:0 8px 0 0;white-space:nowrap;font:600 12px var(--sans);color:var(--ink);cursor:pointer}
+.hmx tbody th:hover{color:var(--signal)}
+.hmx td{min-width:44px;height:24px;padding:0 4px;text-align:center;cursor:pointer}
+.hmx td.heat{display:table-cell}
+.hmx tr:hover td{outline:1px solid var(--ink-3)}
+.path2{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:8px 0}
+.path2 .stp{display:grid;gap:4px;align-content:start;border-top:2px solid var(--ink);background:var(--paper-2);padding:8px 10px;min-width:180px;flex:1}
+.path2 .stp .n{font:600 10px var(--mono);letter-spacing:.12em;color:var(--signal)}
+.path2 .arr{align-self:center;font:600 18px var(--mono);color:var(--ink-3)}
+code.ok{color:var(--ink)}code.miss{color:var(--signal);border-color:var(--signal)}
+
 footer{border-top:1px solid var(--ink);padding:22px 0 40px;font:12px var(--mono);color:var(--ink-3);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 @media(max-width:900px){
@@ -409,6 +465,12 @@ footer{border-top:1px solid var(--ink);padding:22px 0 40px;font:12px var(--mono)
   .fx,.kv{grid-template-columns:1fr}
   .selrow{grid-template-columns:1fr 1fr}
   .mhead,.mbody{padding-left:18px;padding-right:18px}
+  .act{grid-template-columns:1fr;gap:2px}
+  .mhead{flex-wrap:wrap;position:relative;padding-right:52px}
+  .mhead .x{position:absolute;top:12px;right:10px}
+  .mbody .pill-row .tag{white-space:normal;overflow-wrap:anywhere}
+  .kc em{font-size:9px}
+  .tiles{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media print{.mast-bar button,.tabs,.toast,.modal{display:none!important}}
@@ -434,6 +496,7 @@ footer{border-top:1px solid var(--ink);padding:22px 0 40px;font:12px var(--mono)
           <a href="https://github.com/Ridd1kulusC0d3r/detectionrules">Repositório</a>
           <a href="COMECE-AQUI.md">Comece aqui</a>
           <a href="reports/index.html">Dossiês de grupos</a>
+          <a href="reports/tech/index.html">Relatórios por tecnologia</a>
           <a href="docs/manual-threat-detection.html">Manual de Threat Detection</a>
           <a href="data/manifest.json">Manifesto das fontes</a>
           <a href="#" onclick="go('forge');return false">Criar regra</a>
@@ -449,6 +512,7 @@ footer{border-top:1px solid var(--ink);padding:22px 0 40px;font:12px var(--mono)
     <button class="tab on" data-v="home"><span class="ic"></span><span class="lbl">Visão geral</span></button>
     <button class="tab" data-v="academy"><span class="ic"></span><span class="lbl">Academia</span></button>
     <button class="tab" data-v="arsenal"><span class="ic"></span><span class="lbl">Arsenal</span></button>
+    <button class="tab" data-v="techno"><span class="ic"></span><span class="lbl">Tecnologias</span></button>
     <button class="tab" data-v="graph"><span class="ic"></span><span class="lbl">Grafo</span></button>
     <button class="tab" data-v="forge"><span class="ic"></span><span class="lbl">Forja</span></button>
     <button class="tab" data-v="playbooks"><span class="ic"></span><span class="lbl">Playbooks</span></button>
@@ -459,6 +523,7 @@ footer{border-top:1px solid var(--ink);padding:22px 0 40px;font:12px var(--mono)
     <section class="view on" id="v-home"></section>
     <section class="view" id="v-academy"></section>
     <section class="view" id="v-arsenal"></section>
+    <section class="view" id="v-techno"></section>
     <section class="view" id="v-graph"></section>
     <section class="view" id="v-forge"></section>
     <section class="view" id="v-playbooks"></section>
@@ -488,9 +553,11 @@ document.getElementById('theme').addEventListener('click',()=>{
 <script src="app/sigma_engine.js"></script>
 <script src="app/academy.js"></script>
 <script src="app/arsenal.js"></script>
+<script src="app/story.js"></script>
 <script src="app/sankey.js"></script>
 <script src="app/graph.js"></script>
 <script src="app/intel.js"></script>
+<script src="app/tech.js"></script>
 <script src="app/forge.js"></script>
 <script src="app/playbooks.js"></script>
 <script src="app/progress.js"></script>

@@ -1,8 +1,9 @@
 # Dragonfly (G0035) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0035) · [ATT&CK](https://attack.mitre.org/groups/G0035/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0035) · [ATT&CK](https://attack.mitre.org/groups/G0035/)
 
 **Também conhecido como:** TEMP.Isotope, DYMALLOY, Berserk Bear, TG-4192, Crouching Yeti, IRON LIBERTY, Energetic Bear, Ghost Blizzard, BROMINE  
+**Origem atribuída:** Rússia · **Motivação:** espionagem · **Setores-alvo:** Sociedade civil e mídia, Educação e pesquisa, Energia, Governo, Saúde, Infraestrutura crítica, Indústria, Defesa e militar, Setor privado (genérico), Tecnologia  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2014 a 2023
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 2 malware e 8 ferramentas (ex.: Trojan.Karagany, CrackMapExec, Mimikatz, Backdoor.Oldrea, Net).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 91% das técnicas têm ao menos uma regra no catálogo; **5 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Rússia**, motivação espionagem; setores Sociedade civil e mídia, Educação e pesquisa, Energia, Governo, Saúde; 10 países vítimas citados.
+- **Onde a cobertura está:** Windows (49 técnicas com regra), EDR / XDR (45 técnicas com regra), Linux (37 técnicas com regra), Outros / genérico (35 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1187 Forced Authentication, T1564.002 Hidden Users, T1591.002 Business Relationships, T1036.010 Masquerade Account Name, T1110.002 Password Cracking.
 
 ## 2. Quem é
@@ -19,7 +22,31 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Rússia |
+| Motivação | espionagem |
+| Setores-alvo | Sociedade civil e mídia, Educação e pesquisa, Energia, Governo, Saúde, Infraestrutura crítica, Indústria, Defesa e militar, Setor privado (genérico), Tecnologia |
+| Vítimas citadas | China, France, Germany, Ireland, Italy, Japan, Poland, Spain, Turkey, United States |
+| Alvos (planilha) | This threat actor targets companies in the education, energy, construction, information technology, and pharmaceutical sectors for the purposes of espionage. It uses malware tailored to target industrial control systems. Energy, Middle East oil and natural gas as the goal, dedicated to gather relevant information, technology company in Western Europe that produces civil, military and critical infr |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | 75 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0035 |
+| Microsoft | Ghost Blizzard, BROMINE (antigo · old) |
+| Secureworks | IRON LIBERTY |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Group 24, Koala Team, Anger Bear, Havex, PEACEPIPE, Fertger, Blue Kraken, ITG15, ATK6, ALLANITE, CASTLE, Dragonfly 2.0, Bromine/Ghost Blizzard, G0035/G1000, Castle/TG-4192, Allanite/Dymalloy, Palmetto Fusion
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -153,7 +180,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1071.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1071.002) File Transfer Protocols | Dragonfly has used SMB for C2. | 3 | — | — |
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | Dragonfly has copied and installed tools for operations once in the victim environment. | 644 | 39 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -170,7 +197,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1221 Template Injection | 7 | 2.99 |
 | T1608.004 Drive-by Target | 7 | 2.99 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -185,11 +212,13 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [netsh](https://attack.mitre.org/software/S0108/) | ferramenta | 4 |  |
 | [Reg](https://attack.mitre.org/software/S0075/) | ferramenta | 3 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Havex RAT, Oldrea, LightsOut ExploitKit, Inveigh, Persistence through .LNK file manipulations, Nmap, Dirsearch, Sqlmap, Sublist3r, Wpscan, SMBTrap, Commix, Subbrute, PHPMailer, Web Shells (PHP)
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **51 de 56 técnicas (91%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -200,6 +229,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1584.004 Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1598.003 Spearphishing Link** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 49 |
+| EDR / XDR | 45 |
+| Linux | 37 |
+| Outros / genérico | 35 |
+| Servidores web & aplicações | 32 |
+| IDS / NSM / NDR | 31 |
+| Active Directory | 30 |
+| macOS | 30 |
+| Firewall & perímetro | 27 |
+| E-mail | 27 |
+| AWS | 25 |
+| DNS | 24 |
 
 ### Regras recomendadas por técnica
 
@@ -309,7 +357,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1686 | [Disable System Firewall](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A53059bc0-1472-438b-956a-7508a94a91f0) | Sigma | SigmaHQ |
 | T1686 | [Netsh RDP Port Opening](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A01aeb693-138d-49d2-9403-c4f52d7d3d62) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -410,7 +458,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1547.001 — [sideloading_injection_persistence_run_key](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/sideloading_injection_persistence_run_key.evtx) _(inferido)_
 - T1547.001 — [evasion_persis_hidden_run_keyvalue_sysmon_13](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Persistence/evasion_persis_hidden_run_keyvalue_sysmon_13.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Dragonfly estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -427,7 +475,7 @@ Se Dragonfly estiver no seu ambiente, estas são as perguntas a fazer aos seus d
 11. **T1003.004 LSA Secrets** — Detects adversary activity aimed at accessing LSA Secrets, including registry key export of HKEY_LOCAL_MACHINE\SECURITY\Policy\Secrets or memory scraping via tools such as Mimikatz or PowerSploit's Invoke-Mimikatz. Dados: `WinEventLog:Security` (EventCode=4663, 4670, 4656), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=10).
 12. **T1584.004 Server** — Once adversaries have provisioned software on a compromised server (ex: for use as a command and control server), internet scans may reveal servers that adversaries have compromised. Consider looking for identifiable patterns such as services listening,… Dados: `Internet Scan` (None), `Internet Scan` (None).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -450,7 +498,16 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2018 — [energetic-bear-crouching](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2018/2018.04.23.energetic-bear-crouching-yeti/energetic-bear-crouching.pdf) _(via “Crouching Yeti”)_
 - 2019 — [Resurgent Iron Liberty Targeting Energy Sector](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2019/2019.07.24.Resurgent_Iron_Liberty/Resurgent%20Iron%20Liberty%20Targeting%20Energy%20Sector.pdf) _(via “IRON LIBERTY”)_
 
-## 11. Bibliografia (17 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (6 no total, mais recentes primeiro):
+
+- 2018 — [Energetic Bear/Crouching Yeti: attacks on servers](https://app.box.com/s/mmsfl4zgirj7zlncmx5162vkn1n6q0f2) _(Kaspersky)_
+- 2017 — [Dragonfly: Western energy sector targeted by sophisticated attack group](https://app.box.com/s/4kpnzlrdqdcg3cq02hz4zj8nmjd9iywi) _(Symantec)_
+- 2014 — [Full Disclosure Of Havex Trojans](https://app.box.com/s/v76ozenghvxl8cnk7rcdw4dxsnsffz2g) _(Netresec)_
+- 2014 — [Crouching Yeti: Appendixes](https://app.box.com/s/90zdh7pfbmon8mtea3okbc6s83ro28bx) _(Kaspersky)_
+- 2014 — [Energetic Bear _ Crouching Yeti](https://app.box.com/s/z0apbug9w1ztt8ex0pe99sq0d2u9r3nu) _(Kaspersky)_
+- 2014 — [Dragonfly: Cyberespionage Attacks Against Energy Suppliers](https://app.box.com/s/edyb0yn2g8ozavlmxoh082l7z5o5v3yx) _(Symantec)_
+
+## 12. Bibliografia (17 fontes citadas pelo ATT&CK)
 
 - [CISA AA20-296A Berserk Bear December 2020](https://www.cisa.gov/uscert/ncas/alerts/aa20-296a#revisions) — CISA. (2020, December 1). Russian State-Sponsored Advanced Persistent Threat Actor Compromises U.S. Government Targets. Retrieved December 9, 2021.
 - [Core Security Impacket](https://www.coresecurity.com/core-labs/open-source-tools/impacket) — Core Security. (n.d.). Impacket. Retrieved November 2, 2017.
@@ -470,7 +527,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [UK GOV FSB Factsheet April 2022](https://www.gov.uk/government/publications/russias-fsb-malign-cyber-activity-factsheet/russias-fsb-malign-activity-factsheet) — UK Gov. (2022, April 5). Russia's FSB malign activity: factsheet. Retrieved April 5, 2022.
 - [US-CERT TA18-074A](https://www.us-cert.gov/ncas/alerts/TA18-074A) — US-CERT. (2018, March 16). Alert (TA18-074A): Russian Government Cyber Activity Targeting Energy and Other Critical Infrastructure Sectors. Retrieved June 6, 2018.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -478,4 +535,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

@@ -1,8 +1,9 @@
 # Sandworm Team (G0034) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0034) · [ATT&CK](https://attack.mitre.org/groups/G0034/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0034) · [ATT&CK](https://attack.mitre.org/groups/G0034/)
 
 **Também conhecido como:** ELECTRUM, Telebots, IRON VIKING, BlackEnergy (Group), Quedagh, Voodoo Bear, IRIDIUM, Seashell Blizzard, FROZENBARENTS, APT44  
+**Origem atribuída:** Rússia · **Motivação:** espionagem, financeiro, sabotagem · **Setores-alvo:** Energia, Governo, Indústria, Setor privado (genérico)  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2013 a 2024
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 19 malware e 8 ferramentas (ex.: Cobalt Strike, Empire, PoshC2, BlackEnergy, Cyclops Blink).
 - **Campanhas atribuídas:** 3 (2015 Ukraine Electric Power Attack, 2016 Ukraine Electric Power Attack, 2022 Ukraine Electric Power Attack).
 - **Cobertura de detecção pública:** 90% das técnicas têm ao menos uma regra no catálogo; **8 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Rússia**, motivação espionagem, financeiro, sabotagem; setores Energia, Governo, Indústria, Setor privado (genérico); 11 países vítimas citados.
+- **Onde a cobertura está:** Windows (62 técnicas com regra), Outros / genérico (54 técnicas com regra), EDR / XDR (53 técnicas com regra), Linux (49 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1499 Endpoint Denial of Service, T1590.001 Domain Properties, T1491.002 External Defacement, T1586.001 Social Media Accounts, T1195 Supply Chain Compromise.
 
 ## 2. Quem é
@@ -21,7 +24,31 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Rússia |
+| Motivação | espionagem, financeiro, sabotagem |
+| Setores-alvo | Energia, Governo, Indústria, Setor privado (genérico) |
+| Vítimas citadas | Azerbaijan, Belarus, Georgia, Iran, Israel, Kazakhstan, Kyrgyzstan, Lithuania, Poland, Russia, Ukraine |
+| Alvos (planilha) | This threat actor targets industrial control systems, using a tool called Black Energy, associated with electricity and power generation for espionage, denial of service, and data destruction purposes. Ukrainian energy sector, Eastern Europe. |
+| Operações conhecidas | Black Energy, Ukrenergo, NPetya, NotPetya, Ukraine Power Grid 2016-12-17, Australian Parliament Hack, Citrix Hack |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0034 |
+| Microsoft | Seashell Blizzard, IRIDIUM (antigo · old) |
+| Secureworks | IRON VIKING |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** TEMP.Noble, Quedagh Group, BE2 APT, Black Energy, Hades, Grey Energy, Sandworm, Blue Echidna, UAC-0113, UAC-0082, SANDWORM RELIC, UAC-0145, Temp.Noble/UNC3715/UNC3810/APT44, Hades/OlympicDestroyer/BE2, Iridium/DEV-0665/Seashell Blizzard/Sunglow Blizzard, Hive0103, CTG-7263, ATK14, APT-C-13, Razing Ursa, UAC-0082/UAC-0113/UAC-0165, UNC2165, Gold Winter
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -186,7 +213,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1499](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1499) Endpoint Denial of Service | Sandworm Team temporarily disrupted service to Georgian government, non-government, and private sector websites after compromising a Georgian web hosting provider in 2019. | 107 | — | — |
 | [T1561.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1561.002) Disk Structure Wipe | Sandworm Team has used the BlackEnergy KillDisk component to corrupt the infected system's master boot record. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -203,7 +230,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1592.002 Software | 2 | 3.80 |
 | T1087.003 Email Account | 3 | 3.58 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -235,7 +262,9 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [VPNFilter](https://attack.mitre.org/software/S1010/) | malware | 1 | VPNFilter is associated with Sandworm Team operations based on reporting on VPNFilter replacement software, Cyclops Blink. |
 | [Industroyer2](https://attack.mitre.org/software/S1072/) | malware | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** CVE-2014-4114, CrashOverride, OlympicDestroyer, GreyEngergy Mini as their 1st-stage implant, GCat, Delphocy, Zebrocy, Zekapab, China Chopper, Ckife Webshells, LazyCat, reGeorge
+
+## 7. Campanhas
 
 | Campanha | Período | Resumo (EN) |
 |---|---|---|
@@ -243,7 +272,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [2016 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0025/) | 2016-12 → 2016-12 | 2016 Ukraine Electric Power Attack was a Sandworm Team campaign during which they used Industroyer malware to target and disrupt distribution substations within the Ukrainian power grid. This campaign was the second majo |
 | [2022 Ukraine Electric Power Attack](https://attack.mitre.org/campaigns/C0034/) | 2022-06 → 2022-10 | The 2022 Ukraine Electric Power Attack was a Sandworm Team campaign that used a combination of GOGETTER, Neo-REGEORG, CaddyWiper, and living of the land (LotL) techniques to gain access to a Ukrainian electric utility to |
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **71 de 79 técnicas (90%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -257,6 +286,25 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 - **T1584.004 Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1598.003 Spearphishing Link** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 62 |
+| Outros / genérico | 54 |
+| EDR / XDR | 53 |
+| Linux | 49 |
+| Servidores web & aplicações | 44 |
+| DNS | 41 |
+| macOS | 40 |
+| AWS | 40 |
+| Firewall & perímetro | 37 |
+| E-mail | 37 |
+| IDS / NSM / NDR | 35 |
+| Proxy / SWG | 35 |
 
 ### Regras recomendadas por técnica
 
@@ -404,7 +452,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1608.001 | [M365 OneDrive Malware File Upload](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3Abba1b212-b85c-41c6-9b28-be0e5cdfc9b1) | Elastic | Elastic detection-rules |
 | T1608.001 | [M365 SharePoint Malware File Detected](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A0e52157a-8e96-4a95-a6e3-5faae5081a74) | Elastic | Elastic detection-rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -522,7 +570,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1140 — [ID4688-Certutil download](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1140-Deobfuscate-Decode%20Files%20or%20Information/ID4688-Certutil%20download.evtx) _(explícito)_
 - T1218.011 — [rundll32_cmd_schtask](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/rundll32_cmd_schtask.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Sandworm Team estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -539,7 +587,7 @@ Se Sandworm Team estiver no seu ambiente, estas são as perguntas a fazer aos se
 11. **T1490 Inhibit System Recovery** — Process chains that use native utilities (vssadmin, wbadmin, diskshadow, bcdedit, REAgentC, wmic) with arguments to delete shadow copies, disable recovery, or remove backup catalogs Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Microsoft-Windows-Backup` (Windows Backup Catalog deletion or catalog corruption), `WinEventLog:System` (Service stopped or RecoveryDisabled set via REAgentC).
 12. **T1040 Network Sniffing** — Detects suspicious execution of network monitoring tools (e.g., Wireshark, tshark, Microsoft Message Analyzer), driver loading indicative of promiscuous mode, or non-admin user privilege escalation to access NICs for capture. Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:System` (EventCode=7045).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -558,7 +606,16 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2022 — [Appendix_Cyclops Blink Sets Sights on ASUS Routers](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.03.17.Cyclops_Blink_Voodoo_Bear/Appendix_Cyclops%20Blink%20Sets%20Sights%20on%20ASUS%20Routers.pdf) _(via “Voodoo Bear”)_
 - 2022 — [Cyclops Blink Sets Sights on Asus Routers](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.03.17.Cyclops_Blink_Voodoo_Bear/Cyclops%20Blink%20Sets%20Sights%20on%20Asus%20Routers.pdf) _(via “Voodoo Bear”)_
 
-## 11. Bibliografia (44 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (6 no total, mais recentes primeiro):
+
+- 2022 — [Cyberattack by Sandworm Group (UAC-0082) on energy facilities of Ukraine using malicious programs INDUSTROYER2 and CADDYWIPER](https://app.box.com/s/quzxjttnqs9os9im11qztck3frmi37iw) _(CERT-UA)_
+- 2022 — [Cyberattack by Sandworm Group (UAC-0082) on energy facilities of Ukraine using malicious programs INDUSTROYER2 and CADDYWIPER](https://app.box.com/s/quzxjttnqs9os9im11qztck3frmi37iw) _(CERT-UA)_
+- 2022 — [New Sandworm Malware Cyclops Blink Replaces VPNFilter](https://app.box.com/s/2izfjfe8wgev78jqsawow0lozxtkaf4z) _(CISA)_
+- 2017 — [TeleBots are back: supply-chain attacks against Ukraine](https://app.box.com/s/740pmk3f6nrhfbj9nmcvovc64oah2ibi) _(ESET)_
+- 2014 — [Russian Cyber Espionage Campaign - Sandworm Team](https://app.box.com/s/k0vbq8vx0z8qg3s4ycit1kc99cg5ay27) _(iSight Partners)_
+- 2014 — [Blackenergy & Quedagh: The Convergence Of Crimeware  And Apt Attacks](https://app.box.com/s/ccj81xcg1xunuyjmnb3kt3ug77r16z7q) _(F-Secure)_
+
+## 12. Bibliografia (44 fontes citadas pelo ATT&CK)
 
 - [AcidRain JAGS 2022](https://www.sentinelone.com/labs/acidrain-a-modem-wiper-rains-down-on-europe/) — Juan Andres Guerrero-Saade and Max van Amerongen, SentinelOne. (2022, March 31). AcidRain | A Modem Wiper Rains Down on Europe. Retrieved March 25, 2024.
 - [ANSSI Sandworm January 2021](https://www.cert.ssi.gouv.fr/uploads/CERTFR-2021-CTI-005.pdf) — ANSSI. (2021, January 27). SANDWORM INTRUSION SET CAMPAIGN TARGETING CENTREON SYSTEMS. Retrieved March 30, 2021.
@@ -605,7 +662,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Vincens AcidPour 2024](https://cyberscoop.com/viasat-malware-wiper-acidrain/) — A.J. Vincens, CyberScoop. (2024, March 18). Researchers spot updated version of malware that hit Viasat. Retrieved March 25, 2024.
 - [WithSecure Kapeka 2024](https://labs.withsecure.com/content/dam/labs/docs/WithSecure-Research-Kapeka.pdf) — Mohammad Kazem Hassan Nejad, WithSecure. (2024, April 17). KAPEKA A novel backdoor spotted in Eastern Europe. Retrieved January 6, 2025.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -613,4 +670,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

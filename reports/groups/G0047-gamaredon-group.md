@@ -1,8 +1,9 @@
 # Gamaredon Group (G0047) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0047) · [ATT&CK](https://attack.mitre.org/groups/G0047/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0047) · [ATT&CK](https://attack.mitre.org/groups/G0047/)
 
 **Também conhecido como:** IRON TILDEN, Primitive Bear, ACTINIUM, Armageddon, Shuckworm, DEV-0157, Aqua Blizzard, NastyShrew  
+**Origem atribuída:** Rússia · **Motivação:** espionagem · **Setores-alvo:** Governo  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-10-01 · referências de 2017 a 2026
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 3 malware e 3 ferramentas (ex.: Remcos, Pteranodon, QuietSieve, PowerPunch, Reg).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 96% das técnicas têm ao menos uma regra no catálogo; **3 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Rússia**, motivação espionagem; setores Governo; 2 países vítimas citados.
+- **Onde a cobertura está:** Windows (60 técnicas com regra), EDR / XDR (54 técnicas com regra), Linux (44 técnicas com regra), Outros / genérico (39 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1001 Data Obfuscation, T1102.003 One-Way Communication, T1137 Office Application Startup, T1027.012 LNK Icon Smuggling, T1561.001 Disk Content Wipe.
 
 ## 2. Quem é
@@ -21,7 +24,30 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Rússia |
+| Motivação | espionagem |
+| Setores-alvo | Governo |
+| Vítimas citadas | Germany, Ukraine |
+| Alvos (planilha) | — |
+| Operações conhecidas | OP Armageddon, Op Gamework |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0047 |
+| Microsoft | Aqua Blizzard, ACTINIUM (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** FSB 16th & 18th Centers, BlueAlpha, Trident Ursa, Hive0051, (IBM), Blue Otso, UAC-0010, Winterflounder, Temp.Armageddon/UNC530, Dancing Salome, DEV-0157/Actinum/Aqua Blizzard, APT-C-53, SectorC08, UNC530
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -167,7 +193,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1491.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1491.001) Internal Defacement | Gamaredon Group has left taunting images and messages on the victims' desktops as proof of system access. | 18 | 4 | — |
 | [T1561.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1561.001) Disk Content Wipe | Gamaredon Group has used tools to delete files and folders from victims' desktops and profiles. | 6 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -184,7 +210,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1027.004 Compile After Delivery | 3 | 3.58 |
 | T1491.001 Internal Defacement | 3 | 3.58 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -195,11 +221,13 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Reg](https://attack.mitre.org/software/S0075/) | ferramenta | 3 | Gamaredon Group has used Reg to add Run keys to the Registry. |
 | [Ping](https://attack.mitre.org/software/S0097/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Pterodo, DessertDown, DinoTrain
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **67 de 70 técnicas (96%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -208,6 +236,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1587.003 Digital Certificates** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1027.016 Junk Code Insertion** — Stealth. Fonte de log sugerida pelo MITRE: `WinEventLog:Sysmon` EventCode=11; `auditd:SYSCALL` write; `macos:endpointsecurity` ES_EVENT_TYPE_NOTIFY_EXEC
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 60 |
+| EDR / XDR | 54 |
+| Linux | 44 |
+| Outros / genérico | 39 |
+| Servidores web & aplicações | 38 |
+| Proxy / SWG | 35 |
+| Firewall & perímetro | 33 |
+| macOS | 32 |
+| IA, LLMs & agentes | 31 |
+| Microsoft 365 | 30 |
+| E-mail | 30 |
+| IDS / NSM / NDR | 29 |
 
 ### Regras recomendadas por técnica
 
@@ -348,7 +395,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685 | [Windows Defender Configuration Changes](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A801bd44f-ceed-4eb6-887c-11544633c0aa) | Sigma | SigmaHQ |
 | T1685 | [Windows Defender Virus Scanning Feature Disabled](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A686c0b4b-9dd3-4847-9077-d6c1bbe36fcb) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -470,7 +517,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1685 — [ID1-SYSMON driver unload (FilterManager)](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.001-Impair%20Defenses-Disable%20or%20Modify%20tool/ID1-SYSMON%20driver%20unload%20%28FilterManager%29.evtx) _(explícito)_
 - T1685 — [ID13-Defender service configuration disabled](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.001-Impair%20Defenses-Disable%20or%20Modify%20tool/ID13-Defender%20service%20configuration%20disabled.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Gamaredon Group estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -487,7 +534,7 @@ Se Gamaredon Group estiver no seu ambiente, estas são as perguntas a fazer aos 
 11. **T1559.001 Component Object Model** — Detects anomalous use of COM objects for execution, such as Office applications spawning scripting engines, enumeration of COM interfaces via registry queries, or processes loading atypical DLLs through COM activation. Correlates process creation, module… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=7), `WinEventLog:Security` (EventCode=4663, 4670, 4656).
 12. **T1587.003 Digital Certificates** — Consider use of services that may aid in the tracking of certificates in use on sites across the Internet. In some cases it may be possible to pivot on known pieces of certificate information to uncover other adversary infrastructure. Detection efforts may be… Dados: `Internet Scan` (None).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -506,7 +553,16 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2021 — [Technical report Armagedon](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.11.04.Gamaredon_Armageddon_Group/Technical%20report%20Armagedon.pdf) _(via “Armageddon”)_
 - 2022 — [Shuckworm_APT](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.01.31.Shuckworm_APT/Shuckworm_APT.pdf) _(via “Shuckworm”)_
 
-## 11. Bibliografia (18 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (6 no total, mais recentes primeiro):
+
+- 2022 — [Russia's Trident Ursa (aka Gamaredon APT) Cyber Conflict Operations Unwavering Since Invasion of Ukraine](https://app.box.com/s/2xgd6r6ttw57hlg1gx0k2g72earqc9oy) _(Palo Alto)_
+- 2022 — [Shuckworm: Espionage Group Continues Intense Campaign Against Ukraine](https://app.box.com/s/0kwypesas8xwv9a43cu3l5x9d632gyy6) _(Symantec)_
+- 2022 — [ACTINIUM targets Ukrainian organizations](https://app.box.com/s/0qxv3fc5yx2j8lbv1ftlvmaakuy0nrsk) _(microsoft)_
+- 2022 — [Gamaredon (Primitive Bear) Russian APT Group Actively Targeting Ukraine](https://app.box.com/s/bhitsulabbr6y4d8jz56ljweejy7htqf) _(palo alto networks)_
+- 2022 — [Shuckworm Continues Cyber-Espionage Attacks Against Ukraine](https://app.box.com/s/px3ro986hh3mvw0hqxr9n9n45tilygy2) _(Symantec)_
+- 2017 — [The Gamaredon Group Toolset Evolution](https://app.box.com/s/9wb59m0q2nw315jshwr3launllnnqtht) _(Palo Alto Networks)_
+
+## 12. Bibliografia (18 fontes citadas pelo ATT&CK)
 
 - [Bleepingcomputer Gamardeon FSB November 2021](https://www.bleepingcomputer.com/news/security/ukraine-links-members-of-gamaredon-hacker-group-to-russian-fsb/) — Toulas, B. (2018, November 4). Ukraine links members of Gamaredon hacker group to Russian FSB. Retrieved April 15, 2022.
 - [CERT-EE Gamaredon January 2021](https://www.ria.ee/sites/default/files/content-editors/kuberturve/tale_of_gamaredon_infection.pdf) — CERT-EE. (2021, January 27). Gamaredon Infection: From Dropper to Entry. Retrieved February 17, 2022.
@@ -527,7 +583,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [unit42_gamaredon_dec2022](https://unit42.paloaltonetworks.com/trident-ursa/) — Unit 42. (2022, December 20). Russia’s Trident Ursa (aka Gamaredon APT) Cyber Conflict Operations Unwavering Since Invasion of Ukraine. Retrieved September 12, 2024.
 - [VenereCiscoTalos_Gamaredon_Mar2025](https://blog.talosintelligence.com/gamaredon-campaign-distribute-remcos/) — Venere, G. (2025, March 28). Gamaredon campaign abuses LNK files to distribute Remcos backdoor. Retrieved July 23, 2025.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -535,4 +591,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

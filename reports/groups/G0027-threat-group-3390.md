@@ -1,8 +1,9 @@
 # Threat Group-3390 (G0027) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0027) · [ATT&CK](https://attack.mitre.org/groups/G0027/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0027) · [ATT&CK](https://attack.mitre.org/groups/G0027/)
 
 **Também conhecido como:** Earth Smilodon, TG-3390, Emissary Panda, BRONZE UNION, APT27, Iron Tiger, LuckyMouse, Linen Typhoon  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** Educação e pesquisa, Governo, Defesa e militar, Setor privado (genérico), Varejo e hotelaria, Tecnologia  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2015 a 2025
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 12 malware e 12 ferramentas (ex.: Cobalt Strike, PlugX, Clambling, ZxShell, SysUpdate).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 98% das técnicas têm ao menos uma regra no catálogo; **1 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem; setores Educação e pesquisa, Governo, Defesa e militar, Setor privado (genérico), Varejo e hotelaria; 15 países vítimas citados.
+- **Onde a cobertura está:** Windows (55 técnicas com regra), EDR / XDR (47 técnicas com regra), Outros / genérico (37 técnicas com regra), Linux (37 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1070.005 Network Share Connection Removal, T1608.002 Upload Tool, T1685.001 Disable or Modify Windows Event Log, T1053.002 At, T1560.002 Archive via Library.
 
 ## 2. Quem é
@@ -19,7 +22,35 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | Educação e pesquisa, Governo, Defesa e militar, Setor privado (genérico), Varejo e hotelaria, Tecnologia |
+| Vítimas citadas | Australia, Canada, China, France, India, Iran, Israel, Japan, Russia, South Korea, Taiwan, Thailand, Turkey, United Kingdom, United States |
+| Alvos (planilha) | US Gov and contractors, Western think tanks, Gaming, iGaming, Gambling |
+| Operações conhecidas | A Tale of Two Targets |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| Cisco Talos | Group 35 |
+| CrowdStrike | Emissary Panda |
+| Kaspersky | LuckyMouse |
+| MITRE ATT&CK | G0027 |
+| Mandiant | APT27 |
+| Secureworks | BRONZE UNION, TG-3390 |
+| iSight | TEMP.Hippo |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** TEMP.Hippo, Group 35, ZipToken, GreedyTaotie, Red Phoenix, Budworm, Iron Taurus, Circle Typhoon, SHORE CASTLE, APT27/Temp.Hippo/UNC215, Hive0006, ATK15
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -157,7 +188,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1030](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1030) Data Transfer Size Limits | Threat Group-3390 actors have split RAR files for exfiltration into parts. | 17 | 2 | — |
 | [T1567.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1567.002) Exfiltration to Cloud Storage | Threat Group-3390 has exfiltrated stolen data to Dropbox. | 85 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -174,7 +205,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1055.012 Process Hollowing | 7 | 2.99 |
 | T1588.003 Code Signing Certificates | 7 | 2.99 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -203,17 +234,38 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Systeminfo](https://attack.mitre.org/software/S0096/) | ferramenta | 1 |  |
 | [pwdump](https://attack.mitre.org/software/S0006/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** China Chopper Webshell, Hunter, ASPXTool, wce, htran
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **56 de 57 técnicas (98%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
 ### Técnicas sem regra pública (prioridade para engenharia de detecção)
 
 - **T1608.004 Drive-by Target** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 55 |
+| EDR / XDR | 47 |
+| Outros / genérico | 37 |
+| Linux | 37 |
+| Servidores web & aplicações | 35 |
+| DNS | 31 |
+| Firewall & perímetro | 30 |
+| IDS / NSM / NDR | 30 |
+| Proxy / SWG | 29 |
+| macOS | 29 |
+| Active Directory | 26 |
+| Microsoft 365 | 26 |
 
 ### Regras recomendadas por técnica
 
@@ -332,7 +384,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685.001 | [Suspicious Eventlog Clearing or Configuration Change Activity](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Acc36992a-4671-4f21-a91d-6c2b72a2edf5) | Sigma | SigmaHQ |
 | T1685.001 | [Forest Blizzard APT - File Creation Activity](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Ab92d1d19-f5c9-4ed6-bbd5-7476709dc389) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -448,7 +500,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1140 — [ID4688-Certutil download](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1140-Deobfuscate-Decode%20Files%20or%20Information/ID4688-Certutil%20download.evtx) _(explícito)_
 - T1210 — [Zerologon_CVE-2020-1472_DFIR_System_NetLogon_Error_EventID_5805](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/Zerologon_CVE-2020-1472_DFIR_System_NetLogon_Error_EventID_5805.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Threat Group-3390 estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -465,7 +517,7 @@ Se Threat Group-3390 estiver no seu ambiente, estas são as perguntas a fazer ao
 11. **T1608.004 Drive-by Target** — If infrastructure or patterns in the malicious web content utilized to deliver a Drive-by Compromise have been previously identified, internet scanning may uncover when an adversary has staged web content for use in a strategic web compromise. Much of this… Dados: `Internet Scan` (None).
 12. **T1195.002 Compromise Software Supply Chain** — Adversary ships a tampered application or update: an updater/installer (msiexec/setup/update.exe/vendor service) writes or replaces binaries; on first run it spawns scripts/shells or unsigned DLLs and beacons to non-approved update CDNs/hosts. Detection… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=6), `WinEventLog:Sysmon` (EventCode=7).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -493,7 +545,14 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2022 — [Iron Tiger Compromises Chat Application Mimi, Targets Windows, Mac, and Linux Users](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.08.12.Iron_Tiger_Mimi/Iron%20Tiger%20Compromises%20Chat%20Application%20Mimi%2C%20Targets%20Windows%2C%20Mac%2C%20and%20Linux%20Users.pdf) _(via “Iron Tiger”)_
 - 2022 — [LuckyMouse uses a backdoored Electron app to target MacOS - SEKOIA.IO Blog](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.08.12.LuckyMouse/LuckyMouse%20uses%20a%20backdoored%20Electron%20app%20to%20target%20MacOS%20-%20SEKOIA.IO%20Blog.pdf) _(via “LuckyMouse”)_
 
-## 11. Bibliografia (14 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (4 no total, mais recentes primeiro):
+
+- 2023 — [Iron Tiger's SysUpdate Reappears, Adds Linux Targeting](https://app.box.com/s/oyd0m0chatq9m025mjs21umb3xivhw3s) _(Trend Micro)_
+- 2019 — [A Peek into BRONZE UNION's Toolbox](https://app.box.com/s/i8anwgmoww6w8xwow43uwxrfrqz6irkz) _(Dell Secureworks)_
+- 2018 — [LuckyMouse hits national data center to organize country-level waterholing campaign](https://app.box.com/s/325jld1s8ymwd8a56jcao39i6cbc1m8g) _(Kaspersky)_
+- 2015 — [Threat Group-3390 Targets Organizations For Cyberespionage](https://app.box.com/s/6j0fm3yepzf11engl7t213zltahujorc) _(Dell Secureworks)_
+
+## 12. Bibliografia (14 fontes citadas pelo ATT&CK)
 
 - [Dell TG-3390](https://www.secureworks.com/research/threat-group-3390-targets-organizations-for-cyberespionage) — Dell SecureWorks Counter Threat Unit Threat Intelligence. (2015, August 5). Threat Group-3390 Targets Organizations for Cyberespionage. Retrieved August 18, 2018.
 - [Gallagher 2015](http://arstechnica.com/security/2015/08/newly-discovered-chinese-hacking-group-hacked-100-websites-to-use-as-watering-holes/) — Gallagher, S.. (2015, August 5). Newly discovered Chinese hacking group hacked 100+ websites to use as “watering holes”. Retrieved January 25, 2016.
@@ -510,7 +569,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Trend Micro Iron Tiger April 2021](https://www.trendmicro.com/en_us/research/21/d/iron-tiger-apt-updates-toolkit-with-evolved-sysupdate-malware-va.html) — Lunghi, D. and Lu, K. (2021, April 9). Iron Tiger APT Updates Toolkit With Evolved SysUpdate Malware. Retrieved November 12, 2021.
 - [Unit42 Emissary Panda May 2019](https://unit42.paloaltonetworks.com/emissary-panda-attacks-middle-east-government-sharepoint-servers/) — Falcone, R. and Lancaster, T. (2019, May 28). Emissary Panda Attacks Middle East Government Sharepoint Servers. Retrieved July 9, 2019.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -518,4 +577,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

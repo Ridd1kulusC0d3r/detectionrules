@@ -1,8 +1,9 @@
 # Molerats (G0021) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0021) · [ATT&CK](https://attack.mitre.org/groups/G0021/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0021) · [ATT&CK](https://attack.mitre.org/groups/G0021/)
 
 **Também conhecido como:** Operation Molerats, Gaza Cybergang  
+**Origem atribuída:** Palestina · **Motivação:** espionagem, hacktivismo · **Setores-alvo:** Sociedade civil e mídia, Educação e pesquisa, Energia, Financeiro, Governo, Saúde, Indústria, Defesa e militar, Tecnologia  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2013 a 2020
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 6 malware e 0 ferramentas (ex.: DustySky, PoisonIvy, SharpStage, Spark, DropBook).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Palestina**, motivação espionagem, hacktivismo; setores Sociedade civil e mídia, Educação e pesquisa, Energia, Financeiro, Governo; 3 países vítimas citados.
+- **Onde a cobertura está:** Windows (16 técnicas com regra), EDR / XDR (15 técnicas com regra), Linux (13 técnicas com regra), macOS (13 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1218.007 Msiexec, T1027.015 Compression, T1555.003 Credentials from Web Browsers, T1553.002 Code Signing, T1059.007 JavaScript.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Palestina |
+| Motivação | espionagem, hacktivismo |
+| Setores-alvo | Sociedade civil e mídia, Educação e pesquisa, Energia, Financeiro, Governo, Saúde, Indústria, Defesa e militar, Tecnologia |
+| Vítimas citadas | Europe, Israel, Middle East, Palestine, United States |
+| Alvos (planilha) | Israel, Palestine, Egypt, Saudi Arabia, United Arab Emirates, Turkey, USA. (Targeted sectors include governmental and diplomatic institutions, including embassies; companies from the aerospace and defence Industries; financial institutions; journalists; software developers. ) |
+| Operações conhecidas | Molerats, DustySky, TopHat |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0021 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Gaza Hacker Team, ALUMINUM SARATOGA, Gaza Hackers Team, Extreme Jackal, Moonlight, BLACKSTEM, TA402, Gaza Cybergang/Gaza Hackers Team, White Dev 21, ATK89, DustySky
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -87,7 +112,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | Molerats used executables to download malicious files from different sources. | 644 | 39 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -104,7 +129,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1566.002 Spearphishing Link | 47 | 1.30 |
 | T1204.001 Malicious Link | 49 | 1.26 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -115,13 +140,34 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [DropBook](https://attack.mitre.org/software/S0547/) | malware | 9 |  |
 | [MoleNet](https://attack.mitre.org/software/S0553/) | malware | 7 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Poison Ivy, NeD Worm, Scote, Don’t Kill My Cat (DKMC), RTFs Exploiting CVE-2017-0199
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **16 de 16 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 16 |
+| EDR / XDR | 15 |
+| Linux | 13 |
+| macOS | 13 |
+| Servidores web & aplicações | 12 |
+| Proxy / SWG | 11 |
+| E-mail | 11 |
+| Outros / genérico | 11 |
+| IA, LLMs & agentes | 11 |
+| VPN & acesso remoto | 9 |
+| Microsoft 365 | 9 |
+| DevOps & supply chain | 8 |
 
 ### Regras recomendadas por técnica
 
@@ -162,7 +208,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1566.002 | [Potential Malicious Usage of CloudTrail System Manager](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A38e7f511-3f74-41d4-836e-f57dfa18eead) | Sigma | SigmaHQ |
 | T1566.002 | [Google Workspace Device Registration After OAuth from Suspicious ASN](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A012bfca7-45cb-4507-a3ba-3777167f8b81) | Elastic | Elastic detection-rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -206,7 +252,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1555.003 — [CA_4624_4625_LogonType2_LogonProc_chrome](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/CA_4624_4625_LogonType2_LogonProc_chrome.evtx) _(inferido)_
 - T1555.003 — [CA_chrome_firefox_opera_4663](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/CA_chrome_firefox_opera_4663.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Molerats estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -223,7 +269,7 @@ Se Molerats estiver no seu ambiente, estas são as perguntas a fazer aos seus da
 11. **T1053.005 Scheduled Task** — Detects the creation, modification, or deletion of scheduled tasks through Task Scheduler, WMI, PowerShell, or API-based methods followed by execution from svchost.exe or taskeng.exe. Includes detection of hidden or anomalous scheduled tasks, especially those… Dados: `WinEventLog:Security` (EventCode=4698), `WinEventLog:Security` (EventCode=4702), `WinEventLog:Sysmon` (EventCode=1).
 12. **T1547.001 Registry Run Keys / Startup Folder** — Correlation of Registry key creation/modification events under known Run/Startup keys with new or unusual binary paths or script-based payloads. Multi-event detection includes registry modification followed by process execution from non-standard directories… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=13, 14), `WinEventLog:Microsoft-Windows-Shell-Core` (New startup folder shortcut or binary placed in Startup directory).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -243,7 +289,16 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2019 — [Gaza Cybergang Group1 operation SneakyPastes](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2019/2019.04.10.Operation_SneakyPastes/Gaza%20Cybergang%20Group1%20operation%20SneakyPastes.pdf) _(via “Gaza Cybergang”)_
 - 2020 — [Welcome Chat as a secure messaging app_ Nothing could be further from the truth _ WeLiveSecurity](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.07.14_Molerats_Middle_East_APT/Welcome%20Chat%20as%20a%20secure%20messaging%20app_%20Nothing%20could%20be%20further%20from%20the%20truth%20_%20WeLiveSecurity.pdf) _(via “Molerats”)_
 
-## 11. Bibliografia (6 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (6 no total, mais recentes primeiro):
+
+- 2023 — [Gaza Cybergang Unified Front Targeting Hamas Opposition](https://app.box.com/s/7zzj7ykuxqvc32jj5w9jcgnv3kvfbxpw) _(Sentinelone)_
+- 2022 — [New espionage attack by Molerats APT targeting users in the Middle East](https://app.box.com/s/rdyrweucsdh23c55ts8eohtmtw4h7n71) _(zscaler)_
+- 2016 — [Moonlight - Targeted attacks in the Middle East](https://app.box.com/s/f7p6hmdojxrh6mzs91yvjmpgz528b7h9) _(Vectra Networks)_
+- 2016 — [Operation DustySky Part 2](https://app.box.com/s/ldd528ht55m4avot9b485mi6529f8c3r) _(Clearsky)_
+- 2016 — [Operation DustySky Part 2 Indicators](https://app.box.com/s/q9amfvko7h3x9g4rgcno0vy25btsv1rw) _(Clearsky)_
+- 2013 — [Operation Molerats](https://app.box.com/s/96rwehp2pkoou5gnimrx3sfdymv0nkhv) _(FireEye)_
+
+## 12. Bibliografia (6 fontes citadas pelo ATT&CK)
 
 - [Cybereason Molerats Dec 2020](https://www.cybereason.com/hubfs/dam/collateral/reports/Molerats-in-the-Cloud-New-Malware-Arsenal-Abuses-Cloud-Platforms-in-Middle-East-Espionage-Campaign.pdf) — Cybereason Nocturnus Team. (2020, December 9). MOLERATS IN THE CLOUD: New Malware Arsenal Abuses Cloud Platforms in Middle East Espionage Campaign. Retrieved December 22, 2020.
 - [DustySky](https://www.clearskysec.com/wp-content/uploads/2016/01/Operation%20DustySky_TLP_WHITE.pdf) — ClearSky. (2016, January 7). Operation DustySky. Retrieved January 8, 2016.
@@ -252,7 +307,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Kaspersky MoleRATs April 2019](https://securelist.com/gaza-cybergang-group1-operation-sneakypastes/90068/) — GReAT. (2019, April 10). Gaza Cybergang Group1, operation SneakyPastes. Retrieved May 13, 2020.
 - [Unit42 Molerat Mar 2020](https://unit42.paloaltonetworks.com/molerats-delivers-spark-backdoor/) — Falcone, R., et al. (2020, March 3). Molerats Delivers Spark Backdoor to Government and Telecommunications Organizations. Retrieved December 14, 2020.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -260,4 +315,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

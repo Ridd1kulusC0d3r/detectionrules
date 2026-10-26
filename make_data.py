@@ -49,8 +49,11 @@ slug=lambda s: re.sub(r"[^a-z0-9]+","-",s.lower()).strip("-")
 enc=lambda key: sorted({r[key] for r in R if r[key] is not None})
 S=enc("source");F=enc("format");L=enc("lang");LIC=enc("license")
 ix=lambda lst:{v:i for i,v in enumerate(lst)}; si,fi,li,lici=ix(S),ix(F),ix(L),ix(LIC)
-rows=[[r["id"],redact(r["title"][:140],r.get("ctype",""))[0],redact((r["description"] or "")[:140],r.get("ctype",""))[0],si[r["source"]],fi[r["format"]],li[r["lang"]],r["severity"] or "",r["tactics"],r["techniques"],(r["logsource"].get("product") or "")[:60],(r["logsource"].get("category") or "")[:60],r.get("status") or "",lici[r["license"]],r.get("ctype","detection")] for r in R]
-json.dump({"cols":["id","title","desc","src","fmt","lang","sev","tactics","techniques","product","category","status","lic","ctype"],"src":S,"src_slug":[slug(s) for s in S],"fmt":F,"lang":L,"lic":LIC,"rows":rows},open(f"{OUT}/index.json","w",encoding="utf-8"),ensure_ascii=False,separators=(",",":"))
+import techmap
+TID={t:i for i,t in enumerate(techmap.TECH_IDS+["other"])}; PID={p:i for i,p in enumerate(techmap.PAT_IDS)}
+TECHCOL=[[TID[t] for t in techmap.classify(r)] for r in R]; PATCOL=[PID[techmap.pattern(r)] for r in R]
+rows=[[r["id"],redact(r["title"][:140],r.get("ctype",""))[0],redact((r["description"] or "")[:140],r.get("ctype",""))[0],si[r["source"]],fi[r["format"]],li[r["lang"]],r["severity"] or "",r["tactics"],r["techniques"],(r["logsource"].get("product") or "")[:60],(r["logsource"].get("category") or "")[:60],r.get("status") or "",lici[r["license"]],r.get("ctype","detection"),TECHCOL[k],PATCOL[k]] for k,r in enumerate(R)]
+json.dump({"cols":["id","title","desc","src","fmt","lang","sev","tactics","techniques","product","category","status","lic","ctype","tech","pat"],"tech":[{"id":t[0],"n":t[1],"dom":t[2],"pl":t[3],"lens":t[4],"st":techmap.STAGE.get(t[0],"")} for t in techmap.TECHS]+[{"id":"other","n":"Outros / genérico","dom":"Outros","pl":"","lens":"","st":techmap.STAGE.get("other","")}],"pat":[{"id":p[0],"n":p[1],"d":p[2]} for p in techmap.PATTERNS],"src":S,"src_slug":[slug(s) for s in S],"fmt":F,"lang":L,"lic":LIC,"rows":rows},open(f"{OUT}/index.json","w",encoding="utf-8"),ensure_ascii=False,separators=(",",":"))
 groups=collections.defaultdict(list); REDACTED=collections.Counter()
 for r in R:
     ct=r.get("ctype","detection")

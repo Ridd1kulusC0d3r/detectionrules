@@ -1,6 +1,6 @@
 # NIMBUS MANTICORE (G1059) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1059) · [ATT&CK](https://attack.mitre.org/groups/G1059/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1059) · [ATT&CK](https://attack.mitre.org/groups/G1059/)
 
 **Também conhecido como:** UNC1549, TA455, COBALT SMOKEY  
 **Registro no ATT&CK:** criado em 2026-10-01, atualizado em 2026-10-05 · referências de 2024 a 2026
@@ -11,6 +11,7 @@
 - **Arsenal:** 13 malware e 0 ferramentas (ex.: MiniFast, MiniJunk, TWOSTROKE, MiniBrowse, DEEPROOT).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 82% das técnicas têm ao menos uma regra no catálogo; **12 técnicas sem nenhuma regra pública**.
+- **Onde a cobertura está:** Windows (47 técnicas com regra), EDR / XDR (41 técnicas com regra), Outros / genérico (34 técnicas com regra), Linux (33 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1574.014 AppDomainManager, T1598.001 Spearphishing Service, T1213 Data from Information Repositories, T1552 Unsecured Credentials, T1563.002 RDP Hijacking.
 
 ## 2. Quem é
@@ -19,7 +20,11 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Este grupo ainda não tem registro consolidado no APT4ALL (país, setores e nomes por fornecedor).
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -169,7 +174,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1071](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1071) Application Layer Protocol | NIMBUS MANTICORE has leveraged reverse SSH shells for command and control. | 511 | 1 | — |
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | NIMBUS MANTICORE has transferred and deployed malware to compromised hosts using remove management services, such as Atelier Web Remote Commander (AWRC), and SSH reverse tunnels. | 644 | 39 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -186,7 +191,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1070.007 Clear Network Connection History and Configurations | 3 | 3.58 |
 | T1558.003 Kerberoasting | 3 | 3.58 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -204,11 +209,11 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [CRASHPAD](https://attack.mitre.org/software/S9057/) | malware | 4 | CRASHPAD  has been affiliated with the cyber espionage threat group NIMBUS MANTICORE. |
 | [TRUSTTRAP](https://attack.mitre.org/software/S9064/) | malware | 3 | TRUSTTRAP has been affiliated with the cyber espionage threat group NIMBUS MANTICORE. |
 
-## 6. Campanhas
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **53 de 65 técnicas (82%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -226,6 +231,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1683.002 Audio-Visual Content** — Resource Development
 - **T1683.001 Written Content** — Resource Development
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 47 |
+| EDR / XDR | 41 |
+| Outros / genérico | 34 |
+| Linux | 33 |
+| macOS | 29 |
+| Microsoft 365 | 27 |
+| Active Directory | 26 |
+| Servidores web & aplicações | 24 |
+| IDS / NSM / NDR | 24 |
+| Firewall & perímetro | 23 |
+| E-mail | 23 |
+| IA, LLMs & agentes | 22 |
 
 ### Regras recomendadas por técnica
 
@@ -338,7 +362,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1649 | [HackTool - Certify Execution](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A762f2482-ff21-4970-8939-0aa317a886bb) | Sigma | SigmaHQ |
 | T1684.001 | [Entra ID OAuth user_impersonation Scope for Unusual User and Client](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A9563dace-5822-11f0-b1d3-f661ea17fbcd) | Elastic | Elastic detection-rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -442,7 +466,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1574.001 — [DE_timestomp_and_dll_sideloading_and_RunPersist](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/DE_timestomp_and_dll_sideloading_and_RunPersist.evtx) _(inferido)_
 - T1574.001 — [sideloading_injection_persistence_run_key](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/sideloading_injection_persistence_run_key.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se NIMBUS MANTICORE estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -459,7 +483,7 @@ Se NIMBUS MANTICORE estiver no seu ambiente, estas são as perguntas a fazer aos
 11. **T1608.005 Link Target** — If infrastructure or patterns in malicious web content have been previously identified, internet scanning may uncover when an adversary has staged web content to make it accessible for targeting. Much of this activity will take place outside the visibility of… Dados: `Internet Scan` (None).
 12. **T1678 Delay Execution** — Correlated use of sleep/delay mechanisms (e.g., kernel32!Sleep, NTDLL APIs) in short-lived processes, combined with parent processes invoking suspicious scripts (e.g., wscript, powershell) with minimal user interaction. Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=7).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -474,7 +498,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 
 - 2024 — [When Cats Fly_ Suspected Iranian Threat Actor UNC1549 Targets Israeli and Middle East Aerospace and Defense Sectors _ Ma](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2024/2024.02.27.UNC1549/When%20Cats%20Fly_%20Suspected%20Iranian%20Threat%20Actor%20UNC1549%20Targets%20Israeli%20and%20Middle%20East%20Aerospace%20and%20Defense%20Sectors%20_%20Mandiant.pdf) _(via “UNC1549”)_
 
-## 11. Bibliografia (7 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (7 fontes citadas pelo ATT&CK)
 
 - [CheckPoint_NimbusManticore_May2026](https://research.checkpoint.com/2026/fast-and-furious-nimbus-manticore-operations-during-the-iranian-conflict/) — Check Point. (2026, May 22). Fast and Furious – Nimbus Manticore Operations During the Iranian Conflict. Retrieved September 23, 2026.
 - [CheckPoint_NimbusManticoreEurope_Sept2025](https://research.checkpoint.com/2025/nimbus-manticore-deploys-new-malware-targeting-europe/) — Check Point. (2025, September 22). Nimbus Manticore Deploys New Malware Targeting Europe. Retrieved September 24, 2026.
@@ -484,7 +508,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Proofpoint NIMBUS MANTICORE TA455  TA453 TA450 November 2025](https://www.proofpoint.com/us/blog/threat-insight/crossed-wires-case-study-iranian-espionage-and-attribution) — Saher Naumaan and The Proofpoint Threat Research Team. (2025, November 5). Crossed wires: a case study of Iranian espionage and attribution. Retrieved October 5, 2026.
 - [Sophos Iran Cobalt Smokey Nimbus Manticore October 2026](https://www.sophos.com/en-us/threat-profiles/cobalt-smokey) — Sophos. (2026, October 5). Iran COBALT SMOKEY. Retrieved October 5, 2026.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -492,4 +516,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

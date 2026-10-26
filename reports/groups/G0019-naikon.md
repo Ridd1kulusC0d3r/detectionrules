@@ -1,8 +1,9 @@
 # Naikon (G0019) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0019) · [ATT&CK](https://attack.mitre.org/groups/G0019/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0019) · [ATT&CK](https://attack.mitre.org/groups/G0019/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** Defesa e militar, Telecomunicações  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2015 a 2021
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 8 malware e 7 ferramentas (ex.: RainyDay, Aria-body, Net, Nebulae, SslMM).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem; setores Defesa e militar, Telecomunicações.
+- **Onde a cobertura está:** Windows (14 técnicas com regra), EDR / XDR (14 técnicas com regra), Linux (12 técnicas com regra), Outros / genérico (11 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1137.006 Add-ins, T1078.002 Domain Accounts, T1036.004 Masquerade Task or Service, T1518.001 Security Software Discovery, T1046 Network Service Discovery.
 
 ## 2. Quem é
@@ -21,7 +24,34 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | Defesa e militar, Telecomunicações |
+| Vítimas citadas | — |
+| Alvos (planilha) | satellite communications operator, Telecoms, and Defense Companies, Hong Kong |
+| Operações conhecidas | MsnMM, Naikon, Camera Shy |
+| Confiança de atribuição (MISP) | — |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | Lotus Panda |
+| IRL | PLA Unit 78020 |
+| Kaspersky | Naikon |
+| MITRE ATT&CK | G0019 |
+| Mandiant | APT30 |
+| Symantec | Thrip, Billbug, Firefly |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Lotus Panda, PLA Unit 78020, APT30, Thrip, Billbug, Firefly
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -76,7 +106,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1046](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1046) Network Service Discovery | Naikon has used the LadonGo scanner to scan target networks. | 212 | 13 | 2 |
 | [T1518.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1518.001) Security Software Discovery | Naikon uses commands such as netsh advfirewall firewall to discover local firewall settings. | 54 | 12 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -93,7 +123,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1016 System Network Configuration Discovery | 44 | 1.36 |
 | T1053.005 Scheduled Task | 54 | 1.16 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -113,13 +143,34 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Systeminfo](https://attack.mitre.org/software/S0096/) | ferramenta | 1 |  |
 | [Ping](https://attack.mitre.org/software/S0097/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** BACKSPACe, NETEAGLE, XSControl
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **14 de 14 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 14 |
+| EDR / XDR | 14 |
+| Linux | 12 |
+| Outros / genérico | 11 |
+| macOS | 10 |
+| Servidores web & aplicações | 10 |
+| Active Directory | 9 |
+| DNS | 9 |
+| Firewall & perímetro | 8 |
+| Proxy / SWG | 8 |
+| Integridade, conformidade & vulnerabilidade | 8 |
+| Microsoft 365 | 7 |
 
 ### Regras recomendadas por técnica
 
@@ -156,7 +207,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1574.001 | [Winnti Pipemon Characteristics](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A73d70463-75c9-4258-92c6-17500fe972f2) | Sigma | SigmaHQ |
 | T1574.001 | [Winnti Pipemon Characteristics](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=opensearch-security-analytics%3A%3A73d70463-75c9-4258-92c6-17500fe972f2) | Sigma | OpenSearch Security Analytics |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -206,7 +257,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1574.001 — [DE_timestomp_and_dll_sideloading_and_RunPersist](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/DE_timestomp_and_dll_sideloading_and_RunPersist.evtx) _(inferido)_
 - T1574.001 — [sideloading_injection_persistence_run_key](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/sideloading_injection_persistence_run_key.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Naikon estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -223,7 +274,7 @@ Se Naikon estiver no seu ambiente, estas são as perguntas a fazer aos seus dado
 11. **T1547.001 Registry Run Keys / Startup Folder** — Correlation of Registry key creation/modification events under known Run/Startup keys with new or unusual binary paths or script-based payloads. Multi-event detection includes registry modification followed by process execution from non-standard directories… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=13, 14), `WinEventLog:Microsoft-Windows-Shell-Core` (New startup folder shortcut or binary placed in Startup directory).
 12. **T1036.005 Match Legitimate Resource Name or Location** — Detects processes or binaries executed from trusted directories (e.g., System32) or using trusted names (e.g., svchost.exe) where the metadata, hash, or parent process does not align with legitimate activity patterns. Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=11).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -242,7 +293,13 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2020 — [Naikon APT_ Cyber Espionage Reloaded - Check Point Research](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.05.07_Naikon_APT_Reloaded/Naikon%20APT_%20Cyber%20Espionage%20Reloaded%20-%20Check%20Point%20Research.pdf) _(via “Naikon”)_
 - 2021 — [Bitdefender-PR-Whitepaper-NAIKON-creat5397-en-EN](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.04.23.NAIKON/Bitdefender-PR-Whitepaper-NAIKON-creat5397-en-EN.pdf) _(via “Naikon”)_
 
-## 11. Bibliografia (5 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (3 no total, mais recentes primeiro):
+
+- 2015 — [The Naikon APT: Tracking Down Geo-Political Intelligence Across APAC, One Nation At A Time](https://app.box.com/s/zuyuhxayshyuaypjoxfm0nu8d5tivqih) _(Kaspersky)_
+- 2015 — [The Msnmm Campaigns: The Earliest Naikon APT Campaigns](https://app.box.com/s/nbtyzfb5j5x9d2qznmj3bzcpa2e8kezj) _(Kaspersky)_
+- 2015 — [APT30 And The Mechanics Of A Long-Running Cyber Espionage Operation](https://app.box.com/s/5jjomo7k001inllirt5lj83lu92ath7d) _(FireEye)_
+
+## 12. Bibliografia (5 fontes citadas pelo ATT&CK)
 
 - [Baumgartner Golovkin Naikon 2015](https://securelist.com/the-naikon-apt/69953/) — Baumgartner, K., Golovkin, M.. (2015, May 14). The Naikon APT. Retrieved January 14, 2015.
 - [Baumgartner Naikon 2015](https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/07205555/TheNaikonAPT-MsnMM1.pdf) — Baumgartner, K., Golovkin, M.. (2015, May). The MsnMM Campaigns: The Earliest Naikon APT Campaigns. Retrieved April 10, 2019.
@@ -250,7 +307,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [CameraShy](http://cdn2.hubspot.net/hubfs/454298/Project_CAMERASHY_ThreatConnect_Copyright_2015.pdf) — ThreatConnect Inc. and Defense Group Inc. (DGI). (2015, September 23). Project CameraShy: Closing the Aperture on China's Unit 78020. Retrieved December 17, 2015.
 - [CheckPoint Naikon May 2020](https://research.checkpoint.com/2020/naikon-apt-cyber-espionage-reloaded/) — CheckPoint. (2020, May 7). Naikon APT: Cyber Espionage Reloaded. Retrieved May 26, 2020.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -258,4 +315,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

@@ -507,6 +507,32 @@ def parse_awesome(path):
     return pb(path,f"awesome-playbooks · {vendor}",f"Playbook {vendor} ({ext})",title,str(desc),t,"CC-BY-4.0 (agregador; cada playbook mantém sua licença)")
 
 # ======================= RUN =======================
+# ---------------- LLmInjection (Ridd1kulusC0d3r) — detecções de IA/LLM/agentes ----------------
+def parse_llmi(path):
+    """Regras do repo LLmInjection. Os metadados (hipótese, telemetria, testes) vêm de data/detections.json."""
+    base = os.path.dirname(os.path.dirname(os.path.dirname(path)))
+    try: specs = {d["id"].lower(): d for d in json.load(open(os.path.join(base, "data", "detections.json"), encoding="utf-8"))}
+    except Exception: specs = {}
+    m = re.search(r"(det-ai-\d+)", os.path.basename(path), re.I); spec = specs.get(m.group(1).lower(), {}) if m else {}
+    ext = path.rsplit(".",1)[-1].lower(); src = "LLmInjection (IA/LLM/agentes)"
+    if ext in ("yml","yaml"):
+        r = parse_sigma_file(path, src, "Apache-2.0")
+        if r and spec: r["description"] = (r["description"] or spec.get("hypothesis",""))
+    else:
+        t = read(path)
+        fmt, lang = {"kql":("kql-md","KQL (Defender/Sentinel)"),"spl":("splunk","Splunk SPL"),"esql":("elastic","Elastic (esql)"),"yaral":("yaral","YARA-L 2.0")}.get(ext,("kql-md",ext))
+        r = {"id": stable_id(path), "title": spec.get("name") or os.path.basename(path), "description": spec.get("hypothesis",""),
+             "source": src, "format": fmt, "lang": lang, "severity": spec.get("severity"), "status": "experimental",
+             "author": "LLMInjection", "date": None, "tactics": [], "techniques": techs_from(t),
+             "logsource": {"product": "ai / llm", "category": spec.get("category"), "service": ", ".join(spec.get("telemetry", []))},
+             "false_positives": [], "references": ["https://github.com/Ridd1kulusC0d3r/LLmInjection"],
+             "query": t, "raw": t, "path": os.path.relpath(path, ROOT), "license": "Apache-2.0"}
+    if r:
+        r["title"] = (spec.get("id","")+" · " if spec.get("id") else "") + r["title"]
+        r.setdefault("logsource", {}); r["logsource"]["product"] = r["logsource"].get("product") or "ai / llm"
+        r["llmi"] = {k: spec.get(k) for k in ("id","category","hypothesis","telemetry","test_ids")} if spec else {}
+    return r
+
 def main():
     rules = []
     def add(x):
@@ -575,6 +601,8 @@ def main():
     for p in glob.glob("Shuffle_workflows/**/*.json",recursive=True): add(parse_shuffle(p))
     for p in glob.glob("luduslibrum_awesome-playbooks/playbooks/**/*",recursive=True):
         if os.path.isfile(p): add(parse_awesome(p))
+
+    for p in sorted(glob.glob("ext/llminjection/detections/*/*")): add(parse_llmi(p))
 
     # dedupe por (source,id)
     for r in rules:

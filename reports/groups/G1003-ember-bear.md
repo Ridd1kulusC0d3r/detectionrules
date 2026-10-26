@@ -1,8 +1,9 @@
 # Ember Bear (G1003) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1003) · [ATT&CK](https://attack.mitre.org/groups/G1003/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1003) · [ATT&CK](https://attack.mitre.org/groups/G1003/)
 
 **Também conhecido como:** UNC2589, Bleeding Bear, DEV-0586, Cadet Blizzard, Frozenvista, UAC-0056  
+**Origem atribuída:** Rússia · **Motivação:** espionagem, financeiro, sabotagem, hacktivismo · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2022-06-09, atualizado em 2026-07-31 · referências de 2022 a 2024
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 4 malware e 7 ferramentas (ex.: Saint Bot, WhisperGate, CrackMapExec, P.A.S. Webshell, BloodHound).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 96% das técnicas têm ao menos uma regra no catálogo; **2 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Rússia**, motivação espionagem, financeiro, sabotagem, hacktivismo; 1 países vítimas citados.
+- **Onde a cobertura está:** Windows (40 técnicas com regra), EDR / XDR (38 técnicas com regra), Outros / genérico (35 técnicas com regra), Linux (32 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1491.002 External Defacement, T1595.001 Scanning IP Blocks, T1021 Remote Services, T1195 Supply Chain Compromise, T1588.005 Exploits.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Rússia |
+| Motivação | espionagem, financeiro, sabotagem, hacktivismo |
+| Setores-alvo | — |
+| Vítimas citadas | Ukraine |
+| Alvos (planilha) | Ukraine, limited evidence to suggest that the group has been involved in attacks on targets in Kyrgyzstan. Third-party reporting has also linked the group to attacks on Georgia. |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1003 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Lorec53, Lorec Bear, Saint Bear, TA471, Nascent Ursa, Ruinous Ursa, Nodaria, DEV-0586/Cadet Blizzard
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -152,7 +177,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1491.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1491.002) External Defacement | Ember Bear is linked to the defacement of several Ukrainian organization websites. | 1 | — | — |
 | [T1561.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1561.002) Disk Structure Wipe | Ember Bear conducted destructive operations against victims, including disk structure wiping, via the WhisperGate malware in Ukraine. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -169,7 +194,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1654 Log Enumeration | 4 | 3.40 |
 | T1561.002 Disk Structure Wipe | 5 | 3.24 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -185,11 +210,13 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [PsExec](https://attack.mitre.org/software/S0029/) | ferramenta | 5 | Ember Bear has used PsExec through frameworks such as Impacket for remote command execution. |
 | [Responder](https://attack.mitre.org/software/S0174/) | ferramenta | 2 | Ember Bear has used Responder in intrusions. |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** WhisperGate wiper, Elephant Framework, Graphiron
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **45 de 47 técnicas (96%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -197,6 +224,25 @@ Nenhuma campanha atribuída no ATT&CK.
 
 - **T1588.005 Exploits** — Resource Development
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 40 |
+| EDR / XDR | 38 |
+| Outros / genérico | 35 |
+| Linux | 32 |
+| Servidores web & aplicações | 31 |
+| Proxy / SWG | 29 |
+| Firewall & perímetro | 28 |
+| IDS / NSM / NDR | 27 |
+| DNS | 27 |
+| Active Directory | 26 |
+| AWS | 26 |
+| macOS | 24 |
 
 ### Regras recomendadas por técnica
 
@@ -293,7 +339,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1654 | [Sysmon - Event 1: Process creation $(win.eventdata.description)](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=socfortress-wazuh-rules%3A%3Awazuh-100950) | Wazuh | SOCFortress Wazuh-Rules |
 | T1654 | [Sysmon - Event 1: Process creation $(win.eventdata.description)](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=socfortress-wazuh-rules%3A%3Awazuh-100951) | Wazuh | SOCFortress Wazuh-Rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -387,7 +433,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1210 — [Zerologon_VoidSec_CVE-2020-1472_4626_LT3_Anonym_follwedby_4742_DC_Anony_DC](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/Zerologon_VoidSec_CVE-2020-1472_4626_LT3_Anonym_follwedby_4742_DC_Anony_DC.evtx) _(inferido)_
 - T1550.002 — [ImpersonateUser-via local Pass The Hash Sysmon and Security](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Lateral%20Movement/ImpersonateUser-via%20local%20Pass%20The%20Hash%20Sysmon%20and%20Security.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Ember Bear estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -404,7 +450,7 @@ Se Ember Bear estiver no seu ambiente, estas são as perguntas a fazer aos seus 
 11. **T1583 Acquire Infrastructure** — Monitor for contextual data about an Internet-facing resource gathered from a scan, such as running services or ports that may buy, lease, or rent infrastructure that can be used during targeting. Detection efforts may be focused on related stages of the… Dados: `Internet Scan` (None), `Internet Scan` (None), `Domain Name` (None).
 12. **T1003.004 LSA Secrets** — Detects adversary activity aimed at accessing LSA Secrets, including registry key export of HKEY_LOCAL_MACHINE\SECURITY\Policy\Secrets or memory scraping via tools such as Mimikatz or PowerSploit's Invoke-Mimikatz. Dados: `WinEventLog:Security` (EventCode=4663, 4670, 4656), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=10).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -415,7 +461,14 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1003](https://attack.mitre.org/groups/G1003/)
 
-## 11. Bibliografia (5 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (4 no total, mais recentes primeiro):
+
+- 2022 — [UAC-0056 cyberattack on Ukrainian authorities using GraphSteel and GrimPlant malware](https://app.box.com/s/s9jqmfj3eqvzuvbmap8tj673tj37giqd) _(CERT_UA)_
+- 2022 — [Threat Actor UAC-0056 Targeting Ukraine with Fake Translation Software](https://app.box.com/s/howogtsvvmqdljp5y4iupj6udhr970mv) _(Sentinelone)_
+- 2022 — [APT Group LOREC53 (Lori Bear) Recently Launched A Large-Scale Cyber Attack On Ukraine](https://app.box.com/s/japcw7r6uxnvyenklx06h21veadvdxvy) _(nsfocus)_
+- 2022 — [Cyber attack of UAC-0056 group on state organizations of Ukraine using malicious programs SaintBot and OutSteel (CERT-UA #3799)](https://app.box.com/s/gti3fn10hlnanb6c7y50g5n16w8t4cqc) _(CERT-UA)_
+
+## 12. Bibliografia (5 fontes citadas pelo ATT&CK)
 
 - [Cadet Blizzard emerges as novel threat actor](https://www.microsoft.com/en-us/security/blog/2023/06/14/cadet-blizzard-emerges-as-a-novel-and-distinct-russian-threat-actor/) — Microsoft Threat Intelligence. (2023, June 14). Cadet Blizzard emerges as a novel and distinct Russian threat actor. Retrieved July 10, 2023.
 - [CISA GRU29155 2024](https://www.cisa.gov/sites/default/files/2024-09/aa24-249a-russian-military-cyber-actors-target-us-and-global-critical-infrastructure.pdf) — US Cybersecurity & Infrastructure Security Agency et al. (2024, September 5). Russian Military Cyber Actors Target U.S. and Global Critical Infrastructure. Retrieved September 6, 2024.
@@ -423,7 +476,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Mandiant UNC2589 March 2022](https://www.mandiant.com/resources/russia-invasion-ukraine-retaliation) — Sadowski, J; Hall, R. (2022, March 4). Responses to Russia's Invasion of Ukraine Likely to Spur Retaliation. Retrieved June 9, 2022.
 - [Palo Alto Unit 42 OutSteel SaintBot February 2022 ](https://unit42.paloaltonetworks.com/ukraine-targeted-outsteel-saintbot/) — Unit 42. (2022, February 25). Spear Phishing Attacks Target Organizations in Ukraine, Payloads Include the Document Stealer OutSteel and the Downloader SaintBot. Retrieved June 9, 2022.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -431,4 +484,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

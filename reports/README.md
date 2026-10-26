@@ -1,6 +1,6 @@
 # Dossiês de inteligência — grupos de ameaça
 
-178 dossiês gerados em 2026-10-25 a partir do MITRE ATT&CK v20.0 e do catálogo [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules). Cada dossiê traz perfil TTP com procedimentos, arsenal, campanhas, cobertura de detecção pública, plano de emulação, hipóteses de hunting, OSINT e bibliografia.
+178 dossiês gerados em 2026-10-26 a partir do MITRE ATT&CK v20.0 e do catálogo [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules). Cada dossiê traz perfil TTP com procedimentos, arsenal, campanhas, cobertura de detecção pública, plano de emulação, hipóteses de hunting, OSINT e bibliografia.
 
 **Versão HTML:** [índice navegável](index.html) — no site: https://ridd1kulusc0d3r.github.io/detectionrules/reports/index.html
 

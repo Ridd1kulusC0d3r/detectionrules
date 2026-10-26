@@ -1,8 +1,9 @@
 # Lotus Blossom (G0030) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0030) · [ATT&CK](https://attack.mitre.org/groups/G0030/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0030) · [ATT&CK](https://attack.mitre.org/groups/G0030/)
 
 **Também conhecido como:** DRAGONFISH, Spring Dragon, RADIUM, Raspberry Typhoon, Bilbug, Thrip  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** Governo, Defesa e militar  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2015 a 2025
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 4 malware e 5 ferramentas (ex.: Elise, Sagerunex, Emissary, Impacket, Hannotog).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem; setores Governo, Defesa e militar; 6 países vítimas citados.
+- **Onde a cobertura está:** Windows (20 técnicas com regra), EDR / XDR (19 técnicas com regra), Outros / genérico (15 técnicas com regra), Servidores web & aplicações (13 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1134 Access Token Manipulation, T1560.003 Archive via Custom Method, T1539 Steal Web Session Cookie, T1090.001 Internal Proxy, T1482 Domain Trust Discovery.
 
 ## 2. Quem é
@@ -19,7 +22,32 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | Governo, Defesa e militar |
+| Vítimas citadas | Hong Kong, Indonesia, Japan, Philippines, Taiwan, Vietnam |
+| Alvos (planilha) | — |
+| Operações conhecidas | Operation Lotus Blossom |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| Kaspersky | Spring Dragon |
+| MITRE ATT&CK | G0030 |
+| Microsoft | Raspberry Typhoon, RADIUM (antigo · old) |
+| Palo Alto Unit 42 | Lotus Blossom |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** ST Group, Esile, BitterBug, LOTUS PANDA, BRONZE ELGIN, ATK1, Red Salamander, Billbug, G0030/G0076, Bronze Thornwell/Bronze Elgin, CTG-8171, ATK1/ATK78, Thrip/Billbug
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -97,7 +125,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1090.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1090.001) Internal Proxy | Lotus Blossom has used publicly available tools such as the Venom proxy tool to proxy traffic out of victim environments. | 43 | 3 | — |
 | [T1090.003](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1090.003) Multi-hop Proxy | Lotus Blossom has used tools such as the publicly available HTran tool for proxying traffic in victim environments. | 44 | 4 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -114,7 +142,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1012 Query Registry | 19 | 2.14 |
 | T1543.003 Windows Service | 25 | 1.89 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -128,13 +156,34 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [certutil](https://attack.mitre.org/software/S0160/) | ferramenta | 4 | Lotus Blossom has used certutil during operations. |
 | [Ping](https://attack.mitre.org/software/S0097/) | ferramenta | 1 | Lotus Blossom has used Ping to verify connectivity to remote hosts. |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Elise Backdoor, Lstudio, CVE-2017-11882
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **21 de 21 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 20 |
+| EDR / XDR | 19 |
+| Outros / genérico | 15 |
+| Servidores web & aplicações | 13 |
+| Linux | 12 |
+| macOS | 12 |
+| DNS | 12 |
+| Active Directory | 11 |
+| Firewall & perímetro | 10 |
+| IDS / NSM / NDR | 10 |
+| Proxy / SWG | 10 |
+| IA, LLMs & agentes | 9 |
 
 ### Regras recomendadas por técnica
 
@@ -184,7 +233,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1588.002 | [Hacktool Execution - Imphash](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A24e3e58a-646b-4b50-adef-02ef935b9fc8) | Sigma | SigmaHQ |
 | T1588.002 | [Renamed SysInternals DebugView Execution](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Acd764533-2e07-40d6-a718-cfeec7f2da7f) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -245,7 +294,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1543.003 — [ID13-New service for Mimikatz](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0003-Persistence/T1543.003-Create%20or%20Modify%20System%20Process-Windows%20Service/ID13-New%20service%20for%20Mimikatz.evtx) _(explícito)_
 - T1543.003 — [ID4688-4697 RDP hijack via service creation](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0003-Persistence/T1543.003-Create%20or%20Modify%20System%20Process-Windows%20Service/ID4688-4697%20RDP%20hijack%20via%20service%20creation.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Lotus Blossom estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -262,7 +311,7 @@ Se Lotus Blossom estiver no seu ambiente, estas são as perguntas a fazer aos se
 11. **T1074.001 Local Data Staging** — Detects file reads across locations followed by writes to temp or staging directories, often compressed or encrypted, indicating local staging behavior. Dados: `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Security` (EventCode=4663, 4670, 4656).
 12. **T1112 Modify Registry** — Behavior chain involving abnormal registry modifications via CLI, PowerShell, WMI, or direct API calls, especially targeting persistence, privilege escalation, or defense evasion keys, potentially followed by service restart or process execution. Such as… Dados: `WinEventLog:Sysmon` (EventCode=13, 14), `WinEventLog:Sysmon` (EventCode=1).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -286,7 +335,12 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2018 — [thrip-hits-satellite-telecoms-defense-targets](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2018/2018.06.20.thrip-hits-satellite-telecoms-defense-targets/thrip-hits-satellite-telecoms-defense-targets.pdf) _(via “Thrip”)_
 - 2019 — [Thrip_ Ambitious Attacks Against High Level Targets Continue](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2019/2019.09.09.Thrip/Thrip_%20Ambitious%20Attacks%20Against%20High%20Level%20Targets%20Continue.pdf) _(via “Thrip”)_
 
-## 11. Bibliografia (8 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (2 no total, mais recentes primeiro):
+
+- 2016 — [Attack On French Diplomat Linked To Operation Lotus Blossom](https://app.box.com/s/cbxo6pdyf8xua2eg5dn44ni47wbs0le0) _(Palo Alto)_
+- 2016 — [Emissary Trojan Changelog: Did Operation Lotus Blossom Cause It To Evolve](https://app.box.com/s/oyqcfzoa1hfq5evuymj5bqfitkqlfp4v) _(Palo Alto)_
+
+## 12. Bibliografia (8 fontes citadas pelo ATT&CK)
 
 - [Accenture Dragonfish Jan 2018](https://web.archive.org/web/20190508165226/https://www.accenture.com/t20180127T003755Z_w_/us-en/_acnmedia/PDF-46/Accenture-Security-Dragonfish-Threat-Analysis.pdf) — Accenture Security. (2018, January 27). DRAGONFISH DELIVERS NEW FORM OF ELISE MALWARE TARGETING ASEAN DEFENCE MINISTERS’ MEETING AND ASSOCIATES. Retrieved November 17, 2024.
 - [Cisco LotusBlossom 2025](https://blog.talosintelligence.com/lotus-blossom-espionage-group/) — Joey Chen, Cisco Talos. (2025, February 27). Lotus Blossom espionage group targets multiple industries with different versions of Sagerunex and hacking tools. Retrieved March 15, 2025.
@@ -297,7 +351,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Spring Dragon Jun 2015](https://securelist.com/the-spring-dragon-apt/70726/) — Baumgartner, K.. (2015, June 17). The Spring Dragon APT. Retrieved February 15, 2016.
 - [Symantec Bilbug 2022](https://www.security.com/threat-intelligence/espionage-asia-governments-cert-authority) — Symntec Threat Hunter Team. (2022, November 12). Billbug: State-sponsored Actor Targets Cert Authority, Government Agencies in Multiple Asian Countries. Retrieved March 15, 2025.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -305,4 +359,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

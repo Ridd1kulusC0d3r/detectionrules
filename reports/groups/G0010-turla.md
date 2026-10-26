@@ -1,8 +1,9 @@
 # Turla (G0010) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0010) · [ATT&CK](https://attack.mitre.org/groups/G0010/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0010) · [ATT&CK](https://attack.mitre.org/groups/G0010/)
 
 **Também conhecido como:** IRON HUNTER, Group 88, Waterbug, WhiteBear, Snake, Krypton, Venomous Bear, Secret Blizzard, BELUGASTURGEON  
+**Origem atribuída:** Rússia · **Motivação:** espionagem · **Setores-alvo:** Educação e pesquisa, Energia, Governo, Saúde, Indústria, Defesa e militar, Setor privado (genérico)  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2013 a 2024
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 17 malware e 13 ferramentas (ex.: Empire, Uroburos, Kazuar, LunarWeb, Epic).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 96% das técnicas têm ao menos uma regra no catálogo; **3 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Rússia**, motivação espionagem; setores Educação e pesquisa, Energia, Governo, Saúde, Indústria; 17 países vítimas citados.
+- **Onde a cobertura está:** Windows (62 técnicas com regra), EDR / XDR (52 técnicas com regra), Linux (48 técnicas com regra), Outros / genérico (42 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1546.013 PowerShell Profile, T1615 Group Policy Discovery, T1027.011 Fileless Storage, T1134.002 Create Process with Token, T1553.006 Code Signing Policy Modification.
 
 ## 2. Quem é
@@ -19,7 +22,31 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Rússia |
+| Motivação | espionagem |
+| Setores-alvo | Educação e pesquisa, Energia, Governo, Saúde, Indústria, Defesa e militar, Setor privado (genérico) |
+| Vítimas citadas | Belarus, France, Germany, India, Iran, Iraq, Kazakhstan, Netherlands, Poland, Romania, Russia, Saudi Arabia, South Korea, Tajikistan, United Kingdom, United States, Uzbekistan |
+| Alvos (planilha) | Targeting several governments and sensitive businesses such as the defense industry \| embassies and diplomatic/foreign affair organizations, defense-related organizations |
+| Operações conhecidas | Satellite Turla, Epic Turla, The 'Penquin' Turla, Witchcoven, RUAG hack, Mosquito, Moonlight Maze |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0010 |
+| Microsoft | Secret Blizzard, KRYPTON (antigo · old) |
+| Secureworks | IRON HUNTER |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Turla Group, Turla Team, Uroburos, SIG23, MAKERSMARK, ITG12, SUMMIT, UNC4210, Blue Python, ATK13, Pfinet, TAG_0530, Pacifier APT, Popeye, Skipper Turla, WRAITH, Hippo Team, UAC-0144, UAC-0024, UAC-0003, TURLA RELIC, Krypton/Secret Blizzard, CTG-8875, APT-C-29, Pensive Ursa, SIG2/SIG15/SIG23, UAC-0003/UAC-0024
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -167,7 +194,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1567.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1567.002) Exfiltration to Cloud Storage | Turla has used WebDAV to upload stolen USB files to a cloud drive. Turla has also exfiltrated stolen files to OneDrive and 4shared. | 85 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -184,7 +211,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1547.004 Winlogon Helper DLL | 2 | 3.80 |
 | T1025 Data from Removable Media | 3 | 3.58 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -219,11 +246,13 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [netstat](https://attack.mitre.org/software/S0104/) | ferramenta | 1 |  |
 | [Systeminfo](https://attack.mitre.org/software/S0096/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** gpresult, wce, pwdump, Turla, Agent.BTZ, Tavdig, Wipbot, Agent.dne, AdobeARM, ATI-Agent, MiniDionis, WhiteBear, Neuron, Nautilus
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **65 de 68 técnicas (96%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -232,6 +261,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1564.012 File/Path Exclusions** — Stealth. Fonte de log sugerida pelo MITRE: `WinEventLog:Sysmon` EventCode=11; `auditd:SYSCALL` open or creat syscalls targeting excluded paths; `macos:unifiedlog` file creation in AV exclusion directories
 - **T1584.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1584.004 Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 62 |
+| EDR / XDR | 52 |
+| Linux | 48 |
+| Outros / genérico | 42 |
+| macOS | 38 |
+| Servidores web & aplicações | 38 |
+| Firewall & perímetro | 31 |
+| IDS / NSM / NDR | 31 |
+| Proxy / SWG | 30 |
+| DNS | 29 |
+| Active Directory | 27 |
+| IA, LLMs & agentes | 27 |
 
 ### Regras recomendadas por técnica
 
@@ -369,7 +417,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685 | [Windows Defender Configuration Changes](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A801bd44f-ceed-4eb6-887c-11544633c0aa) | Sigma | SigmaHQ |
 | T1685 | [Windows Defender Virus Scanning Feature Disabled](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A686c0b4b-9dd3-4847-9077-d6c1bbe36fcb) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -498,7 +546,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1555.004 — [ID 5376, 5379, 5382, 5381, 5382 credential manager and vault](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1555.004-Windows%20Credential%20Manager/ID%205376%2C%205379%2C%205382%2C%205381%2C%205382%20credential%20manager%20and%20vault.evtx) _(explícito)_
 - T1685 — [ID1-SYSMON driver unload (FilterManager)](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1562.001-Impair%20Defenses-Disable%20or%20Modify%20tool/ID1-SYSMON%20driver%20unload%20%28FilterManager%29.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Turla estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -515,7 +563,7 @@ Se Turla estiver no seu ambiente, estas são as perguntas a fazer aos seus dados
 11. **T1555.004 Windows Credential Manager** — Detects unauthorized access to Windows Credential Manager through anomalous process execution (vaultcmd.exe, rundll32.exe keymgr.dll), suspicious API calls (CredEnumerateA), or direct file access to Credential Locker files. Correlates process creation with… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=10), `WinEventLog:Sysmon` (EventCode=15).
 12. **T1584.006 Web Services** — Once adversaries leverage the abused web service as infrastructure (ex: for command and control), it may be possible to look for unique characteristics associated with adversary software, if known. Much of this activity will take place outside the visibility… Dados: `Internet Scan` (None).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -553,7 +601,22 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2020 — [AcidBox_ Rare Malware Repurposing Turla Group Exploit Targeted Russian Organizations](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.06.17.AcidBox/AcidBox_%20Rare%20Malware%20Repurposing%20Turla%20Group%20Exploit%20Targeted%20Russian%20Organizations.pdf) _(via “Turla”)_
 - 2020 — [Turla _ Venomous Bear updates its arsenal_ _NewPass_ appears on the APT threat scene - Telsy](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.07.14_Turla_VENOMOUS_BEAR/Turla%20_%20Venomous%20Bear%20updates%20its%20arsenal_%20_NewPass_%20appears%20on%20the%20APT%20threat%20scene%20-%20Telsy.pdf) _(via “Turla”)_
 
-## 11. Bibliografia (30 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (15 no total, mais recentes primeiro):
+
+- 2019 — [Waterbug: Espionage Group Rolls Out Brand-New Toolset in Attacks Against Governments](https://app.box.com/s/u5p5eae02amqr2n0zg7017cx43t1icwz) _(Symantec)_
+- 2018 — [Turla group update Neuron malware](https://app.box.com/s/o72u9tsw4zifxmktac4oreizhlud67ga) _(NCSC)_
+- 2017 — [Turla group using Neuron and Nautilus tools alongside Snake malware](https://app.box.com/s/316mbg901wxjdarmtdlj6v4qv29a0ge8) _(NCSC)_
+- 2017 — [Introducing WhiteBear](https://app.box.com/s/ck26ekr69wmhxk6hyii507o09p20eixs) _(Kaspersky)_
+- 2017 — [Carbon Paper: Peering into Turla second stage backdoor](https://app.box.com/s/vmzqwqfrmtdjemtdaei60jqu5qrouwrt) _(ESET)_
+- 2016 — [Pacifier APT](https://app.box.com/s/xcu346jhiokohlj9300q6hif06swac57) _(Bitdefender)_
+- 2015 — [The Waterbug Attack Group](https://app.box.com/s/nrf432kfdk6kadkvbclgykekocn4pzzu) _(Symantec)_
+- 2014 — [The 'Penquin' Turla](https://app.box.com/s/5gfajyyz8firhnttdo72j0iz6uo4eo6q) _(Kaspersky)_
+- 2014 — [The Uroburos Case: New Sophisticated Rat Identified](https://app.box.com/s/sg4cyodukt7edmmba6bfikuiu1jgzv59) _(Gdata)_
+- 2014 — [The Epic Turla Operation: Solving Some Of The Mysteries Of Snake/Uroboros](https://app.box.com/s/9rsegtgvnwe9n2lrk6ezxfv8mnpfhpk3) _(Kaspersky)_
+- 2014 — [Tr-25 Analysis - Turla / PNet / Snake/ Uroburos](https://app.box.com/s/54kvbxp9nc0xtme1omd1xpxcckwm945g) _(CIRCL)_
+- 2014 — [Snake In The Grass: Python-based Malware Used For Targeted Attacks](https://app.box.com/s/4n263mzodo4mb7jz1w3deidg9xuu2teh) _(Bluecoat)_
+
+## 12. Bibliografia (30 fontes citadas pelo ATT&CK)
 
 - [Accenture HyperStack October 2020](https://web.archive.org/web/20201101015247/https://www.accenture.com/us-en/blogs/cyber-defense/turla-belugasturgeon-compromises-government-entity) — Accenture. (2020, October). Turla uses HyperStack, Carbon, and Kazuar to compromise government entity. Retrieved December 2, 2020.
 - [Crowdstrike GTR2020 Mar 2020](https://go.crowdstrike.com/rs/281-OBQ-266/images/Report2020CrowdStrikeGlobalThreatReport.pdf) — Crowdstrike. (2020, March 2). 2020 Global Threat Report. Retrieved December 11, 2020.
@@ -586,7 +649,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Unit 42 Kazuar May 2017](https://researchcenter.paloaltonetworks.com/2017/05/unit42-kazuar-multiplatform-espionage-backdoor-api-access/) — Levene, B, et al. (2017, May 03). Kazuar: Multiplatform Espionage Backdoor with API Access. Retrieved July 17, 2018.
 - [Unit42 AcidBox June 2020](https://unit42.paloaltonetworks.com/acidbox-rare-malware/) — Reichel, D. and Idrizovic, E. (2020, June 17). AcidBox: Rare Malware Repurposing Turla Group Exploit Targeted Russian Organizations. Retrieved March 16, 2021.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -594,4 +657,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

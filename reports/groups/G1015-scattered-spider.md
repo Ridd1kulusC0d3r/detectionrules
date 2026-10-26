@@ -1,8 +1,9 @@
 # Scattered Spider (G1015) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1015) · [ATT&CK](https://attack.mitre.org/groups/G1015/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1015) · [ATT&CK](https://attack.mitre.org/groups/G1015/)
 
 **Também conhecido como:** Roasted 0ktapus, Octo Tempest, Storm-0875, UNC3944  
+**Origem atribuída:** Sem país atribuído · **Motivação:** financeiro · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2023-07-05, atualizado em 2026-09-11 · referências de 2022 a 2025
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 4 malware e 6 ferramentas (ex.: Vidar, WarzoneRAT, Raccoon Stealer, BlackCat, Mimikatz).
 - **Campanhas atribuídas:** 1 (C0027).
 - **Cobertura de detecção pública:** 95% das técnicas têm ao menos uma regra no catálogo; **3 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Sem país atribuído**, motivação financeiro.
+- **Onde a cobertura está:** Windows (48 técnicas com regra), AWS (42 técnicas com regra), EDR / XDR (41 técnicas com regra), Outros / genérico (40 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1538 Cloud Service Dashboard, T1556.006 Multi-Factor Authentication, T1006 Direct Volume Access, T1070.008 Clear Mailbox Data, T1204 User Execution.
 
 ## 2. Quem é
@@ -21,7 +24,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Sem país atribuído |
+| Motivação | financeiro |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1015 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Muddled Libra, Oktapus, Scattered Swine, Scatter Swine, 0ktapus, Storm-0971, DEV-0971, Starfraud, Octo Tempest/DEV-0875, Gold Harvest
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -179,7 +204,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1490](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1490) Inhibit System Recovery | Scattered Spider has stopped the Volume Shadow Copy service on compromised hosts. | 188 | 13 | 5 |
 | [T1657](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1657) Financial Theft | Scattered Spider has deployed ransomware on compromised hosts and threatened to leak stolen data for financial gain. | 2 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -196,7 +221,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1578.002 Create Cloud Instance | 1 | 4.09 |
 | T1598.004 Spearphishing Voice | 1 | 4.09 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -211,13 +236,103 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [ConnectWise](https://attack.mitre.org/software/S0591/) | ferramenta | 3 | Scattered Spider has used ConnectWise to maintain persistence. |
 | [Tor](https://attack.mitre.org/software/S0183/) | ferramenta | 2 | Scattered Spider has used Tor to communicate with targeted organizations. |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Linpeas
+
+### Ferramentas observadas em intrusões (Scattered Spider) — Ransomware Tool Matrix
+
+Ferramentas legítimas e ofensivas que afiliados usam dentro da rede. Cada uma é um ponto de detecção: veja quantas regras do catálogo a citam.
+
+| Ferramenta | Categoria | Regras que citam |
+|---|---|---:|
+| PsExec | lolbas | 260 |
+| Mimikatz | credenciais | 253 |
+| OpenSSH | rede | 130 |
+| ProcDump | credenciais | 109 |
+| TeamViewer | rmm | 104 |
+| ScreenConnect | rmm | 93 |
+| Impacket | offsec | 78 |
+| MEGA | exfiltracao | 74 |
+| Socat | rede | 71 |
+| Dropbox | exfiltracao | 67 |
+| PingCastle | descoberta | 66 |
+| TryCloudflare | rede | 65 |
+| Tailscale | rede | 60 |
+| Ngrok | rede | 51 |
+| Cloudflared | rede | 45 |
+| SharpHound | descoberta | 44 |
+| N-Able | rmm | 40 |
+| RClone | exfiltracao | 35 |
+| ADExplorer | descoberta | 32 |
+| ADRecon | descoberta | 32 |
+| Get-ADUser | descoberta | 29 |
+| Plink | rede | 26 |
+| Teleport | rede | 25 |
+| Snaffler | credenciais | 22 |
+| Trufflehog | credenciais | 20 |
+| LINpeas | offsec | 19 |
+| Splashtop | rmm | 19 |
+| TightVNC | rmm | 19 |
+| RPort | rmm | 18 |
+| Advanced Port Scanner | descoberta | 16 |
+| Parsec | rmm | 16 |
+| TacticalRMM | rmm | 16 |
+| Chrome Remote Desktop | rmm | 13 |
+| RemotePC | rmm | 12 |
+| Fleetdeck | rmm | 11 |
+| Chisel | rede | 10 |
+| Pacu | offsec | 10 |
+| S3 Browser | descoberta | 10 |
+| BeAnywhere | rmm | 9 |
+| FileZilla | exfiltracao | 9 |
+| MobaXterm | rmm | 9 |
+| ZohoAssist | rmm | 8 |
+| Level.io | rmm | 7 |
+| Pulseway | rmm | 7 |
+| RustDesk | rmm | 7 |
+| PDQ Inventory | descoberta | 6 |
+| Cyberduck | exfiltracao | 5 |
+| aws_consoler | credenciais | 5 |
+| Domotz | rmm | 4 |
+| Twingate | rede | 4 |
+| Windscribe (Wstunnel) | rede | 4 |
+| DWAgent | rmm | 2 |
+| ITarian | rmm | 2 |
+| Sorillus | rmm | 1 |
+| TrendMicro Basecamp | rmm | 1 |
+| ZeroTier | rmm | 1 |
+| ASG Remote Desktop | rmm | **0** |
+| AWS Systems Manager Inventory | descoberta | **0** |
+| Bedevil | evasao | **0** |
+| CIMplant | offsec | **0** |
+| GitGuardian | credenciais | **0** |
+| Intel Ethernet driver (BYOVD) | evasao | **0** |
+| Jecretz | credenciais | **0** |
+| LAPS Toolkit | offsec | **0** |
+| MAGNET RAM Capture | credenciais | **0** |
+| MIT Kerberos Ticket Manager | credenciais | **0** |
+| ManageEngine LANDESK | descoberta | **0** |
+| ManageEngineRMM | rmm | **0** |
+| MicroBurst | offsec | **0** |
+| NSOCKS | rede | **0** |
+| Pinggy | rede | **0** |
+| Proxifier | rede | **0** |
+| RSAT | rmm | **0** |
+| RVTools | descoberta | **0** |
+| Rsocks | rede | **0** |
+| RustScan | descoberta | **0** |
+| Sshimpanzee | rede | **0** |
+| TrueSocks | rede | **0** |
+| VMware PowerCLI | descoberta | **0** |
+| Volatility | credenciais | **0** |
+| Xeox | rmm | **0** |
+
+## 7. Campanhas
 
 | Campanha | Período | Resumo (EN) |
 |---|---|---|
 | [C0027](https://attack.mitre.org/campaigns/C0027/) | 2022-06 → 2022-12 | C0027 was a financially-motivated campaign linked to Scattered Spider that targeted telecommunications and business process outsourcing (BPO) companies from at least June through December of 2022. During C0027 Scattered  |
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **61 de 64 técnicas (95%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -226,6 +341,25 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 - **T1598.004 Spearphishing Voice** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
 - **T1213.005 Messaging Applications** — Collection. Fonte de log sugerida pelo MITRE: `saas:slack` conversations.history, files.list, users.info, audit_logs; `m365:unified` TeamsMessagesAccessedViaEDiscovery, TeamsGraphMessageExport
 - **T1598.003 Spearphishing Link** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 48 |
+| AWS | 42 |
+| EDR / XDR | 41 |
+| Outros / genérico | 40 |
+| Linux | 39 |
+| Azure (recursos) | 38 |
+| Microsoft 365 | 35 |
+| Integridade, conformidade & vulnerabilidade | 31 |
+| Servidores web & aplicações | 30 |
+| Bancos de dados | 30 |
+| Active Directory | 29 |
+| Firewall & perímetro | 29 |
 
 ### Regras recomendadas por técnica
 
@@ -355,7 +489,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685 | [Windows Defender Configuration Changes](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A801bd44f-ceed-4eb6-887c-11544633c0aa) | Sigma | SigmaHQ |
 | T1685 | [Windows Defender Virus Scanning Feature Disabled](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A686c0b4b-9dd3-4847-9077-d6c1bbe36fcb) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -455,7 +589,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1136 — [ID33205-SQL Server Disabled SA user activated](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0003-Persistence/T1136-Create%20account/ID33205-SQL%20Server%20Disabled%20SA%20user%20activated.evtx) _(explícito)_
 - T1136 — [ID33205-SQL Server local user created](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0003-Persistence/T1136-Create%20account/ID33205-SQL%20Server%20local%20user%20created.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Scattered Spider estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -472,7 +606,7 @@ Se Scattered Spider estiver no seu ambiente, estas são as perguntas a fazer aos
 11. **T1021.007 Cloud Services** — Cloud login from atypical geolocation or user-agent string, followed by resource enumeration or infrastructure manipulation using cloud CLI/API Dados: `AWS:CloudTrail` (ConsoleLogin, AssumeRole, ListResources), `gcp:audit` (None).
 12. **T1087 Account Discovery** — Detection of processes performing local or domain account enumeration by invoking account directory queries or security APIs followed by structured output of account lists. The defender observes command execution or API invocation patterns that retrieve… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Security` (EventCode=4688), `WinEventLog:Security` (EventCode=4798, 4799).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -483,7 +617,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1015](https://attack.mitre.org/groups/G1015/)
 
-## 11. Bibliografia (11 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (11 fontes citadas pelo ATT&CK)
 
 - [Check Point Scattered Spider JUL 2025](https://blog.checkpoint.com/research/exposing-scattered-spider-new-indicators-highlight-growing-threat-to-enterprises-and-aviation/) — Check Point Team. (2025, July 7). Exposing Scattered Spider: New Indicators Highlight Growing Threat to Enterprises and Aviation. Retrieved October 13, 2025.
 - [CISA Scattered Spider Advisory November 2023](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-320a) — CISA. (2023, November 16). Cybersecurity Advisory: Scattered Spider (AA23-320A). Retrieved March 18, 2024.
@@ -497,7 +631,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [MSTIC Octo Tempest Operations October 2023](https://www.microsoft.com/en-us/security/blog/2023/10/25/octo-tempest-crosses-boundaries-to-facilitate-extortion-encryption-and-destruction/) — Microsoft. (2023, October 25). Octo Tempest crosses boundaries to facilitate extortion, encryption, and destruction. Retrieved March 18, 2024.
 - [Trellix Scattered Spider MO August 2023](https://www.trellix.com/blogs/research/scattered-spider-the-modus-operandi/) — Trellix et. al.. (2023, August 17). Scattered Spider: The Modus Operandi. Retrieved March 18, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -505,4 +639,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

@@ -1,8 +1,9 @@
 # Darkhotel (G0012) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0012) · [ATT&CK](https://attack.mitre.org/groups/G0012/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0012) · [ATT&CK](https://attack.mitre.org/groups/G0012/)
 
 **Também conhecido como:** DUBNIUM, Zigzag Hail  
+**Origem atribuída:** Coreia do Sul · **Motivação:** espionagem · **Setores-alvo:** Energia, Governo, Indústria, Setor privado (genérico), Tecnologia  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2014 a 2023
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 0 malware e 0 ferramentas.
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 96% das técnicas têm ao menos uma regra no catálogo; **1 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Coreia do Sul**, motivação espionagem; setores Energia, Governo, Indústria, Setor privado (genérico), Tecnologia; 5 países vítimas citados.
+- **Onde a cobertura está:** Windows (22 técnicas com regra), EDR / XDR (19 técnicas com regra), Linux (17 técnicas com regra), macOS (17 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1497.002 User Activity Based Checks, T1497 Virtualization/Sandbox Evasion, T1080 Taint Shared Content, T1497.001 System Checks, T1091 Replication Through Removable Media.
 
 ## 2. Quem é
@@ -19,7 +22,30 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Coreia do Sul |
+| Motivação | espionagem |
+| Setores-alvo | Energia, Governo, Indústria, Setor privado (genérico), Tecnologia |
+| Vítimas citadas | China, Japan, Russia, South Korea, Taiwan |
+| Alvos (planilha) | Japan, Taiwan, China, Russia, South Korea, North Korea Government, Utilities, High-Tech, Automotive |
+| Operações conhecidas | Daybreak?, Fallout Team, WizardOpium |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0012 |
+| Microsoft | Zigzag Hail, DUBNIUM (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Tardigrade Spider, Luder, Karba, Tapaoux, Nemim, Dubnium (Microsoft), APT-C-06, SHADOW CRANE, T-APT-02, SIG25 (NSA), Fallout Team, Nemin, Pioneer, SIG25, TUNGSTEN BRIDGE, ATK52, Dubnium/Zigzag Hail, G0012/G0126, Hive0092, CTG-1948, T-APT-02/Higaisa
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -108,7 +134,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1105](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1105) Ingress Tool Transfer | Darkhotel has used first-stage payloads that download additional malware from C2 servers. | 644 | 39 | — |
 | [T1573.001](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1573.001) Symmetric Cryptography | Darkhotel has used AES-256 and 3DES for C2 communications. | 5 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -125,21 +151,42 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1518.001 Security Software Discovery | 26 | 1.85 |
 | T1553.002 Code Signing | 27 | 1.82 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 Nenhum software atribuído no ATT&CK.
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Inexsmar, Higaisa, Win32.Karba, Win32.Pioneer, CVE-2015-8651, Asruex, CVE-2012-0158, CVE-2010-2883, CVE-2016-4171 and CVE-2018-817
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **23 de 24 técnicas (96%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
 ### Técnicas sem regra pública (prioridade para engenharia de detecção)
 
 - **T1497.002 User Activity Based Checks** — Stealth. Fonte de log sugerida pelo MITRE: `WinEventLog:Sysmon` EventCode=1; `auditd:SYSCALL` Reads of ~/.bash_history, ~/.mozilla, or access to /dev/input; `macos:unifiedlog` Execution of input detection APIs (e.g., CGEventSourceKeyState)
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 22 |
+| EDR / XDR | 19 |
+| Linux | 17 |
+| macOS | 17 |
+| Outros / genérico | 17 |
+| Servidores web & aplicações | 15 |
+| IA, LLMs & agentes | 13 |
+| Proxy / SWG | 11 |
+| Microsoft 365 | 11 |
+| Firewall & perímetro | 10 |
+| IDS / NSM / NDR | 9 |
+| DNS | 9 |
 
 ### Regras recomendadas por técnica
 
@@ -194,7 +241,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1573.001 | [CYFIRMA - High severity Command & Control Network Indicators with Monitor Recommendation Rule](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=microsoft-sentinel-analytic-rules%3A%3A6d8fb3fe-2501-4103-8137-34261fa3a596) | Sentinel KQL | Microsoft Sentinel (Analytic Rules) |
 | T1573.001 | [CYFIRMA - High severity Command & Control Network Indicators with Block Recommendation Rule](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=microsoft-sentinel-analytic-rules%3A%3A6b61b716-afd9-4f6c-ad00-965d5987cafd) | Sentinel KQL | Microsoft Sentinel (Analytic Rules) |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -244,7 +291,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1547.001 — [sideloading_injection_persistence_run_key](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/AutomatedTestingTools/Malware/sideloading_injection_persistence_run_key.evtx) _(inferido)_
 - T1547.001 — [evasion_persis_hidden_run_keyvalue_sysmon_13](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Persistence/evasion_persis_hidden_run_keyvalue_sysmon_13.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Darkhotel estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -261,7 +308,7 @@ Se Darkhotel estiver no seu ambiente, estas são as perguntas a fazer aos seus d
 11. **T1189 Drive-by Compromise** — Correlated evidence of anomalous browser/network behavior (suspicious external resource fetches and script injection patterns) followed by atypical child processes, ephemeral execution contexts, memory modification or process injection, and unexpected file… Dados: `WinEventLog:Security` (EventCode=4624, 4648), `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=3, 22).
 12. **T1140 Deobfuscate/Decode Files or Information** — An adversary leverages built-in tools such as certutil.exe, powershell.exe, or copy.exe to decode, reassemble, or extract hidden malicious content from obfuscated containers or encoded formats. The decoding utility often spawns shortly after file staging or… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=10).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -279,7 +326,17 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2014 — [darkhotelappendixindicators_kl_1.1](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2014/2014.11.10.Darkhotel/darkhotelappendixindicators_kl_1.1.pdf) _(via “Darkhotel”)_
 - 2021 — [New DarkHotel APT attack chain identified _ Zscaler](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.12.16.New_DarkHotel_APT/New%20DarkHotel%20APT%20attack%20chain%20identified%20_%20Zscaler.pdf) _(via “Darkhotel”)_
 
-## 11. Bibliografia (8 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (7 no total, mais recentes primeiro):
+
+- 2017 — [Inexsmar: An unusual DarkHotel campaig](https://app.box.com/s/mlbeyha2vu6a5b8ystgdk6fdew4f6r98) _(Bitdefender)_
+- 2016 — [Reverse-engineering DUBNIUM's Flash-targeting exploit](https://app.box.com/s/rsvvnrm7ct991olqsvbqrie614xt9f3b) _(Microsoft)_
+- 2016 — [Reverse-engineering DUBNIUM](https://app.box.com/s/f0xelxxs6ey9nms9fox1uugy8nuof40t) _(Microsoft)_
+- 2015 — [Darkhotel's attacks in 2015](https://app.box.com/s/fu1lu7lza8h4znv76a5dqlrjubapxw92) _(Kaspersky)_
+- 2014 — [Darkhotel Indicators Of Compromise](https://app.box.com/s/r97cjt70ywsd7pnrstr7buqzxn5svfw1) _(Kaspersky)_
+- 2014 — [The Darkhotel Apt A Story Of Unusual Hospitality v1.0](https://app.box.com/s/rqk4up23y49pe1zalfmstkj4zb1dxbja) _(Kaspersky)_
+- 2014 — [The Darkhotel APT A Story of Unusual Hospitality v1.1](https://app.box.com/s/f6bmfscrmam0oq111f9u4bwiqu74bxyi) _(Kaspersky)_
+
+## 12. Bibliografia (8 fontes citadas pelo ATT&CK)
 
 - [Kaspersky Darkhotel](https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08070903/darkhotel_kl_07.11.pdf) — Kaspersky Lab's Global Research and Analysis Team. (2014, November). The Darkhotel APT A Story of Unusual Hospitality. Retrieved November 12, 2014.
 - [Lastline DarkHotel Just In Time Decryption Nov 2015](https://www.lastline.com/labsblog/defeating-darkhotel-just-in-time-decryption/) — Arunpreet Singh, Clemens Kolbitsch. (2015, November 5). Defeating Darkhotel Just-In-Time Decryption. Retrieved April 15, 2021.
@@ -290,7 +347,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Microsoft Threat Actor Naming July 2023](https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide) — Microsoft . (2023, July 12). How Microsoft names threat actors. Retrieved November 17, 2023.
 - [Securelist Darkhotel Aug 2015](https://securelist.com/darkhotels-attacks-in-2015/71713/) — Kaspersky Lab's Global Research & Analysis Team. (2015, August 10). Darkhotel's attacks in 2015. Retrieved November 2, 2018.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -298,4 +355,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

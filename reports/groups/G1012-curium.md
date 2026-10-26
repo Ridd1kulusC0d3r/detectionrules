@@ -1,8 +1,9 @@
 # CURIUM (G1012) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1012) · [ATT&CK](https://attack.mitre.org/groups/G1012/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1012) · [ATT&CK](https://attack.mitre.org/groups/G1012/)
 
 **Também conhecido como:** Crimson Sandstorm, TA456, Tortoise Shell, Yellow Liderc  
+**Origem atribuída:** Irã · **Motivação:** espionagem, sabotagem · **Setores-alvo:** Sociedade civil e mídia, Energia, Financeiro, Governo, Saúde, Defesa e militar, Tecnologia, Telecomunicações, Transporte e logística  
 **Registro no ATT&CK:** criado em 2023-01-13, atualizado em 2026-07-31 · referências de 2019 a 2023
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 1 malware e 0 ferramentas (ex.: IMAPLoader).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 74% das técnicas têm ao menos uma regra no catálogo; **5 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Irã**, motivação espionagem, sabotagem; setores Sociedade civil e mídia, Energia, Financeiro, Governo, Saúde; 2 países vítimas citados.
+- **Onde a cobertura está:** Outros / genérico (13 técnicas com regra), Windows (12 técnicas com regra), Microsoft 365 (11 técnicas com regra), E-mail (10 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1584.006 Web Services, T1048.002 Exfiltration Over Asymmetric Encrypted Non-C2 Protocol, T1608.004 Drive-by Target, T1583.004 Server, T1124 System Time Discovery.
 
 ## 2. Quem é
@@ -19,7 +22,32 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Irã |
+| Motivação | espionagem, sabotagem |
+| Setores-alvo | Sociedade civil e mídia, Energia, Financeiro, Governo, Saúde, Defesa e militar, Tecnologia, Telecomunicações, Transporte e logística |
+| Vítimas citadas | Europe, Israel, Middle East, United States |
+| Alvos (planilha) | IT providers in Saudi Arabia, Aerospace & Defense (Israel, UAE) |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | ImperialKitten, Imperial Kitten |
+| FireEye | APT35 |
+| MITRE ATT&CK | G1012 |
+| Microsoft | Crimson Sandstorm, CURIUM (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** FunRun RAT, Liderc, DEV-0228, UNC1549, Smoke Sandstorm, Cuboid Sandstorm, APT35, ImperialKitten, Bohrium, DEV-0056, DUSTYCAVE, Nimbus Manticore, Curium/Crimson Sandstorm, Hive0095, Cobalt Fireside, Devious Serpens, TA455, Bohrium/Smoke Sandstorm, Yellow Dev 13
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -82,7 +110,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1041](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1041) Exfiltration Over C2 Channel | CURIUM has used IMAP and SMTPS for exfiltration via tools such as IMAPLoader. | 135 | 2 | — |
 | [T1048.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1048.002) Exfiltration Over Asymmetric Encrypted Non-C2 Protocol | CURIUM has used SMTPS to exfiltrate collected data from victims. | 15 | 4 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -99,17 +127,19 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1585.002 Email Accounts | 20 | 2.10 |
 | T1585.001 Social Media Accounts | 22 | 2.01 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
 | [IMAPLoader](https://attack.mitre.org/software/S1152/) | malware | 9 | IMAPLoader was deployed by CURIUM as a post-exploitation payload from strategic website compromise. |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Backdoor.Syskit, Poison Frog, Infostealer/Sha.exe/Sha432.exe, Infostealer/stereoversioncontrol.exe, get-logon-history.ps1, FunRun RAT, Liderc, MINIBUS, MINIBIKE
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **14 de 19 técnicas (74%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -120,6 +150,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1598.003 Spearphishing Link** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Outros / genérico | 13 |
+| Windows | 12 |
+| Microsoft 365 | 11 |
+| E-mail | 10 |
+| AWS | 9 |
+| IDS / NSM / NDR | 9 |
+| Servidores web & aplicações | 9 |
+| EDR / XDR | 8 |
+| DNS | 8 |
+| Linux | 7 |
+| Firewall & perímetro | 7 |
+| Proxy / SWG | 7 |
 
 ### Regras recomendadas por técnica
 
@@ -155,7 +204,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1585.001 | [CYFIRMA - Brand Intelligence - Social Media Handle Impersonation Detected High Rule](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=microsoft-sentinel-analytic-rules%3A%3A22f49d67-7da7-4809-8d07-89e4478aa6b0) | Sentinel KQL | Microsoft Sentinel (Analytic Rules) |
 | T1585.001 | [CYFIRMA - Brand Intelligence - Executive/People Impersonation High Rule](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=microsoft-sentinel-analytic-rules%3A%3A159d26a1-591c-4f70-b1ca-2843c881aaec) | Sentinel KQL | Microsoft Sentinel (Analytic Rules) |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -184,7 +233,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1059.001 — [ID4103-4104-Payload download via PowerShell](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0002-Execution/T1059.001-PowerShell/ID4103-4104-Payload%20download%20via%20PowerShell.evtx) _(explícito)_
 - T1059.001 — [ID4688-Encoded PowerShell MSF payload via process execution](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0002-Execution/T1059.001-PowerShell/ID4688-Encoded%20PowerShell%20MSF%20payload%20via%20process%20execution.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se CURIUM estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -201,7 +250,7 @@ Se CURIUM estiver no seu ambiente, estas são as perguntas a fazer aos seus dado
 11. **T1189 Drive-by Compromise** — Correlated evidence of anomalous browser/network behavior (suspicious external resource fetches and script injection patterns) followed by atypical child processes, ephemeral execution contexts, memory modification or process injection, and unexpected file… Dados: `WinEventLog:Security` (EventCode=4624, 4648), `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=3, 22).
 12. **T1505.003 Web Shell** — Unexpected file creation in web directories followed by web server processes (e.g., w3wp.exe) spawning command shells or script interpreters (e.g., cmd.exe, powershell.exe) Dados: `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Security` (EventCode=4624, 4648).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -216,7 +265,11 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 
 - 2021 — [I Knew You Were Trouble_ TA456 Targets Defense Contractor with Alluring Social Media Persona _ Proofpoint US](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.07.28.TA456/I%20Knew%20You%20Were%20Trouble_%20TA456%20Targets%20Defense%20Contractor%20with%20Alluring%20Social%20Media%20Persona%20_%20Proofpoint%20US.pdf) _(via “TA456”)_
 
-## 11. Bibliografia (5 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (1 no total, mais recentes primeiro):
+
+- 2022 — [APT35 Automates Initial Access Using ProxyShell](https://app.box.com/s/effdjg8nuddhq3e9ooywuesizw5b0e3w) _(TheDFIRreport)_
+
+## 12. Bibliografia (5 fontes citadas pelo ATT&CK)
 
 - [Microsoft Iranian Threat Actor Trends November 2021](https://www.microsoft.com/en-us/security/blog/2021/11/16/evolving-trends-in-iranian-threat-actor-activity-mstic-presentation-at-cyberwarcon-2021) — MSTIC. (2021, November 16). Evolving trends in Iranian threat actor activity – MSTIC presentation at CyberWarCon 2021. Retrieved January 12, 2023.
 - [Microsoft Threat Actor Naming July 2023](https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide) — Microsoft . (2023, July 12). How Microsoft names threat actors. Retrieved November 17, 2023.
@@ -224,7 +277,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [PWC Yellow Liderc 2023](https://www.pwc.com/gx/en/issues/cybersecurity/cyber-threat-intelligence/yellow-liderc-ships-its-scripts-delivers-imaploader-malware.html) — PwC Threat Intelligence. (2023, October 25). Yellow Liderc ships its scripts and delivers IMAPLoader malware. Retrieved August 14, 2024.
 - [Symantec Tortoiseshell 2019](https://symantec-enterprise-blogs.security.com/blogs/threat-intelligence/tortoiseshell-apt-supply-chain) — Symantec Threat Hunter Team. (2019, September 18). Tortoiseshell Group Targets IT Providers in Saudi Arabia in Probable Supply Chain Attacks. Retrieved May 20, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -232,4 +285,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

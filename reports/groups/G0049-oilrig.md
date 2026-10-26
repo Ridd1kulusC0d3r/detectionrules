@@ -1,8 +1,9 @@
 # OilRig (G0049) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0049) · [ATT&CK](https://attack.mitre.org/groups/G0049/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0049) · [ATT&CK](https://attack.mitre.org/groups/G0049/)
 
 **Também conhecido como:** COBALT GYPSY, IRN2, APT34, Helix Kitten, Evasive Serpens, Hazel Sandstorm, EUROPIUM, ITG13, Earth Simnavaz, Crambus, TA452  
+**Origem atribuída:** Irã · **Motivação:** espionagem · **Setores-alvo:** Sociedade civil e mídia, Energia, Financeiro, Governo, Indústria, Setor privado (genérico), Telecomunicações  
 **Registro no ATT&CK:** criado em 2017-12-14, atualizado em 2026-07-31 · referências de 2016 a 2024
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 18 malware e 12 ferramentas (ex.: Helminth, POWRUNER, RDAT, OopsIE, QUADAGENT).
 - **Campanhas atribuídas:** 2 (Outer Space, Juicy Mix).
 - **Cobertura de detecção pública:** 100% das técnicas têm ao menos uma regra no catálogo; **0 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Irã**, motivação espionagem; setores Sociedade civil e mídia, Energia, Financeiro, Governo, Indústria; 10 países vítimas citados.
+- **Onde a cobertura está:** Windows (73 técnicas com regra), EDR / XDR (63 técnicas com regra), Linux (54 técnicas com regra), Outros / genérico (52 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1137.004 Outlook Home Page, T1195 Supply Chain Compromise, T1201 Password Policy Discovery, T1556.002 Password Filter DLL, T1003.005 Cached Domain Credentials.
 
 ## 2. Quem é
@@ -19,7 +22,32 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Irã |
+| Motivação | espionagem |
+| Setores-alvo | Sociedade civil e mídia, Energia, Financeiro, Governo, Indústria, Setor privado (genérico), Telecomunicações |
+| Vítimas citadas | Iraq, Israel, Kuwait, Lebanon, Middle East, Pakistan, Qatar, Saudi Arabia, Turkey, United Kingdom, United States |
+| Alvos (planilha) | Lebanon, UAE |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | Helix Kitten, HelixKitten |
+| FireEye | APT34, APT 34 |
+| MITRE ATT&CK | G0049 |
+| Microsoft | Hazel Sandstorm, EUROPIUM (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Twisted Kitten, Chrysene, ATK40, Helminth, Clayslide, DNSpionage, COBALT EDGEWATER, SOLAR ION, Greenbug, Helix Kitten/Twisted Kitten, Europium/Hazel Sandstorm, G0049/G0116, Cobalt Gypsy/Cobalt Edgewater, Yellow Maero, Cleaver
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -179,7 +207,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1048.003](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1048.003) Exfiltration Over Unencrypted Non-C2 Protocol | OilRig has exfiltrated data via Microsoft Exchange and over FTP separately from its primary C2 channel over DNS. | 51 | 8 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -196,7 +224,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1008 Fallback Channels | 4 | 3.40 |
 | T1218.001 Compiled HTML File | 4 | 3.40 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -231,16 +259,37 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [netstat](https://attack.mitre.org/software/S0104/) | ferramenta | 1 |  |
 | [Systeminfo](https://attack.mitre.org/software/S0096/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** ISMDoor, Clayslide, ALMA Communicator, customized Mimikatz, Invoke-Obfuscation, POWBAT, POWRUNER (PS Backdoor), malicious RTF files CVE-2017-0199 and CVE-2017-11882, ELVENDOOR, PLink, SSH Tunnels to Windows Servers, Webshells (TwoFace, DarkSeaGreenShell, LittleFace), PowDesk, Menorah
+
+## 7. Campanhas
 
 | Campanha | Período | Resumo (EN) |
 |---|---|---|
 | [Outer Space](https://attack.mitre.org/campaigns/C0042/) | 2021-01 → 2021-12 | Outer Space was a campaign conducted by OilRig throughout 2021 that used the SampleCheck5000 downloader and Solar backdoor to target Israeli organizations. |
 | [Juicy Mix](https://attack.mitre.org/campaigns/C0044/) | 2022-01 → 2022-12 | Juicy Mix was a campaign conducted by OilRig throughout 2022 that targeted Israeli organizations with the Mango backdoor. |
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **76 de 76 técnicas (100%)** têm ao menos uma regra pública no catálogo Detection Rules.
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 73 |
+| EDR / XDR | 63 |
+| Linux | 54 |
+| Outros / genérico | 52 |
+| Servidores web & aplicações | 50 |
+| macOS | 44 |
+| Active Directory | 40 |
+| Microsoft 365 | 38 |
+| IDS / NSM / NDR | 37 |
+| DNS | 37 |
+| Firewall & perímetro | 36 |
+| Proxy / SWG | 34 |
 
 ### Regras recomendadas por técnica
 
@@ -400,7 +449,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1686.003 | [Suspicious Program Location Whitelisted In Firewall Via Netsh.EXE](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Aa35f5a72-f347-4e36-8895-9869b0d5fc6d) | Sigma | SigmaHQ |
 | T1686.003 | [RDP Connection Allowed Via Netsh.EXE](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A01aeb693-138d-49d2-9403-c4f52d7d3d62) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -547,7 +596,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1078.002 — [ID4964-Login of a member of a special group](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1078.002-Valid%20accounts-Domain%20accounts/ID4964-Login%20of%20a%20member%20of%20a%20special%20group.evtx) _(explícito)_
 - T1087.002 — [discovery_bloodhound](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Discovery/discovery_bloodhound.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se OilRig estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -564,7 +613,7 @@ Se OilRig estiver no seu ambiente, estas são as perguntas a fazer aos seus dado
 11. **T1686.003 Windows Host Firewall** — Detects processes or users modifying Windows Defender Firewall profiles, policies, or rules followed by measurable network exposure changes. Correlates firewall management execution, registry/policy mutation, service state changes, and subsequent inbound or… Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=13, 14).
 12. **T1027.005 Indicator Removal from Tools** — Detection of known tools or malware flagged by antivirus, followed by a near-term drop of a similar binary with modified signature and resumed activity (execution, C2, or persistence). Dados: `WinEventLog:Application` (EventCode=1000), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=11).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -587,7 +636,17 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2020 — [apt34-aka-oilrig-attacks-lebanon-government-entities-with-maildropper-implant](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.03.02_APT34_MAILDROPPER/apt34-aka-oilrig-attacks-lebanon-government-entities-with-maildropper-implant.pdf) _(via “OilRig”)_
 - 2020 — [OilRig Targets Middle Eastern Telecommunications Organization and Adds Novel C2 Channel with Steganography to Its Invent](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.07.22.OilRig_Middle_Eastern_Telecommunication/OilRig%20Targets%20Middle%20Eastern%20Telecommunications%20Organization%20and%20Adds%20Novel%20C2%20Channel%20with%20Steganography%20to%20Its%20Inventory.pdf) _(via “OilRig”)_
 
-## 11. Bibliografia (31 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (7 no total, mais recentes primeiro):
+
+- 2023 — [OilRig's persistent attacks using cloud service-powered downloaders](https://app.box.com/s/hwalx6d0jzl86zfotki735i40j5a7fr0) _(ESET)_
+- 2023 — [New APT34 Malware Targets The Middle East](https://app.box.com/s/9us9hqv5o7pnbt748p9g0o6lg3w7vdgo) _(Trend Micro)_
+- 2019 — [Hard Pass: Declining APT34's Invite to Join Their Professional Network](https://app.box.com/s/xrhqs26aajdbb92ivgoenotrdykup5uu) _(FireEye)_
+- 2017 — [OilRig Deploys "ALMA Communicator" - DNS Tunneling Trojan](https://app.box.com/s/bseq5v27hez248arjyaypa7nt03omjvx) _(Palo Alto Networks)_
+- 2017 — [Iranian Threat Agent Greenbug Impersonates Israeli High-Tech and Cyber Security Companies](https://app.box.com/s/fga01c36ebgqga5ic0a4o73j5jq9vdvr) _(Clearsky)_
+- 2017 — [Iranian Threat Agent OilRig Delivers Digitally Signed Malware, Impersonates University of Oxford](https://app.box.com/s/o3jg5us2c3lmeszk1m09hmenca0xnmgc) _(Clearsky)_
+- 2014 — [Operation Cleaver: The Notepad Files](https://app.box.com/s/vsret8sjx5qd6xaxzv0rxdw4pocdmjll) _(Cylance)_
+
+## 12. Bibliografia (31 fontes citadas pelo ATT&CK)
 
 - [Check Point APT34 April 2021](https://research.checkpoint.com/2021/irans-apt34-returns-with-an-updated-arsenal/) — Check Point. (2021, April 8). Iran’s APT34 Returns with an Updated Arsenal. Retrieved May 5, 2021.
 - [ClearSky OilRig Jan 2017](http://www.clearskysec.com/oilrig/) — ClearSky Cybersecurity. (2017, January 5). Iranian Threat Agent OilRig Delivers Digitally Signed Malware, Impersonates University of Oxford. Retrieved May 3, 2017.
@@ -621,7 +680,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Unit42 OilRig Playbook 2023](https://pan-unit42.github.io/playbook_viewer/?pb=evasive-serpens) — Unit42. (2016, May 1). Evasive Serpens Unit 42 Playbook Viewer. Retrieved February 6, 2023.
 - [Unit42 RDAT July 2020](https://unit42.paloaltonetworks.com/oilrig-novel-c2-channel-steganography/) — Falcone, R. (2020, July 22). OilRig Targets Middle Eastern Telecommunications Organization and Adds Novel C2 Channel with Steganography to Its Inventory. Retrieved July 28, 2020.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -629,4 +688,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

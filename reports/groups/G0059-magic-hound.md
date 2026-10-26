@@ -1,8 +1,9 @@
 # Magic Hound (G0059) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0059) · [ATT&CK](https://attack.mitre.org/groups/G0059/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0059) · [ATT&CK](https://attack.mitre.org/groups/G0059/)
 
 **Também conhecido como:** TA453, COBALT ILLUSION, Charming Kitten, ITG18, Phosphorus, Newscaster, APT35, Mint Sandstorm  
+**Origem atribuída:** Irã · **Motivação:** espionagem, financeiro · **Setores-alvo:** Sociedade civil e mídia, Educação e pesquisa, Energia, Governo, Infraestrutura crítica, Indústria, Defesa e militar, Tecnologia, Telecomunicações  
 **Registro no ATT&CK:** criado em 2018-01-16, atualizado em 2026-07-31 · referências de 2014 a 2023
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 3 malware e 10 ferramentas (ex.: Pupy, CharmPower, Mimikatz, Net, Impacket).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 96% das técnicas têm ao menos uma regra no catálogo; **3 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Irã**, motivação espionagem, financeiro; setores Sociedade civil e mídia, Educação e pesquisa, Energia, Governo, Infraestrutura crítica; 5 países vítimas citados.
+- **Onde a cobertura está:** Windows (66 técnicas com regra), EDR / XDR (57 técnicas com regra), Outros / genérico (52 técnicas com regra), Linux (50 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1016.002 Wi-Fi Discovery, T1591.001 Determine Physical Locations, T1685.001 Disable or Modify Windows Event Log, T1098.002 Additional Email Delegate Permissions, T1590.005 IP Addresses.
 
 ## 2. Quem é
@@ -19,7 +22,33 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Irã |
+| Motivação | espionagem, financeiro |
+| Setores-alvo | Sociedade civil e mídia, Educação e pesquisa, Energia, Governo, Infraestrutura crítica, Indústria, Defesa e militar, Tecnologia, Telecomunicações |
+| Vítimas citadas | Iranian internet activists, Iraq, Israel, Saudi Arabia, U.S. government/defense sector websites, United Kingdom, United States |
+| Alvos (planilha) | This threat actor uses watering hole attacks and fake profiles to lure targets from the U.S. government for espionage purposes. \| Saudi Arabia, Israel, US, Iran, high ranking defense officials, embassies of various target countries, notable Iran researchers, human rights activists, media and journalists, academic institutions and various scholars, including scientists in the fields of physics and  |
+| Operações conhecidas | Sponsoring Access, Woolen Goldfish, Thamar Reservoir |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| Cisco Talos | Group 83, Group 26 |
+| CrowdStrike | Charming Kitten, Rocket Kitten, Nemesis Kitten |
+| FireEye | APT35 |
+| MITRE ATT&CK | G0059 |
+| Microsoft | Mint Sandstorm, PHOSPHORUS (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Parastoo, iKittens, NewsBeef, COBALT MIRAGE, Ballistic Bobcat, Group 83, Rocket Kitten, Flying Kitten, TEMP.Beanie, Saffron Rose, Ajax Security Team, Group 26, ITSecTeam, Nemesis Kitten, DireFate, Sayad, CharmingCypress, Newscaster Team, TunnelVision, Agent Serpens, RICH ION, DEV-0270, Storm-0270
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -189,7 +218,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1486](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1486) Data Encrypted for Impact | Magic Hound has used BitLocker and DiskCryptor to encrypt targeted workstations. | 160 | 10 | 1 |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -206,7 +235,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1087.003 Email Account | 3 | 3.58 |
 | T1114 Email Collection | 3 | 3.58 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -224,11 +253,13 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Systeminfo](https://attack.mitre.org/software/S0096/) | ferramenta | 1 |  |
 | [Ping](https://attack.mitre.org/software/S0097/) | ferramenta | 1 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** ALFA TEaM Shell, DROPSHOT, TURNEDUP, SHAPESHIFT, malicious HTA files, MacDownloader, GHOLE, Core Impact, CWoolger, FireMalv, .NETWoolger, MPK, Open source tools, Puppy RAT, MagicHound.Leash (IRC Bot), PowGoop (Downloader.Covic), Plink, Bitlocker, Shredder (wiper)
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **75 de 78 técnicas (96%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -237,6 +268,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1591.001 Determine Physical Locations** — Reconnaissance
 - **T1598.003 Spearphishing Link** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
 - **T1585.002 Email Accounts** — Resource Development
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 66 |
+| EDR / XDR | 57 |
+| Outros / genérico | 52 |
+| Linux | 50 |
+| Servidores web & aplicações | 42 |
+| Firewall & perímetro | 39 |
+| macOS | 39 |
+| DNS | 37 |
+| Microsoft 365 | 34 |
+| Active Directory | 33 |
+| AWS | 33 |
+| E-mail | 33 |
 
 ### Regras recomendadas por técnica
 
@@ -391,7 +441,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1686.003 | [Suspicious Program Location Whitelisted In Firewall Via Netsh.EXE](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Aa35f5a72-f347-4e36-8895-9869b0d5fc6d) | Sigma | SigmaHQ |
 | T1686.003 | [RDP Connection Allowed Via Netsh.EXE](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A01aeb693-138d-49d2-9403-c4f52d7d3d62) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -518,7 +568,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1482 — [ID800,4103,4104-Active Directory Forest PowerShell class](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0007-Discovery/T1482-Domain%20Trust%20Discovery/ID800%2C4103%2C4104-Active%20Directory%20Forest%20PowerShell%20class.evtx) _(explícito)_
 - T1486 — [ID 768,775,793,796,817,840-BitLocker encryption activated](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0040-Impact/T1486-Data%20Encrypted%20for%20Impact/ID%20768%2C775%2C793%2C796%2C817%2C840-BitLocker%20encryption%20activated.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Magic Hound estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -535,7 +585,7 @@ Se Magic Hound estiver no seu ambiente, estas são as perguntas a fazer aos seus
 11. **T1567 Exfiltration Over Web Service** — Processes that normally do not initiate network communications suddenly making outbound HTTPS connections with high outbound-to-inbound data ratios. Defender view: correlation between process creation logs (e.g., Word, Excel, PowerShell) and subsequent… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:Sysmon` (EventCode=11).
 12. **T1584.001 Domains** — Monitor for logged domain name system (DNS) registry data that may hijack domains and/or subdomains that can be used during targeting. In some cases, abnormal subdomain IP addresses (such as those originating in a different country from the root domain) may… Dados: `Domain Name` (None), `Domain Name` (None), `Domain Name` (None).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -561,7 +611,18 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2022 — [PowerLess Trojan_ Iranian APT Phosphorus Adds New PowerShell Backdoor for Espionage](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.02.01.Phosphorus_APT/PowerLess%20Trojan_%20Iranian%20APT%20Phosphorus%20Adds%20New%20PowerShell%20Backdoor%20for%20Espionage.pdf) _(via “Phosphorus”)_
 - 2022 — [Old cat, new tricks, bad habits](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2022/2022.07.26.Charming_Kitten_APT/Old%20cat%2C%20new%20tricks%2C%20bad%20habits.pdf) _(via “Charming Kitten”)_
 
-## 11. Bibliografia (25 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (8 no total, mais recentes primeiro):
+
+- 2022 — [APT35 Automates Initial Access Using ProxyShell](https://app.box.com/s/effdjg8nuddhq3e9ooywuesizw5b0e3w) _(TheDFIRreport)_
+- 2017 — [Charming Kitten: Iranian Cyber Espionage Against Human Rights Activists](https://app.box.com/s/3eqrk7r3hvx4e61vznh61mmw75u3zira) _(Clearsky)_
+- 2017 — [Charming Kitten: CSV Data](https://app.box.com/s/gair4givf0gt8ga4c65vtkj3na9wba2n) _(Clearsky)_
+- 2017 — [Magic Hound Campaign Attacks Saudi Targets](https://app.box.com/s/qg2l481eu51ab9znszagv2ktlh4bh9z5) _(Palo Alto Networks)_
+- 2015 — [Rocket Kitten: A Campaign With 9 Lives](https://app.box.com/s/vhe51fr5m6kqqzbkkcuukta6nucn9p6a) _(Checkpoint)_
+- 2014 — [Sayad (Flying Kitten) Infostealer: Is This The Work Of The Iranian Ajax Security Team?](https://app.box.com/s/hjjb0aysslxse1ehpyt5ny68lf8tyctg) _(Vinsula)_
+- 2014 — [Operation Saffron Rose](https://app.box.com/s/pnagcb7vgpqaxen71n2x557m05q7dazl) _(FireEye)_
+- 2014 — [Cat Scratch Fever: Crowdstrike Tracks Newly Reported Iranian Actor As Flying Kitten](https://app.box.com/s/vr9chzv8t952gywbaom6r0p4bo4pub8r) _(Crowdstrike)_
+
+## 12. Bibliografia (25 fontes citadas pelo ATT&CK)
 
 - [Certfa Charming Kitten January 2021](https://blog.certfa.com/posts/charming-kitten-christmas-gift/) — Certfa Labs. (2021, January 8). Charming Kitten’s Christmas Gift. Retrieved May 3, 2021.
 - [Check Point APT35 CharmPower January 2022](https://research.checkpoint.com/2022/apt35-exploits-log4j-vulnerability-to-distribute-new-modular-powershell-toolkit/) — Check Point. (2022, January 11). APT35 exploits Log4j vulnerability to distribute new modular PowerShell toolkit. Retrieved January 24, 2022.
@@ -589,7 +650,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Unit 42 Magic Hound Feb 2017](https://researchcenter.paloaltonetworks.com/2017/02/unit42-magic-hound-campaign-attacks-saudi-targets/) — Lee, B. and Falcone, R. (2017, February 15). Magic Hound Campaign Attacks Saudi Targets. Retrieved December 27, 2017.
 - [US District Court of DC Phosphorus Complaint 2019](https://noticeofpleadings.com/phosphorus/files/Complaint.pdf) — US District Court of DC. (2019, March 14). MICROSOFT CORPORATION v. JOHN DOES 1-2, CONTROLLING A COMPUTER NETWORK AND THEREBY INJURING PLAINTIFF AND ITS CUSTOMERS. Retrieved March 8, 2021.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -597,4 +658,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

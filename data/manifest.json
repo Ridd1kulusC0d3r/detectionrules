@@ -1,6 +1,6 @@
 {
- "total": 84570,
- "generated": "2026-10-24",
+ "total": 84578,
+ "generated": "2026-10-26",
  "chunked": true,
  "sources": [
   {
@@ -310,6 +310,13 @@
    "n": 10,
    "chunks": 1,
    "bytes": 6389
+  },
+  {
+   "slug": "llminjection-ia-llm-agentes",
+   "name": "LLmInjection (IA/LLM/agentes)",
+   "n": 8,
+   "chunks": 1,
+   "bytes": 13405
   },
   {
    "slug": "spiderlabs-malware-analysis-yara",

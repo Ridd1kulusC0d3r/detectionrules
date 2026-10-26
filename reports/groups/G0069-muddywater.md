@@ -1,8 +1,9 @@
 # MuddyWater (G0069) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0069) · [ATT&CK](https://attack.mitre.org/groups/G0069/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0069) · [ATT&CK](https://attack.mitre.org/groups/G0069/)
 
 **Também conhecido como:** Earth Vetala, MERCURY, Static Kitten, Seedworm, TEMP.Zagros, Mango Sandstorm, TA450, MuddyKrill  
+**Origem atribuída:** Irã · **Motivação:** espionagem · **Setores-alvo:** Educação e pesquisa, Governo, Defesa e militar  
 **Registro no ATT&CK:** criado em 2018-04-18, atualizado em 2026-07-31 · referências de 2017 a 2026
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 11 malware e 10 ferramentas (ex.: Empire, PowerSploit, POWERSTATS, Koadic, RustyWater).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 99% das técnicas têm ao menos uma regra no catálogo; **1 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Irã**, motivação espionagem; setores Educação e pesquisa, Governo, Defesa e militar; 9 países vítimas citados.
+- **Onde a cobertura está:** Windows (62 técnicas com regra), EDR / XDR (56 técnicas com regra), Linux (50 técnicas com regra), Outros / genérico (44 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1137.001 Office Template Macros, T1218.003 CMSTP, T1204.004 Malicious Copy and Paste, T1003.005 Cached Domain Credentials, T1027.004 Compile After Delivery.
 
 ## 2. Quem é
@@ -19,7 +22,31 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Irã |
+| Motivação | espionagem |
+| Setores-alvo | Educação e pesquisa, Governo, Defesa e militar |
+| Vítimas citadas | Georgia, India, Iraq, Israel, Pakistan, Saudi Arabia, Turkey, United Arab Emirates, United States |
+| Alvos (planilha) | Israel,Academic Sector,individuals in Asia and the Middle East, government and defense entities in Central and Southwest Asia |
+| Operações conhecidas | BlackWater, Operation Quicksand |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| CrowdStrike | Static Kitten, Yellow nix, POWERSTATS, NTSTATS |
+| MITRE ATT&CK | G0069 |
+| Microsoft | Mango Sandstorm, MERCURY (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Cobalt Ulster, SectorD02, DarkBit, Boggy Serpens, ATK51, Yellow nix, POWERSTATS, NTSTATS, MUDDYCOAST, MUDDY ION, Temp.Zagros/UNC3313, Mercury/Mango Sandstorm, ITG17, T-APT-14, STAC1171
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -165,7 +192,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1041](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1041) Exfiltration Over C2 Channel | MuddyWater has used C2 infrastructure to receive exfiltrated data. | 135 | 2 | — |
 | [T1567.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1567.002) Exfiltration to Cloud Storage | MuddyWater has attempted to exfiltrate data to Wasabi, a cloud storage service, using Rclone. | 85 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -182,7 +209,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1534 Internal Spearphishing | 6 | 3.11 |
 | T1566 Phishing | 7 | 2.99 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -208,17 +235,50 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [RemoteUtilities](https://attack.mitre.org/software/S0592/) | ferramenta | 4 |  |
 | [ConnectWise](https://attack.mitre.org/software/S0591/) | ferramenta | 3 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** PoweMuddy, ScreenConnect, MoriAgent, Pudpoul, Thanos Ransomware, Covicli, DarkBit, MuddyRot
+
+### Ferramentas observadas em intrusões (DarkBit) — Ransomware Tool Matrix
+
+Ferramentas legítimas e ofensivas que afiliados usam dentro da rede. Cada uma é um ponto de detecção: veja quantas regras do catálogo a citam.
+
+| Ferramenta | Categoria | Regras que citam |
+|---|---|---:|
+| OpenSSH | rede | 130 |
+| AADInternals | credenciais | 20 |
+| RPort | rmm | 18 |
+| Ligolo | rede | 1 |
+| eHorus | rmm | 1 |
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **67 de 68 técnicas (99%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
 ### Técnicas sem regra pública (prioridade para engenharia de detecção)
 
 - **T1590.004 Network Topology** — Reconnaissance
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 62 |
+| EDR / XDR | 56 |
+| Linux | 50 |
+| Outros / genérico | 44 |
+| macOS | 40 |
+| Servidores web & aplicações | 39 |
+| Firewall & perímetro | 38 |
+| DNS | 35 |
+| Proxy / SWG | 35 |
+| IA, LLMs & agentes | 34 |
+| Microsoft 365 | 34 |
+| E-mail | 33 |
 
 ### Regras recomendadas por técnica
 
@@ -359,7 +419,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685 | [Windows Defender Configuration Changes](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A801bd44f-ceed-4eb6-887c-11544633c0aa) | Sigma | SigmaHQ |
 | T1685 | [Windows Defender Virus Scanning Feature Disabled](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A686c0b4b-9dd3-4847-9077-d6c1bbe36fcb) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -481,7 +541,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1548.002 — [Invoke_TokenDuplication_UAC_Bypass4624](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Privilege%20Escalation/Invoke_TokenDuplication_UAC_Bypass4624.evtx) _(inferido)_
 - T1555 — [ID4662-Sensitve DPAPI attributes accessed](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0006-Credential%20Access/T1555-Credentials%20from%20Password%20Stores/ID4662-Sensitve%20DPAPI%20attributes%20accessed.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se MuddyWater estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -498,7 +558,7 @@ Se MuddyWater estiver no seu ambiente, estas são as perguntas a fazer aos seus 
 11. **T1027.003 Steganography** — Detects execution of image viewers or PowerShell scripts accessing or decoding files with mismatched MIME headers or embedded script-like byte patterns; often correlated with suspicious parent-child process lineage and outbound connections. Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:Security` (EventCode=4663, 4670, 4656).
 12. **T1090.002 External Proxy** — Unusual process (e.g., `rundll32`, `mshta`, `wscript`, or custom payloads) initiates network connection to external IPs/domains that proxy C2 traffic, often over uncommon ports or high entropy HTTP/S connections. Dados: `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Microsoft-Windows-Windows Defender/Operational` (Unusual external domain access).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -527,7 +587,13 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2023 — [Seedworm_ Iranian Hackers Target Telecoms Orgs in North and East Africa _ Symantec Enterprise Blogs](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2023/2023.12.19.Seedworm/Seedworm_%20Iranian%20Hackers%20Target%20Telecoms%20Orgs%20in%20North%20and%20East%20Africa%20_%20Symantec%20Enterprise%20Blogs.pdf) _(via “Seedworm”)_
 - 2024 — [new-bugsleep-backdoor-deployed-in-recent-muddywater-campaigns](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2024/2024.07.15.New_BugSleep_Backdoor_Deployed_in_Recent_MuddyWater_Campaigns/new-bugsleep-backdoor-deployed-in-recent-muddywater-campaigns.pdf) _(via “MuddyWater”)_
 
-## 11. Bibliografia (30 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (3 no total, mais recentes primeiro):
+
+- 2023 — [Seedworm: Iranian Hackers Target Telecoms Orgs in North and East Africa](https://app.box.com/s/hn3cttmgg2ijnz0qr41iwh6kpgenapvr) _(Symantec)_
+- 2023 — [MuddyWater eN-Able spear-phishing with new TTPs](https://app.box.com/s/gqeknolwao8lmfefd96uu2ilva5i67cs) _(deepinstinct)_
+- 2022 — [Iranian linked conglomerate MuddyWater comprised of regionally focused subgroups](https://app.box.com/s/r0nmwkejtgytsl6q6i60hrwxgbdbzetz) _(talosintelligence)_
+
+## 12. Bibliografia (30 fontes citadas pelo ATT&CK)
 
 - [Anomali Static Kitten February 2021](https://www.anomali.com/blog/probable-iranian-cyber-actors-static-kitten-conducting-cyberespionage-campaign-targeting-uae-and-kuwait-government-agencies) — Mele, G. et al. (2021, February 10). Probable Iranian Cyber Actors, Static Kitten, Conducting Cyberespionage Campaign Targeting UAE and Kuwait Government Agencies. Retrieved March 17, 2021.
 - [Checkpoint_MOISCyberCrime_Mar2026](https://research.checkpoint.com/2026/iranian-mois-actors-the-cyber-crime-connection/) — CheckPoint Research. (2026, March 10). Iranian MOIS Actors & the Cyber Crime Connection. Retrieved March 12, 2026.
@@ -560,7 +626,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [TrendMicro POWERSTATS V3 June 2019](https://blog.trendmicro.com/trendlabs-security-intelligence/muddywater-resurfaces-uses-multi-stage-backdoor-powerstats-v3-and-new-post-exploitation-tools/) — Lunghi, D. and Horejsi, J.. (2019, June 10). MuddyWater Resurfaces, Uses Multi-Stage Backdoor POWERSTATS V3 and New Post-Exploitation Tools. Retrieved May 14, 2020.
 - [Unit 42 MuddyWater Nov 2017](https://researchcenter.paloaltonetworks.com/2017/11/unit42-muddying-the-water-targeted-attacks-in-the-middle-east/) — Lancaster, T.. (2017, November 14). Muddying the Water: Targeted Attacks in the Middle East. Retrieved March 15, 2018.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -568,4 +634,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

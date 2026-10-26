@@ -1,8 +1,9 @@
 # Chimera (G0114) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0114) · [ATT&CK](https://attack.mitre.org/groups/G0114/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0114) · [ATT&CK](https://attack.mitre.org/groups/G0114/)
 
 **Também conhecido como:** —  
+**Origem atribuída:** China · **Motivação:** indefinido · **Setores-alvo:** Sociedade civil e mídia, Educação e pesquisa, Governo, Infraestrutura crítica, Indústria, Tecnologia  
 **Registro no ATT&CK:** criado em 2020-08-24, atualizado em 2026-07-31 · referências de 2020 a 2021
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 1 malware e 5 ferramentas (ex.: Cobalt Strike, Mimikatz, Net, BloodHound, esentutl).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 97% das técnicas têm ao menos uma regra no catálogo; **2 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação indefinido; setores Sociedade civil e mídia, Educação e pesquisa, Governo, Infraestrutura crítica, Indústria; 18 países vítimas citados.
+- **Onde a cobertura está:** Windows (55 técnicas com regra), EDR / XDR (49 técnicas com regra), Linux (39 técnicas com regra), Outros / genérico (39 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1556.001 Domain Controller Authentication, T1110.004 Credential Stuffing, T1201 Password Policy Discovery, T1111 Multi-Factor Authentication Interception, T1021.006 Windows Remote Management.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | indefinido |
+| Setores-alvo | Sociedade civil e mídia, Educação e pesquisa, Governo, Infraestrutura crítica, Indústria, Tecnologia |
+| Vítimas citadas | China, Egypt, Gaza, Iran, Iraq, Israel, Japan, Jordan, Kuwait, Lebanon, Mongolia, North Korea, Oman, Saudi Arabia, South Korea, Syria, Turkey, Yemen |
+| Alvos (planilha) | Taiwan semiconductors |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | Mid |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0114 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** GELSEMIUM, Red Charon
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -164,7 +189,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1041](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1041) Exfiltration Over C2 Channel | Chimera has used Cobalt Strike C2 beacons for data exfiltration. | 135 | 2 | — |
 | [T1567.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1567.002) Exfiltration to Cloud Storage | Chimera has exfiltrated stolen data to OneDrive accounts. | 85 | 2 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -181,7 +206,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1213.002 Sharepoint | 7 | 2.99 |
 | T1039 Data from Network Shared Drive | 8 | 2.88 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -192,11 +217,13 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [esentutl](https://attack.mitre.org/software/S0404/) | ferramenta | 6 |  |
 | [PsExec](https://attack.mitre.org/software/S0029/) | ferramenta | 5 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** OwlProxy, SessionManager
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **57 de 59 técnicas (97%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -204,6 +231,25 @@ Nenhuma campanha atribuída no ATT&CK.
 
 - **T1556.001 Domain Controller Authentication** — Defense Impairment. Fonte de log sugerida pelo MITRE: `WinEventLog:Sysmon` EventCode=10
 - **T1680 Local Storage Discovery** — Discovery. Fonte de log sugerida pelo MITRE: `WinEventLog:Sysmon` EventCode=1; `auditd:SYSCALL` execve call with argv matching known disk enumeration commands (lsblk, parted, fdisk); `macos:unifiedlog` process launch of diskutil or system_profil
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 55 |
+| EDR / XDR | 49 |
+| Linux | 39 |
+| Outros / genérico | 39 |
+| Servidores web & aplicações | 35 |
+| Active Directory | 31 |
+| IDS / NSM / NDR | 29 |
+| macOS | 29 |
+| DNS | 26 |
+| Firewall & perímetro | 26 |
+| Proxy / SWG | 25 |
+| AWS | 25 |
 
 ### Regras recomendadas por técnica
 
@@ -326,7 +372,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1685.005 | [Suspicious Eventlog Clearing or Configuration Change Activity](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Acc36992a-4671-4f21-a91d-6c2b72a2edf5) | Sigma | SigmaHQ |
 | T1685.005 | [Log Cleared](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=hayabusa-native%3A%3Ac2f690ac-53f8-4745-8cfe-7127dda28c74) | Sigma | Hayabusa (native) |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -457,7 +503,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1078 — [ID33205-SQL Server failed login with disabled SA account](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0001-Initial%20access/T1078-Valid%20accounts/ID33205-SQL%20Server%20failed%20login%20with%20disabled%20SA%20account.evtx) _(explícito)_
 - T1078.002 — [ID4964-Login of a member of a special group](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1078.002-Valid%20accounts-Domain%20accounts/ID4964-Login%20of%20a%20member%20of%20a%20special%20group.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Chimera estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -474,7 +520,7 @@ Se Chimera estiver no seu ambiente, estas são as perguntas a fazer aos seus dad
 11. **T1482 Domain Trust Discovery** — Adversary uses nltest, PowerShell, or Win32/.NET API to enumerate domain trust relationships (via DSEnumerateDomainTrusts, GetAllTrustRelationships, or LDAP queries), followed by discovery or authentication staging. Dados: `WinEventLog:Sysmon` (EventCode=1), `WinEventLog:Sysmon` (EventCode=7), `WinEventLog:Sysmon` (EventCode=10).
 12. **T1680 Local Storage Discovery** — Drive enumeration using PowerShell (`Get-PSDrive`), `wmic logicaldisk`, or Win32 API indicative of local volume enumeration by non-admin users or executed outside of baseline system inventory scripts. Dados: `WinEventLog:Sysmon` (EventCode=1).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -490,12 +536,12 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2020 — [[TLP-White]20200415 Chimera_V4.1](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.04.15_Chimera_APT/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf) _(via “Chimera”)_
 - 2021 — [research.nccgroup.com-Abusing cloud services to fly under the radar](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.01.12.Abusing_cloud_services_Chimera/research.nccgroup.com-Abusing%20cloud%20services%20to%20fly%20under%20the%20radar.pdf) _(via “Chimera”)_
 
-## 11. Bibliografia (2 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (2 fontes citadas pelo ATT&CK)
 
 - [Cycraft Chimera April 2020](https://cycraft.com/download/CyCraft-Whitepaper-Chimera_V4.1.pdf) — Cycraft. (2020, April 15). APT Group Chimera - APT Operation Skeleton key Targets Taiwan Semiconductor Vendors. Retrieved August 24, 2020..
 - [NCC Group Chimera January 2021](https://web.archive.org/web/20230218064220/https://research.nccgroup.com/2021/01/12/abusing-cloud-services-to-fly-under-the-radar/) — Jansen, W . (2021, January 12). Abusing cloud services to fly under the radar. Retrieved September 12, 2024.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -503,4 +549,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

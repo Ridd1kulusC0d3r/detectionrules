@@ -1,8 +1,9 @@
 # Axiom (G0001) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0001) · [ATT&CK](https://attack.mitre.org/groups/G0001/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0001) · [ATT&CK](https://attack.mitre.org/groups/G0001/)
 
 **Também conhecido como:** Group 72  
+**Origem atribuída:** China · **Motivação:** espionagem · **Setores-alvo:** Sociedade civil e mídia, Governo, Defesa e militar, Setor privado (genérico), Tecnologia  
 **Registro no ATT&CK:** criado em 2017-05-31, atualizado em 2026-07-31 · referências de 2013 a 2015
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 8 malware e 0 ferramentas (ex.: PlugX, ZxShell, gh0st RAT, Hydraq, Derusbi).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 81% das técnicas têm ao menos uma regra no catálogo; **3 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **China**, motivação espionagem; setores Sociedade civil e mídia, Governo, Defesa e militar, Setor privado (genérico), Tecnologia; 11 países vítimas citados.
+- **Onde a cobertura está:** Windows (13 técnicas com regra), EDR / XDR (12 técnicas com regra), Outros / genérico (11 técnicas com regra), Linux (9 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1001.002 Steganography, T1553 Subvert Trust Controls, T1563.002 RDP Hijacking, T1583.002 DNS Server, T1584.005 Botnet.
 
 ## 2. Quem é
@@ -19,7 +22,32 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | China |
+| Motivação | espionagem |
+| Setores-alvo | Sociedade civil e mídia, Governo, Defesa e militar, Setor privado (genérico), Tecnologia |
+| Vítimas citadas | Belgium, China, Germany, Indonesia, Italy, Japan, Netherlands, Russia, Switzerland, United Kingdom, United States |
+| Alvos (planilha) | — |
+| Operações conhecidas | SMN |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| Cisco Talos | Group 72 |
+| MITRE ATT&CK | G0001 |
+| Mandiant | APT17 |
+| iSight | Tailgater Team |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** APT17, Tailgater Team, Dogfish (iDefense), Deputy Dog (iDefense), Winnti Umbrella, Group 8, AURORA PANDA, Hidden Lynx, Dogfish, BRONZE KEYSTONE, HELIUM, Heart Typhoon
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -98,7 +126,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1001.002](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1001.002) Steganography | Axiom has used steganography to hide its C2 communications. | 4 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -115,7 +143,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1560 Archive Collected Data | 12 | 2.55 |
 | T1583.003 Virtual Private Server | 18 | 2.19 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -128,11 +156,13 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [Hikit](https://attack.mitre.org/software/S0009/) | malware | 11 |  |
 | [Zox](https://attack.mitre.org/software/S0672/) | malware | 9 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Winnti, Deputy Dog, HTRAN, HDRoot, Fscan, Timestomper
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **13 de 16 técnicas (81%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -141,6 +171,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1583.002 DNS Server** — Resource Development
 - **T1584.005 Botnet** — Resource Development
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 13 |
+| EDR / XDR | 12 |
+| Outros / genérico | 11 |
+| Linux | 9 |
+| macOS | 9 |
+| Microsoft 365 | 9 |
+| Firewall & perímetro | 9 |
+| IDS / NSM / NDR | 9 |
+| Active Directory | 8 |
+| AWS | 8 |
+| Servidores web & aplicações | 8 |
+| IA, LLMs & agentes | 8 |
 
 ### Regras recomendadas por técnica
 
@@ -175,7 +224,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1566 | [CVE-2021-31979 CVE-2021-33771 Exploits by Sourgum](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3Aad7085ac-92e4-4b76-8ce2-276d2c0e68ef) | Sigma | SigmaHQ |
 | T1566 | [CVE-2021-31979 CVE-2021-33771 Exploits](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=sigmahq%3A%3A32b5db62-cb5f-4266-9639-0fa48376ac00) | Sigma | SigmaHQ |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -202,7 +251,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1078 — [ID33205-SQL Server failed login with disabled SA account](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0001-Initial%20access/T1078-Valid%20accounts/ID33205-SQL%20Server%20failed%20login%20with%20disabled%20SA%20account.evtx) _(explícito)_
 - T1553 — [ID12-13 SIP provider registration](https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/TA0005-Defense%20Evasion/T1553-%20Subvert%20Trust%20Controls/ID12-13%20SIP%20provider%20registration.evtx) _(explícito)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Axiom estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -219,7 +268,7 @@ Se Axiom estiver no seu ambiente, estas são as perguntas a fazer aos seus dados
 11. **T1203 Exploitation for Client Execution** — Cause→effect chain: (1) A client app (browser, Office, PDF/Flash/reader) experiences a crash/abnormal exit or loads from an unusual location, then (2) drops or modifies a file in user-writable paths, and/or (3) spawns an unexpected child (e.g.,… Dados: `WinEventLog:Application` (EventCode=1000), `WinEventLog:Sysmon` (EventCode=11), `WinEventLog:Sysmon` (EventCode=1).
 12. **T1005 Data from Local System** — Adversaries collecting local files via PowerShell, WMI, or direct file API calls often include recursive file listings, targeted file reads, and temporary file staging. Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=11).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -235,7 +284,13 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2014 — [Group_72](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2014/2014.10.14.Group_72/Group_72.pdf) _(via “Group 72”)_
 - 2014 — [Group72_Opening_ZxShell](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2014/2014.10.28.Group_72_ZxShell/Group72_Opening_ZxShell.pdf) _(via “Group 72”)_
 
-## 11. Bibliografia (6 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (3 no total, mais recentes primeiro):
+
+- 2014 — [Threat Spotlight: Group 72, Opening The Zxshell](https://app.box.com/s/89uahki8m2ksfgc8pysjw6utcqjp4q9u) _(Cisco)_
+- 2014 — [Threat Spotlight: Group 72](https://app.box.com/s/mtk3zeae1823kz2hv3f7z6pgjgwxlkyl) _(Cisco)_
+- 2013 — [Hidden Lynx: Professional Hackers For Hire](https://app.box.com/s/m7yxjl7nljw2iltpbasm7t2dswhya6iv) _(Symantec)_
+
+## 12. Bibliografia (6 fontes citadas pelo ATT&CK)
 
 - [Cisco Group 72](http://blogs.cisco.com/security/talos/threat-spotlight-group-72) — Esler, J., Lee, M., and Williams, C. (2014, October 14). Threat Spotlight: Group 72. Retrieved January 14, 2016.
 - [Kaspersky Winnti April 2013](https://securelist.com/winnti-more-than-just-a-game/37029/) — Kaspersky Lab's Global Research and Analysis Team. (2013, April 11). Winnti. More than just a game. Retrieved February 8, 2017.
@@ -244,7 +299,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Novetta-Axiom](https://web.archive.org/web/20230115144216/http://www.novetta.com/wp-content/uploads/2014/11/Executive_Summary-Final_1.pdf) — Novetta. (n.d.). Operation SMN: Axiom Threat Actor Group Report. Retrieved November 12, 2014.
 - [Talos ZxShell Oct 2014](https://blogs.cisco.com/security/talos/opening-zxshell) — Allievi, A., et al. (2014, October 28). Threat Spotlight: Group 72, Opening the ZxShell. Retrieved September 24, 2019.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -252,4 +307,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

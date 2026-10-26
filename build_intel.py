@@ -24,6 +24,24 @@ objs = B["objects"]; byid = {o["id"]: o for o in objs}
 live = lambda o: not o.get("revoked") and not o.get("x_mitre_deprecated")
 TECH = A["techniques"]; TAC = {t["short"]: t for t in A["tactics"]}; TAC_ORDER = [t["short"] for t in A["tactics"]]
 NG = len(A["groups"])
+def _j(p, d):
+    try: return json.load(open(p, encoding="utf-8"))
+    except Exception: return d
+AX = _j("data/graph/actors.json", {"g": {}, "paises": {}})      # APT4ALL (build_context.py)
+RW = _j("data/graph/ransomware.json", {"tools": [], "gangs": []})
+IX = _j("data/index.json", {})
+# regras por (tecnologia, técnica) — para "onde procurar" no dossiê
+TT = collections.Counter(); TECHN = {}
+if IX:
+    ci = {c: i for i, c in enumerate(IX["cols"])}
+    TECHN = {i: t["n"] for i, t in enumerate(IX.get("tech", []))}
+    for row in IX["rows"]:
+        for tid in set(A["rev"].get(x, x) for x in (row[ci["techniques"]] or [])):
+            for k in row[ci["tech"]]: TT[(k, tid)] += 1
+RW_TOOL = {t["n"]: t for t in RW.get("tools", [])}
+RW_BY_GID = collections.defaultdict(list)
+for g in RW.get("gangs", []):
+    if g.get("gid"): RW_BY_GID[g["gid"]].append(g)
 
 def ext(o):
     for r in o.get("external_references", []):
@@ -90,8 +108,26 @@ for g in A["groups"]:
         "d": clean(so.get("description")), "cr": so.get("created", "")[:10], "md": so.get("modified", "")[:10],
         "contrib": so.get("x_mitre_contributors", []), "dom": so.get("x_mitre_domains", []),
         "tech": tech, "sw": sorted(sw, key=lambda s: -s["t"]), "camp": camps, "refs": sorted(refs.values(), key=lambda r: r["n"].lower()),
-        "rep": g["rep"], "yrs": [years[0], years[-1]] if years else []}
+        "rep": g["rep"], "yrs": [years[0], years[-1]] if years else [], "ctx": AX["g"].get(g["id"], {}),
+        "rw": sorted([{"n": t, "cat": RW_TOOL.get(t, {}).get("cat", ""), "r": RW_TOOL.get(t, {}).get("r", 0)} for t in {t for g_ in RW_BY_GID.get(g["id"], []) for t in g_["t"]}], key=lambda z: -z["r"]),
+        "rwg": [g_["n"] for g_ in RW_BY_GID.get(g["id"], [])]}
 json.dump(profiles, open("data/graph/groups.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+story = {}
+users = collections.defaultdict(list)
+for gid_, p_ in profiles.items():
+    for t in p_["tech"]:
+        if t["pr"]: users[t["id"]].append((len(p_["tech"]), gid_, p_["n"], t["pr"][0]["p"]))
+TIDX = {s_: i for i, s_ in enumerate(TAC_ORDER)}
+for tid, us in users.items():
+    us.sort(key=lambda z: -z[0])
+    first = min((TIDX.get(s_, 99) for s_ in TECH[tid]["ta"]), default=99)
+    nxt = collections.Counter()
+    for _, gid_, _, _ in us:
+        for t in profiles[gid_]["tech"]:
+            if t["id"] != tid and min((TIDX.get(s_, 99) for s_ in t["ta"]), default=99) == first + 1: nxt[t["id"]] += 1
+    story[tid] = {"u": [{"g": g_, "n": n_, "c": AX["g"].get(g_, {}).get("pais", ""), "cn": AX["g"].get(g_, {}).get("pais_n", ""), "p": pr_[:280]} for _, g_, n_, pr_ in us[:4]],
+                  "nu": len(TECH[tid]["g"]), "nx": [[t, TECH[t]["n"], c] for t, c in nxt.most_common(3)]}
+json.dump(story, open("data/graph/story.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 
 # ---------------------------------------------------------------- dossiês Markdown
 os.makedirs("reports/groups", exist_ok=True)
@@ -112,18 +148,49 @@ for gid, p in sorted(profiles.items(), key=lambda kv: -len(kv[1]["tech"])):
     sig = sorted(tech, key=lambda t: -t["idf"])[:10]
     malware = [s for s in p["sw"] if s["k"] == "malware"]; tools = [s for s in p["sw"] if s["k"] == "tool"]
     names = [p["n"]] + p["al"]
+    cx = p.get("ctx") or {}
+    gangs = RW_BY_GID.get(gid, [])
+    ttools = sorted({t for g_ in gangs for t in g_["t"]})
+    where = collections.Counter()
+    for t in tech:
+        for k in TECHN:
+            if TT.get((k, t["id"])): where[k] += 1
     L = []
     L += [f"# {p['n']} ({gid}) — Dossiê de inteligência", "",
           f"> **TLP:CLEAR** · gerado em {TODAY} a partir de fontes abertas · MITRE ATT&CK v{A['version']} · [abrir no site]({SITE}#group={gid}) · [ATT&CK](https://attack.mitre.org/groups/{gid}/)", "",
-          f"**Também conhecido como:** {', '.join(p['al']) or '—'}  ", f"**Registro no ATT&CK:** criado em {p['cr']}, atualizado em {p['md']}" + (f" · referências de {p['yrs'][0]} a {p['yrs'][1]}" if p['yrs'] else ""), ""]
+          f"**Também conhecido como:** {', '.join(p['al']) or '—'}  ",
+          *( [f"**Origem atribuída:** {cx.get('pais_n') or '—'} · **Motivação:** {', '.join(cx.get('mot') or []) or '—'} · **Setores-alvo:** {', '.join(cx.get('set') or []) or '—'}  "] if cx else [] ),
+          f"**Registro no ATT&CK:** criado em {p['cr']}, atualizado em {p['md']}" + (f" · referências de {p['yrs'][0]} a {p['yrs'][1]}" if p['yrs'] else ""), ""]
     L += ["## 1. Sumário executivo", "",
           f"- **{n} técnicas** atribuídas publicamente, concentradas em **{', '.join(top_tac) or '—'}**.",
           f"- **Arsenal:** {len(malware)} malware e {len(tools)} ferramentas" + (f" (ex.: {', '.join(s['n'] for s in p['sw'][:5])})." if p['sw'] else "."),
           f"- **Campanhas atribuídas:** {len(p['camp'])}" + (f" ({', '.join(c['n'] for c in p['camp'][:3])})." if p['camp'] else "."),
           f"- **Cobertura de detecção pública:** {pct}% das técnicas têm ao menos uma regra no catálogo; **{len(gaps)} técnicas sem nenhuma regra pública**.",
+          *( [f"- **Origem e alvos (APT4ALL):** atribuído a **{cx.get('pais_n')}**" + (f", motivação {', '.join(cx['mot'])}" if cx.get('mot') else "") + (f"; setores {', '.join(cx['set'][:5])}" if cx.get('set') else "") + (f"; {len(cx.get('vit_iso') or [])} países vítimas citados" if cx.get('vit_iso') else "") + "."] if cx.get("pais_n") else [] ),
+          *( [f"- **Onde a cobertura está:** " + ", ".join(f"{TECHN[k]} ({v} técnicas com regra)" for k, v in where.most_common(4)) + "."] if where else [] ),
           f"- **Assinatura comportamental** (técnicas raras entre os {NG} grupos, as mais úteis para atribuição): " + ", ".join(f"{t['id']} {t['n']}" for t in sig[:5]) + ".", ""]
     L += ["## 2. Quem é", "", "> " + p["d"].replace("\n", "\n> "), "", "_Texto original do MITRE ATT&CK, em inglês._", ""]
-    L += ["## 3. Perfil TTP por tática (kill chain)", "", "Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.", ""]
+    L += ["## 3. Contexto, nomes e alvos", ""]
+    if cx:
+        L += [f"Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.", "",
+              "| Campo | Valor |", "|---|---|",
+              f"| Origem atribuída | {md_cell(cx.get('pais_n') or '—')} |",
+              f"| Motivação | {md_cell(', '.join(cx.get('mot') or []) or '—')} |",
+              f"| Setores-alvo | {md_cell(', '.join(cx.get('set') or []) or '—')} |",
+              f"| Vítimas citadas | {md_cell(', '.join(cx.get('vit') or [])[:600] or '—')} |",
+              f"| Alvos (planilha) | {md_cell(cx.get('alvos') or '—')} |",
+              f"| Operações conhecidas | {md_cell(', '.join(cx.get('ops') or []) or '—')} |",
+              f"| Confiança de atribuição (MISP) | {md_cell(str(cx.get('conf') or '—'))} |", ""]
+        if cx.get("forn"):
+            L += ["**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):", "", "| Fornecedor | Nome(s) |", "|---|---|"]
+            for v, ns in sorted(cx["forn"].items()): L.append(f"| {md_cell(v)} | {md_cell(', '.join(ns))} |")
+            L.append("")
+        if len(cx.get("al") or []) > len(p["al"]):
+            extra_al = [a for a in cx["al"] if a not in p["al"] and a != p["n"]]
+            if extra_al: L += [f"**Outros nomes no APT4ALL (não listados pelo ATT&CK):** {', '.join(extra_al[:40])}", ""]
+    else:
+        L += ["Este grupo ainda não tem registro consolidado no APT4ALL (país, setores e nomes por fornecedor).", ""]
+    L += ["## 4. Perfil TTP por tática (kill chain)", "", "Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.", ""]
     for s in TAC_ORDER:
         rows = [t for t in tech if s in t["ta"]]
         if not rows: continue
@@ -132,35 +199,50 @@ for gid, p in sorted(profiles.items(), key=lambda kv: -len(kv[1]["tech"])):
             pr = t["pr"][0]["p"] if t["pr"] else "—"
             L.append(f"| [{t['id']}]({SITE}#tech={t['id']}) {md_cell(t['n'])} | {md_cell(pr[:260] + ('…' if len(pr) > 260 else ''))} | {t['rt'] or '**0**'} | {t['at'] or '—'} | {t['ev'] or '—'} |")
         L.append("")
-    L += ["## 4. Assinatura comportamental", "", f"Técnicas que este grupo usa e que poucos dos {NG} grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.", "",
+    L += ["## 5. Assinatura comportamental", "", f"Técnicas que este grupo usa e que poucos dos {NG} grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.", "",
           "| Técnica | Outros grupos que usam | Peso (raridade) |", "|---|---:|---:|"]
     for t in sig: L.append(f"| {t['id']} {md_cell(t['n'])} | {len(TECH[t['id']]['g']) - 1} | {t['idf']:.2f} |")
     L.append("")
-    L += ["## 5. Arsenal", ""]
+    L += ["## 6. Arsenal", ""]
     if p["sw"]:
         L += ["| Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |", "|---|---|---:|---|"]
         for s in p["sw"]: L.append(f"| [{md_cell(s['n'])}](https://attack.mitre.org/software/{s['id']}/) | {'malware' if s['k']=='malware' else 'ferramenta'} | {s['t']} | {md_cell(s['p'][:180])} |")
     else: L.append("Nenhum software atribuído no ATT&CK.")
     L.append("")
-    L += ["## 6. Campanhas", ""]
+    if cx.get("ferr"):
+        extra_f = [f_ for f_ in cx["ferr"] if f_.lower() not in {s_["n"].lower() for s_ in p["sw"]}]
+        if extra_f: L += [f"**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** {', '.join(extra_f[:40])}", ""]
+    if ttools:
+        L += [f"### Ferramentas observadas em intrusões ({', '.join(g_['n'] for g_ in gangs)}) — Ransomware Tool Matrix", "",
+              "Ferramentas legítimas e ofensivas que afiliados usam dentro da rede. Cada uma é um ponto de detecção: veja quantas regras do catálogo a citam.", "",
+              "| Ferramenta | Categoria | Regras que citam |", "|---|---|---:|"]
+        for t_ in sorted(ttools, key=lambda t_: -(RW_TOOL.get(t_, {}).get("r", 0))):
+            rt_ = RW_TOOL.get(t_, {}); L.append(f"| {md_cell(t_)} | {rt_.get('cat', '')} | {rt_.get('r', 0) or '**0**'} |")
+        L.append("")
+    L += ["## 7. Campanhas", ""]
     if p["camp"]:
         L += ["| Campanha | Período | Resumo (EN) |", "|---|---|---|"]
         for c in p["camp"]: L.append(f"| [{md_cell(c['n'])}](https://attack.mitre.org/campaigns/{c['id']}/) | {c['f'] or '?'} → {c['l'] or '?'} | {md_cell(c['d'][:220])} |")
     else: L.append("Nenhuma campanha atribuída no ATT&CK.")
     L.append("")
-    L += ["## 7. Cobertura defensiva", "", f"**{len(cov)} de {n} técnicas ({pct}%)** têm ao menos uma regra pública no catálogo Detection Rules.", ""]
+    L += ["## 8. Cobertura defensiva", "", f"**{len(cov)} de {n} técnicas ({pct}%)** têm ao menos uma regra pública no catálogo Detection Rules.", ""]
     if gaps:
         L += ["### Técnicas sem regra pública (prioridade para engenharia de detecção)", ""]
         for t in sorted(gaps, key=lambda t: -t["idf"]):
             src = "; ".join(f"`{l['src']}` {l['ch']}".strip() for d in TECH[t["id"]]["det"] for a in d["an"] for l in a["logs"][:1])[:200]
             L.append(f"- **{t['id']} {t['n']}** — {TAC[t['ta'][0]]['n'] if t['ta'] and t['ta'][0] in TAC else ''}" + (f". Fonte de log sugerida pelo MITRE: {src}" if src else ""))
         L.append("")
+    if where:
+        L += ["### Onde procurar — cobertura por tecnologia", "", "Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.", "",
+              "| Tecnologia | Técnicas do grupo com regra |", "|---|---:|"]
+        for k, v in where.most_common(12): L.append(f"| {md_cell(TECHN[k])} | {v} |")
+        L.append("")
     L += ["### Regras recomendadas por técnica", "", "Melhor regra disponível por técnica (formato portável e maduro primeiro).", "", "| Técnica | Regra | Formato | Fonte |", "|---|---|---|---|"]
     for t in sorted(cov, key=lambda t: t["id"]):
         for e in TECH[t["id"]]["ex"][:2]:
             L.append(f"| {t['id']} | [{md_cell(e['t'])}]({SITE}#rule={quote_plus(e['u'])}) | {FMT.get(e['f'], e['f'])} | {md_cell(e['s'])} |")
     L.append("")
-    L += ["## 8. Plano de emulação e validação", "", "Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.", ""]
+    L += ["## 9. Plano de emulação e validação", "", "Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.", ""]
     emu = [(t, TECH[t["id"]]["at"]) for t in tech if TECH[t["id"]]["at"]]
     if emu:
         L += ["| Tática | Técnica | Teste Atomic Red Team | Plataformas |", "|---|---|---|---|"]
@@ -174,7 +256,7 @@ for gid, p in sorted(profiles.items(), key=lambda kv: -len(kv[1]["tech"])):
             base = "https://github.com/mdecrevoisier/EVTX-to-MITRE-Attack/blob/master/" if "mdecrevoisier" in e["r"] else "https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/"
             L.append(f"- {t['id']} — [{e['n']}]({base}{quote_plus(e['p']).replace('+','%20').replace('%2F','/')}) _({e['c']})_")
     L.append("")
-    L += ["## 9. Hipóteses de hunting", "", f"Se {p['n']} estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).", ""]
+    L += ["## 10. Hipóteses de hunting", "", f"Se {p['n']} estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).", ""]
     k = 0
     for t in sorted(tech, key=lambda t: -t["idf"]):
         det = TECH[t["id"]]["det"]
@@ -187,7 +269,7 @@ for gid, p in sorted(profiles.items(), key=lambda kv: -len(kv[1]["tech"])):
         if k >= 12: break
     L.append("")
     q = " OR ".join(f'"{a}"' for a in names[:6])
-    L += ["## 10. OSINT — onde pesquisar", "", "Consultas prontas com todos os nomes conhecidos do grupo:", "",
+    L += ["## 11. OSINT — onde pesquisar", "", "Consultas prontas com todos os nomes conhecidos do grupo:", "",
           f"- Relatórios técnicos: [busca web]({'https://duckduckgo.com/?q=' + quote_plus('(' + q + ') threat report')}) · [PDFs]({'https://duckduckgo.com/?q=' + quote_plus('(' + q + ') filetype:pdf')})",
           f"- Regras e IOCs publicados: [GitHub]({'https://github.com/search?type=code&q=' + quote_plus(q)})",
           f"- Pulsos de ameaça: [AlienVault OTX](https://otx.alienvault.com/browse/global/pulses?q={quote_plus(p['n'])})",
@@ -199,14 +281,18 @@ for gid, p in sorted(profiles.items(), key=lambda kv: -len(kv[1]["tech"])):
         for r in p["rep"]:
             L.append(f"- {r['y']} — [{r['t']}](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/{quote_plus(r['p']).replace('+','%20').replace('%2F','/')}) _(via “{r['via']}”)_")
         L.append("")
-    L += [f"## 11. Bibliografia ({len(p['refs'])} fontes citadas pelo ATT&CK)", ""]
+    if cx.get("rel"):
+        L += [f"**Relatórios públicos ligados pelo APT4ALL** ({cx.get('nrel', len(cx['rel']))} no total, mais recentes primeiro):", ""]
+        for r in cx["rel"]: L.append(f"- {r['d'][-4:] if r['d'] else '?'} — [{md_cell(r['t'])}]({r['u']}) _({md_cell(r['f'])})_")
+        L.append("")
+    L += [f"## 12. Bibliografia ({len(p['refs'])} fontes citadas pelo ATT&CK)", ""]
     for r in p["refs"]: L.append(f"- [{r['n']}]({r['u']}) — {r['d']}")
-    L += ["", "## 12. Limites e confiança", "",
+    L += ["", "## 13. Limites e confiança", "",
           "- O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.",
           "- **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.",
           "- Cobertura de detecção refere-se ao catálogo público Detection Rules, não ao seu ambiente: confira se a telemetria necessária chega ao seu SIEM.",
           "- Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.",
-          "", "---", f"Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules]({REPO})."]
+          "", "---", f"Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules]({REPO})."]
     open(os.path.join("reports/groups", fname(p)), "w", encoding="utf-8").write("\n".join(L) + "\n")
     # ---- versão HTML do dossiê
     body, toc = md_to_html("\n".join(L))

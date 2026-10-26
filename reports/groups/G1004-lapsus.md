@@ -1,8 +1,9 @@
 # LAPSUS$ (G1004) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1004) · [ATT&CK](https://attack.mitre.org/groups/G1004/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G1004) · [ATT&CK](https://attack.mitre.org/groups/G1004/)
 
 **Também conhecido como:** DEV-0537, Strawberry Tempest  
+**Origem atribuída:** Sem país atribuído · **Motivação:** financeiro, sabotagem · **Setores-alvo:** —  
 **Registro no ATT&CK:** criado em 2022-06-09, atualizado em 2026-07-31 · referências de 2022 a 2023
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 0 malware e 1 ferramentas (ex.: Mimikatz).
 - **Campanhas atribuídas:** 0.
 - **Cobertura de detecção pública:** 88% das técnicas têm ao menos uma regra no catálogo; **5 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Sem país atribuído**, motivação financeiro, sabotagem.
+- **Onde a cobertura está:** Windows (24 técnicas com regra), Outros / genérico (20 técnicas com regra), Azure (recursos) (19 técnicas com regra), E-mail (18 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1213.001 Confluence, T1552.008 Chat Messages, T1597.002 Purchase Technical Data, T1136.003 Cloud Account, T1204 User Execution.
 
 ## 2. Quem é
@@ -19,7 +22,30 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Sem país atribuído |
+| Motivação | financeiro, sabotagem |
+| Setores-alvo | — |
+| Vítimas citadas | — |
+| Alvos (planilha) | — |
+| Operações conhecidas | — |
+| Confiança de atribuição (MISP) | High |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G1004 |
+| Microsoft | Strawberry Tempest, DEV-0537 (antigo · old) |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** SLIPPY SPIDER, UNC3661, DEV-0537/Strawberry Tempest, Gold Rainforest, White Dev 111
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -139,7 +165,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 | [T1489](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1489) Service Stop | LAPSUS$ has shut down virtual machines from within a victim's on-premise VMware ESXi infrastructure. | 112 | 9 | — |
 | [T1531](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1531) Account Access Removal | LAPSUS$ has removed a targeted organization's global admin accounts to lock the organization out of all access. | 101 | 8 | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -156,17 +182,28 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1584.002 DNS Server | 1 | 4.09 |
 | T1598.004 Spearphishing Voice | 1 | 4.09 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
 | [Mimikatz](https://attack.mitre.org/software/S0002/) | ferramenta | 17 |  |
 
-## 6. Campanhas
+### Ferramentas observadas em intrusões (Lapsus$) — Ransomware Tool Matrix
+
+Ferramentas legítimas e ofensivas que afiliados usam dentro da rede. Cada uma é um ponto de detecção: veja quantas regras do catálogo a citam.
+
+| Ferramenta | Categoria | Regras que citam |
+|---|---|---:|
+| Mimikatz | credenciais | 253 |
+| AnyDesk | rmm | 102 |
+| NTDS Utility (ntdsutil) | lolbas | 51 |
+| ADExplorer | descoberta | 32 |
+
+## 7. Campanhas
 
 Nenhuma campanha atribuída no ATT&CK.
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **38 de 43 técnicas (88%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
@@ -177,6 +214,25 @@ Nenhuma campanha atribuída no ATT&CK.
 - **T1598.004 Spearphishing Voice** — Reconnaissance. Fonte de log sugerida pelo MITRE: `Application Log` None
 - **T1213.005 Messaging Applications** — Collection. Fonte de log sugerida pelo MITRE: `saas:slack` conversations.history, files.list, users.info, audit_logs; `m365:unified` TeamsMessagesAccessedViaEDiscovery, TeamsGraphMessageExport
 - **T1583.003 Virtual Private Server** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 24 |
+| Outros / genérico | 20 |
+| Azure (recursos) | 19 |
+| E-mail | 18 |
+| Integridade, conformidade & vulnerabilidade | 18 |
+| EDR / XDR | 17 |
+| Linux | 17 |
+| AWS | 17 |
+| Active Directory | 16 |
+| Entra ID (Azure AD) | 16 |
+| Microsoft 365 | 16 |
+| Bancos de dados | 14 |
 
 ### Regras recomendadas por técnica
 
@@ -260,7 +316,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1621 | [Potential Okta MFA Bombing via Push Notifications](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A8a0fbd26-867f-11ee-947c-f661ea17fbcd) | Elastic | Elastic detection-rules |
 | T1684.001 | [Entra ID OAuth user_impersonation Scope for Unusual User and Client](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A9563dace-5822-11f0-b1d3-f661ea17fbcd) | Elastic | Elastic detection-rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -311,7 +367,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 - T1555.003 — [CA_4624_4625_LogonType2_LogonProc_chrome](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/CA_4624_4625_LogonType2_LogonProc_chrome.evtx) _(inferido)_
 - T1555.003 — [CA_chrome_firefox_opera_4663](https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES/blob/master/Credential%20Access/CA_chrome_firefox_opera_4663.evtx) _(inferido)_
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se LAPSUS$ estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -328,7 +384,7 @@ Se LAPSUS$ estiver no seu ambiente, estas são as perguntas a fazer aos seus dad
 11. **T1621 Multi-Factor Authentication Request Generation** — Monitor for excessive or anomalous MFA push notifications or token requests, especially when login attempts originate from unusual IPs or geolocations and do not correspond to legitimate user-initiated sessions. Dados: `azure:signinlogs` (Multiple MFA challenge requests without successful primary login), `NSM:Connections` (PushNotificationSent).
 12. **T1111 Multi-Factor Authentication Interception** — Behavior chain involving unexpected API calls to capture keyboard input, driver loads for keyloggers, or remote use of smart card authentication via logon sessions not initiated by local user interaction Dados: `WinEventLog:Sysmon` (EventCode=10), `WinEventLog:Security` (EventCode=4624, 4648), `WinEventLog:Sysmon` (EventCode=13, 14).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -339,7 +395,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Cartões de grupo: [ThaiCERT Threat Group Cards](https://apt.etda.or.th/cgi-bin/listgroups.cgi)
 - Página oficial: [MITRE ATT&CK G1004](https://attack.mitre.org/groups/G1004/)
 
-## 11. Bibliografia (5 fontes citadas pelo ATT&CK)
+## 12. Bibliografia (5 fontes citadas pelo ATT&CK)
 
 - [BBC LAPSUS Apr 2022](https://www.bbc.com/news/technology-60953527) — BBC. (2022, April 1). LAPSUS: Two UK Teenagers Charged with Hacking for Gang. Retrieved June 9, 2022.
 - [Microsoft Threat Actor Naming July 2023](https://learn.microsoft.com/en-us/microsoft-365/security/intelligence/microsoft-threat-actor-naming?view=o365-worldwide) — Microsoft . (2023, July 12). How Microsoft names threat actors. Retrieved November 17, 2023.
@@ -347,7 +403,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [NCC Group LAPSUS Apr 2022](https://www.nccgroup.com/research-blog/lapsus-recent-techniques-tactics-and-procedures/) — Brown, D., et al. (2022, April 28). LAPSUS$: Recent techniques, tactics and procedures. Retrieved December 22, 2022.
 - [UNIT 42 LAPSUS Mar 2022](https://unit42.paloaltonetworks.com/lapsus-group/) — UNIT 42. (2022, March 24). Threat Brief: Lapsus$ Group. Retrieved May 17, 2022.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -355,4 +411,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).

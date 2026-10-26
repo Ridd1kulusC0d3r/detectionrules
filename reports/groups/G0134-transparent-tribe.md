@@ -1,8 +1,9 @@
 # Transparent Tribe (G0134) — Dossiê de inteligência
 
-> **TLP:CLEAR** · gerado em 2026-10-25 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0134) · [ATT&CK](https://attack.mitre.org/groups/G0134/)
+> **TLP:CLEAR** · gerado em 2026-10-26 a partir de fontes abertas · MITRE ATT&CK v20.0 · [abrir no site](https://ridd1kulusc0d3r.github.io/detectionrules/#group=G0134) · [ATT&CK](https://attack.mitre.org/groups/G0134/)
 
 **Também conhecido como:** COPPER FIELDSTONE, APT36, Mythic Leopard, ProjectM  
+**Origem atribuída:** Vietnã · **Motivação:** hacktivismo · **Setores-alvo:** Sociedade civil e mídia, Governo, Defesa e militar  
 **Registro no ATT&CK:** criado em 2021-09-02, atualizado em 2026-07-31 · referências de 2016 a 2022
 
 ## 1. Sumário executivo
@@ -11,6 +12,8 @@
 - **Arsenal:** 5 malware e 0 ferramentas (ex.: njRAT, Crimson, DarkComet, ObliqueRAT, Peppy).
 - **Campanhas atribuídas:** 1 (C0011).
 - **Cobertura de detecção pública:** 93% das técnicas têm ao menos uma regra no catálogo; **1 técnicas sem nenhuma regra pública**.
+- **Origem e alvos (APT4ALL):** atribuído a **Vietnã**, motivação hacktivismo; setores Sociedade civil e mídia, Governo, Defesa e militar.
+- **Onde a cobertura está:** Windows (12 técnicas com regra), EDR / XDR (11 técnicas com regra), Linux (10 técnicas com regra), macOS (10 técnicas com regra).
 - **Assinatura comportamental** (técnicas raras entre os 178 grupos, as mais úteis para atribuição): T1584.001 Domains, T1568 Dynamic Resolution, T1608.004 Drive-by Target, T1564.001 Hidden Files and Directories, T1189 Drive-by Compromise.
 
 ## 2. Quem é
@@ -19,7 +22,29 @@
 
 _Texto original do MITRE ATT&CK, em inglês._
 
-## 3. Perfil TTP por tática (kill chain)
+## 3. Contexto, nomes e alvos
+
+Consolidado pelo [APT4ALL](https://github.com/Ridd1kulusC0d3r/apt4all) a partir de MISP Galaxy, planilha APT Groups & Operations, EternalLiberty e APTnotes. Atribuição é afirmação de quem publicou; confira a fonte.
+
+| Campo | Valor |
+|---|---|
+| Origem atribuída | Vietnã |
+| Motivação | hacktivismo |
+| Setores-alvo | Sociedade civil e mídia, Governo, Defesa e militar |
+| Vítimas citadas | — |
+| Alvos (planilha) | Government of India diplomatic and military |
+| Operações conhecidas | Operation C-Major |
+| Confiança de atribuição (MISP) | 50 |
+
+**Como cada fornecedor chama este grupo** (útil para cruzar relatórios):
+
+| Fornecedor | Nome(s) |
+|---|---|
+| MITRE ATT&CK | G0134 |
+
+**Outros nomes no APT4ALL (não listados pelo ATT&CK):** Temp.Lapis, Green Havildar, APT-C-56, Operation C-Major, C-Major, TMP.Lapis, Earth Karkaddan, Storm-0156, ATK64, ProjectM/Pasty Draco/Opaque Draco
+
+## 4. Perfil TTP por tática (kill chain)
 
 Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que existe para detectar e testar.
 
@@ -62,7 +87,7 @@ Cada linha: técnica, como o grupo a usou segundo relatos públicos, e o que exi
 |---|---|---:|---:|---:|
 | [T1568](https://ridd1kulusc0d3r.github.io/detectionrules/#tech=T1568) Dynamic Resolution | Transparent Tribe has used dynamic DNS services to set up C2. | 32 | — | — |
 
-## 4. Assinatura comportamental
+## 5. Assinatura comportamental
 
 Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam mais numa atribuição por TTP: ver várias delas juntas é mais informativo do que ver técnicas comuns como PowerShell.
 
@@ -79,7 +104,7 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | T1566.002 Spearphishing Link | 47 | 1.30 |
 | T1583.001 Domains | 47 | 1.30 |
 
-## 5. Arsenal
+## 6. Arsenal
 
 | Software | Tipo | Técnicas no ATT&CK | Uso relatado (EN) |
 |---|---|---:|---|
@@ -89,19 +114,40 @@ Técnicas que este grupo usa e que poucos dos 178 grupos do ATT&CK usam. Pesam m
 | [ObliqueRAT](https://attack.mitre.org/software/S0644/) | malware | 14 |  |
 | [Peppy](https://attack.mitre.org/software/S0643/) | malware | 7 |  |
 
-## 6. Campanhas
+**Outras ferramentas e malware relatados (planilha APT Groups & Operations / MISP):** Crimson RAT, Limepad
+
+## 7. Campanhas
 
 | Campanha | Período | Resumo (EN) |
 |---|---|---|
 | [C0011](https://attack.mitre.org/campaigns/C0011/) | 2021-12 → 2022-07 | C0011 was a suspected cyber espionage campaign conducted by Transparent Tribe that targeted students at universities and colleges in India. Security researchers noted this campaign against students was a significant shif |
 
-## 7. Cobertura defensiva
+## 8. Cobertura defensiva
 
 **13 de 14 técnicas (93%)** têm ao menos uma regra pública no catálogo Detection Rules.
 
 ### Técnicas sem regra pública (prioridade para engenharia de detecção)
 
 - **T1608.004 Drive-by Target** — Resource Development. Fonte de log sugerida pelo MITRE: `Internet Scan` None
+
+### Onde procurar — cobertura por tecnologia
+
+Quantas técnicas deste grupo têm ao menos uma regra em cada tecnologia. Comece a caça pelas tecnologias que você tem e que aparecem aqui.
+
+| Tecnologia | Técnicas do grupo com regra |
+|---|---:|
+| Windows | 12 |
+| EDR / XDR | 11 |
+| Linux | 10 |
+| macOS | 10 |
+| Outros / genérico | 10 |
+| Microsoft 365 | 9 |
+| E-mail | 9 |
+| Proxy / SWG | 8 |
+| Servidores web & aplicações | 8 |
+| IA, LLMs & agentes | 8 |
+| AWS | 8 |
+| IDS / NSM / NDR | 8 |
 
 ### Regras recomendadas por técnica
 
@@ -136,7 +182,7 @@ Melhor regra disponível por técnica (formato portável e maduro primeiro).
 | T1584.001 | [AWS Route 53 Domain Transferred to Another Account](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A2045567e-b0af-444a-8c0b-0b6e2dae9e13) | Elastic | Elastic detection-rules |
 | T1584.001 | [AWS Route 53 Domain Transfer Lock Disabled](https://ridd1kulusc0d3r.github.io/detectionrules/#rule=elastic-detection-rules%3A%3A12051077-0124-4394-9522-8f4f4db1d674) | Elastic | Elastic detection-rules |
 
-## 8. Plano de emulação e validação
+## 9. Plano de emulação e validação
 
 Use num laboratório isolado e autorizado para confirmar que as regras disparam. Os comandos estão nos repositórios oficiais.
 
@@ -156,7 +202,7 @@ Use num laboratório isolado e autorizado para confirmar que as regras disparam.
 | Stealth | [T1564.001](https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1564.001/T1564.001.md) | Create a hidden file in a hidden directory | linux, macos |
 | Stealth | [T1564.001](https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1564.001/T1564.001.md) | Mac Hidden file | macos |
 
-## 9. Hipóteses de hunting
+## 10. Hipóteses de hunting
 
 Se Transparent Tribe estiver no seu ambiente, estas são as perguntas a fazer aos seus dados (fontes de log segundo as estratégias de detecção do MITRE ATT&CK).
 
@@ -173,7 +219,7 @@ Se Transparent Tribe estiver no seu ambiente, estas são as perguntas a fazer ao
 11. **T1204.001 Malicious Link** — Behavioral chain: (1) a user-facing app (browser/Office/email client) launches a URL or handles a link, then (2) the same process lineage makes an outbound connection to an untrusted domain/IP, (3) a file is downloaded or unpacked to a user-writable location… Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=3, 22), `WinEventLog:Sysmon` (EventCode=11).
 12. **T1036.005 Match Legitimate Resource Name or Location** — Detects processes or binaries executed from trusted directories (e.g., System32) or using trusted names (e.g., svchost.exe) where the metadata, hash, or parent process does not align with legitimate activity patterns. Dados: `WinEventLog:Security` (EventCode=4688), `WinEventLog:Sysmon` (EventCode=11).
 
-## 10. OSINT — onde pesquisar
+## 11. OSINT — onde pesquisar
 
 Consultas prontas com todos os nomes conhecidos do grupo:
 
@@ -193,7 +239,16 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - 2020 — [cyberstanc.com-A look into APT36s Transparent Tribe tradecraft](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2020/2020.11.01.Transparent_Tribe_APT/cyberstanc.com-A%20look%20into%20APT36s%20Transparent%20Tribe%20tradecraft.pdf) _(via “Transparent Tribe”)_
 - 2021 — [blog.talosintelligence.com-Transparent Tribe APT expands its Windows malware arsenal](https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2021/2021.05.13.Transparent_Tribe_APT/blog.talosintelligence.com-Transparent%20Tribe%20APT%20expands%20its%20Windows%20malware%20arsenal.pdf) _(via “Transparent Tribe”)_
 
-## 11. Bibliografia (8 fontes citadas pelo ATT&CK)
+**Relatórios públicos ligados pelo APT4ALL** (6 no total, mais recentes primeiro):
+
+- 2023 — [Analysis of APT-C-56 (Transparent Tribe) camouflage resume attack campaign](https://app.box.com/s/rnoc7ldxv29za832xasqohm1ammp3g2d) _(CoreSec360)_
+- 2022 — [Transparent Tribe campaign uses new bespoke malware to target Indian government officials](https://app.box.com/s/x4c798599srccjv65ciodew9hrv7mss1) _(Cisco)_
+- 2020 — [Transparent Tribe: Evolution analysis, part 2](https://app.box.com/s/2cpsj31ackb2zx5mzayhds76mcndofxr) _(Kaspersky)_
+- 2020 — [Transparent Tribe: Evolution analysis, part 1](https://app.box.com/s/ujm0zncu4yslx1tvu6aes0qzm5nhvjyg) _(Kaspersky)_
+- 2016 — [Operation C-Major Actors Also Used Android BlackBerry Mobile Spyware Against Targets](https://app.box.com/s/xua6557tccyx7h0ksmjnu8u5bra3z15n) _(Trend Micro)_
+- 2016 — [Operation Transparent Tribe](https://app.box.com/s/2terwf3c3e8iunw8v7kj83p2zw44nns2) _(Proofpoint)_
+
+## 12. Bibliografia (8 fontes citadas pelo ATT&CK)
 
 - [Cisco Talos Transparent Tribe Education Campaign July 2022](https://blog.talosintelligence.com/2022/07/transparent-tribe-targets-education.html) — N. Baisini. (2022, July 13). Transparent Tribe begins targeting education sector in latest campaign. Retrieved September 22, 2022.
 - [Crowdstrike Mythic Leopard Profile](https://adversary.crowdstrike.com/en-US/adversary/mythic-leopard/) — Crowdstrike. (n.d.). Mythic Leopard. Retrieved October 6, 2021.
@@ -204,7 +259,7 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - [Talos Transparent Tribe May 2021](https://blog.talosintelligence.com/2021/05/transparent-tribe-infra-and-targeting.html) — Malhotra, A. et al. (2021, May 13). Transparent Tribe APT expands its Windows malware arsenal. Retrieved September 2, 2021.
 - [Unit 42 ProjectM March 2016](https://unit42.paloaltonetworks.com/unit42-projectm-link-found-between-pakistani-actor-and-operation-transparent-tribe/) — Falcone, R. and Conant S. (2016, March 25). ProjectM: Link Found Between Pakistani Actor and Operation Transparent Tribe. Retrieved September 2, 2021.
 
-## 12. Limites e confiança
+## 13. Limites e confiança
 
 - O ATT&CK registra o que foi **relatado publicamente**, não tudo o que o grupo faz. Ausência de uma técnica não prova que o grupo não a usa.
 - **Sobreposição de TTP não é atribuição.** Muitas técnicas são compartilhadas entre grupos e com red teams. Use a assinatura comportamental como hipótese, junto com infraestrutura, malware e contexto.
@@ -212,4 +267,4 @@ Consultas prontas com todos os nomes conhecidos do grupo:
 - Ligações marcadas como _inferidas_ (EVTX por palavra-chave, relatórios por nome) devem ser verificadas.
 
 ---
-Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
+Fontes: MITRE ATT&CK® (uso livre com atribuição, © The MITRE Corporation), APT4ALL (MISP Galaxy CC0/BSD-2, APT Groups & Operations CC BY 4.0, EternalLiberty, APTnotes, Ransomware Tool Matrix CC BY 4.0), Atomic Red Team (Red Canary, MIT), EVTX-to-MITRE-Attack, EVTX-ATTACK-SAMPLES, APT & CyberCriminal Campaign Collections. Gerado por [Detection Rules](https://github.com/Ridd1kulusC0d3r/detectionrules).
