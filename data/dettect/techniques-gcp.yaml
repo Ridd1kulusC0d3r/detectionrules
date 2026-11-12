@@ -1,0 +1,626 @@
+# Gerado por build_dettect.py (Detection Rules). Só regras GCP security-analytics. ATT&CK v20.0, catálogo de 2026-10-26.
+# Linha de base de regras PÚBLICAS: reavalie cada nota depois de implantar e testar no seu ambiente.
+version: 1.2
+file_type: technique-administration
+name: 'Detection Rules: GCP security-analytics'
+domain: enterprise-attack
+platform:
+  - all
+techniques:
+  - technique_id: T1018
+    technique_name: 'Remote System Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 6.10'
+          - 'GCP security-analytics: 6.15'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1046
+    technique_name: 'Network Service Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 6.01'
+          - 'GCP security-analytics: 6.15'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059
+    technique_name: 'Command and Scripting Interpreter'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 6.30'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1071
+    technique_name: 'Application Layer Protocol'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 6.20'
+          - 'GCP security-analytics: 6.31'
+          - 'GCP security-analytics: 6.40'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1071.004
+    technique_name: 'DNS'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 6.40'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1074
+    technique_name: 'Data Staged'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 5.10'
+          - 'GCP security-analytics: 5.11'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1078
+    technique_name: 'Valid Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 1.01'
+          - 'GCP security-analytics: 1.02'
+          - 'GCP security-analytics: 1.03'
+          - 'GCP security-analytics: 1.10'
+          - 'GCP security-analytics: 1.30'
+          - 'GCP security-analytics: 2.02'
+          - 'GCP security-analytics: 5.04'
+          - 'GCP security-analytics: sample'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1078.004
+    technique_name: 'Cloud Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 1.01'
+          - 'GCP security-analytics: 1.02'
+          - 'GCP security-analytics: 1.03'
+          - 'GCP security-analytics: 1.10'
+          - 'GCP security-analytics: 1.30'
+          - 'GCP security-analytics: 2.02'
+          - 'GCP security-analytics: 5.04'
+          - 'GCP security-analytics: sample'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1106
+    technique_name: 'Native API'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 4.01'
+          - 'GCP security-analytics: 4.20'
+          - 'GCP security-analytics: 4.21'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1110
+    technique_name: 'Brute Force'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 1.03'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1133
+    technique_name: 'External Remote Services'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 3.13'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1136
+    technique_name: 'Create Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 2.30'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1136.003
+    technique_name: 'Cloud Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 2.30'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1190
+    technique_name: 'Exploit Public-Facing Application'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 6.21'
+          - 'GCP security-analytics: 6.22'
+          - 'GCP security-analytics: 6.23'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1213
+    technique_name: 'Data from Information Repositories'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 5.10'
+          - 'GCP security-analytics: 5.11'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1484
+    technique_name: 'Domain or Tenant Policy Modification'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 2.02'
+          - 'GCP security-analytics: 2.20'
+          - 'GCP security-analytics: 2.21'
+          - 'GCP security-analytics: 2.22'
+          - 'GCP security-analytics: 2.40'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1484.001
+    technique_name: 'Group Policy Modification'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 2.02'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1484.002
+    technique_name: 'Trust Modification'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 2.20'
+          - 'GCP security-analytics: 2.21'
+          - 'GCP security-analytics: 2.22'
+          - 'GCP security-analytics: 2.40'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1496
+    technique_name: 'Resource Hijacking'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 4.10'
+          - 'GCP security-analytics: 4.11'
+          - 'GCP security-analytics: 4.30'
+          - 'GCP security-analytics: 4.31'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1530
+    technique_name: 'Data from Cloud Storage'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 5.01'
+          - 'GCP security-analytics: 5.02'
+          - 'GCP security-analytics: 5.03'
+          - 'GCP security-analytics: 5.05'
+          - 'GCP security-analytics: 5.06'
+          - 'GCP security-analytics: 5.07'
+          - 'GCP security-analytics: 5.20'
+          - 'GCP security-analytics: 5.30'
+          - 'GCP security-analytics: 5.31'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1537
+    technique_name: 'Transfer Data to Cloud Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 1.10'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1565
+    technique_name: 'Data Manipulation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 5.08'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1565.001
+    technique_name: 'Stored Data Manipulation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 5.08'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1578
+    technique_name: 'Modify Cloud Compute Infrastructure'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 3.14'
+          - 'GCP security-analytics: 3.15'
+          - 'GCP security-analytics: 3.20'
+          - 'GCP security-analytics: 3.21'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1685
+    technique_name: 'Disable or Modify Tools'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 3.01'
+          - 'GCP security-analytics: 3.02'
+          - 'GCP security-analytics: 3.11'
+          - 'GCP security-analytics: 3.12'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1685.002
+    technique_name: 'Disable or Modify Cloud Log'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 3.01'
+          - 'GCP security-analytics: 3.02'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1686.001
+    technique_name: 'Cloud Firewall'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'GCP security-analytics: 3.11'
+          - 'GCP security-analytics: 3.12'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true

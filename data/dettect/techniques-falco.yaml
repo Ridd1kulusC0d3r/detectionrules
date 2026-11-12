@@ -1,0 +1,871 @@
+# Gerado por build_dettect.py (Detection Rules). Só regras Falco. ATT&CK v20.0, catálogo de 2026-10-26.
+# Linha de base de regras PÚBLICAS: reavalie cada nota depois de implantar e testar no seu ambiente.
+version: 1.2
+file_type: technique-administration
+name: 'Detection Rules: Falco'
+domain: enterprise-attack
+platform:
+  - all
+techniques:
+  - technique_id: T1005
+    technique_name: 'Data from Local System'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Read ssh information'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1020
+    technique_name: 'Automated Exfiltration'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Launch Remote File Copy Tools in Container'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1046
+    technique_name: 'Network Service Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Network Connection outside Local Subnet'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1053.003
+    technique_name: 'Cron'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Schedule Cron Jobs'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1055.008
+    technique_name: 'Ptrace System Calls'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: PTRACE attached to process'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059
+    technique_name: 'Command and Scripting Interpreter'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Container Drift Detected (chmod)'
+          - 'Falco rules: Container Drift Detected (open+create)'
+          - 'Falco rules: Disallowed SSH Connection Non Standard Port'
+          - 'Falco rules: Launch Suspicious Network Tool in Container'
+          - 'Falco rules: Launch Suspicious Network Tool on Host'
+          - 'Falco rules: Netcat Remote Code Execution in Container'
+          - 'Falco rules: Netcat/Socat Remote Code Execution on Host'
+          - 'Falco rules: Redirect STDOUT/STDIN to Network Connection in Container'
+          - 'Falco rules: Reverse Shell from Web Server'
+          - 'Falco rules: System procs network activity'
+          - 'Falco rules: System user interactive'
+          - 'Falco rules: Terminal shell in container'
+          - 'Falco rules: Web Server Spawned Suspicious Child Process'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059.004
+    technique_name: 'Unix Shell'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Execution from /dev/shm'
+          - 'Falco rules: Run shell untrusted'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1070
+    technique_name: 'Indicator Removal'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Clear Log Activities'
+          - 'Falco rules: Delete or rename shell history'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1072
+    technique_name: 'Software Deployment Tools'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Update Package Repository'
+          - 'Falco rules: Write below rpm database'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1083
+    technique_name: 'File and Directory Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Read environment variable from /proc files'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1098
+    technique_name: 'Account Manipulation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: User mgmt binaries'
+          - 'Falco rules: Write below etc'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1098.004
+    technique_name: 'SSH Authorized Keys'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Adding ssh keys to authorized_keys'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1132
+    technique_name: 'Data Encoding'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Decoding Payload in Container'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1190
+    technique_name: 'Exploit Public-Facing Application'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: DB program spawned process'
+          - 'Falco rules: Java Process Class File Download'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1195.002
+    technique_name: 'Compromise Software Supply Chain'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Network Tool Executed During NPM Package Install'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1204
+    technique_name: 'User Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Program run with disallowed http proxy env'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1205.001
+    technique_name: 'Port Knocking'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Unexpected K8s NodePort Connection'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1222.002
+    technique_name: 'Linux and Mac Permissions'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Mkdir binary dirs'
+          - 'Falco rules: Modify binary dirs'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1485
+    technique_name: 'Data Destruction'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Remove Bulk Data from Disk'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1496
+    technique_name: 'Resource Hijacking'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Container Accessing GPU Device'
+          - 'Falco rules: Detect crypto miners using the Stratum protocol'
+          - 'Falco rules: Detect outbound connections to common miner pool ports'
+          - 'Falco rules: GPU Management Tool Run in Container'
+          - 'Falco rules: Known Cryptominer Process Executed'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1505
+    technique_name: 'Server Software Component'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Launch Package Management Process in Container'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1505.003
+    technique_name: 'Web Shell'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Web Server Spawned Shell'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1543
+    technique_name: 'Create or Modify System Process'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Create files below dev'
+          - 'Falco rules: Write below binary dir'
+          - 'Falco rules: Write below monitored dir'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1546.004
+    technique_name: 'Unix Shell Configuration Modification'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Modify Shell Configuration File'
+          - 'Falco rules: Read Shell Configuration File'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1546.018
+    technique_name: 'Python Startup Hooks'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Modify Python Startup Hook File'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1548.001
+    technique_name: 'Setuid and Setgid'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Non sudo setuid'
+          - 'Falco rules: Set Setuid or Setgid bit'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1548.003
+    technique_name: 'Sudo and Sudo Caching'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Sudo Potential Privilege Escalation'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1552
+    technique_name: 'Unsecured Credentials'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Find AWS Credentials'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1552.001
+    technique_name: 'Credentials In Files'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Search Private Keys or Passwords'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1552.005
+    technique_name: 'Cloud Instance Metadata API'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Contact EC2 Instance Metadata Service From Container'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1555
+    technique_name: 'Credentials from Password Stores'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Create Hardlink Over Sensitive Files'
+          - 'Falco rules: Create Symlink Over Sensitive Files'
+          - 'Falco rules: Directory traversal monitored file read'
+          - 'Falco rules: Read sensitive file trusted after startup'
+          - 'Falco rules: Read sensitive file untrusted'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1556
+    technique_name: 'Modify Authentication Process'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Backdoored library loaded into SSHD (CVE-2024-3094)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1557.002
+    technique_name: 'ARP Cache Poisoning'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Packet socket created in container'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1564.001
+    technique_name: 'Hidden Files and Directories'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Create Hidden Files or Directories'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1565
+    technique_name: 'Data Manipulation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Contact K8S API Server From Container'
+          - 'Falco rules: Contact cloud metadata service from container'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1610
+    technique_name: 'Deploy Container'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Container Run as Root User'
+          - 'Falco rules: Kubernetes Client Tool Launched in Container'
+          - 'Falco rules: Launch Disallowed Container'
+          - 'Falco rules: Launch Excessively Capable Container'
+          - 'Falco rules: Launch Privileged Container'
+          - 'Falco rules: Launch Sensitive Mount Container'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1611
+    technique_name: 'Escape to Host'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Change namespace privileges via unshare'
+          - 'Falco rules: Change thread namespace'
+          - 'Falco rules: Container Access to Host Sensitive Paths'
+          - 'Falco rules: Debugfs Launched in Privileged Container'
+          - 'Falco rules: Detect release_agent File Container Escapes'
+          - 'Falco rules: Modify Container Entrypoint'
+          - 'Falco rules: Mount Launched in Privileged Container'
+          - 'Falco rules: Privileged Container Device Access'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1620
+    technique_name: 'Reflective Code Loading'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: Fileless execution via memfd_create'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1622
+    technique_name: 'Debugger Evasion'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Falco rules: PTRACE anti-debug attempt'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true

@@ -1,0 +1,815 @@
+# Gerado por build_dettect.py (Detection Rules) a partir do OTRF/OSSEM-DM (MIT).
+# MODELO: lista o que a fonte é capaz de registrar. Preencha datas e data_quality com o que você realmente coleta.
+version: 1.1
+file_type: data-source-administration
+name: 'Windows Security Auditing'
+domain: enterprise-attack
+systems:
+  - applicable_to: default
+    platform:
+      - Windows
+data_sources:
+  - data_source_name: 'Active Directory Credential Request'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4768: A Kerberos authentication ticket (TGT) was requested.'
+          - '4769: A Kerberos service ticket was requested.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Active Directory Object Access'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4661: A handle to an object was requested.'
+          - '4662: An operation was performed on an object.'
+          - '4932: Synchronization of a replica of an Active Directory naming context has begun.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Active Directory Object Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '5137: A directory service object was created.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Active Directory Object Deletion'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '5141: A directory service object was deleted.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Active Directory Object Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '5136: A directory service object was modified.'
+          - '5139: A directory service object was moved.'
+          - '4719: System audit policy was changed.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Command Execution'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4688: A new process has been created.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Drive Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '6423: The installation of this device is forbidden by system policy.'
+          - '6416: A new external device was recognized by the system.'
+          - '6424: The installation of this device was allowed, after having previously been forbidden by policy.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Drive Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '6422: A device was enabled.'
+          - '6419: A request was made to disable a device.'
+          - '6420: A device was disabled.'
+          - '6421: A request was made to enable a device.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'File Access'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4656: A handle to an object was requested.'
+          - '4663: An attempt was made to access an object.'
+          - '4661: A handle to an object was requested.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'File Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4663: An attempt was made to access an object.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'File Deletion'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4660: An object was deleted.'
+          - '4663: An attempt was made to access an object.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'File Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4670: Permissions on an object were changed.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Firewall Disable'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '5025: The Windows Firewall Service has been stopped.'
+          - '5034: The Windows Firewall Driver was stopped.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Firewall Metadata'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '5024: The Windows Firewall Service has started successfully.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Firewall Rule Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4947: A change has been made to Windows Firewall exception list. A rule was modified.'
+          - '4948: A change has been made to Windows Firewall exception list. A rule was deleted.'
+          - '4946: A change has been made to Windows Firewall exception list. A rule was added.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Group Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4727: A security-enabled global group was created.'
+          - '4731: A security-enabled local group was created.'
+          - '4754: A security-enabled universal group was created.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Group Deletion'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4730: A security-enabled global group was deleted.'
+          - '4734: A security-enabled local group was deleted.'
+          - '4758: A security-enabled universal group was deleted.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Group Enumeration'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4798: A user''s local group membership was enumerated.'
+          - '4799: A security-enabled local group membership was enumerated.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Group Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4728: A member was added to a security-enabled global group.'
+          - '4729: A member was removed from a security-enabled global group.'
+          - '4732: A member was added to a security-enabled local group.'
+          - '4733: A member was removed from a security-enabled local group.'
+          - '4735: A security-enabled local group was changed.'
+          - '4737: A security-enabled global group was changed.'
+          - '4755: A security-enabled universal group was changed.'
+          - '4756: A member was added to a security-enabled universal group.'
+          - '4757: A member was removed from a security-enabled universal group.'
+          - '4764: A groups type was changed.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Host Status'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4616: The system time was changed.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Logon Session Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4624: An account was successfully logged on.'
+          - '4778: A session was reconnected to a Window Station.'
+          - '4964: Special groups have been assigned to a new logon.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Logon Session Metadata'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4703: A token right was adjusted.'
+          - '4673: A privileged service was called.'
+          - '4674: An operation was attempted on a privileged object.'
+          - '4610: An authentication package has been loaded by the Local Security Authority.'
+          - '4611: A trusted logon process has been registered with the Local Security Authority.'
+          - '4614: A notification package has been loaded by the Security Account Manager.'
+          - '4622: A security package has been loaded by the Local Security Authority.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Logon Session Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4672: Special privileges assigned to new logon.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Logon Session Termination'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4634: An account was logged off.'
+          - '4647: User initiated logoff.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Named Pipe Metadata'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4656: A handle to an object was requested.'
+          - '5145: A network share object was checked to see whether client can be granted desired access.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Network Connection Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '5156: The Windows Filtering Platform has permitted a connection.'
+          - '5157: The Windows Filtering Platform has blocked a connection.'
+          - '5154: The Windows Filtering Platform has permitted an application or service to listen on a port for incoming connections.'
+          - '5159: The Windows Filtering Platform has blocked a bind to a local port.'
+          - '5155: The Windows Filtering Platform has blocked an application or service from listening on a port for incoming connections.'
+          - '5031: The Windows Firewall Service blocked an application from accepting incoming connections on the network.'
+          - '5158: The Windows Filtering Platform has permitted a bind to a local port.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Network Share Access'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '5140: A network share object was accessed.'
+          - '5145: A network share object was checked to see whether client can be granted desired access.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Network Share Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '5142: A network share object was added.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Network Share Deletion'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '5144: A network share object was deleted.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Network Share Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '5143: A network share object was modified.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Process Access'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4663: An attempt was made to access an object.'
+          - '4656: A handle to an object was requested.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Process Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4688: A new process has been created.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Process Termination'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4689: A process has exited.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Scheduled Job Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4698: A scheduled task was created.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Scheduled Job Deletion'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4699: A scheduled task was deleted.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Scheduled Job Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4702: A scheduled task was updated.'
+          - '4700: A scheduled task was enabled.'
+          - '4701: A scheduled task was disabled.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Service Access'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4656: A handle to an object was requested.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Service Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4697: A service was installed in the system.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'User Account Authentication'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4624: An account was successfully logged on.'
+          - '4625: An account failed to log on.'
+          - '4648: A logon was attempted using explicit credentials.'
+          - '4776: The domain controller or local computer attempted to validate the credentials for an account.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'User Account Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4720: A user account was created.'
+          - '4741: A computer account was created.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'User Account Deletion'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4726: A user account was deleted.'
+          - '4743: A computer account was deleted.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'User Account Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4738: A user account was changed.'
+          - '4781: The name of an account was changed.'
+          - '4742: A computer account was changed.'
+          - '4740: A user account was locked out.'
+          - '4767: A user account was unlocked.'
+          - '4722: A user account was enabled.'
+          - '4717: System security access was granted to an account.'
+          - '4718: System security access was removed from an account.'
+          - '4725: A user account was disabled.'
+          - '4723: An attempt was made to change an account''s password.'
+          - '4724: An attempt was made to reset an account''s password.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Windows Registry Key Access'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4663: An attempt was made to access an object.'
+          - '4656: A handle to an object was requested.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Windows Registry Key Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4657: A registry value was modified.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Windows Registry Key Deletion'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4657: A registry value was modified.'
+          - '4660: An object was deleted.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Windows Registry Key Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - '4657: A registry value was modified.'
+          - '4670: Permissions on an object were changed.'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0

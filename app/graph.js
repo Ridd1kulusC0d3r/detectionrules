@@ -55,6 +55,7 @@ async function renderGraph(){
       <a class="btn sm" href="data/graph/graph.graphml" download>⬇ GraphML</a>
       <a class="btn sm" href="data/graph/graph.json" download>⬇ grafo JSON</a>
       <a class="btn sm" href="data/graph/navigator-layer.json" download title="Abra em mitre-attack.github.io/attack-navigator">⬇ camada Navigator</a>
+      <a class="btn sm" href="data/dettect/techniques-all.yaml" download title="technique-administration do DeTT&CT: linha de base das regras públicas. Há um arquivo por linguagem em data/dettect/ (veja data/dettect/README.md)">⬇ DeTT&CT YAML</a>
     </span>
   </div>
   <div class="field" style="margin:10px 0 0"><input class="search" id="gq" placeholder="Buscar técnica, grupo ou ferramenta: T1003, lsass, APT28, Turla, Volatility…"></div>
@@ -279,6 +280,14 @@ window.attackLogsHTML=async function(r){
   const ids=[...new Set(r.tech.map(t=>t.toUpperCase()))].filter(id=>T(id)&&T(id).det.length); if(!ids.length) return '';
   const rows=[]; ids.forEach(id=>T(id).det.forEach(d=>d.an.forEach(a=>a.logs.forEach(l=>rows.push({id,pl:a.pl.join(', '),...l})))));
   const uniq=[]; const seen=new Set(); rows.forEach(x=>{const k=x.src+x.ch+x.pl; if(!seen.has(k)){seen.add(k); uniq.push(x);}});
-  return `<h3 class="h">O que o MITRE ATT&CK recomenda coletar</h3><table class="tbl"><tr><th>Técnica</th><th>Plataforma</th><th>Componente</th><th>Fonte</th><th>Canal / evento</th></tr>${uniq.slice(0,14).map(x=>`<tr><td>${x.id}</td><td>${esc(x.pl)}</td><td>${esc(x.dc)}</td><td><code>${esc(x.src)}</code></td><td><code>${esc(x.ch)}</code></td></tr>`).join('')}</table>`;
+  const mitre=`<h3 class="h">O que o MITRE ATT&CK recomenda coletar</h3><table class="tbl"><tr><th>Técnica</th><th>Plataforma</th><th>Componente</th><th>Fonte</th><th>Canal / evento</th></tr>${uniq.slice(0,14).map(x=>`<tr><td>${x.id}</td><td>${esc(x.pl)}</td><td>${esc(x.dc)}</td><td><code>${esc(x.src)}</code></td><td><code>${esc(x.ch)}</code></td></tr>`).join('')}</table>`;
+  // como habilitar cada log: mapa OSSEM (OTRF/OSSEM-DM), gerado por build_dettect.py
+  if(G.OSSEM===undefined) G.OSSEM=await fetch('data/graph/ossem.json').then(r=>r.ok?r.json():null).catch(()=>null);
+  const comps=G.OSSEM?.components||{}; const evs=[]; const got=new Set();
+  [...new Set(uniq.map(x=>x.dc))].forEach(dc=>(comps[dc.toLowerCase()]||[]).forEach(e=>{const k=e.ls+e.e; if(!got.has(k)){got.add(k); evs.push({dc,...e});}}));
+  evs.sort((a,b)=>(b.on?1:0)-(a.on?1:0));
+  const how=e=>e.on?`<code>${esc(e.on)}</code>${e.gpo?`<div class="id" style="margin-top:4px">GPO: ${esc(e.gpo.split(' -> ').slice(-2).join(' → '))}</div>`:''}`:(e.at?`<span class="id">ActionType: ${esc(e.at.slice(0,4).join(', '))}${e.at.length>4?'…':''}</span>`:'<span class="id">ligado por padrão ou sem comando documentado</span>');
+  const ossem=evs.length?`<h3 class="h">Como ligar esses logs</h3><p class="sub">Evento, canal e o comando que habilita a auditoria, para cada componente de dados acima. Fonte: <a href="https://github.com/OTRF/OSSEM-DM" target="_blank" rel="noopener">OSSEM-DM</a>.</p><table class="tbl"><tr><th>Componente</th><th>Evento</th><th>Fonte / canal</th><th>Como habilitar</th></tr>${evs.slice(0,12).map(e=>`<tr><td>${esc(e.dc)}</td><td><code>${esc(e.e)}</code> ${e.n&&e.n!==e.e?esc(e.n):''}</td><td>${esc(e.ls)}${e.ch&&e.ch!==e.ls?`<div class="id">${esc(e.ch)}</div>`:''}</td><td>${how(e)}</td></tr>`).join('')}</table>${evs.length>12?`<p class="sub">+${evs.length-12} eventos no arquivo <a href="data/graph/ossem.json" target="_blank" rel="noopener">ossem.json</a>.</p>`:''}`:'';
+  return mitre+ossem;
 };
 Object.assign(window,{renderGraph,loadGraph,G});

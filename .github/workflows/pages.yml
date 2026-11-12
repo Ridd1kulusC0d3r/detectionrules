@@ -42,6 +42,7 @@ jobs:
           python3 build_context.py .
           python3 build_intel.py .
           python3 build_tech.py
+          python3 build_dettect.py
 
       - name: Montar site (somente arquivos do app)
         run: |
