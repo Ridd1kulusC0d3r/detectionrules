@@ -1,0 +1,459 @@
+# Gerado por build_dettect.py (Detection Rules) a partir do OTRF/OSSEM-DM (MIT).
+# MODELO: lista o que a fonte é capaz de registrar. Preencha datas e data_quality com o que você realmente coleta.
+version: 1.1
+file_type: data-source-administration
+name: 'Microsoft Defender for Endpoint'
+domain: enterprise-attack
+systems:
+  - applicable_to: default
+    platform:
+      - Windows
+data_sources:
+  - data_source_name: 'Command Execution'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceProcessEvents: ProcessCreated'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Driver Load'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: DriverLoaded'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'File Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceFileEvents: FileCreated'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'File Deletion'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceFileEvents: FileDeleted'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'File Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceFileEvents: FileModified'
+          - 'DeviceFileEvents: FileRenamed'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Logon Session Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceLogonEvents: LogonSuccess'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Module Load'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceImageLoadEvents: ImageLoaded'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Network Connection Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceNetworkEvents: InboundConnectionAccepted'
+          - 'DeviceNetworkEvents: ConnectionAttempt'
+          - 'DeviceNetworkEvents: ConnectionSuccess'
+          - 'DeviceNetworkEvents: ListeningConnectionCreated'
+          - 'DeviceEvents: FirewallInboundConnectionToAppBlocked'
+          - 'DeviceNetworkEvents: ConnectionRequest'
+          - 'DeviceEvents: FirewallInboundConnectionBlocked'
+          - 'DeviceEvents: FirewallOutboundConnectionBlocked'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Network Share Access'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceLogonEvents: LogonSuccess'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'OS Api Execution'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: CreateRemoteThreadApiCall'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Process Access'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: OpenProcessApiCall'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Process Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceProcessEvents: ProcessCreated'
+          - 'DeviceEvents: CreateRemoteThreadApiCall'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Process Metadata'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: LdapSearch'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Process Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: CreateRemoteThreadApiCall'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Scheduled Job Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: ScheduledTaskCreated'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Scheduled Job Deletion'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: ScheduledTaskDeleted'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Scheduled Job Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: ScheduledTaskUpdated'
+          - 'DeviceEvents: ScheduledTaskModified'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Script Execution'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: ScriptContent'
+          - 'DeviceEvents: PowerShellCommand'
+          - 'DeviceEvents: AmsiScriptDetection'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Service Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: ServiceInstalled'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'User Account Authentication'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceLogonEvents: LogonSuccess'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'User Account Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: UserAccountCreated'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'User Account Deletion'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: UserAccountDeleted'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'User Account Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: UserAccountModified'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Windows Registry Key Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceRegistryEvents: RegistryValueSet'
+          - 'DeviceRegistryEvents: RegistryKeyCreated'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Windows Registry Key Deletion'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceRegistryEvents: RegistryValueDeleted'
+          - 'DeviceRegistryEvents: RegistryKeyDeleted'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Windows Registry Key Modification'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceRegistryEvents: RegistryValueSet'
+          - 'DeviceRegistryEvents: RegistryKeySet'
+          - 'DeviceRegistryEvents: RegistryKeyCreated'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0
+  - data_source_name: 'Wmi Creation'
+    data_source:
+      - applicable_to:
+          - default
+        date_registered: null
+        date_connected: null
+        products:
+          - 'DeviceEvents: WmiBindEventFilterToConsumer'
+        available_for_data_analytics: false
+        comment: ''
+        data_quality:
+          device_completeness: 0
+          data_field_completeness: 0
+          timeliness: 0
+          consistency: 0
+          retention: 0

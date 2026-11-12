@@ -1,0 +1,139 @@
+{
+ "generated": "2026-10-26",
+ "attack": "20.0",
+ "files": [
+  {
+   "file": "techniques-all.yaml",
+   "bytes": 499275,
+   "kind": "techniques",
+   "label": "Todas as linguagens",
+   "techniques": 575,
+   "rules": 26473
+  },
+  {
+   "file": "techniques-wazuh.yaml",
+   "bytes": 532564,
+   "kind": "techniques",
+   "label": "Wazuh",
+   "techniques": 406,
+   "rules": 11844
+  },
+  {
+   "file": "techniques-sigma.yaml",
+   "bytes": 488610,
+   "kind": "techniques",
+   "label": "Sigma",
+   "techniques": 404,
+   "rules": 5290
+  },
+  {
+   "file": "techniques-elastic.yaml",
+   "bytes": 669936,
+   "kind": "techniques",
+   "label": "Elastic",
+   "techniques": 465,
+   "rules": 3793
+  },
+  {
+   "file": "techniques-suricata.yaml",
+   "bytes": 213507,
+   "kind": "techniques",
+   "label": "Suricata/Snort/Sagan",
+   "techniques": 190,
+   "rules": 1449
+  },
+  {
+   "file": "techniques-yaral.yaml",
+   "bytes": 222714,
+   "kind": "techniques",
+   "label": "Google SecOps (YARA-L)",
+   "techniques": 204,
+   "rules": 1340
+  },
+  {
+   "file": "techniques-sentinel.yaml",
+   "bytes": 310262,
+   "kind": "techniques",
+   "label": "Microsoft Sentinel",
+   "techniques": 250,
+   "rules": 1211
+  },
+  {
+   "file": "techniques-panther.yaml",
+   "bytes": 138335,
+   "kind": "techniques",
+   "label": "Panther",
+   "techniques": 144,
+   "rules": 733
+  },
+  {
+   "file": "techniques-splunk.yaml",
+   "bytes": 181959,
+   "kind": "techniques",
+   "label": "Splunk",
+   "techniques": 222,
+   "rules": 550
+  },
+  {
+   "file": "techniques-kql-md.yaml",
+   "bytes": 67406,
+   "kind": "techniques",
+   "label": "KQL (Defender/Sentinel)",
+   "techniques": 93,
+   "rules": 123
+  },
+  {
+   "file": "techniques-falco.yaml",
+   "bytes": 26179,
+   "kind": "techniques",
+   "label": "Falco",
+   "techniques": 39,
+   "rules": 82
+  },
+  {
+   "file": "techniques-gcp.yaml",
+   "bytes": 18127,
+   "kind": "techniques",
+   "label": "GCP security-analytics",
+   "techniques": 27,
+   "rules": 51
+  },
+  {
+   "file": "techniques-yara.yaml",
+   "bytes": 2820,
+   "kind": "techniques",
+   "label": "YARA",
+   "techniques": 4,
+   "rules": 5
+  },
+  {
+   "file": "techniques-aql.yaml",
+   "bytes": 1743,
+   "kind": "techniques",
+   "label": "QRadar AQL",
+   "techniques": 2,
+   "rules": 2
+  },
+  {
+   "file": "data-sources-sysmon.yaml",
+   "bytes": 10363,
+   "kind": "data-sources",
+   "label": "Windows + Sysmon",
+   "data_sources": 21
+  },
+  {
+   "file": "data-sources-windows-security.yaml",
+   "bytes": 26899,
+   "kind": "data-sources",
+   "label": "Windows Security Auditing",
+   "data_sources": 46
+  },
+  {
+   "file": "data-sources-defender-endpoint.yaml",
+   "bytes": 13637,
+   "kind": "data-sources",
+   "label": "Microsoft Defender for Endpoint",
+   "data_sources": 27
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="1200" height="360" role="img" aria-label="Detection Rules: toda regra pública de detecção, explicada até o último campo">
+  <rect width="1200" height="360" fill="#f2efe6"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" letter-spacing="2.6" fill="#3d3a30">
+    <text x="48" y="44">DETECTION RULES / ARSENAL DE REGRAS DE DETECÇÃO</text>
+    <text x="1152" y="44" text-anchor="end" fill="#a83a14">MITRE ATT&amp;CK V20</text>
+  </g>
+  <rect x="48" y="62" width="1104" height="1" fill="#1a1a14" opacity=".35"/>
+  <g font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="58" fill="#1a1a14" letter-spacing="-1.5">
+    <text x="48" y="138">Toda regra pública de detecção,</text>
+    <text x="48" y="204"><tspan fill="#a83a14" font-style="italic">explicada</tspan> até o último campo</text>
+  </g>
+  <rect x="48" y="238" width="1104" height="1.5" fill="#1a1a14"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#1a1a14">
+    <g font-size="34" font-weight="700">
+      <text x="48" y="290">84.578</text><text x="278" y="290">49</text><text x="508" y="290">706</text><text x="738" y="290">178</text><text x="968" y="290">36</text>
+    </g>
+    <g font-size="12" letter-spacing="2.2" fill="#6b6758">
+      <text x="48" y="316">REGRAS</text><text x="278" y="316">FONTES PÚBLICAS</text><text x="508" y="316">TÉCNICAS ATT&amp;CK</text><text x="738" y="316">GRUPOS APT</text><text x="968" y="316">TECNOLOGIAS</text>
+    </g>
+  </g>
+  <g fill="#1a1a14" opacity=".25"><rect x="254" y="254" width="1" height="72"/><rect x="484" y="254" width="1" height="72"/><rect x="714" y="254" width="1" height="72"/><rect x="944" y="254" width="1" height="72"/></g>
+  <rect x="48" y="340" width="1104" height="1" fill="#1a1a14" opacity=".35"/>
+</svg>

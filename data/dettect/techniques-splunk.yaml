@@ -1,0 +1,5225 @@
+# Gerado por build_dettect.py (Detection Rules). Só regras Splunk. ATT&CK v20.0, catálogo de 2026-10-26.
+# Linha de base de regras PÚBLICAS: reavalie cada nota depois de implantar e testar no seu ambiente.
+version: 1.2
+file_type: technique-administration
+name: 'Detection Rules: Splunk'
+domain: enterprise-attack
+platform:
+  - all
+techniques:
+  - technique_id: T1001
+    technique_name: 'Data Obfuscation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows PowGoop Beacon Decoding'
+          - 'Splunk security_content: Windows Suspicious QEMU Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1003
+    technique_name: 'OS Credential Dumping'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Credential Dumping'
+          - 'Splunk analytic stories: Detect Zerologon Attack'
+          - 'Splunk security_content: Cisco Secure Firewall - High Priority Intrusion Classification'
+          - 'Splunk security_content: Enable WDigest UseLogonCredential Registry'
+          - 'Splunk security_content: PowerShell 4104 Hunting'
+          - 'Splunk security_content: Windows LAPS Password Gathering Via PowerShell Script'
+          - 'Splunk security_content: Windows Post Exploitation Risk Behavior'
+          - 'Splunk security_content: Windows Remote Access Software BRC4 Loaded Dll'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1003.001
+    technique_name: 'LSASS Memory'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Veeam CVE-2023-27532 Exploitation Activity'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1005
+    technique_name: 'Data from Local System'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco TFTP Server Configuration for Data Exfiltration'
+          - 'Splunk security_content: ESXi Sensitive Files Accessed'
+          - 'Splunk security_content: PTC Windchill Gateway Command Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1007
+    technique_name: 'System Service Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows WinPEAS PowerShell Script Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1008
+    technique_name: 'Fallback Channels'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Outlook Macro Security Modified'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1012
+    technique_name: 'Query Registry'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Software Discovery Via PowerShell'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1014
+    technique_name: 'Rootkit'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Linux Rootkit'
+          - 'Splunk analytic stories: VoidLink Cloud-Native Linux Malware'
+          - 'Splunk security_content: Linux Auditd Kernel Module Enumeration'
+          - 'Splunk security_content: Linux Kernel Module Enumeration'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1016
+    technique_name: 'System Network Configuration Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Network Discovery'
+          - 'Splunk security_content: Cisco IOS XE Reconnaissance Command Activity'
+          - 'Splunk security_content: Cisco NVM - Suspicious Network Connection to IP Lookup Service API'
+          - 'Splunk security_content: Windows Common Abused Cmd Shell Risk Behavior'
+          - 'Splunk security_content: Windows Post Exploitation Risk Behavior'
+          - 'Splunk security_content: Windows PowerShell Invoke-RestMethod IP Information Collection'
+          - 'Splunk security_content: Windows WinPEAS PowerShell Script Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1018
+    technique_name: 'Remote System Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Active Directory Discovery'
+          - 'Splunk security_content: Windows Netspy Network Scanner Execution'
+          - 'Splunk security_content: Windows PsTools Recon Usage'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1020
+    technique_name: 'Automated Exfiltration'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Mustang Panda USB Tool Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021
+    technique_name: 'Remote Services'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco IOS XE VTY Access Class Tampering'
+          - 'Splunk security_content: Cisco Network Interface Modifications'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021.001
+    technique_name: 'Remote Desktop Protocol'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows RDP File Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021.002
+    technique_name: 'SMB/Windows Admin Shares'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Alternate Data Stream Created Over Local Share'
+          - 'Splunk security_content: Windows PUA Named Pipe'
+          - 'Splunk security_content: Windows RMM Named Pipe'
+          - 'Splunk security_content: Windows Special Privileged Logon On Multiple Hosts'
+          - 'Splunk security_content: Windows Suspicious C2 Named Pipe'
+          - 'Splunk security_content: Windows Suspicious Named Pipe'
+          - 'Splunk security_content: Windows Theme File Creation in Unusual Location'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021.003
+    technique_name: 'Distributed Component Object Model'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Impacket Lateral Movement Commandline Parameters'
+          - 'Splunk security_content: Impacket Lateral Movement WMIExec Commandline Parameters'
+          - 'Splunk security_content: Impacket Lateral Movement smbexec CommandLine Parameters'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021.004
+    technique_name: 'SSH'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco IOS XE Remote Access Probe Burst'
+          - 'Splunk security_content: Windows Protocol Tunneling with Plink'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021.006
+    technique_name: 'Windows Remote Management'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Possible Lateral Movement PowerShell Spawn'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021.007
+    technique_name: 'Cloud Services'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Microsoft Intune Device Health Scripts'
+          - 'Splunk security_content: Microsoft Intune DeviceManagementConfigurationPolicies'
+          - 'Splunk security_content: Microsoft Intune Mobile Apps'
+          - 'Splunk security_content: Windows Azure PowerShell Module Installation Via PowerShell Script'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021.008
+    technique_name: 'Direct Cloud VM Connections'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: AWS EC2 Multiple SSH Public Keys Uploaded by a Single Identity'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1025
+    technique_name: 'Data from Removable Media'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Process Executed From Removable Media'
+          - 'Splunk security_content: Windows USBSTOR Registry Key Modification'
+          - 'Splunk security_content: Windows WPDBusEnum Registry Key Modification'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1027
+    technique_name: 'Obfuscated Files or Information'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Lumma Stealer Activity'
+          - 'Splunk security_content: Cisco Secure Firewall - Repeated Malware Downloads'
+          - 'Splunk security_content: Cisco Secure Firewall - Snort Rule Triggered Across Multiple Hosts'
+          - 'Splunk security_content: Windows TinyCC Shellcode Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1027.004
+    technique_name: 'Compile After Delivery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux Suspicious GCC Invocation Building Init Shared Object'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1027.011
+    technique_name: 'Fileless Storage'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: PowerShell WebRequest Using Memory Stream'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1033
+    technique_name: 'System Owner/User Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Active Directory Discovery'
+          - 'Splunk security_content: Windows Common Abused Cmd Shell Risk Behavior'
+          - 'Splunk security_content: Windows WinPEAS PowerShell Script Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1036
+    technique_name: 'Masquerading'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Masquerading - Rename System Utilities'
+          - 'Splunk security_content: Cisco NVM - Non-Network Binary Making Network Connection'
+          - 'Splunk security_content: Windows Bluetooth Service Installed From Uncommon Location'
+          - 'Splunk security_content: Windows Suspicious QEMU Execution'
+          - 'Splunk security_content: Windows TinyCC Shellcode Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1036.005
+    technique_name: 'Match Legitimate Resource Name or Location'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Attacker Tools On Endpoint'
+          - 'Splunk security_content: Windows MSC EvilTwin Directory Path Manipulation'
+          - 'Splunk security_content: Windows Process Execution in Temp Dir'
+          - 'Splunk security_content: Windows Suspicious Process File Path'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1036.008
+    technique_name: 'Masquerade File Type'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Email Attachments With Lots Of Spaces'
+          - 'Splunk security_content: Suspicious Process Executed From Container File'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1036.010
+    technique_name: 'Masquerade Account Name'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Builtin Account Name Was Changed'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1037
+    technique_name: 'Boot or Logon Initialization Scripts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux MOTD Script Added'
+          - 'Splunk security_content: Linux Suspicious XDG Autostart'
+          - 'Splunk security_content: Linux UDEV Rule Created'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1039
+    technique_name: 'Data from Network Shared Drive'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Network Share Interaction Via Net'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1040
+    technique_name: 'Network Sniffing'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco SNMP Community String Configuration Changes'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1041
+    technique_name: 'Exfiltration Over C2 Channel'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco ASA - Device File Copy to Remote Location'
+          - 'Splunk security_content: Potential Telegram API Request Via CommandLine'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1046
+    technique_name: 'Network Service Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco IOS XE Remote Access Probe Burst'
+          - 'Splunk security_content: Cisco Secure Firewall - Blocked Connection'
+          - 'Splunk security_content: Cisco Secure Firewall - Repeated Blocked Connections'
+          - 'Splunk security_content: Internal Vulnerability Scan'
+          - 'Splunk security_content: Windows PsTools Recon Usage'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1047
+    technique_name: 'Windows Management Instrumentation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Impacket Lateral Movement Commandline Parameters'
+          - 'Splunk security_content: Impacket Lateral Movement WMIExec Commandline Parameters'
+          - 'Splunk security_content: Impacket Lateral Movement smbexec CommandLine Parameters'
+          - 'Splunk security_content: Possible Lateral Movement PowerShell Spawn'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1048.003
+    technique_name: 'Exfiltration Over Unencrypted Non-C2 Protocol'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco ASA - Device File Copy to Remote Location'
+          - 'Splunk security_content: Cisco Secure Firewall - Potential Data Exfiltration'
+          - 'Splunk security_content: Linux Shell Pseudo Device Reverse Shell'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1049
+    technique_name: 'System Network Connections Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Active Directory Discovery'
+          - 'Splunk security_content: Windows Common Abused Cmd Shell Risk Behavior'
+          - 'Splunk security_content: Windows Post Exploitation Risk Behavior'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1053
+    technique_name: 'Scheduled Task/Job'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Linux Persistence Techniques'
+          - 'Splunk analytic stories: MacOS Persistence Techniques'
+          - 'Splunk analytic stories: Scheduled Tasks'
+          - 'Splunk analytic stories: VoidLink Cloud-Native Linux Malware'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1053.002
+    technique_name: 'At'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Scheduled Tasks'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1053.003
+    technique_name: 'Cron'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Scheduled Tasks'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1053.005
+    technique_name: 'Scheduled Task'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Scheduled Tasks'
+          - 'Splunk security_content: Possible Lateral Movement PowerShell Spawn'
+          - 'Splunk security_content: Windows Compatibility Telemetry Suspicious Child Process'
+          - 'Splunk security_content: Windows Compatibility Telemetry Tampering Through Registry'
+          - 'Splunk security_content: Windows Error Report Created in ReportQueue Manually'
+          - 'Splunk security_content: Windows Scheduled Task Created in a Group Policy Object'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1053.006
+    technique_name: 'Systemd Timers'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Scheduled Tasks'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1053.007
+    technique_name: 'Container Orchestration Job'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Isovalent - Cron Job Creation'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1055
+    technique_name: 'Process Injection'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Communication Over Suspicious Ports'
+          - 'Splunk security_content: Windows PUA Named Pipe'
+          - 'Splunk security_content: Windows RMM Named Pipe'
+          - 'Splunk security_content: Windows Suspicious C2 Named Pipe'
+          - 'Splunk security_content: Windows Suspicious Named Pipe'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1055.003
+    technique_name: 'Thread Execution Hijacking'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: PowerShell PInvoke Process Injection API Chain'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1055.004
+    technique_name: 'Asynchronous Procedure Call'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: PowerShell PInvoke Process Injection API Chain'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1055.012
+    technique_name: 'Process Hollowing'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: PowerShell PInvoke Process Injection API Chain'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1055.013
+    technique_name: 'Process Doppelgänging'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: PowerShell PInvoke Process Injection API Chain'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1056.002
+    technique_name: 'GUI Input Capture'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: MacOS Osascript Displaying Suspicious User Prompt'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059
+    technique_name: 'Command and Scripting Interpreter'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Cisco Smart Install Remote Code Execution CVE-2018-0171'
+          - 'Splunk analytic stories: Suspicious Command-Line Executions'
+          - 'Splunk security_content: Cisco NVM - Suspicious File Download via Headless Browser'
+          - 'Splunk security_content: Cisco Secure Firewall - Binary File Type Download'
+          - 'Splunk security_content: Cisco Secure Firewall - Citrix NetScaler Memory Overread Attempt'
+          - 'Splunk security_content: Cisco Secure Firewall - Possibly Compromised Host'
+          - 'Splunk security_content: Cisco Secure Firewall - Wget or Curl Download'
+          - 'Splunk security_content: Detect Outbound LDAP Traffic'
+          - 'Splunk security_content: Juniper Networks Remote Code Execution Exploit Detection'
+          - 'Splunk security_content: Linux Ghostscript Exploitation'
+          - 'Splunk security_content: Living Off The Land Detection'
+          - 'Splunk security_content: Log4Shell CVE-2021-44228 Exploitation'
+          - 'Splunk security_content: Ollama Suspicious Prompt Injection Jailbreak'
+          - 'Splunk security_content: PTC Windchill GW READY OK Probe'
+          - 'Splunk security_content: PTC Windchill Gateway Command Execution'
+          - 'Splunk security_content: Windows Common Abused Cmd Shell Risk Behavior'
+          - 'Splunk security_content: Windows Defender ASR Rules Stacking'
+          - 'Splunk security_content: Windows Process Accessing Windows Recall Directory'
+          - 'Splunk security_content: Windows Process Execution From RDP Share'
+          - 'Splunk security_content: Windows Remote Image Load'
+          - '(+6 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059.001
+    technique_name: 'PowerShell'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Communication Over Suspicious Ports'
+          - 'Splunk security_content: Cisco Secure Firewall - Veeam CVE-2023-27532 Exploitation Activity'
+          - 'Splunk security_content: CrushFTP Authentication Bypass Exploitation'
+          - 'Splunk security_content: Detect Mimikatz With PowerShell Script Block Logging'
+          - 'Splunk security_content: Get-ForestTrust with PowerShell Script Block'
+          - 'Splunk security_content: Possible Lateral Movement PowerShell Spawn'
+          - 'Splunk security_content: PowerShell PInvoke Process Injection API Chain'
+          - 'Splunk security_content: Powershell Creating Thread Mutex'
+          - 'Splunk security_content: Powershell Fileless Process Injection via GetProcAddress'
+          - 'Splunk security_content: Powershell Fileless Script Contains Base64 Encoded Content'
+          - 'Splunk security_content: Recon Using WMI Class'
+          - 'Splunk security_content: Windows Cobalt Strike PowerShell Loader'
+          - 'Splunk security_content: Windows Content Copied from Browser was Executed'
+          - 'Splunk security_content: Windows PowerShell Invoke-RestMethod IP Information Collection'
+          - 'Splunk security_content: Windows PowerShell Module File Created'
+          - 'Splunk security_content: Windows PowerShell Process Implementing Manual Base64 Decoder'
+          - 'Splunk security_content: Windows PowerShell ScheduleTask'
+          - 'Splunk security_content: Windows Powershell Commands from DNS TXT'
+          - 'Splunk security_content: Windows SSH Proxy Command'
+          - 'Splunk security_content: Windows Software Discovery Via PowerShell'
+          - '(+1 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059.003
+    technique_name: 'Windows Command Shell'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: CrushFTP Authentication Bypass Exploitation'
+          - 'Splunk security_content: Windows Content Copied from Browser was Executed'
+          - 'Splunk security_content: Windows PowerShell FakeCAPTCHA Clipboard Execution'
+          - 'Splunk security_content: Windows PowerShell Invoke-Sqlcmd Execution'
+          - 'Splunk security_content: Windows Shell Process from CrushFTP'
+          - 'Splunk security_content: Windows Suspicious React or Next.js Child Process'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059.004
+    technique_name: 'Unix Shell'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux Decode Base64 to Shell'
+          - 'Splunk security_content: Linux MOTD Script Added'
+          - 'Splunk security_content: Linux Possible System Binary Backdoor'
+          - 'Splunk security_content: Linux Suspicious Privileged Container Execution'
+          - 'Splunk security_content: Linux Suspicious React or Next.js Child Process'
+          - 'Splunk security_content: Linux Suspicious XDG Autostart'
+          - 'Splunk security_content: MacOS Osascript Executing Interactive Shell'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059.005
+    technique_name: 'Visual Basic'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco NVM - MSHTML or MSHTA Network Execution Without URL in CLI'
+          - 'Splunk security_content: Windows Outlook Macro Created by Suspicious Process'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059.006
+    technique_name: 'Python'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Python Network Traffic During Package Build'
+          - 'Splunk security_content: Windows Renamed Python Binary was Executed'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059.007
+    technique_name: 'JavaScript'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: MacOS Osascript Executing JavaScript Code With ObjC'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059.009
+    technique_name: 'Cloud API'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows SQL Server Extended Procedure DLL Loading Hunt'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1068
+    technique_name: 'Exploitation for Privilege Escalation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: RoguePlanet'
+          - 'Splunk security_content: Linux Dirty Frag Kernel Privilege Escalation'
+          - 'Splunk security_content: Linux Ghostscript Exploitation'
+          - 'Splunk security_content: Linux Suspicious GCC Invocation Building Init Shared Object'
+          - 'Splunk security_content: VMWare Aria Operations Exploit Attempt'
+          - 'Splunk security_content: Windows Driver Load Non-Standard Path'
+          - 'Splunk security_content: Windows Drivers Loaded by Signature'
+          - 'Splunk security_content: Windows MSI Rollback Script Deleted By Non-Msiexec Process'
+          - 'Splunk security_content: Windows Phantom DLL Created on Disk'
+          - 'Splunk security_content: Windows Remote Image Load'
+          - 'Splunk security_content: Windows SCCM Smsexec Spawned a Suspicious Child Process'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1069
+    technique_name: 'Permission Groups Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Active Directory Discovery'
+          - 'Splunk security_content: Windows Post Exploitation Risk Behavior'
+          - 'Splunk security_content: Windows PowerView AD Access Control List Enumeration'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1069.002
+    technique_name: 'Domain Groups'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Detect AzureHound Command-Line Arguments'
+          - 'Splunk security_content: Detect AzureHound File Modifications'
+          - 'Splunk security_content: Detect SharpHound Command-Line Arguments'
+          - 'Splunk security_content: Detect SharpHound File Modifications'
+          - 'Splunk security_content: Detect SharpHound Usage'
+          - 'Splunk security_content: Network Traffic to Active Directory Web Services Protocol'
+          - 'Splunk security_content: Windows Group Discovery Via Net'
+          - 'Splunk security_content: Windows Ldifde Directory Object Behavior'
+          - 'Splunk security_content: Windows SOAPHound Binary Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1069.003
+    technique_name: 'Cloud Groups'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Azure PowerShell Module Installation Via PowerShell Script'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1070
+    technique_name: 'Indicator Removal'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco ASA - Logging Message Suppression'
+          - 'Splunk security_content: ESXi Audit Tampering'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1070.003
+    technique_name: 'Clear Command History'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Powershell History File Deletion'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1070.008
+    technique_name: 'Clear Mailbox Data'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco ASA - User Account Deleted From Local Database'
+          - 'Splunk security_content: O365 Email Send and Hard Delete Exfiltration Behavior'
+          - 'Splunk security_content: O365 Email Send and Hard Delete Suspicious Behavior'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1071
+    technique_name: 'Application Layer Protocol'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - High Priority Intrusion Classification'
+          - 'Splunk security_content: Cisco Secure Firewall - High Volume of Intrusion Events Per Host'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1071.001
+    technique_name: 'Web Protocols'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco NVM - Osascript Network Connection for a Long Duration'
+          - 'Splunk security_content: Cisco Secure Firewall - Blacklisted SSL Certificate Fingerprint'
+          - 'Splunk security_content: Cisco Secure Firewall - High EVE Threat Confidence'
+          - 'Splunk security_content: Cisco Secure Firewall - Wget or Curl Download'
+          - 'Splunk security_content: Windows ConvertTo-AADIntBackdoor Execution Via PowerShell Script'
+          - 'Splunk security_content: Windows Non-System Process Querying Definition Update'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1071.004
+    technique_name: 'DNS'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: DNS Kerberos Coercion'
+          - 'Splunk security_content: Windows Credential Target Information Structure in Commandline'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1072
+    technique_name: 'Software Deployment Tools'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Microsoft Intune Manual Device Management'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1074
+    technique_name: 'Data Staged'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Collection and Staging'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1078
+    technique_name: 'Valid Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Suspicious Okta Activity'
+          - 'Splunk security_content: Cisco IOS Suspicious Privileged Account Creation'
+          - 'Splunk security_content: Cisco IOS XE WebUI Login From IOSd Local Port'
+          - 'Splunk security_content: Cisco IOS XE WebUI Programmatic Configuration'
+          - 'Splunk security_content: Cisco Privileged Account Creation with HTTP Command Execution'
+          - 'Splunk security_content: Cisco Privileged Account Creation with Suspicious SSH Activity'
+          - 'Splunk security_content: Cisco Secure Firewall - High Priority Intrusion Classification'
+          - 'Splunk security_content: ESXi Account Modified'
+          - 'Splunk security_content: ESXi User Granted Admin Role'
+          - 'Splunk security_content: Linux Usermod Root UID Set'
+          - 'Splunk security_content: PingID Multiple Failed MFA Requests For User'
+          - 'Splunk security_content: Windows ConvertTo-AADIntBackdoor Execution Via PowerShell Script'
+          - 'Splunk security_content: Windows Large Number of Computer Service Tickets Requested'
+          - 'Splunk security_content: Windows Multiple Account Passwords Changed'
+          - 'Splunk security_content: Windows Multiple Accounts Deleted'
+          - 'Splunk security_content: Windows Multiple Accounts Disabled'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1078.003
+    technique_name: 'Local Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco ASA - New Local User Account Created'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1078.004
+    technique_name: 'Cloud Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Entra User Management Via Azure CLI'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1082
+    technique_name: 'System Information Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Post Exploitation Risk Behavior'
+          - 'Splunk security_content: Windows WinPEAS PowerShell Script Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1087
+    technique_name: 'Account Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Active Directory Discovery'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1087.001
+    technique_name: 'Local Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Detect AzureHound Command-Line Arguments'
+          - 'Splunk security_content: Detect AzureHound File Modifications'
+          - 'Splunk security_content: Detect SharpHound Command-Line Arguments'
+          - 'Splunk security_content: Detect SharpHound File Modifications'
+          - 'Splunk security_content: Detect SharpHound Usage'
+          - 'Splunk security_content: GetLocalUser with PowerShell Script Block'
+          - 'Splunk security_content: GetWmiObject User Account with PowerShell Script Block'
+          - 'Splunk security_content: Network Traffic to Active Directory Web Services Protocol'
+          - 'Splunk security_content: Windows SOAPHound Binary Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1087.002
+    technique_name: 'Domain Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Detect AzureHound Command-Line Arguments'
+          - 'Splunk security_content: Detect AzureHound File Modifications'
+          - 'Splunk security_content: Detect SharpHound Command-Line Arguments'
+          - 'Splunk security_content: Detect SharpHound File Modifications'
+          - 'Splunk security_content: Detect SharpHound Usage'
+          - 'Splunk security_content: Network Traffic to Active Directory Web Services Protocol'
+          - 'Splunk security_content: Windows SOAPHound Binary Execution'
+          - 'Splunk security_content: Windows User Discovery Via Net'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1090
+    technique_name: 'Proxy'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco IOS XE Tunnel Interface Configuration'
+          - 'Splunk security_content: Linux Ngrok Reverse Proxy Usage'
+          - 'Splunk security_content: Ngrok Reverse Proxy on Network'
+          - 'Splunk security_content: Okta Non-Standard VPN Usage'
+          - 'Splunk security_content: Windows Ngrok Reverse Proxy Usage'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1090.002
+    technique_name: 'External Proxy'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Connection to File Sharing Domain'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1091
+    technique_name: 'Replication Through Removable Media'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Process Executed From Removable Media'
+          - 'Splunk security_content: Windows USBSTOR Registry Key Modification'
+          - 'Splunk security_content: Windows WPDBusEnum Registry Key Modification'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1095
+    technique_name: 'Non-Application Layer Protocol'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux Proxy Socks Curl'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1098
+    technique_name: 'Account Manipulation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: ASL AWS IAM Successful Group Deletion'
+          - 'Splunk security_content: AWS IAM Successful Group Deletion'
+          - 'Splunk security_content: Cisco ASA - User Privilege Level Change'
+          - 'Splunk security_content: Cisco Configuration Archive Logging Analysis'
+          - 'Splunk security_content: ESXi Account Modified'
+          - 'Splunk security_content: Windows AD Self DACL Assignment'
+          - 'Splunk security_content: Windows Azure PowerShell Module Installation Via PowerShell Script'
+          - 'Splunk security_content: Windows Entra User Management Via Azure CLI'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1098.003
+    technique_name: 'Additional Cloud Roles'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Azure AD FullAccessAsApp Permission Assigned'
+          - 'Splunk security_content: O365 FullAccessAsApp Permission Assigned'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1098.005
+    technique_name: 'Device Registration'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: PingID Mismatch Auth Source and Verification Response'
+          - 'Splunk security_content: PingID New MFA Method After Credential Reset'
+          - 'Splunk security_content: PingID New MFA Method Registered For User'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1102
+    technique_name: 'Web Service'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux Ngrok Reverse Proxy Usage'
+          - 'Splunk security_content: Ngrok Reverse Proxy on Network'
+          - 'Splunk security_content: Windows Ngrok Reverse Proxy Usage'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1102.002
+    technique_name: 'Bidirectional Communication'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows DNS Query Request by Telegram Bot API'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1105
+    technique_name: 'Ingress Tool Transfer'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Ingress Tool Transfer'
+          - 'Splunk security_content: BITSAdmin Download File'
+          - 'Splunk security_content: Cisco Secure Firewall - Communication Over Suspicious Ports'
+          - 'Splunk security_content: Cisco Secure Firewall - Connection to File Sharing Domain'
+          - 'Splunk security_content: Cisco Secure Firewall - High EVE Threat Confidence'
+          - 'Splunk security_content: Cisco Secure Firewall - Malware File Downloaded'
+          - 'Splunk security_content: Cisco Secure Firewall - Wget or Curl Download'
+          - 'Splunk security_content: Curl Execution with Percent Encoded URL'
+          - 'Splunk security_content: Detect Certify Command Line Arguments'
+          - 'Splunk security_content: Juniper Networks Remote Code Execution Exploit Detection'
+          - 'Splunk security_content: Microsoft Intune Device Health Scripts'
+          - 'Splunk security_content: Microsoft Intune Mobile Apps'
+          - 'Splunk security_content: PowerShell Download from Code Hosting Service'
+          - 'Splunk security_content: PowerShell Script Block With URL Chain'
+          - 'Splunk security_content: PowerShell WebRequest Using Memory Stream'
+          - 'Splunk security_content: Windows File Download Via PowerShell'
+          - 'Splunk security_content: Windows Process Accessing IronLanguages Repository On GitHub'
+          - 'Splunk security_content: Windows Process Execution From RDP Share'
+          - 'Splunk security_content: Windows SSH Proxy Command'
+          - 'Splunk security_content: Windows Suspicious Defender Update Activity in INetCache'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1110
+    technique_name: 'Brute Force'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Active Directory Password Spraying'
+          - 'Splunk security_content: ASL AWS IAM Assume Role Policy Brute Force'
+          - 'Splunk security_content: AWS IAM Assume Role Policy Brute Force'
+          - 'Splunk security_content: Cisco Secure Firewall - Blocked Connection'
+          - 'Splunk security_content: Cisco Secure Firewall - Repeated Blocked Connections'
+          - 'Splunk security_content: Okta Risk Threshold Exceeded'
+          - 'Splunk security_content: PingID Multiple Failed MFA Requests For User'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1110.003
+    technique_name: 'Password Spraying'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Azure AD High Number Of Failed Authentications From Ip'
+          - 'Splunk security_content: Azure AD Successful Authentication From Different Ips'
+          - 'Splunk security_content: Cisco ASA - User Account Lockout Threshold Exceeded'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1110.004
+    technique_name: 'Credential Stuffing'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: AWS High Number Of Failed Authentications From Ip'
+          - 'Splunk security_content: AWS Multiple Users Failing To Authenticate From Ip'
+          - 'Splunk security_content: AWS Unusual Number of Failed Authentications From Ip'
+          - 'Splunk security_content: Azure AD Multi-Source Failed Authentications Spike'
+          - 'Splunk security_content: Azure AD Multiple Users Failing To Authenticate From Ip'
+          - 'Splunk security_content: Azure AD Unusual Number of Failed Authentications From Ip'
+          - 'Splunk security_content: CrushFTP Max Simultaneous Users From IP'
+          - 'Splunk security_content: GCP Multiple Users Failing To Authenticate From Ip'
+          - 'Splunk security_content: GCP Unusual Number of Failed Authentications From Ip'
+          - 'Splunk security_content: O365 Multi-Source Failed Authentications Spike'
+          - 'Splunk security_content: O365 Multiple Users Failing To Authenticate From Ip'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1112
+    technique_name: 'Modify Registry'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Suspicious Windows Registry Activities'
+          - 'Splunk analytic stories: Windows Registry Abuse'
+          - 'Splunk security_content: Malicious InProcServer32 Modification'
+          - 'Splunk security_content: Windows InProcServer32 New Outlook Form'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1114.001
+    technique_name: 'Local Email Collection'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: O365 Email Password and Payroll Compromise Behavior'
+          - 'Splunk security_content: O365 Email Receive and Hard Delete Takeover Behavior'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1114.002
+    technique_name: 'Remote Email Collection'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: O365 Mailbox Read Access Granted to Application'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1115
+    technique_name: 'Clipboard Data'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Post Exploitation Risk Behavior'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1127
+    technique_name: 'Trusted Developer Utilities Proxy Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Trusted Developer Utilities Proxy Execution'
+          - 'Splunk analytic stories: Trusted Developer Utilities Proxy Execution MSBuild'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1127.001
+    technique_name: 'MSBuild'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Trusted Developer Utilities Proxy Execution MSBuild'
+          - 'Splunk security_content: Suspicious msbuild path'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1129
+    technique_name: 'Shared Modules'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows PowerShell Script TabExpansion Direct Call'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1132.001
+    technique_name: 'Standard Encoding'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: HTTP POST Request with Encoded Payload'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1133
+    technique_name: 'External Remote Services'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Network Interface Modifications'
+          - 'Splunk security_content: Confluence Unauthenticated Remote Code Execution CVE-2022-26134'
+          - 'Splunk security_content: Detect attackers scanning for vulnerable JBoss servers'
+          - 'Splunk security_content: Exchange PowerShell Abuse via SSRF'
+          - 'Splunk security_content: Exploit Public-Facing Fortinet FortiNAC CVE-2022-39952'
+          - 'Splunk security_content: F5 BIG-IP iControl REST Vulnerability CVE-2022-1388'
+          - 'Splunk security_content: Fortinet Appliance Auth bypass'
+          - 'Splunk security_content: Hunting for Log4Shell'
+          - 'Splunk security_content: Ivanti EPMM Remote Unauthenticated API Access CVE-2023-35078'
+          - 'Splunk security_content: Ivanti EPMM Remote Unauthenticated API Access CVE-2023-35082'
+          - 'Splunk security_content: Java Writing JSP File'
+          - 'Splunk security_content: Living Off The Land Detection'
+          - 'Splunk security_content: Log4Shell CVE-2021-44228 Exploitation'
+          - 'Splunk security_content: Log4Shell JNDI Payload Injection Attempt'
+          - 'Splunk security_content: Log4Shell JNDI Payload Injection with Outbound Connection'
+          - 'Splunk security_content: Outbound Network Connection from Java Using Default Ports'
+          - 'Splunk security_content: PaperCut NG Remote Web Access Attempt'
+          - 'Splunk security_content: PaperCut NG Suspicious Behavior Debug Log'
+          - 'Splunk security_content: ProxyShell ProxyNotShell Behavior Detected'
+          - 'Splunk security_content: Supernova Webshell'
+          - '(+8 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1134
+    technique_name: 'Access Token Manipulation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Privilege Escalation Suspicious Process Elevation'
+          - 'Splunk security_content: Windows Privilege Escalation System Process Without System Parent'
+          - 'Splunk security_content: Windows Privilege Escalation User Process Spawn System Process'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1134.001
+    technique_name: 'Token Impersonation/Theft'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Wermgr Spawning System Integrity Process'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1134.004
+    technique_name: 'Parent PID Spoofing'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Wscript Or Cscript Suspicious Child Process'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1135
+    technique_name: 'Network Share Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Advanced IP or Port Scanner Execution'
+          - 'Splunk security_content: Windows Special Privileged Logon On Multiple Hosts'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1136
+    technique_name: 'Create Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Privileged Account Creation with HTTP Command Execution'
+          - 'Splunk security_content: Cisco Privileged Account Creation with Suspicious SSH Activity'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1136.001
+    technique_name: 'Local Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Short Lived Windows Accounts'
+          - 'Splunk security_content: Windows ESX Admins Group Creation via Net'
+          - 'Splunk security_content: Windows ESX Admins Group Creation via PowerShell'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1136.002
+    technique_name: 'Domain Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows ESX Admins Group Creation Security Event'
+          - 'Splunk security_content: Windows Privileged Group Modification'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1136.003
+    technique_name: 'Cloud Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Azure PowerShell Module Installation Via PowerShell Script'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1137
+    technique_name: 'Office Application Startup'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Outlook LoadMacroProviderOnBoot Persistence'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1140
+    technique_name: 'Deobfuscate/Decode Files or Information'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Deobfuscate-Decode Files or Information'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1187
+    technique_name: 'Forced Authentication'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: PetitPotam NTLM Relay on Active Directory Certificate Services'
+          - 'Splunk security_content: DNS Kerberos Coercion'
+          - 'Splunk security_content: Windows Credential Target Information Structure in Commandline'
+          - 'Splunk security_content: Windows Kerberos Coercion via DNS'
+          - 'Splunk security_content: Windows Short Lived DNS Record'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1190
+    technique_name: 'Exploit Public-Facing Application'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Cisco Smart Install Remote Code Execution CVE-2018-0171'
+          - 'Splunk analytic stories: WordPress Vulnerabilities'
+          - 'Splunk security_content: Cisco IOS XE Request Platform Package Describe Shell Pattern'
+          - 'Splunk security_content: Cisco NVM - Webserver Download From File Sharing Website'
+          - 'Splunk security_content: Cisco Secure Firewall - High Priority Intrusion Classification'
+          - 'Splunk security_content: Confluence Unauthenticated Remote Code Execution CVE-2022-26134'
+          - 'Splunk security_content: Detect Exchange Web Shell'
+          - 'Splunk security_content: Exploit Public Facing Application via Apache Commons Text'
+          - 'Splunk security_content: HTTP Duplicated Header'
+          - 'Splunk security_content: HTTP Rapid POST with Mixed Status Codes'
+          - 'Splunk security_content: HTTP Request to Reserved Name on IIS Server'
+          - 'Splunk security_content: Living Off The Land Detection'
+          - 'Splunk security_content: Log4Shell CVE-2021-44228 Exploitation'
+          - 'Splunk security_content: MS Exchange Mailbox Replication service writing Active Server Pages'
+          - 'Splunk security_content: Spring4Shell Payload URL Request'
+          - 'Splunk security_content: Unusual HTTP Request Method'
+          - 'Splunk security_content: VMWare Aria Operations Exploit Attempt'
+          - 'Splunk security_content: Web JSP Request via URL'
+          - 'Splunk security_content: Windows Metasploit Confluence Plugin Execution'
+          - 'Splunk security_content: Windows PaperCut NG Spawn Shell'
+          - '(+2 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1195
+    technique_name: 'Supply Chain Compromise'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: GitHub Enterprise Delete Branch Ruleset'
+          - 'Splunk security_content: GitHub Enterprise Disable 2FA Requirement'
+          - 'Splunk security_content: GitHub Enterprise Disable Audit Log Event Stream'
+          - 'Splunk security_content: GitHub Enterprise Disable Classic Branch Protection Rule'
+          - 'Splunk security_content: GitHub Enterprise Disable Dependabot'
+          - 'Splunk security_content: GitHub Enterprise Disable IP Allow List'
+          - 'Splunk security_content: GitHub Enterprise Modify Audit Log Event Stream'
+          - 'Splunk security_content: GitHub Enterprise Pause Audit Log Event Stream'
+          - 'Splunk security_content: GitHub Enterprise Register Self Hosted Runner'
+          - 'Splunk security_content: GitHub Enterprise Remove Organization'
+          - 'Splunk security_content: GitHub Enterprise Repository Archived'
+          - 'Splunk security_content: GitHub Enterprise Repository Deleted'
+          - 'Splunk security_content: GitHub Organizations Delete Branch Ruleset'
+          - 'Splunk security_content: GitHub Organizations Disable 2FA Requirement'
+          - 'Splunk security_content: GitHub Organizations Disable Classic Branch Protection Rule'
+          - 'Splunk security_content: GitHub Organizations Disable Dependabot'
+          - 'Splunk security_content: GitHub Organizations Repository Archived'
+          - 'Splunk security_content: GitHub Organizations Repository Deleted'
+          - 'Splunk security_content: GitHub Workflow File Creation or Modification'
+          - 'Splunk security_content: Shai-Hulud Workflow File Creation or Modification'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1195.002
+    technique_name: 'Compromise Software Supply Chain'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Python PTH File Creation During Package Installation'
+          - 'Splunk security_content: Python PYTHONPATH Modification During Package Installation'
+          - 'Splunk security_content: Python Site Hooks Creation During Package Installation'
+          - 'Splunk security_content: Shai-Hulud 2 Exfiltration Artifact Files'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1197
+    technique_name: 'BITS Jobs'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: BITS Jobs'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1200
+    technique_name: 'Hardware Additions'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Detect Traffic Mirroring'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1201
+    technique_name: 'Password Policy Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Active Directory Discovery'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1202
+    technique_name: 'Indirect Command Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Microsoft Intune Device Health Scripts'
+          - 'Splunk security_content: Microsoft Intune Mobile Apps'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1203
+    technique_name: 'Exploitation for Client Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Blocked Connection'
+          - 'Splunk security_content: Cisco Secure Firewall - Repeated Blocked Connections'
+          - 'Splunk security_content: Windows MSC EvilTwin Directory Path Manipulation'
+          - 'Splunk security_content: Windows Remote Image Load'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1204
+    technique_name: 'User Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Fake CAPTCHA Campaigns'
+          - 'Splunk security_content: Cisco Secure Firewall - Lumma Stealer Activity'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1204.001
+    technique_name: 'Malicious Link'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows PowerShell FakeCAPTCHA Clipboard Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1204.002
+    technique_name: 'Malicious File'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco NVM - Susp Script From Archive Triggering Network Activity'
+          - 'Splunk security_content: Windows Advanced Installer MSIX with AI_STUBS Execution'
+          - 'Splunk security_content: Windows AppX Deployment Full Trust Package Installation'
+          - 'Splunk security_content: Windows AppX Deployment Unsigned Package Installation'
+          - 'Splunk security_content: Windows Default Cobalt Strike PowerShell Beacon'
+          - 'Splunk security_content: Windows Developer-Signed MSIX Package Installation'
+          - 'Splunk security_content: Windows Explorer LNK Exploit Process Launch With Padding'
+          - 'Splunk security_content: Windows Explorer.exe Spawning PowerShell or Cmd'
+          - 'Splunk security_content: Windows Mustang Panda USB Tool Execution'
+          - 'Splunk security_content: Windows PowerShell Script From WindowsApps Directory'
+          - 'Splunk security_content: Windows Suspect Process With Authentication Traffic'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1207
+    technique_name: 'Rogue Domain Controller'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows AD DCShadow Privileges ACL Addition'
+          - 'Splunk security_content: Windows AD Replication Service Traffic'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1210
+    technique_name: 'Exploitation of Remote Services'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Lumma Stealer Activity'
+          - 'Splunk security_content: Cisco Secure Firewall - Static Tundra Smart Install Abuse'
+          - 'Splunk security_content: Cisco Secure Firewall - Veeam CVE-2023-27532 Exploitation Activity'
+          - 'Splunk security_content: Linux Suspicious Redis Activity'
+          - 'Splunk security_content: VMWare Aria Operations Exploit Attempt'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1211
+    technique_name: 'Exploitation for Stealth'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: RoguePlanet'
+          - 'Splunk security_content: Windows Defender Threat Detected on Kernel Object Path'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1212
+    technique_name: 'Exploitation for Credential Access'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows ConvertTo-AADIntBackdoor Execution Via PowerShell Script'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1218
+    technique_name: 'System Binary Proxy Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Signed Binary Proxy Execution InstallUtil'
+          - 'Splunk analytic stories: Suspicious Compiled HTML Activity'
+          - 'Splunk analytic stories: Suspicious MSHTA Activity'
+          - 'Splunk analytic stories: Suspicious Regsvcs Regasm Activity'
+          - 'Splunk analytic stories: Suspicious Regsvr32 Activity'
+          - 'Splunk analytic stories: Suspicious Rundll32 Activity'
+          - 'Splunk analytic stories: Trusted Developer Utilities Proxy Execution'
+          - 'Splunk analytic stories: VIP Keylogger'
+          - 'Splunk analytic stories: Windows System Binary Proxy Execution MSIExec'
+          - 'Splunk security_content: Cisco NVM - Suspicious Network Connection From Process With No Args'
+          - 'Splunk security_content: LOLBAS Network Connection On Uncommon Port'
+          - 'Splunk security_content: LOLBAS Rare Network Connection'
+          - 'Splunk security_content: Windows Rasautou DLL Execution'
+          - 'Splunk security_content: Windows System Script Proxy Execution Syncappvpublishingserver'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1218.004
+    technique_name: 'InstallUtil'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Signed Binary Proxy Execution InstallUtil'
+          - 'Splunk security_content: Windows DotNet Binary in Non Standard Path'
+          - 'Splunk security_content: Windows InstallUtil in Non Standard Path'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1218.010
+    technique_name: 'Regsvr32'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Suspicious Regsvr32 Activity'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1218.011
+    technique_name: 'Rundll32'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Suspicious Rundll32 Activity'
+          - 'Splunk security_content: Windows LOLBAS Executed Outside Expected Path'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1218.014
+    technique_name: 'MMC'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Mmc LOLBAS Execution Process Spawn'
+          - 'Splunk security_content: Possible Lateral Movement PowerShell Spawn'
+          - 'Splunk security_content: Windows GrimResource - MMC Process Accessing APDS DLL'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1219
+    technique_name: 'Remote Access Tools'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Remote Monitoring and Management Software'
+          - 'Splunk security_content: Cisco Secure Firewall - Communication Over Suspicious Ports'
+          - 'Splunk security_content: HTTP RMM User Agent'
+          - 'Splunk security_content: Windows Level RMM Watchdog Task Created'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1222.001
+    technique_name: 'Windows Permissions'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows AD DCShadow Privileges ACL Addition'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1482
+    technique_name: 'Domain Trust Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Active Directory Discovery'
+          - 'Splunk analytic stories: Domain Trust Discovery'
+          - 'Splunk security_content: Detect AzureHound Command-Line Arguments'
+          - 'Splunk security_content: Detect AzureHound File Modifications'
+          - 'Splunk security_content: Detect SharpHound Command-Line Arguments'
+          - 'Splunk security_content: Detect SharpHound File Modifications'
+          - 'Splunk security_content: Detect SharpHound Usage'
+          - 'Splunk security_content: Network Traffic to Active Directory Web Services Protocol'
+          - 'Splunk security_content: Windows SOAPHound Binary Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1484
+    technique_name: 'Domain or Tenant Policy Modification'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Microsoft Intune DeviceManagementConfigurationPolicies'
+          - 'Splunk security_content: Windows AD Dangerous Deny ACL Modification'
+          - 'Splunk security_content: Windows AD Dangerous Group ACL Modification'
+          - 'Splunk security_content: Windows AD Dangerous User ACL Modification'
+          - 'Splunk security_content: Windows AD Domain Root ACL Deletion'
+          - 'Splunk security_content: Windows AD Domain Root ACL Modification'
+          - 'Splunk security_content: Windows AD Hidden OU Creation'
+          - 'Splunk security_content: Windows AD Object Owner Updated'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1484.001
+    technique_name: 'Group Policy Modification'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows AD GPO Deleted'
+          - 'Splunk security_content: Windows AD GPO Disabled'
+          - 'Splunk security_content: Windows AD GPO New CSE Addition'
+          - 'Splunk security_content: Windows Group Policy Object Created'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1485
+    technique_name: 'Data Destruction'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Data Destruction'
+          - 'Splunk security_content: Linux Account Manipulation Of SSH Config and Keys'
+          - 'Splunk security_content: Linux Deletion Of Cron Jobs'
+          - 'Splunk security_content: Linux Deletion Of Init Daemon Script'
+          - 'Splunk security_content: Linux Deletion Of Services'
+          - 'Splunk security_content: Linux Deletion of SSL Certificate'
+          - 'Splunk security_content: Linux High Frequency Of File Deletion In Boot Folder'
+          - 'Splunk security_content: Linux High Frequency Of File Deletion In Etc Folder'
+          - 'Splunk security_content: O365 Email Hard Delete Excessive Volume'
+          - 'Splunk security_content: O365 Email Password and Payroll Compromise Behavior'
+          - 'Splunk security_content: O365 Email Receive and Hard Delete Takeover Behavior'
+          - 'Splunk security_content: O365 Email Send Attachments Excessive Volume'
+          - 'Splunk security_content: O365 Email Send and Hard Delete Exfiltration Behavior'
+          - 'Splunk security_content: O365 Email Send and Hard Delete Suspicious Behavior'
+          - 'Splunk security_content: Sdelete Application Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1486
+    technique_name: 'Data Encrypted for Impact'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Interlock Ransomware'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1489
+    technique_name: 'Service Stop'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux Magic SysRq Key Abuse'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1490
+    technique_name: 'Inhibit System Recovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Cactus Ransomware'
+          - 'Splunk security_content: Windows BitLocker Suspicious Command Usage'
+          - 'Splunk security_content: Windows Suspicious File in EFI Volume'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1498
+    technique_name: 'Network Denial of Service'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Detect ARP Poisoning'
+          - 'Splunk security_content: Detect IPv6 Network Infrastructure Threats'
+          - 'Splunk security_content: Detect Port Security Violation'
+          - 'Splunk security_content: Detect Rogue DHCP Server'
+          - 'Splunk security_content: Detect Traffic Mirroring'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1499
+    technique_name: 'Endpoint Denial of Service'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Static Tundra Smart Install Abuse'
+          - 'Splunk security_content: ESXi Bulk VM Termination'
+          - 'Splunk security_content: Linux Magic SysRq Key Abuse'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1505
+    technique_name: 'Server Software Component'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: IIS Components'
+          - 'Splunk security_content: Windows Shell Process from CrushFTP'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1505.003
+    technique_name: 'Web Shell'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Configuration Archive Logging Analysis'
+          - 'Splunk security_content: Cisco Secure Firewall - Privileged Command Execution via HTTP'
+          - 'Splunk security_content: Detect Exchange Web Shell'
+          - 'Splunk security_content: Exploit Public Facing Application via Apache Commons Text'
+          - 'Splunk security_content: MS Exchange Mailbox Replication service writing Active Server Pages'
+          - 'Splunk security_content: Spring4Shell Payload URL Request'
+          - 'Splunk security_content: Tomcat Session Deserialization Attempt'
+          - 'Splunk security_content: Tomcat Session File Upload Attempt'
+          - 'Splunk security_content: Web JSP Request via URL'
+          - 'Splunk security_content: Windows Metasploit Confluence Plugin Execution'
+          - 'Splunk security_content: Windows SharePoint Spinstall0 GET Request'
+          - 'Splunk security_content: Windows SharePoint Spinstall0 Webshell File Creation'
+          - 'Splunk security_content: Windows SharePoint ToolPane Endpoint Exploitation Attempt'
+          - 'Splunk security_content: Windows TeamCity Payload Execution from Temp Directory'
+          - 'Splunk security_content: Windows WSUS Spawning Shell'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1505.004
+    technique_name: 'IIS Components'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Shell or Script Execution From IIS Directory'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1526
+    technique_name: 'Cloud Service Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Azure AD AzureHound UserAgent Detected'
+          - 'Splunk security_content: Azure AD Service Principal Enumeration'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1529
+    technique_name: 'System Shutdown/Reboot'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: ESXi Bulk VM Termination'
+          - 'Splunk security_content: Linux Magic SysRq Key Abuse'
+          - 'Splunk security_content: Microsoft Intune Manual Device Management'
+          - 'Splunk security_content: Windows Common Abused Cmd Shell Risk Behavior'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1530
+    technique_name: 'Data from Cloud Storage'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco ASA - Device File Copy Activity'
+          - 'Splunk security_content: O365 Exfiltration via File Access'
+          - 'Splunk security_content: O365 Exfiltration via File Download'
+          - 'Splunk security_content: O365 Exfiltration via File Sync Download'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1531
+    technique_name: 'Account Access Removal'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Account Access Removal via Logoff Exec'
+          - 'Splunk security_content: Windows Powershell Logoff User via Quser'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1535
+    technique_name: 'Unused/Unsupported Cloud Regions'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: AWS Successful Console Authentication From Multiple IPs'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1538
+    technique_name: 'Cloud Service Dashboard'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Okta Multiple Failed Requests to Access Applications'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1542
+    technique_name: 'Pre-OS Boot'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows EFI Volume Mount Attempt Via Mountvol'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1542.003
+    technique_name: 'Bootkit'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux EFI Bootloader File Deletion'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1543
+    technique_name: 'Create or Modify System Process'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Wscript Or Cscript Suspicious Child Process'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1543.003
+    technique_name: 'Windows Service'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Windows Service Abuse'
+          - 'Splunk security_content: CMD Echo Pipe - Escalation'
+          - 'Splunk security_content: Impacket Lateral Movement Commandline Parameters'
+          - 'Splunk security_content: Impacket Lateral Movement WMIExec Commandline Parameters'
+          - 'Splunk security_content: Impacket Lateral Movement smbexec CommandLine Parameters'
+          - 'Splunk security_content: Possible Lateral Movement PowerShell Spawn'
+          - 'Splunk security_content: Windows Admin Password Changed by Non-Admin'
+          - 'Splunk security_content: Windows MsMpEng Writing to System32'
+          - 'Splunk security_content: Windows Service Create Kernel Mode Driver'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1546.001
+    technique_name: 'Change Default File Association'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Windows File Extension and Association Abuse'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1546.015
+    technique_name: 'Component Object Model Hijacking'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Powershell COM Hijacking InprocServer32 Modification'
+          - 'Splunk security_content: Powershell Execute COM Object'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1547
+    technique_name: 'Boot or Logon Autostart Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux File Creation In System Generator Directory'
+          - 'Splunk security_content: Windows Unsigned MS DLL Side-Loading'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1547.001
+    technique_name: 'Registry Run Keys / Startup Folder'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows NorthStar C2 Agent Execution'
+          - 'Splunk security_content: Windows PowerShell MSIX Package Installation'
+          - 'Splunk security_content: Windows Registry BootExecute Modification'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1548
+    technique_name: 'Abuse Elevation Control Mechanism'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Privilege Escalation Suspicious Process Elevation'
+          - 'Splunk security_content: Windows Privilege Escalation System Process Without System Parent'
+          - 'Splunk security_content: Windows Privilege Escalation User Process Spawn System Process'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1548.001
+    technique_name: 'Setuid and Setgid'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux Usermod Root UID Set'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1548.002
+    technique_name: 'Bypass User Account Control'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: FodHelper UAC Bypass'
+          - 'Splunk security_content: UAC Bypass MMC Load Unsigned Dll'
+          - 'Splunk security_content: Windows Mock Trusted Directory MSC File Creation'
+          - 'Splunk security_content: Windows Suspicious Child Process of Consent.EXE'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1550
+    technique_name: 'Use Alternate Authentication Material'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Active Directory Kerberos Attacks'
+          - 'Splunk security_content: AWS Bedrock Invoke Model Access Denied'
+          - 'Splunk security_content: Windows AD Suspicious Attribute Modification'
+          - 'Splunk security_content: Windows Steal Authentication Certificates - ESC1 Authentication'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1552
+    technique_name: 'Unsecured Credentials'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: VoidLink Cloud-Native Linux Malware'
+          - 'Splunk security_content: Cisco SNMP Community String Configuration Changes'
+          - 'Splunk security_content: O365 Email Suspicious Search Behavior'
+          - 'Splunk security_content: O365 SharePoint Suspicious Search Behavior'
+          - 'Splunk security_content: Windows Post Exploitation Risk Behavior'
+          - 'Splunk security_content: Windows SharePoint Spinstall0 GET Request'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1552.001
+    technique_name: 'Credentials In Files'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Potential password in username'
+          - 'Splunk security_content: Shai-Hulud 2 Exfiltration Artifact Files'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1553
+    technique_name: 'Subvert Trust Controls'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Subvert Trust Controls SIP and Trust Provider Hijacking'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1553.005
+    technique_name: 'Mark-of-the-Web Bypass'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Advanced Installer MSIX with AI_STUBS Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1554
+    technique_name: 'Compromise Host Software Binary'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: GitHub Workflow File Creation or Modification'
+          - 'Splunk security_content: Shai-Hulud Workflow File Creation or Modification'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1556
+    technique_name: 'Modify Authentication Process'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Okta Phishing Detection with FastPass Origin Check'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1556.006
+    technique_name: 'Multi-Factor Authentication'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: PingID Mismatch Auth Source and Verification Response'
+          - 'Splunk security_content: PingID New MFA Method After Credential Reset'
+          - 'Splunk security_content: PingID New MFA Method Registered For User'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1557
+    technique_name: 'Adversary-in-the-Middle'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco ASA - Packet Capture Activity'
+          - 'Splunk security_content: Detect Rogue DHCP Server'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1557.001
+    technique_name: 'Name Resolution Poisoning and SMB Relay'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Kerberos Coercion via DNS'
+          - 'Splunk security_content: Windows Short Lived DNS Record'
+          - 'Splunk security_content: Windows Theme File Creation in Unusual Location'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1557.002
+    technique_name: 'ARP Cache Poisoning'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Detect ARP Poisoning'
+          - 'Splunk security_content: Detect IPv6 Network Infrastructure Threats'
+          - 'Splunk security_content: Detect Port Security Violation'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1558
+    technique_name: 'Steal or Forge Kerberos Tickets'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Active Directory Kerberos Attacks'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1558.003
+    technique_name: 'Kerberoasting'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Rubeus Command Line Parameters'
+          - 'Splunk security_content: Windows AD Computer SPN Modified By User Account'
+          - 'Splunk security_content: Windows Process With NetExec Command Line Parameters'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1558.004
+    technique_name: 'AS-REP Roasting'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Rubeus Command Line Parameters'
+          - 'Splunk security_content: Windows Process With NetExec Command Line Parameters'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1559.001
+    technique_name: 'Component Object Model'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Process Writing DynamicWrapperX'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1560
+    technique_name: 'Archive Collected Data'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Detect Certipy File Modifications'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1563.002
+    technique_name: 'RDP Hijacking'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Service Create with Tscon'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1564
+    technique_name: 'Hide Artifacts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: RoguePlanet'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1564.001
+    technique_name: 'Hidden Files and Directories'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Disable Show Hidden Files'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1564.003
+    technique_name: 'Hidden Window'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Headless Browser Usage'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1564.004
+    technique_name: 'NTFS File Attributes'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows SymbolicLink-Testing-Tools Utility Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1564.006
+    technique_name: 'Run Virtual Instance'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows ConHost with Headless Argument'
+          - 'Splunk security_content: Windows Suspicious QEMU Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1564.008
+    technique_name: 'Email Hiding Rules'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: O365 Email New Inbox Rule Created'
+          - 'Splunk security_content: O365 Email Transport Rule Changed'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1565.001
+    technique_name: 'Stored Data Manipulation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows WBAdmin File Recovery From Backup'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1566
+    technique_name: 'Phishing'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux Ghostscript Exploitation'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1566.001
+    technique_name: 'Spearphishing Attachment'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Defender ASR Audit Events'
+          - 'Splunk security_content: Windows Defender ASR Block Events'
+          - 'Splunk security_content: Windows ISO LNK File Creation'
+          - 'Splunk security_content: Windows Universal Data Link File Creation'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1566.002
+    technique_name: 'Spearphishing Link'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Azure AD Device Code Authentication'
+          - 'Splunk security_content: O365 Email Reported By Admin Found Malicious'
+          - 'Splunk security_content: O365 Email Reported By User Found Malicious'
+          - 'Splunk security_content: O365 Threat Intelligence Suspicious Email Delivered'
+          - 'Splunk security_content: O365 ZAP Activity Detection'
+          - 'Splunk security_content: Windows Defender ASR Audit Events'
+          - 'Splunk security_content: Windows Defender ASR Block Events'
+          - 'Splunk security_content: Windows Defender ASR Rules Stacking'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1567
+    technique_name: 'Exfiltration Over Web Service'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: LOLBAS Network Connection On Uncommon Port'
+          - 'Splunk security_content: LOLBAS Rare Network Connection'
+          - 'Splunk security_content: O365 DLP Rule Triggered'
+          - 'Splunk security_content: O365 Email Access By Security Administrator'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1567.002
+    technique_name: 'Exfiltration to Cloud Storage'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Connection to File Sharing Domain'
+          - 'Splunk security_content: Cisco Secure Firewall - Potential Data Exfiltration'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1569.002
+    technique_name: 'Service Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Snake Malware Service Create'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1571
+    technique_name: 'Non-Standard Port'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Communication Over Suspicious Ports'
+          - 'Splunk security_content: Cisco Secure Firewall - File Download Over Uncommon Port'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1572
+    technique_name: 'Protocol Tunneling'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Okta Non-Standard VPN Usage'
+          - 'Splunk security_content: Socat Network Listener Binding an Executable'
+          - 'Splunk security_content: Socat Remote TCP Connection with Local Echo Disabled'
+          - 'Splunk security_content: Unusual SSH Client Banner'
+          - 'Splunk security_content: Windows SoftEther VPN Masquerading as Legitimate Binary'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1573.002
+    technique_name: 'Asymmetric Cryptography'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Blacklisted SSL Certificate Fingerprint'
+          - 'Splunk security_content: Cisco Secure Firewall - High EVE Threat Confidence'
+          - 'Splunk security_content: Cisco Secure Firewall - Intrusion Events by Threat Activity'
+          - 'Splunk security_content: Cisco Secure Firewall - Lumma Stealer Download Attempt'
+          - 'Splunk security_content: Cisco Secure Firewall - Lumma Stealer Outbound Connection Attempt'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1574
+    technique_name: 'Hijack Execution Flow'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: VoidLink Cloud-Native Linux Malware'
+          - 'Splunk security_content: Windows Mock Trusted Directory MSC File Creation'
+          - 'Splunk security_content: Windows PowerShell Module File Created'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1574.007
+    technique_name: 'Path Interception by PATH Environment Variable'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux Possible Privilege Escalation via PYTHONPATH'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1583.006
+    technique_name: 'Web Services'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Rare Snort Rule Triggered'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1586
+    technique_name: 'Compromise Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Azure Active Directory Account Takeover'
+          - 'Splunk analytic stories: Cisco Duo Suspicious Activity'
+          - 'Splunk analytic stories: GCP Account Takeover'
+          - 'Splunk analytic stories: Okta Account Takeover'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1586.003
+    technique_name: 'Cloud Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: ASL AWS Credential Access GetPasswordData'
+          - 'Splunk security_content: ASL AWS Credential Access RDS Password reset'
+          - 'Splunk security_content: ASL AWS Multi-Factor Authentication Disabled'
+          - 'Splunk security_content: AWS Credential Access Failed Login'
+          - 'Splunk security_content: AWS Credential Access GetPasswordData'
+          - 'Splunk security_content: AWS Credential Access RDS Password reset'
+          - 'Splunk security_content: AWS Multi-Factor Authentication Disabled'
+          - 'Splunk security_content: AWS Successful Single-Factor Authentication'
+          - 'Splunk security_content: AWS Unusual Number of Failed Authentications From Ip'
+          - 'Splunk security_content: Azure AD Authentication Failed During MFA Challenge'
+          - 'Splunk security_content: Azure AD Multi-Factor Authentication Disabled'
+          - 'Splunk security_content: Azure AD Multi-Source Failed Authentications Spike'
+          - 'Splunk security_content: Azure AD Multiple Failed MFA Requests For User'
+          - 'Splunk security_content: Azure AD Multiple Users Failing To Authenticate From Ip'
+          - 'Splunk security_content: Azure AD Successful PowerShell Authentication'
+          - 'Splunk security_content: Azure AD Successful Single-Factor Authentication'
+          - 'Splunk security_content: Azure AD Unusual Number of Failed Authentications From Ip'
+          - 'Splunk security_content: Azure Active Directory High Risk Sign-in'
+          - 'Splunk security_content: Detect AWS Console Login by New User'
+          - 'Splunk security_content: Detect AWS Console Login by User from New City'
+          - '(+12 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1587.001
+    technique_name: 'Malware'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Possibly Compromised Host'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1588.002
+    technique_name: 'Tool'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Connection to File Sharing Domain'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1588.004
+    technique_name: 'Digital Certificates'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Blacklisted SSL Certificate Fingerprint'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1589.001
+    technique_name: 'Credentials'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux Medusa Rootkit'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1590
+    technique_name: 'Gather Victim Network Information'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco IOS XE Reconnaissance Command Activity'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1590.001
+    technique_name: 'Domain Properties'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco ASA - Reconnaissance Command Activity'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1590.005
+    technique_name: 'IP Addresses'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco ASA - Reconnaissance Command Activity'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1592.002
+    technique_name: 'Software'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows WinPEAS PowerShell Script Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1592.004
+    technique_name: 'Client Configurations'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows WinPEAS PowerShell Script Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1595
+    technique_name: 'Active Scanning'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Attacker Tools On Endpoint'
+          - 'Splunk security_content: HTTP Rapid POST with Mixed Status Codes'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1595.002
+    technique_name: 'Vulnerability Scanning'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Cisco Secure Firewall - Blocked Connection'
+          - 'Splunk security_content: Cisco Secure Firewall - High Volume of Intrusion Events Per Host'
+          - 'Splunk security_content: Cisco Secure Firewall - Repeated Blocked Connections'
+          - 'Splunk security_content: Windows Detect Network Scanner Behavior'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1608
+    technique_name: 'Stage Capabilities'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Linux Suspicious GCC Invocation Building Init Shared Object'
+          - 'Splunk security_content: Windows NorthStar C2 Agent Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1608.001
+    technique_name: 'Upload Malware'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Unusual File Creation in Confluence Directory'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1608.002
+    technique_name: 'Upload Tool'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Unusual File Creation in Confluence Directory'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1611
+    technique_name: 'Escape to Host'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: VoidLink Cloud-Native Linux Malware'
+          - 'Splunk security_content: Cisco IOS XE Guestshell Activation and Destroy'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1615
+    technique_name: 'Group Policy Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows WinPEAS PowerShell Script Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1620
+    technique_name: 'Reflective Code Loading'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: PowerShell PInvoke Process Injection API Chain'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1621
+    technique_name: 'Multi-Factor Authentication Request Generation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: ASL AWS Multi-Factor Authentication Disabled'
+          - 'Splunk security_content: AWS Console Login Failed During MFA Challenge'
+          - 'Splunk security_content: AWS Multi-Factor Authentication Disabled'
+          - 'Splunk security_content: AWS Multiple Failed MFA Requests For User'
+          - 'Splunk security_content: Azure AD Authentication Failed During MFA Challenge'
+          - 'Splunk security_content: Azure AD Multiple Failed MFA Requests For User'
+          - 'Splunk security_content: GCP Authentication Failed During MFA Challenge'
+          - 'Splunk security_content: GCP Multiple Failed MFA Requests For User'
+          - 'Splunk security_content: Okta Authentication Failed During MFA Challenge'
+          - 'Splunk security_content: Okta Successful Single Factor Authentication'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1649
+    technique_name: 'Steal or Forge Authentication Certificates'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Windows Certificate Services'
+          - 'Splunk security_content: Detect Certify With PowerShell Script Block Logging'
+          - 'Splunk security_content: Windows Export Certificate'
+          - 'Splunk security_content: Windows PowerShell Export Certificate'
+          - 'Splunk security_content: Windows PowerShell Export PfxCertificate'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1685
+    technique_name: 'Disable or Modify Tools'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk analytic stories: Disabling Security Tools'
+          - 'Splunk analytic stories: Windows Audit Policy Tampering'
+          - 'Splunk security_content: Cisco IOS XE Log Clearing Sequence With Optional Loopback Removal'
+          - 'Splunk security_content: Disable Registry Tool'
+          - 'Splunk security_content: Disable Show Hidden Files'
+          - 'Splunk security_content: Disable Windows App Hotkeys'
+          - 'Splunk security_content: Disabling CMD Application'
+          - 'Splunk security_content: Disabling ControlPanel'
+          - 'Splunk security_content: Disabling NoRun Windows App'
+          - 'Splunk security_content: ESXi Download Errors'
+          - 'Splunk security_content: ETW Registry Disabled'
+          - 'Splunk security_content: Microsoft Intune DeviceManagementConfigurationPolicies'
+          - 'Splunk security_content: Unloading AMSI via Reflection'
+          - 'Splunk security_content: Windows Increase in Group or Object Modification Activity'
+          - 'Splunk security_content: Windows Increase in User Modification Activity'
+          - 'Splunk security_content: Windows Outlook Dialogs Disabled from Unusual Process'
+          - 'Splunk security_content: Windows Powershell Import Applocker Policy'
+          - 'Splunk security_content: Windows Registry Delete Task SD'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1685.001
+    technique_name: 'Disable or Modify Windows Event Log'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows Disable Windows Event Logging Disable HTTP Logging'
+          - 'Splunk security_content: Windows PowerShell Disable HTTP Logging'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1685.002
+    technique_name: 'Disable or Modify Cloud Log'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: ASL AWS Defense Evasion PutBucketLifecycle'
+          - 'Splunk security_content: AWS Defense Evasion PutBucketLifecycle'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1686
+    technique_name: 'Disable or Modify System Firewall'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Microsoft Intune DeviceManagementConfigurationPolicies'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1688
+    technique_name: 'Safe Mode Boot'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: Windows EFI Volume Mount Attempt Via Mountvol'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1689
+    technique_name: 'Downgrade Attack'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Splunk security_content: PowerShell 4104 Hunting'
+          - 'Splunk security_content: Windows Downdate Registry Activity'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true

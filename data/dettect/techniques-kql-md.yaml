@@ -1,0 +1,2082 @@
+# Gerado por build_dettect.py (Detection Rules). Só regras KQL (Defender/Sentinel). ATT&CK v20.0, catálogo de 2026-10-26.
+# Linha de base de regras PÚBLICAS: reavalie cada nota depois de implantar e testar no seu ambiente.
+version: 1.2
+file_type: technique-administration
+name: 'Detection Rules: KQL (Defender/Sentinel)'
+domain: enterprise-attack
+platform:
+  - all
+techniques:
+  - technique_id: T1003
+    technique_name: 'OS Credential Dumping'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: *NTDS.DIT File Modifications*'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1005
+    technique_name: 'Data from Local System'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: ''File From Host Collected via Portal or Live Response'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1018
+    technique_name: 'Remote System Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Anomalous amount of SMB sessions created (BloodHound)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021
+    technique_name: 'Remote Services'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Detect SMB File Copies'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021.002
+    technique_name: 'SMB/Windows Admin Shares'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Detect SMB File Copies'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1027
+    technique_name: 'Obfuscated Files or Information'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: All Encoded Powershell Commands'
+          - 'Bert-JanP Hunting Queries: Encoded Powershell Commands That Have Potentially Performed Recon Activities'
+          - 'Bert-JanP Hunting Queries: Encoded Powershell Executions by Device'
+          - 'Bert-JanP Hunting Queries: Rare .lnk File Created on Desktop'
+          - 'Bert-JanP Hunting Queries: TTP Detection Rule: PowerShell -encodedcommand switch'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1027.010
+    technique_name: 'Command Obfuscation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: TTP Detection Rule: PowerShell -encodedcommand switch'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1027.012
+    technique_name: 'LNK Icon Smuggling'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Rare .lnk File Created on Desktop'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1040
+    technique_name: 'Network Sniffing'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Windows Network Sniffing'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1046
+    technique_name: 'Network Service Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Database Disovery'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1047
+    technique_name: 'Windows Management Instrumentation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: WMIC Antivirus Discovery'
+          - 'Bert-JanP Hunting Queries: WMIC Remote Command Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1053
+    technique_name: 'Scheduled Task/Job'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Scheduled Tasks from AppData Created or Updated'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1053.005
+    technique_name: 'Scheduled Task'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Scheduled Tasks from AppData Created or Updated'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059
+    technique_name: 'Command and Scripting Interpreter'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: AMSI Script Detection'
+          - 'Bert-JanP Hunting Queries: PowerShell Invoke-Webrequest'
+          - 'Bert-JanP Hunting Queries: Smoke Sandstorm - SnailResin and SlugResin Infection Detection'
+          - 'Bert-JanP Hunting Queries: Suspicious Browser Child Process'
+          - 'Bert-JanP Hunting Queries: Suspicious Explorer Child Process'
+          - 'Bert-JanP Hunting Queries: TTP Detection Rule: PowerShell Launching Scripts From WindowsApps Directory (FIN7)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059.001
+    technique_name: 'PowerShell'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: AMSI Script Detection'
+          - 'Bert-JanP Hunting Queries: PowerShell Invoke-Webrequest'
+          - 'Bert-JanP Hunting Queries: TTP Detection Rule: PowerShell Launching Scripts From WindowsApps Directory (FIN7)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059.003
+    technique_name: 'Windows Command Shell'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Smoke Sandstorm - SnailResin and SlugResin Infection Detection'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1069
+    technique_name: 'Permission Groups Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: AzureHound Detection'
+          - 'Bert-JanP Hunting Queries: Cloud Discovery Performed by User At Risk'
+          - 'Bert-JanP Hunting Queries: EntraTrace - Azure AD Graph UserAgent Matches'
+          - 'Bert-JanP Hunting Queries: EntraTrace - Microsoft Graph UserAgent Matches'
+          - 'Bert-JanP Hunting Queries: Local Group Discovery'
+          - 'Bert-JanP Hunting Queries: Operation download all users in Azure Active directory performed'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1069.001
+    technique_name: 'Local Groups'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Local Group Discovery'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1069.003
+    technique_name: 'Cloud Groups'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: AzureHound Detection'
+          - 'Bert-JanP Hunting Queries: Cloud Discovery Performed by User At Risk'
+          - 'Bert-JanP Hunting Queries: EntraTrace - Azure AD Graph UserAgent Matches'
+          - 'Bert-JanP Hunting Queries: EntraTrace - Microsoft Graph UserAgent Matches'
+          - 'Bert-JanP Hunting Queries: Operation download all users in Azure Active directory performed'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1070
+    technique_name: 'Indicator Removal'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Custom Detection Deletion'
+          - 'Bert-JanP Hunting Queries: Custom Detection Disabled'
+          - 'Bert-JanP Hunting Queries: Custom Detection Report for Microsoft Defender'
+          - 'Bert-JanP Hunting Queries: Security Log Cleared'
+          - 'Bert-JanP Hunting Queries: Wevutil Clear Windows Event Logs'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1071
+    technique_name: 'Application Layer Protocol'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Potential Beaconing Activity'
+          - 'Bert-JanP Hunting Queries: Sliver C2 Beacon Loaded'
+          - 'Bert-JanP Hunting Queries: Threat Hunting for telegram as a Commmand & Control channel'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1071.001
+    technique_name: 'Web Protocols'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Potential Beaconing Activity'
+          - 'Bert-JanP Hunting Queries: Threat Hunting for telegram as a Commmand & Control channel'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1078
+    technique_name: 'Valid Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: CA Application SignIn Failures'
+          - 'Bert-JanP Hunting Queries: CA User SignIn Failures'
+          - 'Bert-JanP Hunting Queries: Cloud Persistence Activities by User At Risk'
+          - 'Bert-JanP Hunting Queries: EntraTrace - Sign-in UserAgent Matches'
+          - 'Bert-JanP Hunting Queries: Multiple Sensitive Group Additions From Commandline'
+          - 'Bert-JanP Hunting Queries: New Authentication App Detected'
+          - 'Bert-JanP Hunting Queries: Successful sign-in from suspicious user agent'
+          - 'Bert-JanP Hunting Queries: User added to sensitive group'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1078.002
+    technique_name: 'Domain Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Multiple Sensitive Group Additions From Commandline'
+          - 'Bert-JanP Hunting Queries: User added to sensitive group'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1078.004
+    technique_name: 'Cloud Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: CA Application SignIn Failures'
+          - 'Bert-JanP Hunting Queries: CA User SignIn Failures'
+          - 'Bert-JanP Hunting Queries: Cloud Persistence Activities by User At Risk'
+          - 'Bert-JanP Hunting Queries: EntraTrace - Sign-in UserAgent Matches'
+          - 'Bert-JanP Hunting Queries: New Authentication App Detected'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1087
+    technique_name: 'Account Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Anomalous Amount of LDAP traffic'
+          - 'Bert-JanP Hunting Queries: AzureHound Detection'
+          - 'Bert-JanP Hunting Queries: Encoded Powershell Commands That Have Potentially Performed Recon Activities'
+          - 'Bert-JanP Hunting Queries: EntraTrace - Azure AD Graph UserAgent Matches'
+          - 'Bert-JanP Hunting Queries: EntraTrace - Microsoft Graph UserAgent Matches'
+          - 'Bert-JanP Hunting Queries: Operation download all users in Azure Active directory performed'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1087.002
+    technique_name: 'Domain Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Anomalous Amount of LDAP traffic'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1087.004
+    technique_name: 'Cloud Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: AzureHound Detection'
+          - 'Bert-JanP Hunting Queries: Encoded Powershell Commands That Have Potentially Performed Recon Activities'
+          - 'Bert-JanP Hunting Queries: EntraTrace - Azure AD Graph UserAgent Matches'
+          - 'Bert-JanP Hunting Queries: EntraTrace - Microsoft Graph UserAgent Matches'
+          - 'Bert-JanP Hunting Queries: Operation download all users in Azure Active directory performed'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1090
+    technique_name: 'Proxy'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Hunt for the events that have been performed while connected to a Anonymous Proxy'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1098
+    technique_name: 'Account Manipulation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Commandline Group Addition'
+          - 'Bert-JanP Hunting Queries: Detect when an account has been changed in order for the password to never expire'
+          - 'Bert-JanP Hunting Queries: List *.All MS Graph Permissions Added'
+          - 'Bert-JanP Hunting Queries: List MS Graph Mail Permissions Added'
+          - 'Bert-JanP Hunting Queries: Password change after succesful brute force'
+          - 'Bert-JanP Hunting Queries: Unusual Addition of Credentials to an OAuth Application'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1098.001
+    technique_name: 'Additional Cloud Credentials'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Unusual Addition of Credentials to an OAuth Application'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1098.002
+    technique_name: 'Additional Email Delegate Permissions'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: List MS Graph Mail Permissions Added'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1098.007
+    technique_name: 'Additional Local or Domain Groups'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Commandline Group Addition'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1110
+    technique_name: 'Brute Force'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: EntraTrace - Sign-in UserAgent Matches'
+          - 'Bert-JanP Hunting Queries: Kerberos attacks'
+          - 'Bert-JanP Hunting Queries: Multiple Accounts Locked'
+          - 'Bert-JanP Hunting Queries: Password change after succesful brute force'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1110.003
+    technique_name: 'Password Spraying'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: EntraTrace - Sign-in UserAgent Matches'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1114
+    technique_name: 'Email Collection'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Big Yellow Taxi - SignIn Based'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1127
+    technique_name: 'Trusted Developer Utilities Proxy Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Suspicious MSBuild Remote Thread'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1127.001
+    technique_name: 'MSBuild'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Suspicious MSBuild Remote Thread'
+          - 'Bert-JanP Hunting Queries: TTP Detection Rule: Suspicious network connection from MSBuild'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1134
+    technique_name: 'Access Token Manipulation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: All BlackCat/ALPHV Ransomware IOCs with one KQL query'
+          - 'Bert-JanP Hunting Queries: Process Primary Token Elevated to SeDebugPrivilege'
+          - 'Bert-JanP Hunting Queries: Runas with saved credentials'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1134.002
+    technique_name: 'Create Process with Token'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: All BlackCat/ALPHV Ransomware IOCs with one KQL query'
+          - 'Bert-JanP Hunting Queries: Encoded Powershell Commands With Web Request'
+          - 'Bert-JanP Hunting Queries: Runas with saved credentials'
+          - 'Bert-JanP Hunting Queries: Sliver C2 Beacon Loaded'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1136
+    technique_name: 'Create Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Cloud Persistence Activities by User At Risk'
+          - 'Bert-JanP Hunting Queries: Local Account Created'
+          - 'Bert-JanP Hunting Queries: Local Administrator Additions'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1136.001
+    technique_name: 'Local Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Local Account Created'
+          - 'Bert-JanP Hunting Queries: Local Administrator Additions'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1136.003
+    technique_name: 'Cloud Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Cloud Persistence Activities by User At Risk'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1137
+    technique_name: 'Office Application Startup'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: ASR Executable Office Content'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1190
+    technique_name: 'Exploit Public-Facing Application'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: List internet facing devices with vulnerabilities that have an exploit available'
+          - 'Bert-JanP Hunting Queries: New Active CISA Know Exploited Vulnerability Detected'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1204
+    technique_name: 'User Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: File that contains malware detected by Defender For Cloud Apps'
+          - 'Bert-JanP Hunting Queries: Malicious PowerShell Executions From Clipboard Copy-and-Paste'
+          - 'Bert-JanP Hunting Queries: Malware File Detected In Office 365'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1204.001
+    technique_name: 'Malicious Link'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Malicious PowerShell Executions From Clipboard Copy-and-Paste'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1204.002
+    technique_name: 'Malicious File'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: File that contains malware detected by Defender For Cloud Apps'
+          - 'Bert-JanP Hunting Queries: Malware File Detected In Office 365'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1210
+    technique_name: 'Exploitation of Remote Services'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: LDAPNightmare Exploitation Attempt'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1218
+    technique_name: 'System Binary Proxy Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Detect when Regsvr32.exe is created as subprocess by an Office Application'
+          - 'Bert-JanP Hunting Queries: IPv4 command detected in lolbin execution'
+          - 'Bert-JanP Hunting Queries: MSHTA Executions'
+          - 'Bert-JanP Hunting Queries: New LOLBIN with external connection'
+          - 'Bert-JanP Hunting Queries: Outbound MSHTA Connection'
+          - 'Bert-JanP Hunting Queries: WMIC Remote Command Execution'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1218.005
+    technique_name: 'Mshta'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: MSHTA Executions'
+          - 'Bert-JanP Hunting Queries: Outbound MSHTA Connection'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1218.010
+    technique_name: 'Regsvr32'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Detect when Regsvr32.exe is created as subprocess by an Office Application'
+          - 'Bert-JanP Hunting Queries: URL Lookup (Network & Commandline)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1219
+    technique_name: 'Remote Access Tools'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: *Known RAT/RMM process patterns*'
+          - 'Bert-JanP Hunting Queries: Detect when AnyDesk makes a remote connection'
+          - 'Bert-JanP Hunting Queries: RMM Tools with connections'
+          - 'Bert-JanP Hunting Queries: TTP Detection Rule: NetSupport running from unexpected directory (FIN7)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1482
+    technique_name: 'Domain Trust Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Nltest Discovery Activities'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1485
+    technique_name: 'Data Destruction'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: (Mass) Cloud Resource Deletion'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1486
+    technique_name: 'Data Encrypted for Impact'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: ASR Ransomware'
+          - 'Bert-JanP Hunting Queries: Monitor ransomwarelive for companies of interest on ransowmare data leak sites (DLS)'
+          - 'Bert-JanP Hunting Queries: RansomwareDoubleExtention'
+          - 'Bert-JanP Hunting Queries: Triggers when a known ransomware extension has been found'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1490
+    technique_name: 'Inhibit System Recovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Known Shadow Copy Delete command executed'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1505
+    technique_name: 'Server Software Component'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Possible webshell on the endpoint'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1505.003
+    technique_name: 'Web Shell'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Possible webshell on the endpoint'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1518
+    technique_name: 'Software Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: List Defender Discovery Activities'
+          - 'Bert-JanP Hunting Queries: WMIC Antivirus Discovery'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1518.001
+    technique_name: 'Security Software Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: List Defender Discovery Activities'
+          - 'Bert-JanP Hunting Queries: WMIC Antivirus Discovery'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1530
+    technique_name: 'Data from Cloud Storage'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: OneDrive Sync From Rare IP'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1543
+    technique_name: 'Create or Modify System Process'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Azure ARC Related Persistence Detection'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1548
+    technique_name: 'Abuse Elevation Control Mechanism'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Hunt for users that have been added to the sudoers group'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1548.003
+    technique_name: 'Sudo and Sudo Caching'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Hunt for users that have been added to the sudoers group'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1550
+    technique_name: 'Use Alternate Authentication Material'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Kerberos attacks'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1550.003
+    technique_name: 'Pass the Ticket'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Kerberos attacks'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1552
+    technique_name: 'Unsecured Credentials'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Commandlines with cleartext passwords'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1553
+    technique_name: 'Subvert Trust Controls'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Hunt for rare ISO files on devices'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1553.005
+    technique_name: 'Mark-of-the-Web Bypass'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Hunt for rare ISO files on devices'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1555
+    technique_name: 'Credentials from Password Stores'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Risky Sign-in Followed by Key Vault Activity'
+          - 'Bert-JanP Hunting Queries: Suspicious Key Vault Enumeration or Reads'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1555.006
+    technique_name: 'Cloud Secrets Management Stores'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Risky Sign-in Followed by Key Vault Activity'
+          - 'Bert-JanP Hunting Queries: Suspicious Key Vault Enumeration or Reads'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1556
+    technique_name: 'Modify Authentication Process'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Anomalous Amount of URLClickEvents'
+          - 'Bert-JanP Hunting Queries: Change Conditional Access Policy'
+          - 'Bert-JanP Hunting Queries: Deletion Conditional Access Policy'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1557
+    technique_name: 'Adversary-in-the-Middle'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Potential Adversary in the middle Phishing'
+          - 'Bert-JanP Hunting Queries: Storm-0539 AiTM URLs - EmailEvents'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1558
+    technique_name: 'Steal or Forge Kerberos Tickets'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Kerberos attacks'
+          - 'Bert-JanP Hunting Queries: Potential Kerberos Encryption Downgrade'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1558.001
+    technique_name: 'Golden Ticket'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Kerberos attacks'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1558.002
+    technique_name: 'Silver Ticket'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Kerberos attacks'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1558.003
+    technique_name: 'Kerberoasting'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Kerberos attacks'
+          - 'Bert-JanP Hunting Queries: Potential Kerberos Encryption Downgrade'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1558.004
+    technique_name: 'AS-REP Roasting'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Kerberos attacks'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1566
+    technique_name: 'Phishing'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: ASR Executable Content triggered'
+          - 'Bert-JanP Hunting Queries: Anomalous Amount of URLClickEvents'
+          - 'Bert-JanP Hunting Queries: AsyncRAT Initial Access Campaign via OneNote files'
+          - 'Bert-JanP Hunting Queries: Executable Fileattachment recieved'
+          - 'Bert-JanP Hunting Queries: Macro attachment opened from rare sender'
+          - 'Bert-JanP Hunting Queries: Malicious email delivered in Microsoft 365'
+          - 'Bert-JanP Hunting Queries: Potential Phishing Campaign'
+          - 'Bert-JanP Hunting Queries: Safe Links Email URL Block Trigger'
+          - 'Bert-JanP Hunting Queries: Successful device code sign-in'
+          - 'Bert-JanP Hunting Queries: Successful device code sign-in from unmanaged device'
+          - 'Bert-JanP Hunting Queries: TTP Detection Rule: Check for Phishing Emails Using IPFS in Phishing Campaigns'
+          - 'Bert-JanP Hunting Queries: Typosquatted Email Received'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1566.001
+    technique_name: 'Spearphishing Attachment'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: ASR Executable Content triggered'
+          - 'Bert-JanP Hunting Queries: Anomalous Amount of URLClickEvents'
+          - 'Bert-JanP Hunting Queries: AsyncRAT Initial Access Campaign via OneNote files'
+          - 'Bert-JanP Hunting Queries: Executable Fileattachment recieved'
+          - 'Bert-JanP Hunting Queries: Macro attachment opened from rare sender'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1566.002
+    technique_name: 'Spearphishing Link'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Potential Phishing Campaign'
+          - 'Bert-JanP Hunting Queries: Safe Links Email URL Block Trigger'
+          - 'Bert-JanP Hunting Queries: Successful device code sign-in'
+          - 'Bert-JanP Hunting Queries: Successful device code sign-in from unmanaged device'
+          - 'Bert-JanP Hunting Queries: TTP Detection Rule: Check for Phishing Emails Using IPFS in Phishing Campaigns'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1574
+    technique_name: 'Hijack Execution Flow'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Smoke Sandstorm - SnailResin and SlugResin Infection Detection'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1574.001
+    technique_name: 'DLL'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Smoke Sandstorm - SnailResin and SlugResin Infection Detection'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1578
+    technique_name: 'Modify Cloud Compute Infrastructure'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Large Number of Virtual Machines started'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1578.002
+    technique_name: 'Create Cloud Instance'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Large Number of Virtual Machines started'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1615
+    technique_name: 'Group Policy Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Anomalous Group Policy Discovery'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1649
+    technique_name: 'Steal or Forge Authentication Certificates'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Kerberos attacks'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1657
+    technique_name: 'Financial Theft'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Monitor ransomwarelive for companies of interest on ransowmare data leak sites (DLS)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1685
+    technique_name: 'Disable or Modify Tools'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Advanced Feature Disabled'
+          - 'Bert-JanP Hunting Queries: Defender AV Exclusion Events'
+          - 'Bert-JanP Hunting Queries: Defender For Endpoint Offboarding Package Downloaded'
+          - 'Bert-JanP Hunting Queries: Large Number of Analytics Rules Deleted'
+          - 'Bert-JanP Hunting Queries: List Alert Supression Actions'
+          - 'Bert-JanP Hunting Queries: Potential Kerberos Encryption Downgrade'
+          - 'Bert-JanP Hunting Queries: Sentinel Workspace Disconnected'
+          - 'Bert-JanP Hunting Queries: TTP Detection Rule: Abusing PowerShell to disable Defender components'
+          - 'Bert-JanP Hunting Queries: TTP Detection Rule: Suspicious network connection from MSBuild'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1685.002
+    technique_name: 'Disable or Modify Cloud Log'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Sentinel Workspace Disconnected'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1685.005
+    technique_name: 'Clear Windows Event Logs'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Security Log Cleared'
+          - 'Bert-JanP Hunting Queries: Wevutil Clear Windows Event Logs'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1689
+    technique_name: 'Downgrade Attack'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Bert-JanP Hunting Queries: Potential Kerberos Encryption Downgrade'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true

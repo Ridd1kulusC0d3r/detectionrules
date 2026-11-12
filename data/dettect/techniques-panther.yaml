@@ -1,0 +1,3683 @@
+# Gerado por build_dettect.py (Detection Rules). Só regras Panther. ATT&CK v20.0, catálogo de 2026-10-26.
+# Linha de base de regras PÚBLICAS: reavalie cada nota depois de implantar e testar no seu ambiente.
+version: 1.2
+file_type: technique-administration
+name: 'Detection Rules: Panther'
+domain: enterprise-attack
+platform:
+  - all
+techniques:
+  - technique_id: T1003
+    technique_name: 'OS Credential Dumping'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Crowdstrike Credential Dumping Tool'
+          - 'Panther panther-analysis: GAIA GCPW Credential Theft Attack Chain'
+          - 'Panther panther-analysis: Windows Credential Dumping Tool'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1003.001
+    technique_name: 'LSASS Memory'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Crowdstrike Credential Dumping Tool'
+          - 'Panther panther-analysis: GAIA GCPW Credential Theft Attack Chain'
+          - 'Panther panther-analysis: Windows Credential Dumping Tool'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1005
+    technique_name: 'Data from Local System'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS CDE EC2 Volume Encryption'
+          - 'Panther panther-analysis: AWS EC2 Volume Encryption'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1014
+    technique_name: 'Rootkit'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: OSSEC Rootkit Detected via Osquery'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1018
+    technique_name: 'Remote System Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Excessive IP and VM Discovery'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1020
+    technique_name: 'Automated Exfiltration'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Public RDS Restore'
+          - 'Panther panther-analysis: DEPRECATED - GitHub Web Hook Modified'
+          - 'Panther panther-analysis: GitHub Web Hook Modified'
+          - 'Panther panther-analysis: Microsoft Exchange External Forwarding'
+          - 'Panther panther-analysis: Salesforce Bulk API Data Exfiltration'
+          - 'Panther panther-analysis: Salesforce OAuth Credential Abuse Detection'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021
+    technique_name: 'Remote Services'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Network ACL Restricts SSH'
+          - 'Panther panther-analysis: Databricks Access to Multiple Workspaces'
+          - 'Panther panther-analysis: Databricks Mount Point Creation'
+          - 'Panther panther-analysis: GitHub Workflow Using Self-Hosted Runner'
+          - 'Panther panther-analysis: GitHub pull_request_target Workflow on Self-Hosted Runner'
+          - 'Panther panther-analysis: Kubernetes Role With Pod Exec Permissions Created'
+          - 'Panther panther-analysis: OSQuery Detected SSH Listener'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021.004
+    technique_name: 'SSH'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Signal - VPC Flow Logs Allowed SSH'
+          - 'Panther panther-analysis: Wiz Issue WITH SSH to EC2 Instance'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021.005
+    technique_name: 'VNC'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS EC2 Multi Instance Connect'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1021.007
+    technique_name: 'Cloud Services'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Console GetSigninToken Potential Abuse'
+          - 'Panther panther-analysis: Intune Create or Modify Client App'
+          - 'Panther panther-analysis: Intune New Device Management Script'
+          - 'Panther panther-analysis: Kubernetes System Principal Accessed from Non-Cloud Public IP'
+          - 'Panther panther-analysis: MongoDB access allowed from anywhere'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1027
+    technique_name: 'Obfuscated Files or Information'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: GitHub Workflow Downloading Artifacts'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1037
+    technique_name: 'Boot or Logon Initialization Scripts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Databricks Global Init Script Changes'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1039
+    technique_name: 'Data from Network Shared Drive'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Microsoft365 External Document Sharing'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1040
+    technique_name: 'Network Sniffing'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Network Packet Capture Enabled'
+          - 'Panther panther-analysis: Kubernetes Ingress Created Without TLS'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1041
+    technique_name: 'Exfiltration Over C2 Channel'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Auth0 Delete Tenant Member'
+          - 'Panther panther-analysis: GCP K8S Pod Create Or Modify Host Path Volume Mount'
+          - 'Panther panther-analysis: Kubernetes Pod With HostPath Volume Mount'
+          - 'Panther panther-analysis: Snowflake Data Exfiltration'
+          - 'Panther panther-analysis: Snowflake File Downloaded'
+          - 'Panther panther-analysis: Snowflake Table Copied Into Stage'
+          - 'Panther panther-analysis: Snowflake Temporary Stage Created'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1046
+    technique_name: 'Network Service Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Excessive IP and VM Discovery'
+          - 'Panther panther-analysis: Azure Excessive Network Security Group Read'
+          - 'Panther panther-analysis: Teleport Network Scan Initiated'
+          - 'Panther panther-analysis: Upwind Network Detection Passthrough'
+          - 'Panther panther-analysis: VPC Flow Port Scanning'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1048
+    technique_name: 'Exfiltration Over Alternative Protocol'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Storage File Share Created or Modified'
+          - 'Panther panther-analysis: EC2 Route Table Modified'
+          - 'Panther panther-analysis: External Principal Accessing AWS Resources Via VPC Endpoint'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1053
+    technique_name: 'Scheduled Task/Job'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Suspicious cron detected'
+          - 'Panther panther-analysis: Teleport Scheduled Jobs'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1053.003
+    technique_name: 'Cron'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: GCP GKE Kubernetes Cron Job Created Or Modified'
+          - 'Panther panther-analysis: Kubernetes CronJob Created or Modified'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1053.005
+    technique_name: 'Scheduled Task'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Automation Schedule Created or Modified'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1056
+    technique_name: 'Input Capture'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: MacOS Keyboard Events'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1059
+    technique_name: 'Command and Scripting Interpreter'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS EC2 Startup Script Change'
+          - 'Panther panther-analysis: AWS WAF Managed Known Bad Inputs Passthrough Rule'
+          - 'Panther panther-analysis: AWS WAF ReactJS RCE Attempt via Body'
+          - 'Panther panther-analysis: Azure Automation Runbook Created or Modified'
+          - 'Panther panther-analysis: Azure Serverless Script Execution'
+          - 'Panther panther-analysis: Databricks Global Init Script Changes'
+          - 'Panther panther-analysis: StopInstance WITH ModifyInstanceAttributes'
+          - 'Panther panther-analysis: Teleport Suspicious Commands Executed'
+          - 'Panther panther-analysis: Upwind Runtime Detection Passthrough'
+          - 'Panther panther-analysis: User Logged in as root'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1068
+    technique_name: 'Exploitation for Privilege Escalation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Automation Schedule Created or Modified'
+          - 'Panther panther-analysis: Kubernetes Pod with Dangerous Linux Capabilities'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1070
+    technique_name: 'Indicator Removal'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS RDS Snapshot Deleted'
+          - 'Panther panther-analysis: Azure Automation Runbook Deleted'
+          - 'Panther panther-analysis: Crowdstrike API Key Deleted'
+          - 'Panther panther-analysis: Crowdstrike Ephemeral User Account'
+          - 'Panther panther-analysis: Crowdstrike User Deleted'
+          - 'Panther panther-analysis: Databricks Access Token Revoked'
+          - 'Panther panther-analysis: Slack DLP Modified'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1070.009
+    technique_name: 'Clear Persistence'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Slack App Removed'
+          - 'Panther panther-analysis: Wiz User Created Or Deleted'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1071
+    technique_name: 'Application Layer Protocol'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Storage Account HTTPS-Only Traffic Disabled'
+          - 'Panther panther-analysis: OpenAI Anomalous API Key Activity'
+          - 'Panther panther-analysis: Slack Anomaly Detected'
+          - 'Panther panther-analysis: VPC Flow Logs Unapproved Outbound DNS Traffic'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1071.004
+    technique_name: 'DNS'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: DNS request to denylisted domain'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1072
+    technique_name: 'Software Deployment Tools'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: GitHub Artifact Download from Cross-Fork Workflow'
+          - 'Panther panther-analysis: GitHub Cross-Fork Workflow Run'
+          - 'Panther panther-analysis: GitHub Malicious Issue/Pages Content'
+          - 'Panther panther-analysis: GitHub Malicious Pull Request Content'
+          - 'Panther panther-analysis: GitHub Workflow Contains Checkout Action'
+          - 'Panther panther-analysis: GitHub Workflow Using Self-Hosted Runner'
+          - 'Panther panther-analysis: GitHub pull_request_target Workflow Usage'
+          - 'Panther panther-analysis: GitHub pull_request_target Workflow on Self-Hosted Runner'
+          - 'Panther panther-analysis: GitHub pull_request_target Workflow with Checkout Action'
+          - 'Panther panther-analysis: Intune Create or Modify Client App'
+          - 'Panther panther-analysis: Intune New Device Management Script'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1074
+    technique_name: 'Data Staged'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Databricks Mount Point Creation'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1078
+    technique_name: 'Valid Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: A Login from Outside the Corporate Office'
+          - 'Panther panther-analysis: AWS Administrative IAM User Created'
+          - 'Panther panther-analysis: AWS Backdoor Administrative IAM Role Created'
+          - 'Panther panther-analysis: AWS CloudTrail Password Spraying'
+          - 'Panther panther-analysis: AWS GuardDuty Critical Severity Finding'
+          - 'Panther panther-analysis: AWS IAM Group Users'
+          - 'Panther panther-analysis: AWS IAM Policy Administrative Privileges'
+          - 'Panther panther-analysis: AWS IAM Policy Assigned to User'
+          - 'Panther panther-analysis: AWS IAM Policy Blocklist'
+          - 'Panther panther-analysis: AWS IAM Policy Does Not Grant Any Administrative Access'
+          - 'Panther panther-analysis: AWS IAM Policy Does Not Grant Network Admin Access'
+          - 'Panther panther-analysis: AWS IAM Resource Does Not Have Inline Policy'
+          - 'Panther panther-analysis: AWS IAM Role Restricts Usage'
+          - 'Panther panther-analysis: AWS IAM User Not In Conflicting Groups'
+          - 'Panther panther-analysis: AWS Potential Backdoor Lambda Function Through Resource-Based Policy'
+          - 'Panther panther-analysis: AWS Root Account Hardware MFA'
+          - 'Panther panther-analysis: AWS Root Account MFA'
+          - 'Panther panther-analysis: Admin Role Assigned'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Azure Automation Account Created'
+          - '(+49 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1078.001
+    technique_name: 'Default Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Snowflake Grant to Public Role'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1078.004
+    technique_name: 'Cloud Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Compromised IAM Key Quarantine'
+          - 'Panther panther-analysis: AWS IMDS Credential Usage Outside Expected Services'
+          - 'Panther panther-analysis: Azure Automation Runbook Created or Modified'
+          - 'Panther panther-analysis: Azure Device Code Authentication with Broker Client'
+          - 'Panther panther-analysis: Azure Kubernetes RoleBinding or ClusterRoleBinding Created'
+          - 'Panther panther-analysis: Azure Microsoft Graph Single Session from Multiple IP Addresses'
+          - 'Panther panther-analysis: Azure Policy DeployIfNotExists Action Triggered'
+          - 'Panther panther-analysis: Azure Privileged or Elevated Role Assignment'
+          - 'Panther panther-analysis: Azure Protection Multiple Alerts for User'
+          - 'Panther panther-analysis: Azure ROPC Login Attempt Without MFA'
+          - 'Panther panther-analysis: GAIA GCPW Credential Theft Attack Chain'
+          - 'Panther panther-analysis: GCP User Added to Privileged Group'
+          - 'Panther panther-analysis: Google Workspace Login Type Anomaly'
+          - 'Panther panther-analysis: Google Workspace OAuth Application Authorized with Privileged Scopes'
+          - 'Panther panther-analysis: Google Workspace OAuth Token Requests from New IP'
+          - 'Panther panther-analysis: Google Workspace Rapid Multi-IP Authentication'
+          - 'Panther panther-analysis: IAM Role Added to RDS Instance or Cluster'
+          - 'Panther panther-analysis: Kubernetes ClusterRoleBinding to Privileged Role'
+          - 'Panther panther-analysis: Kubernetes Role With Node Proxy Permissions Created'
+          - 'Panther panther-analysis: Kubernetes Role With Pod Exec Permissions Created'
+          - '(+11 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1083
+    technique_name: 'File and Directory Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS WAF Managed Admin Protection Passthrough Rule'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1087
+    technique_name: 'Account Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS CloudTrail Account Discovery'
+          - 'Panther panther-analysis: Anthropic Excessive Chat Access Failures'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Databricks Repeated Unauthorized Unity Catalog Requests'
+          - 'Panther panther-analysis: GSuite Calendar Has Been Made Public'
+          - 'Panther panther-analysis: GSuite Workspace Calendar External Sharing Setting Change'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1087.004
+    technique_name: 'Cloud Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS STS GetCallerIdentity via TruffleHog'
+          - 'Panther panther-analysis: Azure Key Vault Key Accessed or Recovered'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1090
+    technique_name: 'Proxy'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS WAF Managed IP Reputation Passthrough Rule'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1095
+    technique_name: 'Non-Application Layer Protocol'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Network ACL Restricts Insecure Protocols'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1098
+    technique_name: 'Account Manipulation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: A User Role with Sensitive Permissions has been Created'
+          - 'Panther panther-analysis: A User''s Panther Account was Modified'
+          - 'Panther panther-analysis: A long-lived cert was created'
+          - 'Panther panther-analysis: A user authenticated with SAML, but from an unknown company domain'
+          - 'Panther panther-analysis: AWS Network ACL Overly Permissive Entry Created'
+          - 'Panther panther-analysis: AWS RDS Instance Modified to be Publicly Accessible'
+          - 'Panther panther-analysis: AWS RDS Master Password Updated'
+          - 'Panther panther-analysis: AWS RDS Security Group Ingress Authorized'
+          - 'Panther panther-analysis: AWS Root Account Access Keys'
+          - 'Panther panther-analysis: AWS User API Key Created'
+          - 'Panther panther-analysis: AWS User Login Profile Created or Modified'
+          - 'Panther panther-analysis: An administrator account was created, deleted, or modified.'
+          - 'Panther panther-analysis: Anthropic Role Granted'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Auth0 New Admin Invited WITH Tenant Member Account Deletion'
+          - 'Panther panther-analysis: Auth0 Same Phone Number Shared Across Multiple Users as MFA'
+          - 'Panther panther-analysis: Azure Kubernetes RoleBinding or ClusterRoleBinding Created'
+          - 'Panther panther-analysis: Azure Privileged or Elevated Role Assignment'
+          - 'Panther panther-analysis: Azure Service Principal Credentials Added'
+          - 'Panther panther-analysis: Azure Storage Account Key Regenerated'
+          - '(+44 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1098.001
+    technique_name: 'Additional Cloud Credentials'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: A Teleport Role was modified or created'
+          - 'Panther panther-analysis: AWS Privilege Escalation Via User Compromise'
+          - 'Panther panther-analysis: AWS User Takeover Via Password Reset'
+          - 'Panther panther-analysis: Anthropic Admin API Key Created'
+          - 'Panther panther-analysis: Anthropic Admin API Key Deleted'
+          - 'Panther panther-analysis: Anthropic Service Key Created'
+          - 'Panther panther-analysis: Anthropic Service Key Revoked'
+          - 'Panther panther-analysis: Azure Service Principal Credentials Added'
+          - 'Panther panther-analysis: Crowdstrike API Key Created'
+          - 'Panther panther-analysis: Crowdstrike User Password Changed'
+          - 'Panther panther-analysis: IAM Role Added to RDS Instance or Cluster'
+          - 'Panther panther-analysis: Wiz User Role Updated Or Deleted'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1098.003
+    technique_name: 'Additional Cloud Roles'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Anthropic Primary Owner Transferred'
+          - 'Panther panther-analysis: Azure Privileged or Elevated Role Assignment'
+          - 'Panther panther-analysis: Azure User Elevated to User Access Administrator Role'
+          - 'Panther panther-analysis: Crowdstrike Admin Role Assigned'
+          - 'Panther panther-analysis: Crowdstrike New Admin User Created'
+          - 'Panther panther-analysis: GCP Inbound SSO Profile Created'
+          - 'Panther panther-analysis: GCP Workforce Pool Created or Updated'
+          - 'Panther panther-analysis: GCP Workload Identity Pool Created or Updated'
+          - 'Panther panther-analysis: OpenAI Admin Role Assignment'
+          - 'Panther panther-analysis: Slack User Privilege Escalation'
+          - 'Panther panther-analysis: ZIA Additional Cloud Roles'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1110
+    technique_name: 'Brute Force'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS IAM User MFA'
+          - 'Panther panther-analysis: AWS Password Policy Complexity Guidelines'
+          - 'Panther panther-analysis: AWS Password Policy Password Age Limit'
+          - 'Panther panther-analysis: AWS Password Policy Password Reuse'
+          - 'Panther panther-analysis: Admin logged out because of successive login failures'
+          - 'Panther panther-analysis: Anthropic SSO Login Failed'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Azure Excessive Account Lockouts'
+          - 'Panther panther-analysis: Azure Many Failed SignIns'
+          - 'Panther panther-analysis: Azure RiskLevel Passthrough'
+          - 'Panther panther-analysis: Brute Force By IP'
+          - 'Panther panther-analysis: Brute Force By User'
+          - 'Panther panther-analysis: Carbon Black Log Entry Flagged'
+          - 'Panther panther-analysis: Databricks Repeated Failed Login Attempts'
+          - 'Panther panther-analysis: Failed Root Console Login'
+          - 'Panther panther-analysis: GSuite User Device Unlock Failures'
+          - 'Panther panther-analysis: GSuite Workspace Password Reuse Has Been Enabled'
+          - 'Panther panther-analysis: GSuite Workspace Strong Password Enforcement Has Been Disabled'
+          - 'Panther panther-analysis: Microsoft365 Brute Force Login by User'
+          - 'Panther panther-analysis: Netskope Many Unauthorized API Calls'
+          - '(+10 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1110.001
+    technique_name: 'Password Guessing'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Excessive Account Lockouts'
+          - 'Panther panther-analysis: OpenAI Brute Force Login Success'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1110.003
+    technique_name: 'Password Spraying'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Excessive Account Lockouts'
+          - 'Panther panther-analysis: OpenAI Brute Force Login Success'
+          - 'Panther panther-analysis: Snowflake Password Spray'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1110.004
+    technique_name: 'Credential Stuffing'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Excessive Account Lockouts'
+          - 'Panther panther-analysis: OpenAI Brute Force Login Success'
+          - 'Panther panther-analysis: OpenAI Credential Stuffing'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1111
+    technique_name: 'Multi-Factor Authentication Interception'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1114
+    technique_name: 'Email Collection'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Gsuite Mail forwarded to external domain'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1114.003
+    technique_name: 'Email Forwarding Rule'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Microsoft Exchange External Forwarding'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1125
+    technique_name: 'Video Capture'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Zoom Meeting Passcode Disabled'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1133
+    technique_name: 'External Remote Services'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS RDS Instance Modified to be Publicly Accessible'
+          - 'Panther panther-analysis: AWS VPC Default Network ACL Restricts All Traffic'
+          - 'Panther panther-analysis: AWS VPC Default Security Group Restrictions'
+          - 'Panther panther-analysis: Wiz Issue WITH SSH to EC2 Instance'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1134
+    technique_name: 'Access Token Manipulation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: GitHub Artifact Download from Cross-Fork Workflow'
+          - 'Panther panther-analysis: GitHub Cross-Fork Workflow Run'
+          - 'Panther panther-analysis: GitHub pull_request_target Workflow Usage'
+          - 'Panther panther-analysis: GitHub pull_request_target Workflow on Self-Hosted Runner'
+          - 'Panther panther-analysis: GitHub pull_request_target Workflow with Checkout Action'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1136
+    technique_name: 'Create Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS User API Key Created'
+          - 'Panther panther-analysis: AWS User Login Profile Created or Modified'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Auth0 Fraud Risk by Volume'
+          - 'Panther panther-analysis: Auth0 New Admin Invited'
+          - 'Panther panther-analysis: Auth0 New Admin Invited WITH Tenant Member Account Deletion'
+          - 'Panther panther-analysis: Auth0 Rapid Dynamic Client Creation'
+          - 'Panther panther-analysis: Carbon Black API Key Created or Retrieved'
+          - 'Panther panther-analysis: Carbon Black User Added Outside Org'
+          - 'Panther panther-analysis: DEPRECATED - AWS User Login Profile Modified'
+          - 'Panther panther-analysis: Databricks Account Admin Privileged Role Assignment'
+          - 'Panther panther-analysis: Databricks Group Created'
+          - 'Panther panther-analysis: Databricks User Account Created'
+          - 'Panther panther-analysis: Databricks Workspace Admin Privileged Role Assignment'
+          - 'Panther panther-analysis: GCP Corporate Email Not Used'
+          - 'Panther panther-analysis: IAM Entity Created Without CloudFormation'
+          - 'Panther panther-analysis: New AWS Account Created'
+          - 'Panther panther-analysis: New User Account Created'
+          - 'Panther panther-analysis: Slack Organization Created'
+          - 'Panther panther-analysis: Snowflake User Created'
+          - '(+2 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1136.003
+    technique_name: 'Cloud Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Crowdstrike Ephemeral User Account'
+          - 'Panther panther-analysis: Crowdstrike New Admin User Created'
+          - 'Panther panther-analysis: Crowdstrike New User Created'
+          - 'Panther panther-analysis: GCP Inbound SSO Profile Created'
+          - 'Panther panther-analysis: GCP Workforce Pool Created or Updated'
+          - 'Panther panther-analysis: GCP Workload Identity Pool Created or Updated'
+          - 'Panther panther-analysis: Wiz User Created Or Deleted'
+          - 'Panther panther-analysis: ZIA Cloud Account Created'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1137.005
+    technique_name: 'Outlook Rules'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Microsoft Exchange External Forwarding'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1176
+    technique_name: 'Software Extensions'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: OSQuery Detected Unwanted Chrome Extensions'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1190
+    technique_name: 'Exploit Public-Facing Application'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Application Load Balancer Web ACL'
+          - 'Panther panther-analysis: AWS ELB SSL Policies'
+          - 'Panther panther-analysis: AWS Enforces SSL Policies'
+          - 'Panther panther-analysis: AWS Lambda Public Access'
+          - 'Panther panther-analysis: AWS Network ACL Restricts Inbound Traffic'
+          - 'Panther panther-analysis: AWS Security Group - Only DMZ Publicly Accessible'
+          - 'Panther panther-analysis: AWS Security Group Administrative Ingress'
+          - 'Panther panther-analysis: AWS Security Group Restricts Access To CDE'
+          - 'Panther panther-analysis: AWS Security Group Restricts Inbound Traffic'
+          - 'Panther panther-analysis: AWS Security Group Tightly Restricts Inbound Traffic'
+          - 'Panther panther-analysis: AWS WAF Has XSS Predicate'
+          - 'Panther panther-analysis: AWS WAF Managed Admin Protection Passthrough Rule'
+          - 'Panther panther-analysis: AWS WAF Managed Core Rule Set Passthrough Rule'
+          - 'Panther panther-analysis: AWS WAF Managed IP Reputation Passthrough Rule'
+          - 'Panther panther-analysis: AWS WAF Managed Known Bad Inputs Passthrough Rule'
+          - 'Panther panther-analysis: AWS WAF Managed SQL Database Passthrough Rule'
+          - 'Panther panther-analysis: AWS WAF ReactJS RCE Attempt via Body'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: CVE-2023-7028 - GitLab Audit Password Reset Multiple Emails'
+          - 'Panther panther-analysis: CVE-2023-7028 - GitLab Production Password Reset Multiple Emails'
+          - '(+9 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1195
+    technique_name: 'Supply Chain Compromise'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Action Performed by Netskope Personnel'
+          - 'Panther panther-analysis: CVE-2023-7028 - GitLab Audit Password Reset Multiple Emails'
+          - 'Panther panther-analysis: CVE-2023-7028 - GitLab Production Password Reset Multiple Emails'
+          - 'Panther panther-analysis: GitHub Branch Protection Disabled'
+          - 'Panther panther-analysis: GitHub Branch Protection Policy Override'
+          - 'Panther panther-analysis: GitHub Repository Collaborator Change'
+          - 'Panther panther-analysis: GitHub Team Modified'
+          - 'Panther panther-analysis: GitHub User Added or Removed from Org'
+          - 'Panther panther-analysis: GitHub Workflow Dispatched by GitHub Actions Bot'
+          - 'Panther panther-analysis: GitHub Workflow Permissions Modified'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1195.001
+    technique_name: 'Compromise Software Dependencies and Development Tools'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: A backdoored version of XZ or liblzma is vulnerable to CVE-2024-3094'
+          - 'Panther panther-analysis: AWS EC2 Vulnerable XZ Image Launched'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1195.002
+    technique_name: 'Compromise Software Supply Chain'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: GitHub Artifact Download from Cross-Fork Workflow'
+          - 'Panther panther-analysis: GitHub Commits Skipping Workflows'
+          - 'Panther panther-analysis: GitHub Cross-Fork Workflow Run'
+          - 'Panther panther-analysis: GitHub Malicious Comment/Review Content'
+          - 'Panther panther-analysis: GitHub Malicious Commit Content'
+          - 'Panther panther-analysis: GitHub Malicious Issue/Pages Content'
+          - 'Panther panther-analysis: GitHub Malicious Pull Request Content'
+          - 'Panther panther-analysis: GitHub Sha1-Hulud Malicious Repository Created'
+          - 'Panther panther-analysis: GitHub Supply Chain - Software Installation Tool User Agents'
+          - 'Panther panther-analysis: GitHub Workflow Contains Checkout Action'
+          - 'Panther panther-analysis: GitHub Workflow Downloading Artifacts'
+          - 'Panther panther-analysis: GitHub Workflow Using Self-Hosted Runner'
+          - 'Panther panther-analysis: GitHub pull_request_target Workflow Usage'
+          - 'Panther panther-analysis: GitHub pull_request_target Workflow on Self-Hosted Runner'
+          - 'Panther panther-analysis: GitHub pull_request_target Workflow with Checkout Action'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1199
+    technique_name: 'Trusted Relationship'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Okta Identity Provider Created or Modified'
+          - 'Panther panther-analysis: Okta Identity Provider Sign-in'
+          - 'Panther panther-analysis: Okta Support Access Granted'
+          - 'Panther panther-analysis: Okta Support Reset Credential'
+          - 'Panther panther-analysis: Salesforce Third-Party Integration Monitoring'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1201
+    technique_name: 'Password Policy Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS CloudTrail Password Policy Discovery'
+          - 'Panther panther-analysis: ZIA Password Expiration'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1202
+    technique_name: 'Indirect Command Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Intune Create or Modify Client App'
+          - 'Panther panther-analysis: Intune New Device Management Script'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1203
+    technique_name: 'Exploitation for Client Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS SSM Distributed Command'
+          - 'Panther panther-analysis: AWS SSM Multiple Sessions'
+          - 'Panther panther-analysis: Databricks Install Library on All Clusters'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1204
+    technique_name: 'User Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS EC2 Image Monitoring'
+          - 'Panther panther-analysis: AWS command executed on the command line'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Malicious Content Detected'
+          - 'Panther panther-analysis: Proofpoint Active Threat Campaign Detected'
+          - 'Panther panther-analysis: Proofpoint Malware Detected'
+          - 'Panther panther-analysis: Proofpoint Multiple Threats Detected'
+          - 'Panther panther-analysis: Proofpoint Virus Detected'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1204.001
+    technique_name: 'Malicious Link'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Gsuite Link Clicked in Spam Email'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1204.002
+    technique_name: 'Malicious File'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Gsuite Attachments Downloaded from Spam Email'
+          - 'Panther panther-analysis: Malware Detected in Email'
+          - 'Panther panther-analysis: Slack Potentially Malicious File Shared'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1210
+    technique_name: 'Exploitation of Remote Services'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Security Group Restricts Inter-SG Traffic'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1213
+    technique_name: 'Data from Information Repositories'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Databricks TruffleHog Scan Detected'
+          - 'Panther panther-analysis: External GSuite File Share'
+          - 'Panther panther-analysis: GSuite Document External Ownership Transfer'
+          - 'Panther panther-analysis: GSuite External Drive Document'
+          - 'Panther panther-analysis: GSuite Overly Visible Drive Document'
+          - 'Panther panther-analysis: Okta SWA Bulk Access, New Source, and Credential Extraction - Behavioral'
+          - 'Panther panther-analysis: Snowflake Data Exfiltration'
+          - 'Panther panther-analysis: Zendesk Credit Card Redaction Off'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1222
+    technique_name: 'File and Directory Permissions Modification'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Storage Blob Container Permissions Modified'
+          - 'Panther panther-analysis: Kubernetes Role With Write Permissions Created'
+          - 'Panther panther-analysis: Kubernetes System Role Modified or Deleted'
+          - 'Panther panther-analysis: Slack Private Channel Made Public'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1484
+    technique_name: 'Domain or Tenant Policy Modification'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1484.001
+    technique_name: 'Group Policy Modification'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: GCP User Added to Privileged Group'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1484.002
+    technique_name: 'Trust Modification'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Wiz SAML Identity Provider Change'
+          - 'Panther panther-analysis: ZIA Trust Modification'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1485
+    technique_name: 'Data Destruction'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS RDS Automated Backup Deleted'
+          - 'Panther panther-analysis: AWS RDS Instance or Cluster Deleted'
+          - 'Panther panther-analysis: AWS RDS Snapshot Deleted'
+          - 'Panther panther-analysis: AWS S3 Bucket Action Restrictions'
+          - 'Panther panther-analysis: AWS S3 Bucket MFA Delete'
+          - 'Panther panther-analysis: AWS S3 Bucket Object Lock Configured'
+          - 'Panther panther-analysis: AWS S3 Bucket Public Write'
+          - 'Panther panther-analysis: AWS S3 Bucket Versioning'
+          - 'Panther panther-analysis: AWS S3 Security Control Disabling'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Azure Disk Deleted'
+          - 'Panther panther-analysis: Azure Key Vault Deleted'
+          - 'Panther panther-analysis: Azure Key Vault Key Permanently Purged'
+          - 'Panther panther-analysis: Azure Key Vault Permanently Purged'
+          - 'Panther panther-analysis: Azure Log Analytics Workspace Deleted'
+          - 'Panther panther-analysis: Azure Network Security Configuration Modified or Deleted'
+          - 'Panther panther-analysis: Azure Recovery Services Protection Container Deleted'
+          - 'Panther panther-analysis: Azure Resource Group Deleted'
+          - 'Panther panther-analysis: Azure Restore Point Collection Deleted'
+          - 'Panther panther-analysis: Azure SQL Server Deleted'
+          - '(+21 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1486
+    technique_name: 'Data Encrypted for Impact'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS EC2 EBS Encryption Disabled'
+          - 'Panther panther-analysis: AWS S3 Object Copied to External Account Bucket'
+          - 'Panther panther-analysis: AWS S3 Object Exfiltration WITH Object Deletion'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Azure Storage Blob CPK Encryption Detected'
+          - 'Panther panther-analysis: Azure Storage Blob Upload WITH CPK Encryption Error'
+          - 'Panther panther-analysis: GCP Cloud Storage Buckets Modified Or Deleted'
+          - 'Panther panther-analysis: GCP GCS Bulk Object Rewrite Operation'
+          - 'Panther panther-analysis: GCP GCS Ransom Note Upload'
+          - 'Panther panther-analysis: GCP KMS Bulk Encryption by GCS Service Account'
+          - 'Panther panther-analysis: GCP KMS Key Granted to GCS Service Account'
+          - 'Panther panther-analysis: GCP KMS Key Version Disabled or Destroyed'
+          - 'Panther panther-analysis: S3 Object Encrypted with External KMS Key'
+          - 'Panther panther-analysis: Slack Potentially Malicious File Shared'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1489
+    technique_name: 'Service Stop'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Virtual Machine Deleted'
+          - 'Panther panther-analysis: Slack App Removed'
+          - 'Panther panther-analysis: Slack EKM Slackbot Unenrolled'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1490
+    technique_name: 'Inhibit System Recovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS RDS Automated Backup Deleted'
+          - 'Panther panther-analysis: AWS RDS Deletion Protection Disabled'
+          - 'Panther panther-analysis: Azure Disk Deleted'
+          - 'Panther panther-analysis: Azure Key Vault Deleted'
+          - 'Panther panther-analysis: Azure Key Vault Key Permanently Purged'
+          - 'Panther panther-analysis: Azure Key Vault Permanently Purged'
+          - 'Panther panther-analysis: Azure Recovery Services Protection Container Deleted'
+          - 'Panther panther-analysis: Azure Resource Lock Deleted'
+          - 'Panther panther-analysis: Azure Restore Point Collection Deleted'
+          - 'Panther panther-analysis: Azure SQL Server Deleted'
+          - 'Panther panther-analysis: Azure Storage Account Deleted'
+          - 'Panther panther-analysis: Azure Storage Blob CPK Encryption Detected'
+          - 'Panther panther-analysis: Azure Storage Blob Deletion'
+          - 'Panther panther-analysis: Azure Storage Blob Soft Delete Disabled'
+          - 'Panther panther-analysis: Azure Storage Blob Upload WITH CPK Encryption Error'
+          - 'Panther panther-analysis: Azure Storage Container Soft Delete Disabled'
+          - 'Panther panther-analysis: Azure Storage Immutability Policy Deleted'
+          - 'Panther panther-analysis: Azure VM Snapshot Deleted'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1496
+    technique_name: 'Resource Hijacking'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS CloudFormation Stack Drift'
+          - 'Panther panther-analysis: AWS CloudFormation Stack Termination Protection'
+          - 'Panther panther-analysis: AWS DNS Crypto Domain'
+          - 'Panther panther-analysis: AWS EC2 Instance Approved AMI'
+          - 'Panther panther-analysis: Anthropic Spend Limit Deleted'
+          - 'Panther panther-analysis: Crowdstrike Cryptomining Tools'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1496.004
+    technique_name: 'Cloud Service Hijacking'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Bedrock Model Invocation Abnormal Token Usage'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1498
+    technique_name: 'Network Denial of Service'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Okta Rate Limits'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1499
+    technique_name: 'Endpoint Denial of Service'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS RDS Cluster Failover Initiated'
+          - 'Panther panther-analysis: AWS RDS Instance or Cluster Rebooted'
+          - 'Panther panther-analysis: AWS WAF Managed Anti-DDoS Passthrough Rule'
+          - 'Panther panther-analysis: Azure Virtual Network Deleted'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1499.003
+    technique_name: 'Application Exhaustion Flood'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Slack Denial of Service via Session Invalidation'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1505
+    technique_name: 'Server Software Component'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Slack App Added'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1518
+    technique_name: 'Software Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Software Discovery'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1525
+    technique_name: 'Implant Internal Image'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: ECR CRUD Actions'
+          - 'Panther panther-analysis: Kubernetes Pod Created in System Namespace'
+          - 'Panther panther-analysis: Lambda CRUD Actions'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1526
+    technique_name: 'Cloud Service Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS CloudTrail Log Encryption'
+          - 'Panther panther-analysis: AWS Config Service Created'
+          - 'Panther panther-analysis: AWS EC2 Discovery Commands Executed'
+          - 'Panther panther-analysis: Azure Policy Changed'
+          - 'Panther panther-analysis: Detect Reconnaissance from IAM Users'
+          - 'Panther panther-analysis: External Principal Accessing AWS Resources Via VPC Endpoint'
+          - 'Panther panther-analysis: Monitor Unauthorized API Calls'
+          - 'Panther panther-analysis: Sensitive API Calls Via VPC Endpoint'
+          - 'Panther panther-analysis: VPC Endpoint Access Denied'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1528
+    technique_name: 'Steal Application Access Token'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Potentially Stolen Service Role'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Auth0 Refresh Token Reused'
+          - 'Panther panther-analysis: Azure VS Code OAuth Phishing'
+          - 'Panther panther-analysis: Kubernetes System Principal Accessed from Non-Cloud Public IP'
+          - 'Panther panther-analysis: Okta AD Agent Authentication Anomaly - Z-Score Detection'
+          - 'Panther panther-analysis: Okta AD Agent Token Abuse - Behavioral'
+          - 'Panther panther-analysis: Okta API Key Created'
+          - 'Panther panther-analysis: Salesforce OAuth Credential Abuse Detection'
+          - 'Panther panther-analysis: Salesforce Third-Party Integration Monitoring'
+          - 'Panther panther-analysis: Zendesk API Token Created'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1530
+    technique_name: 'Data from Cloud Storage'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS CloudTrail S3 Bucket Access Logging'
+          - 'Panther panther-analysis: AWS CloudTrail S3 Bucket Public'
+          - 'Panther panther-analysis: AWS DynamoDB Table TTL'
+          - 'Panther panther-analysis: AWS EC2 Volume Snapshot Encryption'
+          - 'Panther panther-analysis: AWS RDS Instance Encryption'
+          - 'Panther panther-analysis: AWS Redshift Cluster Encryption'
+          - 'Panther panther-analysis: AWS S3 Access IP Allowlist'
+          - 'Panther panther-analysis: AWS S3 Bucket Encryption'
+          - 'Panther panther-analysis: AWS S3 Bucket Policy Allow With Not Principal'
+          - 'Panther panther-analysis: AWS S3 Bucket Principal Restrictions'
+          - 'Panther panther-analysis: AWS S3 Bucket Public Access Block'
+          - 'Panther panther-analysis: AWS S3 Bucket Public Read'
+          - 'Panther panther-analysis: AWS S3 Bucket Secure Access'
+          - 'Panther panther-analysis: AWS S3 Insecure Access'
+          - 'Panther panther-analysis: AWS S3 Unauthenticated Access'
+          - 'Panther panther-analysis: AWS S3 Unknown Requester'
+          - 'Panther panther-analysis: Anthropic Integration Connected'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Azure Key Vault Certificate Accessed'
+          - 'Panther panther-analysis: Azure Key Vault Secret Accessed or Recovered'
+          - '(+17 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1531
+    technique_name: 'Account Access Removal'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS RDS Instance or Cluster Deleted'
+          - 'Panther panther-analysis: Anthropic Organization User Deleted'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Crowdstrike API Key Deleted'
+          - 'Panther panther-analysis: Crowdstrike Allowlist Removed'
+          - 'Panther panther-analysis: Databricks Group Deleted'
+          - 'Panther panther-analysis: Databricks User Account Deleted'
+          - 'Panther panther-analysis: OneLogin Multiple Accounts Deleted'
+          - 'Panther panther-analysis: OneLogin Multiple Accounts Modified'
+          - 'Panther panther-analysis: Slack Organization Deleted'
+          - 'Panther panther-analysis: Slack Primary Owner Transferred'
+          - 'Panther panther-analysis: Slack User Privileges Changed to User'
+          - 'Panther panther-analysis: Wiz Revoke User Sessions'
+          - 'Panther panther-analysis: ZIA Account Access Removed'
+          - 'Panther panther-analysis: Zendesk User Suspension Status Changed'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1535
+    technique_name: 'Unused/Unsupported Cloud Regions'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Cloudtrail Region Enabled'
+          - 'Panther panther-analysis: AWS ECR Events'
+          - 'Panther panther-analysis: GCP Resource in Unused Region'
+          - 'Panther panther-analysis: Unused AWS Region'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1537
+    technique_name: 'Transfer Data to Cloud Account'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS AMI Sharing'
+          - 'Panther panther-analysis: AWS RDS Manual/Public Snapshot Created'
+          - 'Panther panther-analysis: AWS RDS Snapshot Copied Cross-Region'
+          - 'Panther panther-analysis: AWS RDS Snapshot Exported to S3'
+          - 'Panther panther-analysis: AWS RDS Snapshot Shared'
+          - 'Panther panther-analysis: AWS Resource Made Public'
+          - 'Panther panther-analysis: AWS S3 Large Download'
+          - 'Panther panther-analysis: AWS S3 Object Copied to External Account Bucket'
+          - 'Panther panther-analysis: AWS S3 Object Exfiltration WITH Object Deletion'
+          - 'Panther panther-analysis: AWS Snapshot Made Public'
+          - 'Panther panther-analysis: Amazon Machine Image (AMI) Modified to Allow Public Access'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Databricks Data Movement with Explicit Credentials'
+          - 'Panther panther-analysis: GCP GCS Bulk Object Rewrite Operation'
+          - 'Panther panther-analysis: GCP GCS Object Copied to Different Bucket'
+          - 'Panther panther-analysis: Snowflake External Data Share'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1538
+    technique_name: 'Cloud Service Dashboard'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: A CloudTrail Was Created or Updated'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1539
+    technique_name: 'Steal Web Session Cookie'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Okta Login Without Push'
+          - 'Panther panther-analysis: Okta Potentially Stolen Session'
+          - 'Panther panther-analysis: Potential Compromised Okta Credentials'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1543
+    technique_name: 'Create or Modify System Process'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Databricks Install Library on All Clusters'
+          - 'Panther panther-analysis: Kubernetes DaemonSet Created'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1546
+    technique_name: 'Event Triggered Execution'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Automation Webhook Created'
+          - 'Panther panther-analysis: Kubernetes Admission Controller Webhook Created'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1548
+    technique_name: 'Abuse Elevation Control Mechanism'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS STS GetSessionToken by IAM User'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Box Large Number of Permission Changes'
+          - 'Panther panther-analysis: GCP Cloud Run Service Created WITH Set IAM Policy'
+          - 'Panther panther-analysis: GCP CloudBuild Potential Privilege Escalation'
+          - 'Panther panther-analysis: GCP IAM serviceAccounts getAccessToken Privilege Escalation'
+          - 'Panther panther-analysis: GCP IAM serviceAccounts signBlob'
+          - 'Panther panther-analysis: GCP IAM serviceAccounts.signJwt Privilege Escalation'
+          - 'Panther panther-analysis: GCP K8S Privileged Pod Created'
+          - 'Panther panther-analysis: GCP Privilege Escalation via TagBinding'
+          - 'Panther panther-analysis: GCP cloudfunctions functions create'
+          - 'Panther panther-analysis: GCP cloudfunctions functions update'
+          - 'Panther panther-analysis: GCP compute.instances.create Privilege Escalation'
+          - 'Panther panther-analysis: GCP iam.roles.update Privilege Escalation'
+          - 'Panther panther-analysis: GCP serviceusage.apiKeys.create Privilege Escalation'
+          - 'Panther panther-analysis: GCP storage hmac keys create'
+          - 'Panther panther-analysis: GCP.Iam.ServiceAccountKeys.Create'
+          - 'Panther panther-analysis: GCP.Privilege.Escalation.By.Deployments.Create'
+          - 'Panther panther-analysis: IAM Assume Role Blocklist Ignored'
+          - 'Panther panther-analysis: IAM Policy Modified'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1548.003
+    technique_name: 'Sudo and Sudo Caching'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Kubernetes Privileged Pod Created'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1550
+    technique_name: 'Use Alternate Authentication Material'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS User API Key Created'
+          - 'Panther panther-analysis: AWS User Login Profile Created or Modified'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Azure Device Code Authentication with Broker Client'
+          - 'Panther panther-analysis: Azure Microsoft Graph Single Session from Multiple IP Addresses'
+          - 'Panther panther-analysis: DEPRECATED - AWS User Login Profile Modified'
+          - 'Panther panther-analysis: Databricks Long-Lifetime Token Generated'
+          - 'Panther panther-analysis: Enabled Zendesk Support to Assume Users'
+          - 'Panther panther-analysis: GAIA GCPW Credential Theft Attack Chain'
+          - 'Panther panther-analysis: Google Workspace Login Type Anomaly'
+          - 'Panther panther-analysis: Google Workspace OAuth Token Requests from New IP'
+          - 'Panther panther-analysis: Google Workspace Rapid Multi-IP Authentication'
+          - 'Panther panther-analysis: OneLogin Active Login Activity'
+          - 'Panther panther-analysis: OneLogin Unauthorized Access'
+          - 'Panther panther-analysis: OneLogin User Assumed Another User'
+          - 'Panther panther-analysis: OpenAI Anomalous API Key Activity'
+          - 'Panther panther-analysis: Salesforce OAuth Credential Abuse Detection'
+          - 'Panther panther-analysis: Salesforce Third-Party Integration Monitoring'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1550.001
+    technique_name: 'Application Access Token'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Console GetSigninToken Potential Abuse'
+          - 'Panther panther-analysis: AWS STS GetSessionToken by IAM User'
+          - 'Panther panther-analysis: Azure Device Code Authentication with Broker Client'
+          - 'Panther panther-analysis: Azure Microsoft Graph Single Session from Multiple IP Addresses'
+          - 'Panther panther-analysis: Kubernetes Service Account Token Theft from Pod'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1552
+    technique_name: 'Unsecured Credentials'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Access Key Rotation'
+          - 'Panther panther-analysis: AWS IAM Access Key Compromise Detection'
+          - 'Panther panther-analysis: AWS KMS CMK Key Rotation'
+          - 'Panther panther-analysis: AWS KMS Key Restricts Usage'
+          - 'Panther panther-analysis: AWS Secrets Manager Batch Retrieve Secrets'
+          - 'Panther panther-analysis: AWS Secrets Manager Batch Retrieve Secrets Catch-All'
+          - 'Panther panther-analysis: AWS Secrets Manager Retrieve Secrets Multi-Region'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Azure Storage Account Keys Listed'
+          - 'Panther panther-analysis: BETA - Sensitive 1Password Item Accessed'
+          - 'Panther panther-analysis: Configuration Required - Sensitive 1Password Item Accessed'
+          - 'Panther panther-analysis: Databricks TruffleHog Scan Detected'
+          - 'Panther panther-analysis: EC2 Secrets Manager Retrieve Secrets'
+          - 'Panther panther-analysis: GSuite User Password Leaked'
+          - 'Panther panther-analysis: GitHub Secret Scanning Alert Created'
+          - 'Panther panther-analysis: Kubernetes Admission Controller Webhook Created'
+          - 'Panther panther-analysis: Kubernetes Client Certificate Credential Created'
+          - 'Panther panther-analysis: Kubernetes Data Copy via kubectl cp'
+          - 'Panther panther-analysis: Kubernetes Long-Lived Service Account Token Created'
+          - 'Panther panther-analysis: Okta Password Accessed'
+          - '(+1 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1552.001
+    technique_name: 'Credentials In Files'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Compromised IAM Key Quarantine'
+          - 'Panther panther-analysis: AWS RDS Log File Downloaded'
+          - 'Panther panther-analysis: Azure Storage SAS Token Access from External IP'
+          - 'Panther panther-analysis: Secret Exposed and not Quarantined'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1552.004
+    technique_name: 'Private Keys'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Kubernetes Ingress Created Without TLS'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1552.007
+    technique_name: 'Container API'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Kubernetes All Secrets Dumped Across Namespaces'
+          - 'Panther panther-analysis: Kubernetes Secret Access Denied'
+          - 'Panther panther-analysis: Kubernetes Secret Enumeration by a User'
+          - 'Panther panther-analysis: Kubernetes Service Account Token Theft from Pod'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1555
+    technique_name: 'Credentials from Password Stores'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Decrypt SSM Parameters'
+          - 'Panther panther-analysis: AWS EC2 Many Password Read Attempts'
+          - 'Panther panther-analysis: Azure Key Vault Certificate Accessed'
+          - 'Panther panther-analysis: Azure Key Vault Key Accessed or Recovered'
+          - 'Panther panther-analysis: Azure Key Vault Secret Accessed or Recovered'
+          - 'Panther panther-analysis: Databricks Repeated Access to Secrets'
+          - 'Panther panther-analysis: Okta SWA Bulk Access, New Source, and Credential Extraction - Behavioral'
+          - 'Panther panther-analysis: Okta SWA Off-Hours Credential Access - Behavioral'
+          - 'Panther panther-analysis: Unusual 1Password Client Detected'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1556
+    technique_name: 'Modify Authentication Process'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Azure Authentication Methods Policy OIDC Discovery URL Changed'
+          - 'Panther panther-analysis: Azure Domain Federation Settings Modified'
+          - 'Panther panther-analysis: Azure MFA Disabled'
+          - 'Panther panther-analysis: Databricks MFA Key Change'
+          - 'Panther panther-analysis: Databricks SSO Configuration Changed'
+          - 'Panther panther-analysis: GSuite User Two Step Verification Change'
+          - 'Panther panther-analysis: MFA Disabled'
+          - 'Panther panther-analysis: Microsoft365 MFA Disabled'
+          - 'Panther panther-analysis: Okta AiTM Phishing Attempt Blocked by FastPass'
+          - 'Panther panther-analysis: Okta Authentication Bypass via Skeleton Key Injection - Behavioral'
+          - 'Panther panther-analysis: Okta Cleartext Passwords Extracted via SCIM Application'
+          - 'Panther panther-analysis: Okta Identity Provider Created or Modified'
+          - 'Panther panther-analysis: Okta MFA Globally Disabled'
+          - 'Panther panther-analysis: Okta Org2Org application created of modified'
+          - 'Panther panther-analysis: Okta Sign-In from VPN Anonymizer'
+          - 'Panther panther-analysis: OneLogin Authentication Factor Removed'
+          - 'Panther panther-analysis: Slack IDP Configuration Changed'
+          - 'Panther panther-analysis: Slack SSO Settings Changed'
+          - 'Panther panther-analysis: Snowflake Login Without MFA'
+          - '(+1 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1556.006
+    technique_name: 'Multi-Factor Authentication'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Domain Federation Settings Modified'
+          - 'Panther panther-analysis: Slack MFA Settings Changed'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1556.009
+    technique_name: 'Conditional Access Policies'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Authentication Methods Policy OIDC Discovery URL Changed'
+          - 'Panther panther-analysis: Crowdstrike IP Allowlist Changed'
+          - 'Panther panther-analysis: Crowdstrike Single IP Allowlisted'
+          - 'Panther panther-analysis: GCP Org or Folder Policy Was Changed Manually'
+          - 'Panther panther-analysis: MongoDB access allowed from anywhere'
+          - 'Panther panther-analysis: MongoDB org membership restriction disabled'
+          - 'Panther panther-analysis: Wiz Update IP Restrictions'
+          - 'Panther panther-analysis: ZIA Insecure Password Settings'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1564
+    technique_name: 'Hide Artifacts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Azure Policy DeployIfNotExists Action Triggered'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1565
+    technique_name: 'Data Manipulation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS EC2 EBS Encryption Disabled'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1566
+    technique_name: 'Phishing'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Azure Device Code Authentication with Broker Client'
+          - 'Panther panther-analysis: Azure VS Code OAuth Phishing'
+          - 'Panther panther-analysis: DNS request to denylisted domain'
+          - 'Panther panther-analysis: GSuite Government Backed Attack'
+          - 'Panther panther-analysis: GSuite Workspace Gmail Pre-Delivery Message Scanning Disabled'
+          - 'Panther panther-analysis: GSuite Workspace Gmail Security Sandbox Disabled'
+          - 'Panther panther-analysis: GitHub Malicious Comment/Review Content'
+          - 'Panther panther-analysis: Gmail Malicious SMTP Response'
+          - 'Panther panther-analysis: Gsuite Email Bypassed Spam Filter'
+          - 'Panther panther-analysis: Malicious SSO DNS Lookup'
+          - 'Panther panther-analysis: Okta AiTM Phishing Attempt Blocked by FastPass'
+          - 'Panther panther-analysis: Proofpoint Active Threat Campaign Detected'
+          - 'Panther panther-analysis: Proofpoint High Impostor Score Detected'
+          - 'Panther panther-analysis: Proofpoint Malware Detected'
+          - 'Panther panther-analysis: Proofpoint Multiple Threats Detected'
+          - 'Panther panther-analysis: Proofpoint Phishing Email Detected'
+          - 'Panther panther-analysis: Proofpoint Virus Detected'
+          - 'Panther panther-analysis: Spam Email Surge'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1566.001
+    technique_name: 'Spearphishing Attachment'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Gmail Potential Spoofed Email Delivered'
+          - 'Panther panther-analysis: Gsuite Attachments Downloaded from Spam Email'
+          - 'Panther panther-analysis: Malware Detected in Email'
+          - 'Panther panther-analysis: Slack Potentially Malicious File Shared'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1566.002
+    technique_name: 'Spearphishing Link'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Device Code Authentication with Broker Client'
+          - 'Panther panther-analysis: Gmail Potential Spoofed Email Delivered'
+          - 'Panther panther-analysis: Gsuite Link Clicked in Spam Email'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1567
+    technique_name: 'Exfiltration Over Web Service'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Network ACL Restricts Outbound Traffic'
+          - 'Panther panther-analysis: AWS RDS Instance Public Access'
+          - 'Panther panther-analysis: AWS RDS Instance Snapshot Public Access'
+          - 'Panther panther-analysis: AWS S3 Bucket Policy Modified'
+          - 'Panther panther-analysis: AWS Security Group Restricts Outbound Traffic'
+          - 'Panther panther-analysis: AWS Security Group Restricts Traffic Leaving CDE'
+          - 'Panther panther-analysis: AWS Security Group Tightly Restricts Outbound Traffic'
+          - 'Panther panther-analysis: Anthropic Artifact Shared Publicly'
+          - 'Panther panther-analysis: Anthropic MCP Server Created'
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Azure Storage Account Public Network Access Enabled'
+          - 'Panther panther-analysis: Azure Storage Blob Bulk Extraction'
+          - 'Panther panther-analysis: Azure Storage SAS Token Access from External IP'
+          - 'Panther panther-analysis: Box Large Number of Downloads'
+          - 'Panther panther-analysis: Box Shield Detected Anomalous Download Activity'
+          - 'Panther panther-analysis: Box event triggered by unknown or external user'
+          - 'Panther panther-analysis: CodeBuild Project made Public'
+          - 'Panther panther-analysis: DNS request to denylisted domain'
+          - 'Panther panther-analysis: Databricks Data Downloads From Control Plane'
+          - 'Panther panther-analysis: Dropbox Many Downloads'
+          - '(+8 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1567.002
+    technique_name: 'Exfiltration to Cloud Storage'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Storage Blob Container Permissions Modified'
+          - 'Panther panther-analysis: Azure VM Disk SAS URI Generated'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1571
+    technique_name: 'Non-Standard Port'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: VPC Flow Logs Inbound Port Allowlist'
+          - 'Panther panther-analysis: VPC Flow Logs Inbound Port Blocklist'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1573.002
+    technique_name: 'Asymmetric Cryptography'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: GCP K8s IOCActivity'
+          - 'Panther panther-analysis: Kubernetes API Activity from Tor Exit Node'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1578
+    technique_name: 'Modify Cloud Compute Infrastructure'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Modify Cloud Compute Infrastructure'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1578.002
+    technique_name: 'Create Cloud Instance'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Kubernetes Pod Created in System Namespace'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1580
+    technique_name: 'Cloud Infrastructure Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS CloudTrail SES Enumeration'
+          - 'Panther panther-analysis: AWS EC2 Download Instance User Data'
+          - 'Panther panther-analysis: AWS RDS Snapshot Enumeration with Public or Shared Flag'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1585
+    technique_name: 'Establish Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: A SAML Connector was created or modified'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1586
+    technique_name: 'Compromise Accounts'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Role Changed PIM'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1587
+    technique_name: 'Develop Capabilities'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Proofpoint Active Threat Campaign Detected'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1588
+    technique_name: 'Obtain Capabilities'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS ACM Certificate Expiration'
+          - 'Panther panther-analysis: AWS ACM Certificate Status'
+          - 'Panther panther-analysis: macOS Malware Detected with osquery'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1589
+    technique_name: 'Gather Victim Identity Information'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: GSuite Government Backed Attack'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1595
+    technique_name: 'Active Scanning'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS WAF Managed Bot Control Passthrough Rule'
+          - 'Panther panther-analysis: AWS WAF Managed IP Reputation Passthrough Rule'
+          - 'Panther panther-analysis: GSuite Government Backed Attack'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1595.001
+    technique_name: 'Scanning IP Blocks'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: GTI/VirusTotal Threat Intelligence Indicator Match'
+          - 'Panther panther-analysis: GreyNoise V3 Malicious IP Activity'
+          - 'Panther panther-analysis: OTX Threat Intelligence Indicator Match'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1595.002
+    technique_name: 'Vulnerability Scanning'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Excessive IP and VM Discovery'
+          - 'Panther panther-analysis: Azure Excessive Network Security Group Read'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1598
+    technique_name: 'Phishing for Information'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Potential Compromised Okta Credentials'
+          - 'Panther panther-analysis: Proofpoint Phishing Email Detected'
+          - 'Panther panther-analysis: Spam Email Surge'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1599
+    technique_name: 'Network Boundary Bridging'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: External Principal Accessing AWS Resources Via VPC Endpoint'
+          - 'Panther panther-analysis: Sensitive API Calls Via VPC Endpoint'
+          - 'Panther panther-analysis: VPC DNS Tunneling'
+          - 'Panther panther-analysis: VPC Endpoint Access Denied'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1600
+    technique_name: 'Weaken Encryption'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Slack Enterprise Key Management Unenrolled'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1608
+    technique_name: 'Stage Capabilities'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AppOmni Alert Passthrough'
+          - 'Panther panther-analysis: Azure Automation Webhook Created'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1610
+    technique_name: 'Deploy Container'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS EC2 Launch Unusual EC2 Instances'
+          - 'Panther panther-analysis: GCP K8s New Daemonset Deployed'
+          - 'Panther panther-analysis: GCP K8s Pod Using Host PID Namespace'
+          - 'Panther panther-analysis: Kubernetes DaemonSet Created'
+          - 'Panther panther-analysis: Kubernetes Pod Using Host PID Namespace'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1611
+    technique_name: 'Escape to Host'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: GCP K8S Pod Create Or Modify Host Path Volume Mount'
+          - 'Panther panther-analysis: GCP K8s Pod Attached To Node Host Network'
+          - 'Panther panther-analysis: GCP K8s Pod Using Host PID Namespace'
+          - 'Panther panther-analysis: Kubernetes Pod Attached To Host Network'
+          - 'Panther panther-analysis: Kubernetes Pod Created in System Namespace'
+          - 'Panther panther-analysis: Kubernetes Pod Using Host IPC Namespace'
+          - 'Panther panther-analysis: Kubernetes Pod Using Host PID Namespace'
+          - 'Panther panther-analysis: Kubernetes Pod With HostPath Volume Mount'
+          - 'Panther panther-analysis: Kubernetes Pod with Dangerous Linux Capabilities'
+          - 'Panther panther-analysis: Upwind Runtime Detection Passthrough'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1613
+    technique_name: 'Container and Resource Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: EKS Audit Log based single sourceIP is generating multiple 403s'
+          - 'Panther panther-analysis: Kubernetes API Multiple 403 Responses from Single Public IP'
+          - 'Panther panther-analysis: Kubernetes Secret Access Denied'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1619
+    technique_name: 'Cloud Storage Object Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS S3 Access Error'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1621
+    technique_name: 'Multi-Factor Authentication Request Generation'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Unsuccessful MFA attempt'
+          - 'Panther panther-analysis: Auth0 Push Notification Fatigue'
+          - 'Panther panther-analysis: Okta Login Without Push'
+          - 'Panther panther-analysis: Potential Compromised Okta Credentials'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1622
+    technique_name: 'Debugger Evasion'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: GitHub Commits Skipping Workflows'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1651
+    technique_name: 'Cloud Administration Command'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Azure Serverless Script Execution'
+          - 'Panther panther-analysis: Azure VM Command Executed'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1652
+    technique_name: 'Device Driver Discovery'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: Intune Device Not Compliant'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1654
+    technique_name: 'Log Enumeration'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: ZIA Logs Downloaded'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1666
+    technique_name: 'Modify Cloud Resource Hierarchy'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS CloudTrail Attempt To Leave Org'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1685
+    technique_name: 'Disable or Modify Tools'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: A User from the company domain(s) Logged in without SAML'
+          - 'Panther panther-analysis: AWS ACM Secure Algorithms'
+          - 'Panther panther-analysis: AWS Bedrock Guardrail Updated or Deleted'
+          - 'Panther panther-analysis: AWS CloudTrail CloudWatch Logs'
+          - 'Panther panther-analysis: AWS CloudTrail Least Privilege Access'
+          - 'Panther panther-analysis: AWS CloudTrail Log Validation'
+          - 'Panther panther-analysis: AWS CloudTrail Management Events Enabled'
+          - 'Panther panther-analysis: AWS Config Service Disabled'
+          - 'Panther panther-analysis: AWS EC2 Instance Detailed Monitoring'
+          - 'Panther panther-analysis: AWS EC2 Manual Security Group Change'
+          - 'Panther panther-analysis: AWS GuardDuty Enabled'
+          - 'Panther panther-analysis: AWS GuardDuty Master Account'
+          - 'Panther panther-analysis: AWS Macie Disabled/Updated'
+          - 'Panther panther-analysis: AWS RDS Deletion Protection Disabled'
+          - 'Panther panther-analysis: AWS Redshift Cluster Logging'
+          - 'Panther panther-analysis: AWS S3 Bucket Logging'
+          - 'Panther panther-analysis: AWS S3 Security Control Disabling'
+          - 'Panther panther-analysis: AWS S3 Security Controls Disabled'
+          - 'Panther panther-analysis: AWS SecurityHub Finding Evasion'
+          - 'Panther panther-analysis: AWS Trusted IPSet Modified'
+          - '(+60 outras regras no catálogo)'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1685.002
+    technique_name: 'Disable or Modify Cloud Log'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS CloudTrail Attempt To Leave Org'
+          - 'Panther panther-analysis: AWS CloudTrail Retention Lifecycle Too Short'
+          - 'Panther panther-analysis: AWS DNS Logs Deleted'
+          - 'Panther panther-analysis: AWS RDS Activity Stream Stopped'
+          - 'Panther panther-analysis: AWS VPC Flow Logs Removed'
+          - 'Panther panther-analysis: Azure Action Groups Deleted'
+          - 'Panther panther-analysis: Azure Alert Rules Deleted'
+          - 'Panther panther-analysis: Azure Diagnostic Settings Deleted'
+          - 'Panther panther-analysis: Azure Event Hub Deleted'
+          - 'Panther panther-analysis: Azure Log Analytics Workspace Deleted'
+          - 'Panther panther-analysis: Carbon Black Data Forwarder Stopped'
+          - 'Panther panther-analysis: Databricks High Priority Configuration Changes'
+          - 'Panther panther-analysis: Databricks Verbose Audit Logging Disabled'
+          - 'Panther panther-analysis: Slack EKM Config Changed'
+          - 'Panther panther-analysis: ZIA Backup Deleted'
+          - 'Panther panther-analysis: ZIA Golden Restore Point Dropped'
+          - 'Panther panther-analysis: ZIA Log Streaming Disabled'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1686
+    technique_name: 'Disable or Modify System Firewall'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS WAF Disassociation'
+          - 'Panther panther-analysis: Azure Firewall Policy Deleted'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1686.001
+    technique_name: 'Cloud Firewall'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS RDS Instance Modified to be Publicly Accessible'
+          - 'Panther panther-analysis: AWS RDS Security Group Ingress Authorized'
+          - 'Panther panther-analysis: Azure Network Security Configuration Modified or Deleted'
+          - 'Panther panther-analysis: OpenAI IP Allowlist Configuration Changes'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1690
+    technique_name: 'Prevent Command History Logging'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Panther panther-analysis: AWS Bedrock Model Invocation Logging Configuration Deleted'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true

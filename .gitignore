@@ -35,4 +35,5 @@ __pycache__/
 /apt_collections/
 /attack_stix/
 /atomic/
+/ossem/
 ext/

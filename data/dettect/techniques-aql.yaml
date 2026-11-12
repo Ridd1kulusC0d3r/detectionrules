@@ -1,0 +1,53 @@
+# Gerado por build_dettect.py (Detection Rules). Só regras QRadar AQL. ATT&CK v20.0, catálogo de 2026-10-26.
+# Linha de base de regras PÚBLICAS: reavalie cada nota depois de implantar e testar no seu ambiente.
+version: 1.2
+file_type: technique-administration
+name: 'Detection Rules: QRadar AQL'
+domain: enterprise-attack
+platform:
+  - all
+techniques:
+  - technique_id: T1560
+    technique_name: 'Archive Collected Data'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'QRadar AQL (comunidade): LOLBIN Archiving Tools Execution Case'
+          - 'QRadar AQL (comunidade): Self Extracting Archives - Persistence Case'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1560.001
+    technique_name: 'Archive via Utility'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'QRadar AQL (comunidade): LOLBIN Archiving Tools Execution Case'
+          - 'QRadar AQL (comunidade): Self Extracting Archives - Persistence Case'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true

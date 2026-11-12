@@ -1,0 +1,94 @@
+# Gerado por build_dettect.py (Detection Rules). Só regras YARA. ATT&CK v20.0, catálogo de 2026-10-26.
+# Linha de base de regras PÚBLICAS: reavalie cada nota depois de implantar e testar no seu ambiente.
+version: 1.2
+file_type: technique-administration
+name: 'Detection Rules: YARA'
+domain: enterprise-attack
+platform:
+  - all
+techniques:
+  - technique_id: T1090
+    technique_name: 'Proxy'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Neo23x0 signature-base: HKTL_NATBypass_Dec22_1'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1221
+    technique_name: 'Template Injection'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Neo23x0 signature-base: EXPL_Office_TemplateInjection_Aug19'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1552
+    technique_name: 'Unsecured Credentials'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Neo23x0 signature-base: VULN_Unencrypted_SSH_Private_Key'
+          - 'Neo23x0 signature-base: VULN_Unencrypted_SSH_Private_Key_Root_Folder'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true
+  - technique_id: T1574
+    technique_name: 'Hijack Execution Flow'
+    detection:
+      - applicable_to:
+          - all
+        location:
+          - 'Neo23x0 signature-base: SUSP_AppDomainInjection_Keyword_May26'
+        comment: ''
+        score_logbook:
+          - date: 2026-10-26T00:00:00.000Z
+            score: 1
+            comment: 'Regra pública disponível; ainda não validada neste ambiente.'
+    visibility:
+      - applicable_to:
+          - all
+        comment: ''
+        score_logbook:
+          - date: null
+            score: 0
+            comment: ''
+            auto_generated: true

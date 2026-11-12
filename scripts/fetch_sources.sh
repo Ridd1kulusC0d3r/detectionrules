@@ -57,5 +57,6 @@ sparse opensearch-project/security-analytics os_secanalytics '/src/main/config/r
 sparse demisto/content demisto_content '/Packs/*/Playbooks/*.yml' &
 sparse mitre-attack/attack-stix-data attack_stix '/enterprise-attack/enterprise-attack.json' &
 sparse redcanaryco/atomic-red-team atomic '/atomics/T*/T*.yaml' &
+sparse OTRF/OSSEM-DM ossem '/use-cases/mitre_attack/attack_events_mapping.csv' &
 wait
 echo "coleta concluída"
