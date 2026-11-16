@@ -58,5 +58,7 @@ sparse demisto/content demisto_content '/Packs/*/Playbooks/*.yml' &
 sparse mitre-attack/attack-stix-data attack_stix '/enterprise-attack/enterprise-attack.json' &
 sparse redcanaryco/atomic-red-team atomic '/atomics/T*/T*.yaml' &
 sparse OTRF/OSSEM-DM ossem '/use-cases/mitre_attack/attack_events_mapping.csv' &
+# pack MalwareMustDie de detecção do mau uso do ARTEX (DRL 1.1): Sigma, KQL, Suricata 7, Snort 3, YARA, osquery, STIX e IOCs
+sparse unixfreaxjp/malwaremustdie ext/mmd_artex '/etc/artex-stix-osquery-sigma-kql-snort-suricata-yara/*' &
 wait
 echo "coleta concluída"

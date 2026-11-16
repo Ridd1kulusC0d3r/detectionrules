@@ -68,8 +68,8 @@ function download(name, text, mime='text/plain'){
 function copy(text){ navigator.clipboard?.writeText(text).then(()=>toast('✓','Copiado para a área de transferência')); }
 const sevClass = s => (s||'none').toLowerCase();
 const SEV_PT = {critical:'crítico',high:'alto',medium:'médio',low:'baixo',informational:'informativo','':'—'};
-const FMT_PT = {sigma:'Sigma',elastic:'Elastic',splunk:'Splunk SPL',sentinel:'Sentinel KQL',yaral:'YARA-L',wazuh:'Wazuh',falco:'Falco',yara:'YARA',panther:'Panther',gcp:'GCP','kql-md':'KQL (hunting)',suricata:'Suricata/Snort',aql:'QRadar AQL',playbook:'Playbook SOAR'};
-const FMT_EXT = {sigma:'yml',elastic:'toml',splunk:'yml',sentinel:'yaml',yaral:'yaral',wazuh:'xml',falco:'yaml',yara:'yar',panther:'yml',gcp:'sql','kql-md':'kql',suricata:'rules',aql:'sql',playbook:'txt'};
+const FMT_PT = {sigma:'Sigma',elastic:'Elastic',splunk:'Splunk SPL',sentinel:'Sentinel KQL',yaral:'YARA-L',wazuh:'Wazuh',falco:'Falco',yara:'YARA',panther:'Panther',gcp:'GCP','kql-md':'KQL (hunting)',suricata:'Suricata/Snort',aql:'QRadar AQL',playbook:'Playbook SOAR',osquery:'osquery'};
+const FMT_EXT = {sigma:'yml',elastic:'toml',splunk:'yml',sentinel:'yaml',yaral:'yaral',wazuh:'xml',falco:'yaml',yara:'yar',panther:'yml',gcp:'sql','kql-md':'kql',suricata:'rules',aql:'sql',playbook:'txt',osquery:'conf'};
 const TACTICS = ['Reconnaissance','Resource Development','Initial Access','Execution','Persistence','Privilege Escalation','Defense Evasion','Credential Access','Discovery','Lateral Movement','Collection','Command and Control','Exfiltration','Impact'];
 const TACTIC_PT = {'Reconnaissance':'Reconhecimento','Resource Development':'Desenv. de Recursos','Initial Access':'Acesso Inicial','Execution':'Execução','Persistence':'Persistência','Privilege Escalation':'Escalação de Privilégio','Defense Evasion':'Evasão de Defesa','Credential Access':'Acesso a Credenciais','Discovery':'Descoberta','Lateral Movement':'Movimento Lateral','Collection':'Coleta','Command and Control':'Comando e Controle','Exfiltration':'Exfiltração','Impact':'Impacto'};
 
@@ -325,6 +325,9 @@ panther:{name:'Panther (Detection-as-Code)',emoji:'🐍',what:'YAML de metadados
 gcp:{name:'GCP Security Analytics',emoji:'☁️',what:'Consultas SQL (BigQuery/Dataform), YAML (Log Analytics) e YARA-L para auditoria e ameaças no Google Cloud.',
  child:'Perguntas prontas para os registros de auditoria da nuvem: "alguém abriu um bucket para o mundo?", "criaram uma chave de serviço nova?".',
  when:'Postura e detecção em GCP.',engine:'BigQuery / Cloud Logging / Chronicle.',sources:['GCP security-analytics']},
+osquery:{name:'osquery (pack)',emoji:'🗄️',what:'Consultas SQL sobre o estado do endpoint (processos, portas, contas, imagens Docker, arquivos) agendadas em um pack JSON com intervalo e plataforma.',
+ child:'Em vez de esperar um log chegar, você pergunta direto à máquina: "tem alguém escutando na porta 8787?", "existe essa imagem Docker aqui?". A resposta é uma tabela.',
+ when:'Hunting e verificação de estado em frota (Linux, Windows, macOS), principalmente para artefatos que não geram evento: imagens, contas, arquivos em webroot.',engine:'osqueryd / osqueryi, Fleet, Kolide; o pack é carregado pela chave packs da config.',sources:['MalwareMustDie ARTEX pack']},
 };
 window.FIELDS=FIELDS; window.FORMAT_INFO=FORMAT_INFO; window.RANKS=RANKS; window.BADGES=BADGES;
 Object.assign(window,{esc,$,$$,el,download,copy,sevClass,SEV_PT,FMT_PT,FMT_EXT,TACTICS,TACTIC_PT,hl,term,openModal,closeModal,quizHTML,addXP,badge,rank,nextRank,renderXP,toast,save});

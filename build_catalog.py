@@ -533,6 +533,166 @@ def parse_llmi(path):
         r["llmi"] = {k: spec.get(k) for k in ("id","category","hypothesis","telemetry","test_ids")} if spec else {}
     return r
 
+# ---------------- MalwareMustDie ARTEX pack (multi-documento Sigma, KQL por seção, Suricata/Snort 3, YARA, osquery) ----------------
+# Pack de detecção do mau uso do ARTEX (framework de pentest multiagente com LLM). DRL 1.1, atribuição obrigatória:
+# "MalwareMustDie.org - @unixfreaxjp". Tiers do pack: T1 confirmado, T2 comportamento, T3 IOC de incidente passado,
+# T4 genérico (nunca agir só com T4). O tier vira severidade e o T4 vira hunting/enriquecimento.
+MMD_SRC = "MalwareMustDie ARTEX pack"
+MMD_LIC = "DRL 1.1"
+MMD_TIER_SEV = {"T1": "critical", "T2": "high", "T3": "medium", "T4": "low"}
+MMD_REF = "https://github.com/unixfreaxjp/malwaremustdie/tree/master/etc/artex-stix-osquery-sigma-kql-snort-suricata-yara"
+
+def _mmd_tier(text):
+    m = re.search(r"(?:mmd_tier:?\s*|ARTEX-|tier=|Tier\s*:\s*)(T[1-4])\b", text or "")
+    return m.group(1) if m else None
+
+def _mmd_finish(r, tier, extra_refs=()):
+    if not r: return r
+    r["source"], r["license"] = MMD_SRC, MMD_LIC
+    r["author"] = r.get("author") or "malwaremustdie.org - @unixfreaxjp"
+    if tier:
+        r["severity"] = MMD_TIER_SEV[tier]
+        r["mmd_tier"] = tier
+        if tier == "T4": r["ctype"] = "hunting"
+    refs = list(r.get("references") or [])
+    for u in list(extra_refs) + [MMD_REF]:
+        if u and u not in refs: refs.append(u)
+    r["references"] = refs[:10]
+    return r
+
+def _mmd_list(text, key):
+    """Como yaml_list, mas aceita itens sem indentação ('- x' logo abaixo da chave), estilo usado no pack."""
+    m = re.search(rf"^{re.escape(key)}:\s*$", text, re.M)
+    if not m: return yaml_list(text, key)
+    items = []
+    for ln in text[m.end():].splitlines()[1:]:
+        if re.match(r"^\s*-\s+", ln): items.append(re.sub(r"^\s*-\s+", "", ln).strip().strip("'\""))
+        elif ln.strip() == "" or ln.startswith((" ", "\t")): continue
+        else: break
+    return items
+
+def parse_mmd_sigma(path):
+    """Cada arquivo do pack pode ter vários documentos YAML (regras v1.1.x anexadas) e regras de correlação."""
+    out = []
+    docs = re.split(r"(?m)^---\s*$", read(path))
+    for i, doc in enumerate(docs):
+        if not doc.strip() or not re.search(r"(?m)^(detection|correlation):", doc): continue
+        corr = "detection:" not in doc
+        tmp = doc if not corr else doc + "\ndetection:\n  # regra de correlação Sigma: ver bloco correlation\n"
+        tags = _mmd_list(tmp, "tags"); logsrc = yaml_block(tmp, "logsource") or ""
+        prod = re.search(r"^\s+product:\s*(.+)$", logsrc, re.M); cat = re.search(r"^\s+category:\s*(.+)$", logsrc, re.M)
+        svc = re.search(r"^\s+service:\s*(.+)$", logsrc, re.M)
+        r = {
+            "id": yaml_top(doc, "id") or stable_id(path, i),
+            "title": (yaml_top(doc, "title") or os.path.basename(path)).strip("'\""),
+            "description": yaml_top(doc, "description") or "",
+            "format": "sigma", "lang": "Sigma (YAML)" if not corr else "Sigma (correlação)",
+            "severity": clean_sev(yaml_top(doc, "level")), "status": yaml_top(doc, "status"),
+            "author": yaml_top(doc, "author"), "date": (yaml_top(doc, "date") or "").strip("'\"") or None,
+            "tactics": sorted({x for x in (norm_tactic(tg) for tg in tags) if x}), "techniques": techs_from(tags),
+            "logsource": {"product": prod.group(1).strip() if prod else ("correlação" if corr else None),
+                          "category": cat.group(1).strip() if cat else None, "service": svc.group(1).strip() if svc else None},
+            "false_positives": _mmd_list(doc, "falsepositives"), "references": _mmd_list(doc, "references"),
+            "query": (yaml_block(doc, "correlation") if corr else yaml_block(doc, "detection")) or "",
+            "raw": doc.strip() + "\n", "path": os.path.relpath(path, ROOT),
+        }
+        out.append(_mmd_finish(r, yaml_top(doc, "mmd_tier") or _mmd_tier(r["title"])))
+    return out
+
+def parse_mmd_kql(path):
+    """Arquivos .kql do pack: várias consultas por arquivo, cada uma com cabeçalho // ==== Rule/Tier/MITRE/Tables."""
+    t = read(path); out = []
+    starts = [m.start() for m in re.finditer(r"(?m)^// =+\n// [^\n]*\n// Rule\s*:", t)]
+    for k, st in enumerate(starts):
+        sec = t[st: starts[k + 1] if k + 1 < len(starts) else len(t)].rstrip()
+        sec = re.sub(r"\n// #+\s*$", "", sec).rstrip()
+        h = lambda key: (re.search(rf"^// {key}\s*:\s*(.+)$", sec, re.M) or [None, ""])[1].strip()
+        tier = _mmd_tier("Tier: " + h("Tier"))
+        body = "\n".join(l for l in sec.splitlines() if not l.startswith("//")).strip()
+        lines = sec.splitlines(); bars = [i for i, l in enumerate(lines) if l.startswith("// =")]
+        notes = []
+        for l in lines[(bars[1] + 1 if len(bars) > 1 else 0):]:
+            if not l.startswith("//"): break
+            notes.append(l[2:].strip())
+        notes = " ".join(notes)
+        r = {
+            "id": stable_id(path, k), "title": f"[ARTEX-{tier}] {h('Rule')}" if tier else h("Rule"),
+            "description": (h("Text") + " " + notes).strip()[:900],
+            "format": "sentinel", "lang": "KQL", "severity": None,
+            "status": (h("Status").split(" ")[0] or "experimental"), "author": None, "date": None,
+            "tactics": [], "techniques": techs_from(h("MITRE")),
+            "logsource": {"product": "Microsoft Sentinel", "category": h("Tables")[:120] or None, "service": None},
+            "false_positives": [], "references": re.findall(r"https?://[^\s)]+", sec)[:6],
+            "query": body, "raw": sec + "\n", "path": os.path.relpath(path, ROOT),
+        }
+        out.append(_mmd_finish(r, tier))
+    return out
+
+def parse_mmd_rules(path, lang):
+    out = []
+    for r in parse_rules_file(path, MMD_SRC, lang, MMD_LIC):
+        m = re.search(r"mmd_tier\s+(T[1-4])", r["raw"]); tier = m.group(1) if m else _mmd_tier(r["title"])
+        if lang.startswith("Snort"): r["id"] = r["id"] + "-snort3"
+        out.append(_mmd_finish(r, tier))
+    return out
+
+# osquery e YARA do pack não trazem T-IDs: mapeamento explícito por nome (revisável).
+MMD_TECH_HINTS = [
+    (r"image|container", ["T1610", "T1525"]), (r"console_ports|workspace", ["T1588.002", "T1219"]),
+    (r"operator_env|llm|gateway|config", ["T1588.007", "T1071.001"]), (r"backdoor_account", ["T1136.001"]),
+    (r"dropped_script|webshell|sql_write|Webshell|Dropped_Script", ["T1505.003"]), (r"sink_runner", ["T1608.001", "T1195.002"]),
+    (r"nsenter", ["T1611"]), (r"spawns_shell", ["T1505.003", "T1059.004", "T1059.001"]),
+    (r"Probe_Markers|Exec_Verification", ["T1595.002", "T1059"]),
+]
+def _mmd_hint(name):
+    out = set()
+    for rx, ts in MMD_TECH_HINTS:
+        if re.search(rx, name): out.update(ts)
+    return sorted(out)
+
+def parse_mmd_yara(path):
+    out = []
+    for r in parse_yara(path, MMD_SRC, MMD_LIC):
+        r["techniques"] = r["techniques"] or _mmd_hint(r["title"])
+        out.append(_mmd_finish(r, _mmd_tier(r["raw"]) or _mmd_tier(r["title"])))
+    return out
+
+def parse_mmd_osquery(path):
+    try: pack = json.loads(read(path))
+    except Exception: return []
+    out = []
+    for name, q in (pack.get("queries") or {}).items():
+        desc = q.get("description", ""); tier = _mmd_tier(q.get("value", "")) or _mmd_tier(desc)
+        raw = json.dumps({name: q}, ensure_ascii=False, indent=2)
+        r = {"id": name, "title": (f"[ARTEX-{tier}] " if tier else "") + name.replace("mmd_artex_", "").replace("_", " "),
+             "description": re.sub(r"^\[T[1-4]\]\s*", "", desc), "format": "osquery", "lang": "osquery SQL",
+             "severity": None, "status": "experimental", "author": None, "date": None,
+             "tactics": [], "techniques": techs_from(desc) or _mmd_hint(name),
+             "logsource": {"product": "osquery (" + q.get("platform", pack.get("platform", "all")) + ")", "category": "endpoint", "service": None},
+             "false_positives": [], "references": [], "query": q.get("query", ""), "raw": raw,
+             "path": os.path.relpath(path, ROOT)}
+        out.append(_mmd_finish(r, tier))
+    return out
+
+def parse_mmd_pack(base):
+    """O caminho de cada regra vira mmd_artex/<pasta do pack>/<arquivo>: o nome da pasta do pack
+    (artex-stix-osquery-sigma-kql-snort-suricata-yara) contaminaria a classificação de tecnologia do techmap."""
+    out = _parse_mmd_pack(base)
+    for r in out:
+        if r and r.get("path"):
+            r["path"] = "mmd_artex/" + os.path.relpath(os.path.join(ROOT, r["path"]), os.path.join(ROOT, base))
+    return out
+
+def _parse_mmd_pack(base):
+    out = []
+    for p in sorted(glob.glob(os.path.join(base, "sigma", "**", "*.yml"), recursive=True)): out += parse_mmd_sigma(p)
+    for p in sorted(glob.glob(os.path.join(base, "kql", "*.kql"))): out += parse_mmd_kql(p)
+    for p in glob.glob(os.path.join(base, "suricata7", "*.rules")): out += parse_mmd_rules(p, "Suricata 7")
+    for p in glob.glob(os.path.join(base, "snort3", "*.rules")): out += parse_mmd_rules(p, "Snort 3")
+    for p in glob.glob(os.path.join(base, "yara", "*.yar")): out += parse_mmd_yara(p)
+    for p in glob.glob(os.path.join(base, "osquery", "*.conf")): out += parse_mmd_osquery(p)
+    return out
+
 def main():
     rules = []
     def add(x):
@@ -603,6 +763,7 @@ def main():
         if os.path.isfile(p): add(parse_awesome(p))
 
     for p in sorted(glob.glob("ext/llminjection/detections/*/*")): add(parse_llmi(p))
+    add(parse_mmd_pack("ext/mmd_artex/etc/artex-stix-osquery-sigma-kql-snort-suricata-yara"))
 
     # dedupe por (source,id)
     for r in rules:
